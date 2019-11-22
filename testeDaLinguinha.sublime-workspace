@@ -1,0 +1,644 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mar",
+				"margin-top\tproperty"
+			],
+			[
+				"margi",
+				"margin-top\tproperty"
+			],
+			[
+				"que",
+				"questionFourCmdCss"
+			],
+			[
+				"B",
+				"BreastfeedingCmdCss"
+			],
+			[
+				"cel",
+				"cellPhone"
+			],
+			[
+				"tele",
+				"telephone"
+			],
+			[
+				"te",
+				"telefone"
+			],
+			[
+				"max",
+				"maxDate"
+			],
+			[
+				"tr",
+				"true"
+			],
+			[
+				"current",
+				"currentTab"
+			],
+			[
+				"get",
+				"getElementsByTagName"
+			],
+			[
+				"s",
+				"set"
+			],
+			[
+				"text-co",
+				"text-decoration-color\tproperty"
+			],
+			[
+				"marg",
+				"margin-bottom\tproperty"
+			],
+			[
+				"ne",
+				"nextPrev"
+			],
+			[
+				"o",
+				"ol\tTag"
+			],
+			[
+				"my",
+				"my-3"
+			],
+			[
+				"pa",
+				"password"
+			],
+			[
+				"DB",
+				"DATABASE"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"sele",
+				"selectedValue"
+			],
+			[
+				"tipo",
+				"tipo_nome"
+			],
+			[
+				"margin",
+				"margin\tproperty"
+			],
+			[
+				"paddin",
+				"padding\tproperty"
+			],
+			[
+				"produto",
+				"produto_id"
+			],
+			[
+				"che",
+				"checked"
+			],
+			[
+				"para",
+				"params"
+			],
+			[
+				"COMENTARIO",
+				"COMENTARIO_DATA"
+			],
+			[
+				"noticia",
+				"noticiaCompleta"
+			],
+			[
+				"no",
+				"noticia"
+			],
+			[
+				"NOTICIA_",
+				"NOTICIA_ID"
+			],
+			[
+				"ES",
+				"ESTUDO_ANIMAIS"
+			],
+			[
+				"ESPE",
+				"ESPECIE_ID"
+			],
+			[
+				"N",
+				"NOT"
+			],
+			[
+				"background-c",
+				"background-color\tproperty"
+			],
+			[
+				"b",
+				"inline-block\tdisplay"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"text",
+				"text-align\tproperty"
+			],
+			[
+				"left",
+				"margin-left\tproperty"
+			],
+			[
+				"le",
+				"padding-left\tproperty"
+			],
+			[
+				"w",
+				"width\tproperty"
+			],
+			[
+				"li",
+				"link\tTag"
+			],
+			[
+				"tex",
+				"nTexto"
+			],
+			[
+				"nT",
+				"nTitulo"
+			],
+			[
+				"in",
+				"inline-block\tdisplay"
+			],
+			[
+				"t",
+				"text-top\tvertical-align"
+			],
+			[
+				"to",
+				"top\tvertical-align"
+			],
+			[
+				"top",
+				"text-top\tvertical-align"
+			],
+			[
+				"i",
+				"inline\tdisplay"
+			],
+			[
+				"D",
+				"Date"
+			],
+			[
+				"au",
+				"autores"
+			],
+			[
+				"n",
+				"novaPessoa"
+			],
+			[
+				"if",
+				"ife\tif … else"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"ac",
+				"action\tAttr"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
+				"pala",
+				"palavra1"
+			],
+			[
+				"f",
+				"for\tfor (…) {…} (Improved Native For-Loop)"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "public/javascripts/assessment.js",
+			"settings":
+			{
+				"buffer_size": 8585,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/javascripts/model/Patient.js",
+			"settings":
+			{
+				"buffer_size": 3431,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 150.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/alcieres/TCC/testeDaLinguinha",
+		"/home/alcieres/TCC/testeDaLinguinha/public",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/model",
+		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets"
+	],
+	"file_history":
+	[
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/jquery-validation-1.19.1/localization/messages_pt_BR.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/form.css",
+		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/style.css",
+		"/home/alcieres/TCC/testeDaLinguinha/models/pacient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/model/Patient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/class/Patient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/partials/nav.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/teste.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/class/patient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/modelo.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/login.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/nav.css",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/jquery-validation-1.19.1/localization/messages_pt_BR.min.js",
+		"/home/alcieres/TCC/testeDaLinguinha/bin/www",
+		"/home/alcieres/TCC/links.txt",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
+		"/home/alcieres/.ssh/config",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/jquery-ui.min.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/text.css",
+		"/home/alcieres/TCC/testeDaLinguinha/app.js",
+		"/home/alcieres/TCC/testeDaLinguinha/testeDaLinguinha.sublime-project",
+		"/home/alcieres/webII/prova2/prova2/views/produto.ejs",
+		"/home/alcieres/webII/J Prova/connectionBD.js",
+		"/home/alcieres/webII/aula13/teste/app.js",
+		"/home/alcieres/webII/J Prova/app2.js",
+		"/home/alcieres/webII/prova2/prova2/app.js",
+		"/home/alcieres/Área de Trabalho/Trabalho/app.js",
+		"/home/alcieres/Área de Trabalho/JS/LOGIN/views/faunamar.ejs",
+		"/home/alcieres/Área de Trabalho/JS/LOGIN/user.js",
+		"/home/alcieres/Área de Trabalho/JS/LOGIN/login.js",
+		"/home/alcieres/Área de Trabalho/Trabalho/views/README.md",
+		"/home/alcieres/Área de Trabalho/Trabalho/views/index.ejs",
+		"/home/alcieres/webII/aula12/resolucao-prova-mysql/app.js",
+		"/home/alcieres/webII/prova2/prova2/views/cadastraProduto.ejs",
+		"/home/alcieres/webII/prova2/prova2/views/editaProduto.ejs",
+		"/home/alcieres/webII/prova2/prova2/views/produtos.ejs",
+		"/home/alcieres/webII/prova2/prova2/public/blog.css",
+		"/home/alcieres/webII/J Prova/views/pessoas.ejs",
+		"/home/alcieres/webII/prova2/prova/package.json",
+		"/home/alcieres/webII/J Prova/views/novaPessoa.ejs",
+		"/home/alcieres/webII/Dicas",
+		"/home/alcieres/webII/Dicas Prova",
+		"/home/alcieres/webII/aula12/resolucao-prova/app.js",
+		"/home/alcieres/webII/prova2/prova/app.js",
+		"/home/alcieres/webII/J Prova/app.js",
+		"/home/alcieres/webII/aula12/resolucao-prova-mysql/views/artigo.ejs",
+		"/home/alcieres/webII/aula12/resolucao-prova-mysql/views/artigos.ejs",
+		"/home/alcieres/webII/treino/mercado/public/blog.css",
+		"/home/alcieres/webII/aula13/exercicio/pessoas/app.js",
+		"/home/alcieres/webII/EProva/Aula13/app.js",
+		"/home/alcieres/webII/J Prova/views/app.js",
+		"/home/alcieres/webII/treino/mercado/views/editaProduto.ejs",
+		"/home/alcieres/webII/treino/mercado/views/produto.ejs",
+		"/home/alcieres/webII/treino/mercado/views/cadastraProduto.ejs",
+		"/home/alcieres/webII/treino/mercado/views/produtos.ejs",
+		"/home/alcieres/webII/prova2/Dicas/Dicas mySQL.sql",
+		"/home/alcieres/webII/treino/mercado/app.js",
+		"/home/alcieres/.cache/.fr-Kpzhnh/Aula13/app.js",
+		"/home/alcieres/webII/aula12/resolucao-prova-mysql/views/editaArtigo.ejs",
+		"/home/alcieres/webII/treino/mercado/views/partials/cabecalho.ejs",
+		"/home/alcieres/webII/treino/mercado/views/partials/rodape.ejs",
+		"/home/alcieres/webII/trabalhoFinal/rotas/views/editaUsuario.ejs",
+		"/home/alcieres/webII/trabalhoFinal/rotas/views/usuarios.ejs",
+		"/home/alcieres/webII/trabalhoFinal/SqlCodes.sql",
+		"/home/alcieres/webII/Aula 14/exemploAutenticacao/app.js",
+		"/home/alcieres/webII/trabalhoFinal/rotas/views/usuario.ejs",
+		"/home/alcieres/webII/trabalhoFinal/rotas/coleta.js",
+		"/home/alcieres/webII/trabalhoFinal/tabelas.sql",
+		"/home/alcieres/webII/trabalhoFinal/rotas/usuario.js",
+		"/home/alcieres/webII/aula07/exemploMongoose/app.js",
+		"/home/alcieres/webII/aula08/exercicioRequisicaoPost/app.js",
+		"/home/alcieres/webII/aula10/blog/app.js",
+		"/home/alcieres/webII/aula13/instalação My SQL.txt",
+		"/home/alcieres/webII/prova2/Dicas/Dicas Prova",
+		"/home/alcieres/webII/prova2/Dicas/TIPOS DE DADOS MYSQL.txt",
+		"/home/alcieres/webII/treino/trabalho/app.js",
+		"/home/alcieres/webII/aula12/resolucao-prova-mysql/tabelas.sql",
+		"/etc/mysql/mysql.conf.d/mysqld.cnf",
+		"/etc/mysql/mysql.cnf",
+		"/home/alcieres/webII/aula12/resolucao-prova-mysql/public/blog.css",
+		"/home/alcieres/webII/aula10/blog/public/app.css",
+		"/home/alcieres/webII/aula10/blog/views/noticias.ejs",
+		"/home/alcieres/webII/aula12/resolucao-prova-mysql/package.json",
+		"/home/alcieres/webII/aula12/resolucao-prova-mysql/package-lock.json",
+		"/home/alcieres/webII/treino/trabalho2/tabelas",
+		"/home/alcieres/webII/trabalhoFinal/mapsTeste.html",
+		"/home/alcieres/webII/prova2/group by",
+		"/home/alcieres/webII/prova2/Dicas mySQL.sql",
+		"/home/alcieres/webII/prova2/TIPOS DE DADOS MYSQL.txt",
+		"/home/alcieres/webII/prova2/Dicas Prova",
+		"/home/alcieres/webII/Configs.txt",
+		"/home/alcieres/webII/prova2/joins",
+		"/home/alcieres/Área de Trabalho/multiroom_chat/app/controllers/chat.js",
+		"/home/alcieres/webII/treino/trabalho2/app.js",
+		"/home/alcieres/webII/treino/carro/app.js",
+		"/home/alcieres/webII/treino/carro/package.json",
+		"/home/alcieres/webII/aula12/resolucao-prova-alteracao/app.js",
+		"/home/alcieres/Área de Trabalho/multiroom_chat/app.js",
+		"/home/alcieres/Área de Trabalho/multiroom_chat/config/server.js",
+		"/home/alcieres/udemy/chat/config/server.js",
+		"/home/alcieres/udemy/chat/app.js",
+		"/home/alcieres/udemy/portalDeNoticias/app.js",
+		"/home/alcieres/webII/Dicas Mongo.txt",
+		"/home/alcieres/Área de Trabalho/multiroom_chat/package.json",
+		"/home/alcieres/webII/aula13/exercicio/pessoas/views/pessoa.ejs",
+		"/home/alcieres/webII/aula13/exercicio/pessoas/views/pessoas.ejs",
+		"/home/alcieres/webII/Dicas Mongo.odt",
+		"/home/alcieres/webII/aula09/exemplosRotasRESTFull/app.js",
+		"/home/alcieres/webII/aula13/exercicio/pessoas/package.json",
+		"/home/alcieres/webII/aula13/exercicio/pessoas/public/app.css",
+		"/home/alcieres/webII/aula13/instalação My SQL",
+		"/home/alcieres/webII/aula13/exercicio/exemplosRotasRESTFull/app.js",
+		"/home/alcieres/udemy/portalDeNoticias/config/dbConnection.js",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/admEditaNoticia.ejs",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/admNovaNoticia.ejs",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/admNoticia.ejs",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/noticias.ejs",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/public/app.css",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/app.js",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/admNoticias.ejs",
+		"/home/alcieres/Área de Trabalho/webII/Aula12/resolucao-prova/views/artigo.ejs",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/noticia.ejs",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blogOld/views/noticias.ejs",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blogOld/app.js",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/novaNoticia.ejs",
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/editaNoticia.ejs",
+		"/home/alcieres/Área de Trabalho/webII/aula03/express/exercicio02.js"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"}",
+			"rbquestionFourCmd",
+			"QuestionFourCmd",
+			"BreastfeedingCmd",
+			"check",
+			"cep",
+			"regF",
+			"sectio",
+			"Observações",
+			"na hora da mamada, observar o bebê mamando durante 5 minutos",
+			"4.1",
+			"sub",
+			"subI",
+			"subi"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"questionFourCmd",
+			"breastfeedingCmd"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "public/javascripts/assessment.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8585,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8488,
+								8488
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3548.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/javascripts/model/Patient.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3431,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3008,
+								3008
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2541.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "testeDaLinguinha.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 216.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

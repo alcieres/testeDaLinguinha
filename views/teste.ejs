@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8"/>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/nav.css" />
+    <link rel="stylesheet" href="/stylesheets/form.css" />
+    <link rel="stylesheet" href="/stylesheets/text.css" />
+
+    <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
+
+  </head>
+  <body>
+
+  <%- include('partials/nav', {active: ""}); %>
+
+	<div class="container mainContainer container-if-fixed-footer py-0">
+		<div class="row align-items-center py-0">  <%# Linha do título História Clínica %>
+	        <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-0 my-0">
+	                <h1 class="formTitle">História Clínica</h1>
+	        </div>
+	    </div>
+
+	</div> <%# Containner %>
+
+    
+
+<% include partials/footer %>

@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css" />
+
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/nav.css" />
+  <link rel="stylesheet" href="/stylesheets/form.css" />
+  <link rel="stylesheet" href="/stylesheets/text.css" />
+  <link rel="stylesheet" href="/stylesheets/assessment.css" />
+  <link rel="stylesheet" href="/javascripts/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" >
+
+  <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
+  <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
+  <script type="text/javascript" src="/javascripts/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.js" ></script>
+  <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/jquery.validate.min.js" ></script>
+  <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/additional-methods.min.js" ></script>
+  <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/localization/messages_pt_BR.js" ></script>
+
+  <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
+
+  <script type="text/javascript" src="/javascripts/model/Patient.js" ></script>
+  <script type="text/javascript" src="/javascripts/controllers/assessmentValidate.js" ></script>
+  <script type="text/javascript" src="/javascripts/controllers/resumeWrite.js" ></script>
+  <script type="text/javascript" src="/javascripts/assessment.js" ></script>
+
+</head>
+
+<body>
+
+<%- include('../partials/nav', {active: "navAssessment"}); %>
+
+<form id="assForm"> <%# Início do formulário principal %>
+
+  <div class="tab"> <%# Tela 01 %>
+    <div class="container mainContainer"> <%# Containner História Clínica 1 %>
+      <div class="row align-items-center">  <%# Linha do título História Clínica 1 %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <h2 class="text-center border border-dark rounded">História Clínica</h2>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Nome / data de nascimento %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputName" id="inputName" class="form-control" placeholder="Nome*" minlength="5" maxlength="100" required autofocus >
+            <label for="inputName">Nome<span class="requiredField">*</span></label>
+          </div>
+          <label for="inputName" class="error"></label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+          <div class="form-label-group">
+            <input type="date" name="inputBirthDate" id="inputBirthDate" class="dateCalendar form-control" placeholder="Data de Nascimento*" required>
+            <label for="inputBirthDate">Data de Nascimento<span class="requiredField">*</span></label>
+          </div>
+          <label for="inputBirthDate" class="error"></label>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Data do exame / gênero %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mr-auto">
+          <div class="form-label-group">
+            <input type="date" name="inputAssessmentDate" id="inputAssessmentDate" class="dateCalendar form-control" placeholder="Data do Exame*" required>
+            <label for="inputAssessmentDate">Data do Exame<span class="requiredField">*</span></label>
+          </div>
+          <label for="inputAssessmentDate" class="error"></label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 ml-auto mb-3">
+          <fieldset id="fieldRbGenre">
+            <legend>Gênero<span class="requiredField">*</span></legend>
+            <div class="form-check-inline">
+              <label class="form-check-label mb-3">
+                <input type="radio" class="option-input radio" name="rbGenre" value="1" required>Masculino
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label mb-3">
+                <input type="radio" class="option-input radio" name="rbGenre" value="2">Feminino
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </fieldset>
+          <label for="rbGenre" class="error" id="labelErrorRadioButton"></label>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Nome da mãe / CPF da mãe %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputMotherName" id="inputMotherName" class="form-control" placeholder="Nome da mãe*" minlength="5" maxlength="100" required >
+            <label for="inputMotherName">Nome da mãe<span class="requiredField">*</span></label>
+          </div>
+          <label for="inputMotherName" class="error"></label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputMotherCPF" id="inputMotherCPF" class="form-control" placeholder="CPF da mãe" minlength="14" maxlength="14" onkeypress="$(this).mask('000.000.000-00');" >
+            <label for="inputMotherCPF">CPF da mãe</label>
+          </div>
+          <label for="inputMotherCPF" class="error"></label>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Nome do pai %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mr-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputFatherName" id="inputFatherName" class="form-control" placeholder="Nome do pai" minlength="5" maxlength="100" >
+            <label for="inputFatherName">Nome do pai</label>
+          </div>
+          <label for="inputFatherName" class="error"></label>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Logradouro / número da residência %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputAddress" id="inputAddress" class="form-control" placeholder="Logradouro*" minlength="5" maxlength="300" required >
+            <label for="inputAddress">Logradouro<span class="requiredField">*</span></label>
+          </div>
+          <label for="inputAddress" class="error"></label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputResidenceNumber" id="inputResidenceNumber" class="form-control" placeholder="Número*" minlength="1" maxlength="15" required >
+            <label for="inputResidenceNumber">Número<span class="requiredField">*</span></label>
+          </div>
+          <label for="inputResidenceNumber" class="error"></label>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Bairro / Cidade / Estado %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-5 mx-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputNeighborhood" id="inputNeighborhood" class="form-control" placeholder="Bairro*" minlength="5" maxlength="100" required >
+            <label for="inputNeighborhood">Bairro<span class="requiredField">*</span></label>
+          </div>
+          <label for="inputNeighborhood" class="error"></label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 mx-auto">
+          <div class="form-label-group">
+            <select name="inputState" id="inputState" class="form-control" required>
+              <option disabled selected value="">Selecione</option>
+              <option value="AC">AC</option>
+              <option value="AL">AL</option>
+              <option value="AM">AM</option>
+              <option value="AP">AP</option>
+              <option value="BA">BA</option>
+              <option value="CE">CE</option>
+              <option value="DF">DF</option>
+              <option value="ES">ES</option>
+              <option value="GO">GO</option>
+              <option value="MA">MA</option>
+              <option value="MG">MG</option>
+              <option value="MS">MS</option>
+              <option value="MT">MT</option>
+              <option value="PA">PA</option>
+              <option value="PB">PB</option>
+              <option value="PE">PE</option>
+              <option value="PI">PI</option>
+              <option value="PR">PR</option>
+              <option value="RJ">RJ</option>
+              <option value="RN">RN</option>
+              <option value="RO">RO</option>
+              <option value="RR">RR</option>
+              <option value="RS">RS</option>
+              <option value="SC">SC</option>
+              <option value="SE">SE</option>
+              <option value="SP">SP</option>
+              <option value="TO">TO</option>
+            </select>
+            <label for="inputState">Estado<span class="requiredField">*</span></label>
+          </div>
+          <label for="inputState" class="error"></label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-5 mx-auto">
+          <div class="form-label-group">
+            <select name="inputCity" id="inputCity" class="form-control" placeholder="Cidade*" required>
+              <option disabled selected value="">Selecione</option>
+            </select>
+            <label for="inputCity">Cidade<span class="requiredField">*</span></label>
+          </div>
+          <label for="inputCity" class="error"></label>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# CEP / E-mail %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputCEP" id="inputCEP" class="form-control" placeholder="CEP" minlength="9" maxlength="10" onkeypress="$(this).mask('00000-000')" >
+            <label for="inputCEP">CEP</label>
+          </div>
+          <label for="inputCEP" class="error"></label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+          <div class="form-label-group">
+            <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="E-mail" >
+            <label for="inputEmail">E-mail</label>
+          </div>
+          <label for="inputEmail" class="error"></label>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Telefone Residencial / Telefone Trabalho / Celular %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputResTel" id="inputResTel" class="form-control" placeholder="Telefone Residencial" minlength="14" maxlength="15" onkeypress="$(this).mask('(00) 0000-00000')" >
+            <label for="inputResTel">Telefone Residencial</label>
+          </div>
+          <label for="inputResTel" class="error"></label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputCommercialTel" id="inputCommercialTel" class="form-control" placeholder="Telefone Comercial" minlength="14" maxlength="15" onkeypress="$(this).mask('(00) 0000-00000')" >
+            <label for="inputCommercialTel">Telefone Comercial</label>
+          </div>
+          <label for="inputCommercialTel" class="error"></label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+          <div class="form-label-group">
+            <input type="text" name="inputCelPhone" id="inputCelPhone" class="form-control" placeholder="Celular" minlength="14" maxlength="15" onkeypress="$(this).mask('(00) 0000-00000')" >
+            <label for="inputCelPhone">Celular</label>
+          </div>
+          <label for="inputCelPhone" class="error"></label>
+        </div>
+      </div>
+    </div> <%# FIM Containner História Clínica 1 %>
+
+    <div class="container mainContainer"> <%# Containner História Clínica 2 %>
+      <div class="row align-items-center"> <%# Pergunta antecedentes familiares %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p>
+            Antecedentes Familiares (investigar se existem casos na família
+            com alteração no frênulo da língua):
+          </p>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Radio Button antecedentes familiares %>
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto  mb-3">
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="1" name="rbFamilyHistory">Não (0)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="2" name="rbFamilyHistory">Sim (1)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Justificativa do problema de saúde na família %>
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mx-auto">
+          <div class="form-label-group">
+            <textarea id="inputProblemDescription" name="inputProblemDescription" class="form-control pt-3" placeholder="Quem e qual o problema:" minlength="1" maxlength="1000" rows="4"></textarea>
+            <label for="inputProblemDescription">Quem e qual o problema:</label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Pergunta problemas de saúde do bebê %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p>Problemas de Saúde:</p>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Radio Button problemas de saúde do bebê %>
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto  mb-3">
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="1" name="rbPatientHealthProblem">Não
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="2" name="rbPatientHealthProblem">Sim
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Textarea quais problemas %>
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mx-auto">
+          <div class="form-label-group">
+            <textarea id="inputHealthProblemDescription" name="inputHealthProblemDescription" class="form-control" placeholder="Quais:" minlength="5" maxlength="1000" rows="4"></textarea>
+            <label for="inputHealthProblemDescription">Quais:</label>
+          </div>
+        </div>
+      </div>
+    </div> <%# FIM Containner História Clínica 2 %>
+
+    <div class="container mainContainer"> <%# Containner História Clínica 3 %>
+      <div class="row align-items-center"> <%# Pergunta mama no peito %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p>Mama no Peito?</p>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Radio Button mama no peito %>
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" name="rbBreastfeeding" value="1">Aleitamento materno exclusivo
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" name="rbBreastfeeding" value="2">Aleitamento misto
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto mb-3">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto">
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" name="rbBreastfeeding" value="3">Sem aleitamento materno
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <ul>
+        <div class="row align-items-center"> <%# Tempo entre as mamadas %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <li class="breastfeedingCmdCss">Tempo entre as mamadas:</li>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-3 mr-auto mb-2 mt-3">
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="option-input radio breastfeedingCmd" value="1" name="rbBreastfeedingTime">
+                <span class="breastfeedingCmdCss">2h ou mais (0)</span>
+                <span class="checkmark breastfeedingCmdCss"></span>
+              </label>
+            </div>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-5 mr-auto mb-2 mt-3">
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="option-input radio breastfeedingCmd" value="2" name="rbBreastfeedingTime">
+                <span class="breastfeedingCmdCss">1h ou menos (2)</span>
+                <span class="checkmark breastfeedingCmdCss"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center"> <%# Cansaço para mamar %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <li class="breastfeedingCmdCss">Cansaço para mamar?</li>
+          </div>
+
+          <div class="col-6 col-sm-6 col-md-6 col-lg-3 mr-auto mb-2 mt-3">
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="option-input radio breastfeedingCmd" value="1" name="rbBreastfeedingTiredness">
+                <span class="breastfeedingCmdCss">Não (0)</span>
+                <span class="checkmark breastfeedingCmdCss"></span>
+              </label>
+            </div>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-5 mr-auto mb-2 mt-3">
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="option-input radio breastfeedingCmd" value="2" name="rbBreastfeedingTiredness">
+                <span class="breastfeedingCmdCss">Sim (1)</span>
+                <span class="checkmark breastfeedingCmdCss"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center"> <%# Mama um pouquinho e dorme %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <li class="breastfeedingCmdCss">Mama um pouquinho e dorme?</li>
+          </div>
+
+          <div class="col-6 col-sm-6 col-md-6 col-lg-3 mr-auto mb-2 mt-3">
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="option-input radio breastfeedingCmd" value="1" name="rbBreastfeedingSleep">
+                <span class="breastfeedingCmdCss">Não (0)</span>
+                <span class="checkmark breastfeedingCmdCss"></span>
+              </label>
+            </div>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-5 mr-auto mb-2 mt-3">
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="option-input radio breastfeedingCmd" value="2" name="rbBreastfeedingSleep">
+                <span class="breastfeedingCmdCss">Sim (1)</span>
+                <span class="checkmark breastfeedingCmdCss"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center"> <%# Vai soltando o mamilo %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <li class="breastfeedingCmdCss">Vai soltando o mamilo?</li>
+          </div>
+
+          <div class="col-6 col-sm-6 col-md-6 col-lg-3 mr-auto mb-2 mt-3">
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="option-input radio breastfeedingCmd" value="1" name="rbReleasingNipple">
+                <span class="breastfeedingCmdCss">Não (0)</span>
+                <span class="checkmark breastfeedingCmdCss"></span>
+              </label>
+            </div>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-5 mr-auto mb-2 mt-3">
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="option-input radio breastfeedingCmd" value="2" name="rbReleasingNipple">
+                <span class="breastfeedingCmdCss">Sim (1)</span>
+                <span class="checkmark breastfeedingCmdCss"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center"> <%# Morde o mamilo %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <li class="breastfeedingCmdCss">Morde o mamilo?</li>
+          </div>
+
+          <div class="col-6 col-sm-6 col-md-6 col-lg-3 mr-auto mb-2 mt-3">
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="option-input radio breastfeedingCmd" value="1" name="rbBiteNipple">
+                <span class="breastfeedingCmdCss">Não (0)</span>
+                <span class="checkmark breastfeedingCmdCss"></span>
+              </label>
+            </div>
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 col-lg-5 mr-auto mb-2 mt-3">
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="option-input radio breastfeedingCmd" value="2" name="rbBiteNipple">
+                <span class="breastfeedingCmdCss">Sim (2)</span>
+                <span class="checkmark breastfeedingCmdCss"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center"> <%# Textarea Mama no Peito: Observações  %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+            <div class="form-label-group">
+              <textarea id="obsBreastfeeding" name="obsBreastfeeding" class="form-control pt-3" placeholder="Observações" minlength="1" maxlength="1000" rows="4"></textarea>
+              <label for="obsBreastfeeding">Observações:</label>
+            </div>
+          </div>
+        </div>
+
+
+      </ul>
+
+    </div> <%# Containner História Clínica 3 %>
+
+    <div class="container mainContainer"> <%# Containner História Clínica 4 %>
+
+      <div class="row align-items-center"> <%# Descrição da Pontuação %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p>Total da história clínica: Melhor Resultado = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pior Resultado = 8</p>
+          <p>
+            Quando a soma dos itens da história clínica for igual ou maior que 4,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+        </div>
+      </div>
+
+    </div> <%# Containner História Clínica 4 %>
+  </div>
+
+  <div class="tab"> <%# Tela 02 %>
+    <div class="container mainContainer"> <%# Containner Exame Clínico Parte I 1 %>
+
+      <div class="row align-items-center">  <%# Título Exame Clínico %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto my-4">
+          <h2 class="text-center border border-dark rounded">Exame Clínico <br><small>(sugere-se filmagem para posterior análise)</small></h2>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <h4 class="text-left px-5">PARTE I - AVALIAÇÃO ANATOMOFUNCIONAL</h4>
+        </div>
+      </div>
+
+      <ol> <%# Ol Exame Clínico %>
+
+        <div class="row align-items-center">  <%# Questão 01 %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+            <li>Postura dos lábios em repouso</li>
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/1/labiosFechados.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="1" name="rbQuestionOne">Lábios fechados (0)
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img img-fluid" src="/images/questions/1/labiosEntreabertos.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="2" name="rbQuestionOne">Lábios entreabertos (1)
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/1/labiosAbertos.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="3" name="rbQuestionOne">Lábios abertos (1)
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center">  <%# Questão 02 %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+            <li>Tendência do posicionamento da língua durante o choro</li>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/2/linguaNaLinhaMedia.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="1" name="rbQuestionTwo">Língua na linha média (0)
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img img-fluid" src="/images/questions/2/linguaElevada.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="2" name="rbQuestionTwo">Língua elevada (0)
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/2/linguaNaLinhaMediaComElevacaoDasLaterais.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="3" name="rbQuestionTwo">Língua na linha média com elevação nas laterais (2)
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/2/linguaBaixa.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="4" name="rbQuestionTwo">Língua baixa (2)
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center">  <%# Questão 03 %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+            <li>Forma da ponta da língua quando elevada durante o choro</li>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/3/arredondada.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="1" name="rbQuestionThree">Arredondada (0)
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img img-fluid" src="/images/questions/3/ligeiraFendaNoApice.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="2" name="rbQuestionThree">Ligeira fenda no ápice (2)
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/3/formatoDeCoracao.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="3" name="rbQuestionThree">Formato de coração (3)
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ol> <%# Ol Exame Clínico %>
+
+    </div> <%# Containner Exame Clínico Parte I 1 %>
+
+    <div class="container mainContainer"> <%# Containner Exame Clínico Parte I 2 %>
+
+      <div class="row align-items-center"> <%# Descrição da Pontuação %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p>Total da avaliação anatomofuncional (itens 1, 2 e 3): Melhor Resultado = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pior Resultado = 6</p>
+          <p>
+            Quando a soma dos itens 1, 2 e 3 da avaliação anatomofuncional for igual ou maior que 4,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+        </div>
+      </div>
+
+    </div> <%# Containner Exame Clínico Parte I 2 %>
+  </div>
+
+  <div class="tab"> <%# Tela 03 %>
+    <div class="container mainContainer"> <%# Containner Exame Clínico Parte I (2ª Tela) 1 %>
+
+      <div class="row align-items-center">  <%# Título Exame Clínico %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto my-4">
+          <h2 class="text-center border border-dark rounded">
+            Exame Clínico
+            <br>
+            <small>(sugere-se filmagem para posterior análise)</small>
+          </h2>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <h4 class="text-left px-5">PARTE I - AVALIAÇÃO ANATOMOFUNCIONAL</h4>
+        </div>
+      </div>
+
+      <ol start="4"> <%# Ol Exame Clínico %>
+
+        <div class="row align-items-center">  <%# Questão 04 %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+            <li>Frênulo da língua</li>
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/4/ePossivelVisualizar.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="1" name="rbQuestionFour">É possivel visualizar
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img img-fluid" src="/images/questions/4/naoEpossivelVisualizar.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="2" name="rbQuestionFour">Não é possivel visualizar
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/4/visualizadoComManobra.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio" value="3" name="rbQuestionFour">Visualizado com manobra*
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="my-2">
+          NO CASO DE NÃO OBSERVÁVEL, VÁ PARA A PARTE II (Avaliação da Sucção não Nutritiva e Nutritiva)
+        </p>
+
+        <div class="row align-items-center">  <%# Questão 4.1 %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+            <p>4.1. Espessura do frênulo</p>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/4-1/delgado.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio questionFourCmd" value="1" name="rbQuestionFourOne">
+                    <span class="questionFourCmdCss">Delgado (0)</span>
+                    <span class="checkmark questionFourCmdCss"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img img-fluid" src="/images/questions/4-1/espesso.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio questionFourCmd" value="2" name="rbQuestionFourOne">
+                    <span class="questionFourCmdCss">Espesso (2)</span>
+                    <span class="checkmark questionFourCmdCss"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center">  <%# Questão 4.2 %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+            <p>4.2. Fixação do frênulo na face sublingual (ventral) da língua</p>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/4-2/entreOTercoMedioEOApice.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio questionFourCmd" value="1" name="rbQuestionFourTwo">
+                    <span class="questionFourCmdCss">No terço médio (0)</span>
+                    <span class="checkmark questionFourCmdCss"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img img-fluid" src="/images/questions/4-2/noTercoMedio.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio questionFourCmd" value="2" name="rbQuestionFourTwo">
+                    <span class="questionFourCmdCss">Entre o terço médio e o ápice (2)</span>
+                    <span class="checkmark questionFourCmdCss"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/4-2/noApice.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio questionFourCmd" value="3" name="rbQuestionFourTwo">
+                    <span class="questionFourCmdCss">No ápice (3)</span>
+                    <span class="checkmark questionFourCmdCss"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center">  <%# Questão 4.3 %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+            <p>4.3. Fixação do frênulo no assoalho da boca</p>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img-top" src="/images/questions/4-3/visivelAPartirdasCarunculasSublinguais.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio questionFourCmd" value="1" name="rbQuestionFourThree">
+                    <span class="questionFourCmdCss">Visível a partir das carúnculas sublinguais (0)</span>
+                    <span class="checkmark questionFourCmdCss"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <div class="card card-question my-3">
+              <img class="card-img img-fluid" src="/images/questions/4-3/visivelAPartirdaCristaAlveolarInferior.jpg" alt="Card image cap">
+              <div class="card-body">
+                <div class="form-check-inline">
+                  <label class="form-check-label mb-0">
+                    <input type="radio" class="option-input radio questionFourCmd" value="2" name="rbQuestionFourThree">
+                    <span class="questionFourCmdCss">Visível a partir da crista alveolar inferior (1)</span>
+                    <span class="checkmark questionFourCmdCss"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </ol> <%# Ol Exame Clínico %>
+      <div class="col-11 col-sm-11 col-md-11 col-lg-11 mx-auto">
+        <div class="form-label-group">
+          <textarea id="inputQuestionFourComments" name="inputQuestionFourComments" class="form-control" placeholder="Observações:" maxlength="1000" rows="4"></textarea>
+          <label for="inputQuestionFourComments">Observações:</label>
+        </div>
+      </div>
+    </div> <%# Containner Exame Clínico Parte I (2ª Tela) 1 %>
+
+    <div class="container mainContainer"> <%# Containner Exame Clínico Parte I (2ª Tela) 2 %>
+
+      <div class="row align-items-center"> <%# Descrição da Pontuação %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p class="mb-0">*Manobra de elevação e posteriorização da língua. Se não observável, fazer o acompanhamento.</p><br>
+          <p class="mb-0">Total da avaliação anatomofuncional (item 4): Melhor Resultado = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pior Resultado = 6</p>
+          <p class="mb-0">
+            Quando a soma do item 4 da avaliação anatomofuncional for igual ou maior que 3,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+          <p class="mb-0">Total da avaliação anatomofuncional (itens 1, 2, 3 e 4): Melhor Resultado = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pior Resultado = 12</p>
+          <p>
+            Quando a soma dos itens 1, 2, 3 e 4 da avaliação anatomofuncional for igual ou maior que 7,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+        </div>
+      </div>
+
+    </div> <%# Containner Exame Clínico Parte I (2ª Tela) 2 %>
+  </div>
+
+  <div class="tab"> <%# Tela 04 %>
+    <div class="container mainContainer"> <%# Containner Avaliação da sucção não nutritiva e nutritiva 1 %>
+
+      <div class="row align-items-center">  <%# Linha do título Avaliação da sucção não nutritiva e nutritiva 1 %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto my-4">
+          <h2 class="text-center border border-dark rounded">Exame Clínico</h2>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <h4 class="text-left px-5">PARTE II - AVALIAÇÃO DA SUCÇÃO NÃO NUTRITIVA E NUTRITIVA</h4>
+        </div>
+      </div>
+      <ol> <%# Ol Exame Clínico Parte II %>
+        <div class="row align-items-center"> <%# Questão 01 %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+            <li>Sucção não nutritiva (sucção do dedo mínimo enluvado)</li>
+          </div>
+        </div>
+      </ol>
+      <div class="row align-items-center">  <%# Questão 1.1 %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+          <ol>
+            <li class="subLiItem">1.1 Movimento da língua</li>
+          </ol>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div>
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="1" name="rbPartTwoQuestionOne">
+              Adequado: protusão de língua, movimentos coordenados e sucção eficiente (0)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div>
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="2" name="rbPartTwoQuestionOne">
+              Inadequado: protusão de língua limitada, movimentos incoordenados e atraso para início da sucção (1)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      </ol> <%# Ol Exame Clínico Parte II%>
+
+    </div> <%# FIM Containner Avaliação da sucção não nutritiva e nutritiva 1 %>
+
+    <div class="container mainContainer"> <%# Containner Avaliação da sucção não nutritiva e nutritiva 2 %>
+
+      <ol start="2"> <%# Ol Exame Clínico Parte II 2 %>
+        <div class="row align-items-center"> <%# Questão 02 %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+            <li>Sucção nutritiva na amamentação</li>
+            <p>(na hora da mamada, observar o bebê mamando durante 5 minutos)</p>
+          </div>
+        </div>
+      </ol>
+      <div class="row align-items-center">  <%# Questão 2.1 %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <ol>
+            <li class="subLiItem">2.1 Ritmo da sucção (observar grupos de sucção e pausas)</li>
+          </ol>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div>
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="1" name="rbPartTwoQuestionTwoOne">Várias sucções seguidas com pausas curtas (0)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div>
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="2" name="rbPartTwoQuestionTwoOne">Poucas sucções com pausas longas (1)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">  <%# Questão 2.2 %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+          <ol>
+            <li class="subLiItem">2.2 Coordenação entre sucção/deglutição/respiração</li>
+          </ol>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto mb-3">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div>
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="1" name="rbPartTwoQuestionTwoTwo">Adequada (0) &nbsp;&nbsp;&nbsp; (equilíbrio entre a eficiência alimentar e as funções de sucção, deglutição e respiração, sem sinais de estresse)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto mb-3">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div>
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="2" name="rbPartTwoQuestionTwoTwo">Inadequada (1) &nbsp;&nbsp;&nbsp; (tosse, engasgos, dispenia, regugitação, soluço, ruídos na deglutição)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">  <%# Questão 2.3 %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+          <ol>
+            <li class="subLiItem">2.3 "Morde" o mamilo</li>
+          </ol>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto mb-3">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div>
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="1" name="rbPartTwoQuestionTwoThree">Não (0)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto mb-3">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div>
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="2" name="rbPartTwoQuestionTwoThree">Sim (1)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">  <%# Questão 2.4 %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto mt-3">
+          <ol>
+            <li class="subLiItem">2.4 Estalos de língua durante a sucção</li>
+          </ol>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div>
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="1" name="rbPartTwoQuestionTwoFour">Não (0)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 mx-auto mb-3">
+        </div>
+        <div class="col-11 col-sm-11 col-md-11 col-lg-11 mr-auto mb-3">
+          <div>
+            <label class="form-check-label">
+              <input type="radio" class="option-input radio" value="2" name="rbPartTwoQuestionTwoFour">Sim (1)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      </ol> <%# Ol Exame Clínico Parte II 2 %>
+      <div class="row align-items-center"> <%# Textarea Parte II Observações  %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <div class="form-label-group">
+            <textarea id="inputSuctionComments" class="form-control" name="obsSuction" placeholder="Observações" minlength="5" maxlength="1000" rows="4"></textarea>
+            <label for="inputSuctionComments">Observações</label>
+          </div>
+        </div>
+      </div>
+
+    </div> <%# FIM Containner Avaliação da sucção não nutritiva e nutritiva 2 %>
+
+    <div class="container mainContainer"> <%# Containner Avaliação da sucção não nutritiva e nutritiva 3 %>
+
+      <div class="row align-items-center"> <%# Descrição da Pontuação %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p>Total da avaliação da sucção não nutritiva e nutritiva: Melhor Resultado = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pior Resultado = 5</p>
+          <p>
+            Quando a soma da avaliação da Sucção Não Nutritiva e Nutritiva for igual ou maior que 2,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+          <p>TOTAL GERAL DA HISTÓRIA E DO EXAME CLÍNICO: Melhor resultado = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pior Resultado = 25</p>
+          <p>
+            Quando a soma da história e do exame clínico for igual ou maior que 13,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+        </div>
+      </div>
+
+    </div> <%# Containner Avaliação da sucção não nutritiva e nutritiva 3 %>
+  </div>
+
+  <div class="tab"> <%# Tela 05 %>
+    <div class="container mainContainer"> <%# Containner Relatório Final 1 %>
+      <div class="row align-items-center">  <%# Linha do título do Relatório Final %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto my-4">
+          <h2 class="text-center border border-dark rounded">Resumo Final</h2>
+        </div>
+      </div>
+      <div class="container border border-dark mx-auto pt-3">
+        <div class="row align-items-center mx-auto">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+            <p>Nome: <span id="resName">nome</span></p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <p>Gênero: <span id="resGenre">genero</span></p>
+          </div>
+        </div>
+        <div class="row align-items-center mx-auto">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+            <p>Nome da mãe: <span id="resMotherName">nome da mae</span></p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <p>Data de Nascimento: <span id="resBirthDate">XX/XX/XXXX</span></p>
+          </div>
+        </div>
+        <div class="row align-items-center mx-auto">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+            <p>Nome do Pai: <span id="resFatherName">nome do pai</span></p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <p>Data do Exame: <span id="resAssessmentDate">XX/XX/XXXX</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-center my-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <h4 class="text-left px-5">Protocolo de Avaliação do Frênulo Lingual para Bebês (Martinelli, 2013)</h4>
+        </div>
+      </div>
+      <div class="row align-items-center border border-dark mx-auto"> <%# Descrição da Pontuação %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 mx-auto report-title">
+          <h5 class="text-center my-1">HISTÓRIA CLÍNICA</h5>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 mx-auto report-content">
+          <p class="mt-3">Antecedentes Familiares: <span id="resFamilyHistory">resposta</span></p>
+          <p>Quem e qual Problema: <span id="resProblemDescription">resposta</span></p>
+          <p class="mt-3">Problemas de Saúde: <span id="resPatientHealthProblem">resposta</span></p>
+          <p>Quais: <span id="resHealthProblemDescription">resposta</span></p>
+          <p>Amamentação? <span id="resBreastfeeding">resposta</span></p>
+          <ul>
+            <li>Tempo entre as mamadas: <span id="resBreastfeedingTime">resposta</span></li>
+            <li>Cansaço para mamar? <span id="resBreastfeedingTiredness">resposta</span></li>
+            <li>Mama um pouquinho e dorme? <span id="resBreastfeedingSleep">resposta</span></li>
+            <li>Vai soltando o mamilo? <span id="resReleasingNipple">resposta</span></li>
+            <li>Morde o mamilo? <span id="resBiteNipple">resposta</span></li>
+          </ul>
+          <p>Observações: <span id="resObsBreastfeeding">resposta</span></p>
+          <p class="font-weight-bold">
+            TOTAL DE PONTOS: <span class="badge badge-pill" id="resClinicalHistoryPoints">resposta</span>. Quando a soma da História Clínica for <u>igual ou maior que 4</u>,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+        </div>
+      </div>
+      <div class="row align-items-center report-row-middle mx-auto"> <%# Descrição da Pontuação %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 mx-auto report-title">
+          <h5 class="text-center my-1">EXAME CLÍNICO</h5>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 mx-auto report-content">
+          <h5 class="font-weight-bold mt-3">PARTE I - AVALIAÇÃO ANATOMOFUNCIONAL</h5>
+          <ol>
+            <li>Postura de lábios em repouso: <span id="resQuestionOne">resposta</span></li>
+            <li>Tendência do posicionamento da língua durante o choro: <span id="resQuestionTwo">resposta</span></li>
+            <li>Forma da ponta da língua quando elevada durante o choro: <span id="resQuestionThree">resposta</span></li>
+          </ol>
+          <p class="font-weight-bold">
+            TOTAL DE PONTOS: <span class="badge badge-pill" id="resQuestionsOneToThreePoints">resposta</span>. Quando a soma dos itens 1, 2 e 3 for <u>igual ou maior que 4</u>,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+          <ol start="4">
+            <li>Frênulo da língua: <span id="resQuestionFour">resposta</span></li>
+            <ol>
+              <li class="subLiItem">4.1. Espessura do frênulo: <span id="resQuestionFourOne">resposta</span></li>
+              <li class="subLiItem">4.2. Fixação do frênulo na face sublingual (ventral) da língua: <span id="resQuestionFourTwo">resposta</span></li>
+              <li class="subLiItem">4.3. Fixação do frênulo no assoalho da boca: <span id="resQuestionFourThree">resposta</span></li>
+            </ol>
+          </ol>
+          <p>Observações: <span id="resQuestionFourComments">resposta</span></p>
+          <p class="font-weight-bold">
+            TOTAL DE PONTOS (Frênulo): <span class="badge badge-pill" id="resQuestionFourPoints">resposta</span>. Quando a soma do item 4 for <u>igual ou maior que 3</u>,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+          <p class="font-weight-bold">
+            TOTAL DE PONTOS (Frênulo + Choro): <span class="badge badge-pill" id="resQuestionsOneToFourPoints">resposta</span>. Quando a soma dos itens 1, 2, 3 e 4 for <u>igual ou maior que 7</u>,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+          <h5 class="font-weight-bold mt-3">PARTE II - AVALIAÇÃO DA SUCÇÃO NÃO NUTRITIVA E NUTRITIVA</h5>
+          <ol>
+            <li>Sucção não nutritiva:</li>
+            <ol>
+              <li class="subLiItem">1.1. Movimento da língua: <span id="resPartTwoQuestionOne">resposta</span></li>
+            </ol>
+            <li>Sucção nutritiva na amamentação:</li>
+            <ol>
+              <li class="subLiItem">2.1. Ritmo na sucção: <span id="resPartTwoQuestionTwoOne">resposta</span></li>
+              <li class="subLiItem">2.2. Coordenação entre sucção / deglutição / respiração: <span id="resPartTwoQuestionTwoTwo">resposta</span></li>
+              <li class="subLiItem">2.3. "Morde" o mamilo: <span id="resPartTwoQuestionTwoThree">resposta</span></li>
+              <li class="subLiItem">2.4. Estalos de língua durante a sucção: <span id="resPartTwoQuestionTwoFour">resposta</span></li>
+            </ol>
+          </ol>
+          <p>Observações: <span id="resObsSuction">resposta</span></p>
+          <p class="font-weight-bold">
+            TOTAL DE PONTOS: <span class="badge badge-pill" id="resPartTwoQuestionPoints">resposta</span>. Quando a soma da avaliação da sucção não nutritiva e nutritiva for <u>igual ou maior que 2</u>,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+        </div>
+      </div>
+      <div class="row align-items-center border border-dark mx-auto"> <%# Descrição da Pontuação %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 mx-auto report-title">
+          <h5 class="text-center my-1">RESULTADO</h5>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 mx-auto report-content">
+          <p class="font-weight-bold mt-3">
+            TOTAL DE PONTOS (exame clínico): <span class="badge badge-pill" id="resClinicalAssessmentPoints">resposta</span>. Quando a soma do exame clínico for <u>igual ou maior que 9</u>,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+          <p class="font-weight-bold">
+            TOTAL DE PONTOS (história e exame clínico): <span class="badge badge-pill" id="resHistoryAssessmentPoints">resposta</span>. Quando a soma da história e do exame clínico for <u>igual ou maior que 13</u>,
+            pode-se considerar a interferência do frênulo nos movimentos da língua.
+          </p>
+          <div class="form-label-group">
+            <textarea id="inputFinalReport" class="form-control" name="obsResume" placeholder="Observações" minlength="5" maxlength="1000" rows="4"></textarea>
+            <label for="inputFinalReport">Observações</label>
+          </div>
+          <h5 class="font-weight-bold mt-3">CONDUTA:</h5>
+          <label class="form-check-label mb-3">
+            <input type="radio" class="option-input radio" name="rbBehavior" value="1">Não apresenta alteração de frênulo lingual
+            <span class="checkmark"></span>
+          </label>
+          <label class="form-check-label mb-3">
+            <input type="radio" class="option-input radio" name="rbBehavior" value="2">Frenotomia sugerida
+            <span class="checkmark"></span>
+          </label>
+          <label class="form-check-label mb-3">
+            <input type="radio" class="option-input radio" name="rbBehavior" value="3">Retornar para monitoramento em:
+            <span class="checkmark"></span>
+          </label>
+          <div class="form-label-group">
+            <input type="text" id="inputBehavior" class="form-control" name="descBehavior" placeholder="Descrição" maxlength="100">
+            <label for="inputBehavior">Descrição</label>
+          </div>
+        </div>
+      </div>
+    </div> <%# FIM Containner Relatório Final 1 %>
+  </div>
+
+  <div class="container finalContainer"> <%# Containner Botões %>
+
+    <div class="row align-items-center"> <%# Descrição da Pontuação %>
+      <div class="col-6 col-sm-4 col-md-4 col-lg-2 mr-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="prevBtn" >Voltar</button>
+      </div>
+      <div class="col-6 col-sm-4 col-md-4 col-lg-2 ml-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="nextBtn" >Concluir</button>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+    </div>
+  </div> <%# Containner Botões %>
+
+</form>
+
+<% include ../partials/footer %>

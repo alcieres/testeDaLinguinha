@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8"/>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/nav.css" />
+    <link rel="stylesheet" href="/stylesheets/form.css" />
+    <link rel="stylesheet" href="/stylesheets/text.css" />
+
+    <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-ui.min.js" ></script>
+
+    <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
+
+    <script type="text/javascript" src="/javascripts/scriptAll.js" ></script>
+    <script type="text/javascript" src="/javascripts/users.js" ></script>
+
+  </head>
+  <body>
+
+  <%- include('../partials/nav', {active: "navUsers"}); %>
+
+  <div class="container mainContainer">
+  <div class="row align-items-center">  <%# Linha do título História Clínica 1 %>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <h2 class="text-center border border-dark rounded">Administração de Usuários</h2>
+    </div>
+  </div>
+
+  </div> <%# Containner %>
+    <% users.forEach(function(user, index){%>
+    <div class="container mainContainer">
+      <div class="row align-items-center">  <%# Linha do título História Clínica 1 %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 mx-auto">
+          <p class="mb-0" >Nome</p>
+          <p class="mb-0"><%=user.name + " " + user.lastName %></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 mx-auto">
+          <p class="mb-0">CPF</p
+          ><p class="cpfMask mb-0"><%=user.cpf %></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 mx-auto">
+          <p class="mb-0">E-mail</p>
+          <p class="mb-0"><%=user.email %></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 mx-auto">
+          <p class="mb-0">Opções</p>
+            <a href="users/<%=user.cpf%>" class="mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0V0z"/>
+                <path opacity=".3" d="M12 6c-3.79 0-7.17 2.13-8.82 5.5C4.83 14.87 8.21 17 12 17s7.17-2.13 8.82-5.5C19.17 8.13 15.79 6 12 6zm0 10c-2.48 0-4.5-2.02-4.5-4.5S9.52 7 12 7s4.5 2.02 4.5 4.5S14.48 16 12 16z"/>
+                <path d="M12 4C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 13c-3.79 0-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6s7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17zm0-10c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7zm0 7c-1.38 0-2.5-1.12-2.5-2.5S10.62 9 12 9s2.5 1.12 2.5 2.5S13.38 14 12 14z"/>
+              </svg>
+            </a>
+            <a href="users/<%=user.cpf%>/edit" class="ml-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0V0z"/>
+                <path opacity=".3" d="M5 18.08V19h.92l9.06-9.06-.92-.92z"/>
+                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z"/>
+              </svg>
+            </a>
+        </div>
+      </div>
+    </div> <%# Containner %>
+    <%});%>
+    <div class="container mainContainer"> <%# Containner Botões %>
+
+    <div class="row align-items-center"> <%# Linha dos Botões %>
+      <div class="col-6 col-sm-4 col-md-4 col-lg-2 mr-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="prevBtn" >Voltar</button>
+      </div>
+      <div class="col-6 col-sm-4 col-md-4 col-lg-2 ml-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="newUserBtn" >Novo</button>
+      </div>
+    </div>
+    <div class="row align-items-center"> <%# Descrição da Pontuação %>
+      <div class="col-6 col-sm-4 col-md-4 col-lg-4 mx-auto">
+        <div class="alert alert-danger text-center mt-3 mb-0 p-0" id="userMessage" style="display: none"></div>
+      </div>
+    </div>
+  </div> <%# Containner Botões %>
+    <% include ../partials/footer %>

@@ -1,0 +1,2 @@
+Comando para incluir cidades no banco
+mongoimport -d tongueTest -c cities --type csv --headerline --file cities.csv

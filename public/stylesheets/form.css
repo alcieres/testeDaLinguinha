@@ -1,0 +1,341 @@
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.form-label-group input {
+height: auto;
+border-radius: 2rem;
+}
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+  .form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+  .form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+  .form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+  .form-label-group input::placeholder {
+  color: transparent;
+}
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+/* ------------------------------ Botão Padrão ------------------------------ */
+
+.btn-primary {
+  color: white;
+  background-color: var(--default-pink-button);
+  border-color: var(--default-pink-button);
+}
+.btn-primary:hover {
+  color: white;
+  background-color: var(--default-pink-button-hover);
+  border-color: var(--default-pink-button-hover);
+  box-shadow: 0 0 0 0.2rem rgba(221, 196, 192, 0.5);
+}
+  .btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(221, 196, 192, 0.5);
+}
+.btn-primary.disabled, .btn-primary:disabled {
+  color: white;
+  background-color: var(--disable-gray);
+  border-color: var(--disable-gray);
+  box-shadow: none;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #FFF;
+  background-color: var(--default-pink-button-hover);
+  border-color: var(--default-pink-button-hover);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(221, 196, 192, 0.5);
+}
+
+/* ------------------------------ Cards das Questões ------------------------------ */
+
+.card-question{
+  width: 12rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+  min-height: 15rem;
+}
+.card-question img{
+  margin: 0.5rem;
+  max-width: 11rem;
+  border-style: solid; 
+  border-width: 1px;
+  border-color: #a6a6a6;
+  /*box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);*/
+}
+.card-question .card-body{
+  padding: 20px 10px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+@media (max-width: 991.98px) {
+  .card-question{
+    width: 20rem;
+    margin: auto;
+    min-height: 25rem;
+  }
+  .card-question img{
+  margin: 1rem;
+  max-width: 18rem;
+  border-style: solid; 
+  border-width: 1px;
+  border-color: #a6a6a6;
+  /*box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);*/
+  }
+  .card-question .card-body{
+    padding: 20px 10px;
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+/* ------------------------------ Select ------------------------------ */
+
+.form-label-group select {
+  height: auto;
+  border-radius: 2rem;
+  -webkit-appearance: none;
+}
+.form-label-group>select,
+  .form-label-group>label {
+    padding: var(--input-padding-y) var(--input-padding-x);
+  }
+.form-label-group select::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group select::-ms-input-placeholder {
+  color: transparent;
+}
+.form-label-group select::-ms-input-placeholder {
+  color: transparent;
+}
+.form-label-group select::-moz-placeholder {
+  color: transparent;
+}
+.form-label-group select::placeholder {
+  color: transparent;
+}
+.form-label-group select:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+.form-label-group select:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+/* ------------------------------ Textarea ------------------------------ */
+
+.form-label-group textarea {
+  height: auto;
+  border-radius: 2rem;
+  resize: none;
+  padding-top: 30px !important;
+  background-color: #fff;
+}
+.form-label-group>textarea,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  }
+.form-label-group textarea::-webkit-input-placeholder {
+  color: transparent;
+}
+.form-label-group textarea::-ms-input-placeholder {
+  color: transparent;
+}
+.form-label-group textarea::-ms-input-placeholder {
+  color: transparent;
+}
+.form-label-group textarea::-moz-placeholder {
+  color: transparent;
+}
+.form-label-group textarea::placeholder {
+  color: transparent;
+}
+.form-label-group textarea:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+.form-label-group textarea:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+  background: #fff;
+  width: 95%;
+  margin-top: 1px;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  margin-left: 5px;
+}
+.form-label-group textarea::-webkit-scrollbar {
+  width: 15px;
+}
+/* Track */
+.form-label-group textarea::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -webkit-border-bottom-right-radius: 4rem;
+  -webkit-border-top-right-radius: 4rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 3px;
+}
+
+/* Handle */
+.form-label-group textarea::-webkit-scrollbar-thumb {
+  -webkit-border-bottom-right-radius: 4rem;
+  -webkit-border-top-right-radius: 4rem;
+  background: var(--default-pink-button);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+.form-label-group textarea::-webkit-scrollbar-thumb:window-inactive {
+  background: var(--default-pink-button-hover);
+}
+
+/* ------------------------------ Radio Buttons ------------------------------ */
+
+/* Customize the label (the container) */
+.form-check-label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* Hide the browser's default radio button */
+.form-check-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #a6a6a6;
+  border-radius: 50%;
+}
+/* On mouse-over, add a grey background color */
+.form-check-label:hover input ~ .checkmark {
+  background-color: #5f5f5f;
+}
+/* When the radio button is checked, add a blue background */
+.form-check-label input:checked ~ .checkmark {
+  background-color: #F6DAD6;
+}
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the indicator (dot/circle) when checked */
+.form-check-label input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the indicator (dot/circle) */
+.form-check-label .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* ------------------------------ Fallback for Edge ------------------------------ */
+
+@supports (-ms-ime-align: auto) {
+    .form-label-group>label {
+      display: none;
+    }
+    .form-label-group input::-ms-input-placeholder {
+      color: #777;
+    }
+  }
+  
+/* ------------------------------ Fallback for IE ------------------------------ */
+  
+  @media all and (-ms-high-contrast: none),
+  (-ms-high-contrast: active) {
+    .form-label-group>label {
+      display: none;
+    }
+    .form-label-group input:-ms-input-placeholder {
+      color: #777;
+    }
+  }
+
+/* ------------------------------ Label JQuery validation Form ------------------------------ */
+
+label.error {
+    position: absolute;
+    margin-top: -18px;
+    color: red !important;
+    font-size: 12px !important;
+    padding: 0px 0px 0px 20px;
+    display:none;
+}
+#labelErrorRadioButton {
+  position: static !important;
+  margin: 0px !important;
+}
+input.error, select.error {
+    background-color: #F5D3CE;
+}
+
+/* ------------------------------ Datepicker ------------------------------ */
+.dateCalendar::-webkit-inner-spin-button,
+.dateCalendar::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}

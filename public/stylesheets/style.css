@@ -1,0 +1,67 @@
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+  --default-pink-button: #E8A197;
+  --default-pink-button-hover: #E8A197;
+  --disable-gray: #B2B2B2;
+}
+
+html,body {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(to right, #5DBCD2, #F6DAD6);
+}
+
+.mainContainer {
+  border: 0;
+  border-radius: 1rem;
+  border-color: black;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  background-color: azure;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.finalContainer {
+  border: 0;
+  border-radius: 1rem;
+  border-color: rgb(196, 195, 195);
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  background-color: azure;
+  margin-top: 10px;
+  margin-bottom: 60px;
+  padding: 20px;
+  /*min-height: 80%;*/
+}
+
+footer {
+  height: 50px;
+  background-color: #4a96a8;
+  margin-bottom: 0px;
+  padding: 5px;
+}
+
+footer img {
+  width: 40px;
+}
+
+.report-row-middle{
+    border-left-style: solid;
+    border-right-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.subLiItem{
+  list-style-type:none;
+}
+
+@media (max-width: 991.98px) {
+  .mainContainer, .finalContainer {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}

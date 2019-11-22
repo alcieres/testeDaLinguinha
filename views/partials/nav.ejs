@@ -1,0 +1,49 @@
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="/home">
+          <img src="/images/linguinha.png" alt="Logo" id="navLogoImg">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="<%= active == "navAssessment" ? 'nav-item active' : 'nav-item'%>">
+            <a class="nav-link" href="/assessment" >Novo Teste<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="<%= active == "navFindPatient" ? 'nav-item active' : 'nav-item'%>">
+            <a class="nav-link" href="/findPatient">Buscar Paciente</a>
+          </li>
+          <li class="<%= active == "navReports" ? 'nav-item dropdown active' : 'nav-item dropdown'%>">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarReport" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Relatórios
+            </a>
+              <div class="dropdown-menu" aria-labelledby="navbarReport">
+                <a class="dropdown-item" href="/reports/period">Período</a>
+                <a class="dropdown-item" href="/reports/points">Pontuação</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item disabled" href="#">Relatório 3</a>
+              </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="<%= active == "navUsers" ? 'nav-item active' : 'nav-item'%>" style="display: <%= user.admin ? '' : 'none'%>">
+            <a class="nav-link" href="/users">Usuários</a>
+          </li>
+          <li class="<%= active == "navUser" ? 'nav-item dropdown active' : 'nav-item dropdown'%>">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= user.name %>
+            </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/user/changePassword">Trocar Senha</a>
+          </li>
+          <li class="<%= active == "navExit" ? 'nav-item active' : 'nav-item'%>">
+            <a class="nav-link" href="/logout">Sair</a>
+          </li>
+        </ul>
+
+      </div>
+      </div> <%# Containner navbar %>
+    </nav>
+
+        

@@ -1,0 +1,45 @@
+.card-signin h1 { 
+    color: #5DBCD2; 
+    font-family: 'Raleway',sans-serif; 
+    font-size: 40px; 
+    font-weight: 800; 
+    line-height: 72px; 
+    margin: 0 0 24px; 
+    text-align: center; 
+    /* text-transform: uppercase;  */
+  }
+
+p{
+  text-align: justify;
+}
+
+  small{
+    font-size: 15px;
+  }
+  
+  .mainContainer h2, .finalContainer h2 {
+    /* display: inline; */
+    padding: 15px 0px;
+    line-height: 20px;
+  }
+
+  footer p {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    display: block;
+    text-align: center;
+  }
+
+  legend{
+    font-size: 17px;
+    margin-bottom: 0px;
+  }
+
+  .requiredField{
+    color: red;
+  }
+
+  .badge{
+      font-size: 20px;
+  }
