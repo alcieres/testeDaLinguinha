@@ -33,16 +33,20 @@ function resumeWrite() {
         $("input[name='rbReleasingNipple']:checked").val(),
         $("input[name='rbBiteNipple']:checked").val(),
         $("#obsBreastfeeding").val(),
+        0,
         //Tela 02
         $("input[name='rbQuestionOne']:checked").val(),
         $("input[name='rbQuestionTwo']:checked").val(),
         $("input[name='rbQuestionThree']:checked").val(),
+        0,
         //Tela 03
         $("input[name='rbQuestionFour']:checked").val(),
         $("input[name='rbQuestionFourOne']:checked").val(),
         $("input[name='rbQuestionFourTwo']:checked").val(),
         $("input[name='rbQuestionFourThree']:checked").val(),
         $("#inputQuestionFourComments").val(),
+        0,
+        0,
         //Tela 04
         $("input[name='rbPartTwoQuestionOne']:checked").val(),
         $("input[name='rbPartTwoQuestionTwoOne']:checked").val(),
@@ -50,6 +54,9 @@ function resumeWrite() {
         $("input[name='rbPartTwoQuestionTwoThree']:checked").val(),
         $("input[name='rbPartTwoQuestionTwoFour']:checked").val(),
         $("#inputSuctionComments").val(),
+        0,
+        0,
+        0,
         //Tela 05
         "",
         "",
@@ -61,7 +68,7 @@ function resumeWrite() {
         "",
         ""
     );
-    console.log(patient);
+    //console.log(patient);
     //Inserindo os itens na tela final
     $("#resName").text(patient.name);
     $("#resGenre").text(patient.genreToText());
@@ -84,6 +91,7 @@ function resumeWrite() {
     let clinicalHistoryPoints = patient.ClinicalHistoryPoints(0);
     $("#resClinicalHistoryPoints").text(clinicalHistoryPoints);
     (clinicalHistoryPoints < 4) ? $("#resClinicalHistoryPoints").addClass("badge-success") : $("#resClinicalHistoryPoints").addClass("badge-danger");
+    patient.assessment[0].clinicalHistoryPoints = clinicalHistoryPoints;
 
     $("#resQuestionOne").text(patient.questionOneToText(0));
     $("#resQuestionTwo").text(patient.questionTwoToText(0));
@@ -93,6 +101,7 @@ function resumeWrite() {
     let oneToThreeQuestionsPoints = patient.oneToThreeQuestionsPoints(0);
     $("#resQuestionsOneToThreePoints").text(oneToThreeQuestionsPoints);
     (oneToThreeQuestionsPoints < 4) ? $("#resQuestionsOneToThreePoints").addClass("badge-success") : $("#resQuestionsOneToThreePoints").addClass("badge-danger");
+    patient.assessment[0].questionsOneToThreePoints = oneToThreeQuestionsPoints;
 
     $("#resQuestionFour").text(patient.questionFourToText(0));
     $("#resQuestionFourOne").text(patient.questionFourOneToText(0));
@@ -104,11 +113,13 @@ function resumeWrite() {
     let fourQuestionPoints = patient.fourQuestionPoints(0);
     $("#resQuestionFourPoints").text(fourQuestionPoints);
     (fourQuestionPoints < 3) ? $("#resQuestionFourPoints").addClass("badge-success") : $("#resQuestionFourPoints").addClass("badge-danger");
+    patient.assessment[0].questionFourPoints = fourQuestionPoints;
 
     //Total de pontos das questões 1 a 4
     let oneToFourQuestionsPoints = oneToThreeQuestionsPoints + fourQuestionPoints;
     $("#resQuestionsOneToFourPoints").text(oneToFourQuestionsPoints);
     (oneToFourQuestionsPoints < 7) ? $("#resQuestionsOneToFourPoints").addClass("badge-success") : $("#resQuestionsOneToFourPoints").addClass("badge-danger");
+    patient.assessment[0].questionsOneToFourPoints = oneToFourQuestionsPoints;
 
     $("#resPartTwoQuestionOne").text(patient.partTwoQuestionOneToText(0));
     $("#resPartTwoQuestionTwoOne").text(patient.partTwoQuestionTwoOneToText(0));
@@ -121,14 +132,19 @@ function resumeWrite() {
     let partTwoQuestionPoints = patient.partTwoQuestionPoints(0);
     $("#resPartTwoQuestionPoints").text(partTwoQuestionPoints);
     (partTwoQuestionPoints < 2) ? $("#resPartTwoQuestionPoints").addClass("badge-success") : $("#resPartTwoQuestionPoints").addClass("badge-danger");
+    patient.assessment[0].partTwoQuestionPoints = partTwoQuestionPoints;
 
     //Colocar total de pontos do do exame clínico
     let clinicalAssessmentPoints = oneToFourQuestionsPoints + partTwoQuestionPoints;
     $("#resClinicalAssessmentPoints").text(clinicalAssessmentPoints);
     (clinicalAssessmentPoints < 9) ? $("#resClinicalAssessmentPoints").addClass("badge-success") : $("#resClinicalAssessmentPoints").addClass("badge-danger");
+    patient.assessment[0].clinicalAssessmentPoints = clinicalAssessmentPoints;
 
     //Colocar total de geral de pontos
     let historyAssessmentPoints = clinicalHistoryPoints + clinicalAssessmentPoints;
     $("#resHistoryAssessmentPoints").text(historyAssessmentPoints);
     (historyAssessmentPoints < 13) ? $("#resHistoryAssessmentPoints").addClass("badge-success") : $("#resHistoryAssessmentPoints").addClass("badge-danger");
+    patient.assessment[0].historyAssessmentPoints = historyAssessmentPoints;
+
+    return patient;
 }

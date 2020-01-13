@@ -1,5 +1,6 @@
 $(document).ready(function() {
-
+  //Cria novo Paciente
+  let patient;
 // Formulário principal multi passos
   //Seta a tab inicial como 0
   let currentTab = 0;
@@ -33,7 +34,7 @@ $(document).ready(function() {
     if (n === (tabs.length - 1)) {
       $('#nextBtn').text('Concluir');
       //Chama a função que preenche o resumo final com os dados escritos e marcados
-      resumeWrite();
+      patient = resumeWrite();
     } else {
       $('#nextBtn').text('Próxima');
     }
@@ -54,9 +55,10 @@ $(document).ready(function() {
     if ((currentTab === tabs.length) && n === 1) {
       if(validateForm() && confirm("Confirma a inclusão do exame?")) {
         $.ajax({
-          url: '/assessment',
           method: 'POST',
-          data: $('#assForm').serialize(),
+          contentType: "application/json",
+          url: '/assessment',
+          data: JSON.stringify(patient),
           success: successHandler,
           error: errorHandler
         });
@@ -195,7 +197,9 @@ $(document).ready(function() {
     }
   });
   function successHandler (data) {
-    console.log("Deu certo");
+    console.log(data);
+
+    //window.location.replace()
   }
 
   function errorHandler (data) {

@@ -25,6 +25,7 @@ const assessment = new Assessment();
     healthProblemDescription: String,
     //Início do Exame
     assessments: [assessment.schema]
+
   });
 
 patientSchema.index({ name: 1, birthDate: 1, motherName: 1 }, {unique: true});

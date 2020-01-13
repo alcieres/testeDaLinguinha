@@ -32,16 +32,24 @@ function Patient (
   releasingNipple,
   biteNipple,
   obsBreastfeeding,
+  //Pontos História Clínica
+  clinicalHistoryPoints,
   //Tela 02
   questionOne,
   questionTwo,
   questionThree,
+  //Pontos Questões de Um a Três
+  questionsOneToThreePoints,
   //Tela 03
   questionFour,
   questionFourOne,
   questionFourTwo,
   questionFourThree,
   questionFourComments,
+  //Pontos Questão 4
+  questionFourPoints,
+  //Pontos da Parte I
+  questionsOneToFourPoints,
   //Tela 04
   partTwoQuestionOne,
   partTwoQuestionTwoOne,
@@ -49,6 +57,12 @@ function Patient (
   partTwoQuestionTwoThree,
   partTwoQuestionTwoFour,
   obsSuction,
+  //Pontos da Parte II
+  partTwoQuestionPoints,
+  //Pontos Totais Exame Clínico
+  clinicalAssessmentPoints,
+  //Pontos Totais do Exame
+  historyAssessmentPoints,
   //Tela 05
   obsResume,
   behavior,
@@ -91,16 +105,24 @@ function Patient (
     releasingNipple: releasingNipple !== undefined ? releasingNipple.toString() : undefined,
     biteNipple: biteNipple !== undefined ? biteNipple.toString() : undefined,
     obsBreastfeeding: obsBreastfeeding,
-      //Tela 02
+    //Pontos História Clínica
+    clinicalHistoryPoints: clinicalHistoryPoints,
+    //Tela 02
     questionOne: questionOne !== undefined ? questionOne.toString() : undefined,
     questionTwo: questionTwo !== undefined ? questionTwo.toString() : undefined,
     questionThree: questionThree !== undefined ? questionThree.toString() : undefined,
+    //Pontos Questões de Um a Três
+    questionsOneToThreePoints: questionsOneToThreePoints,
     //Tela 03
     questionFour: questionFour !== undefined ? questionFour.toString() : undefined,
     questionFourOne: questionFourOne !== undefined ? questionFourOne.toString() : undefined,
     questionFourTwo: questionFourTwo !== undefined ? questionFourTwo.toString() : undefined,
     questionFourThree: questionFourThree !== undefined ? questionFourThree.toString() : undefined,
     questionFourComments: questionFourComments !== undefined ? questionFourComments.toString() : undefined,
+    //Pontos Questão 4
+    questionFourPoints: questionFourPoints,
+    //Pontos da Parte I
+    questionsOneToFourPoints: questionsOneToFourPoints,
     //Tela 04
     partTwoQuestionOne: partTwoQuestionOne !== undefined ? partTwoQuestionOne.toString() : undefined,
     partTwoQuestionTwoOne: partTwoQuestionTwoOne !== undefined ? partTwoQuestionTwoOne.toString() : undefined,
@@ -108,6 +130,12 @@ function Patient (
     partTwoQuestionTwoThree: partTwoQuestionTwoThree !== undefined ? partTwoQuestionTwoThree.toString() : undefined,
     partTwoQuestionTwoFour: partTwoQuestionTwoFour !== undefined ? partTwoQuestionTwoFour.toString() : undefined,
     obsSuction: obsSuction,
+    //Pontos da Parte II
+    partTwoQuestionPoints: partTwoQuestionPoints,
+    //Pontos Totais Exame Clínico
+    clinicalAssessmentPoints: clinicalAssessmentPoints,
+    //Pontos Totais do Exame
+    historyAssessmentPoints: historyAssessmentPoints,
     //Tela 05
     obsResume: obsResume,
     behavior: behavior !== undefined ? behavior.toString() : undefined,
@@ -526,64 +554,64 @@ function dateToText(date) {
 }
 
 
-patientTest = new Patient (
-    '',
-    //Tela 01
-    "Mia Clara Bagatim Cardoso",
-    (new Date(2019, 7, 9)),
-    "2",
-    "Isabel Simone Tatiane",
-    "99988877755",
-    "Renato Sérgio Moreira",
-    "Rua Professor José Maia Filho",
-    "408",
-    "Glória",
-    "RS",
-    "Osório",
-    "95520000",
-    "renatosergiomoreira@mktec.com.br",
-    "5136631234",
-    "5136634321",
-    "51998986632",
-    //Início do Exame
-    "1",
-    "problemDescription",
-    "1",
-    "healthProblemDescription",
-    '',
-    new Date(2019, 7, 20),
-    "2",
-    "1",
-    "1",
-    "2",
-    "2",
-    "1",
-    "Mama muito bem",
-    //Tela 02
-    "2",
-    "1",
-    "1",
-    //Tela 03
-    "1",
-    "1",
-    "1",
-    "2",
-    //Tela 04
-    "1",
-    "2",
-    "1",
-    "1",
-    "2",
-    "Sem problemas aparentes",
-    //Tela 05
-    "obsResume",
-    "1",
-    "descBehavior",
-    "",
-    //Usuário
-    "",
-    "",
-    "",
-    "",
-    ""
-);
+// patientTest = new Patient (
+//     '',
+//     //Tela 01
+//     "Mia Clara Bagatim Cardoso",
+//     (new Date(2019, 7, 9)),
+//     "2",
+//     "Isabel Simone Tatiane",
+//     "99988877755",
+//     "Renato Sérgio Moreira",
+//     "Rua Professor José Maia Filho",
+//     "408",
+//     "Glória",
+//     "RS",
+//     "Osório",
+//     "95520000",
+//     "renatosergiomoreira@mktec.com.br",
+//     "5136631234",
+//     "5136634321",
+//     "51998986632",
+//     //Início do Exame
+//     "1",
+//     "problemDescription",
+//     "1",
+//     "healthProblemDescription",
+//     '',
+//     new Date(2019, 7, 20),
+//     "2",
+//     "1",
+//     "1",
+//     "2",
+//     "2",
+//     "1",
+//     "Mama muito bem",
+//     //Tela 02
+//     "2",
+//     "1",
+//     "1",
+//     //Tela 03
+//     "1",
+//     "1",
+//     "1",
+//     "2",
+//     //Tela 04
+//     "1",
+//     "2",
+//     "1",
+//     "1",
+//     "2",
+//     "Sem problemas aparentes",
+//     //Tela 05
+//     "obsResume",
+//     "1",
+//     "descBehavior",
+//     "",
+//     //Usuário
+//     "",
+//     "",
+//     "",
+//     "",
+//     ""
+// );

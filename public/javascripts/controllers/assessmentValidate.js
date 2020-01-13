@@ -1,6 +1,6 @@
 function validateForm() {
     //Não validar campos para realização dos testes
-    //return true;
+    return true;
 
     //Data máxima para o dia atual
     $.validator.addMethod("maxDate", function(value, element) {

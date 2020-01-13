@@ -14,7 +14,7 @@ router.get('/', isLoggedIn, function (req, res, next) {
 router.post('/',
     isLoggedIn,
     [
-      check('inputName', 'Os dados do campo "Nome" são inválidos.')
+      check('name', 'Os dados do campo "Nome" são inválidos.')
           .exists().withMessage('O campo "Nome" é obrigatório.')
           .not().isEmpty().withMessage('O campo "Nome" não pode estar vazio.')
           .isLength({min: 3, max: 100}).withMessage('O campo "Nome" pode ter entre 3 e 100 caracteres.')
@@ -26,14 +26,14 @@ router.post('/',
                 return value;
               }
           ),
-      check('inputBirthDate', 'A data de nascimento é inválida.')
+      check('birthDate', 'A data de nascimento é inválida.')
           .isISO8601({strict: true}),
-      check('inputAssessmentDate', 'A data de nascimento é inválida.')
+      check('assessment[0].assessmentDate', 'A data do teste é inválida.')
           .isISO8601({strict: true}),
-      check('rbGenre', 'O campo "Gênero" é inválido.')
+      check('genre', 'O campo "Gênero" é inválido.')
           .exists().withMessage('O campo "Gênero" é obrigatório.')
           .isInt({min: 1, max: 2}),
-      check('inputMotherName', 'Os dados do campo "Nome da Mãe" são inválidos.')
+      check('motherName', 'Os dados do campo "Nome da Mãe" são inválidos.')
           .exists().withMessage('O campo "Nome da Mãe" é obrigatório.')
           .not().isEmpty().withMessage('O campo "Nome da Mãe" é obrigatório.')
           .isLength({min: 3, max: 100}).withMessage('O campo "Nome da Mãe" pode ter entre 3 e 100 caracteres.')
@@ -45,7 +45,7 @@ router.post('/',
                 return value;
               }
           ),
-      check('inputMotherCPF', 'Os dados do campo "CPF da Mãe" são inválidos.')
+      check('motherCPF', 'Os dados do campo "CPF da Mãe" são inválidos.')
           .optional({checkFalsy: true})
           .exists().withMessage('O campo "CPF da Mãe" deve ser enviado.')
           .isLength({min: 14, max: 14}).withMessage('O campo "CPF da Mãe" deve ter 14 dígitos.')
@@ -93,7 +93,7 @@ router.post('/',
               })
           .escape()
           .trim(),
-      check('inputFatherName', 'Os dados do campo "Nome do Pai" são inválidos')
+      check('fatherName', 'Os dados do campo "Nome do Pai" são inválidos')
           .exists().withMessage('O campo "Nome do Pai" deve ser enviado')
           .isLength({min: 3, max: 100}).withMessage('O campo "Nome do Pai" pode ter entre 3 e 100 caracteres')
           .escape()
@@ -104,7 +104,7 @@ router.post('/',
                 return value;
               }
           ),
-      check('inputAddress', 'Os dados do campo "Endereço" são inválidos')
+      check('address', 'Os dados do campo "Endereço" são inválidos')
           .exists().withMessage('O campo "Endereço" é obrigatório')
           .not().isEmpty().withMessage('O campo "Endereço" é obrigatório')
           .isLength({min: 3, max: 100}).withMessage('O campo "Endereço" pode ter entre 3 e 100 caracteres')
@@ -116,7 +116,7 @@ router.post('/',
                 return value;
               }
           ),
-      check('inputResidenceNumber', 'Os dados do campo "Nome" são inválidos')
+      check('residenceNumber', 'Os dados do campo "Nome" são inválidos')
           .exists().withMessage('O campo "Nome" é obrigatório')
           .not().isEmpty().withMessage('O campo "Nome" é obrigatório')
           .isLength({min: 1, max: 15}).withMessage('O campo "Nome da Mãe" pode ter entre 1 e 15 caracteres')
@@ -128,7 +128,7 @@ router.post('/',
                 return value;
               }
           ),
-      check('inputNeighborhood', 'Os dados do campo "Bairro" são inválidos')
+      check('neighborhood', 'Os dados do campo "Bairro" são inválidos')
           .exists().withMessage('O campo "Bairro" é obrigatório')
           .not().isEmpty().withMessage('O campo "Bairro" é obrigatório')
           .isLength({min: 3, max: 100}).withMessage('O campo "Bairro" pode ter entre 1 e 15 caracteres')
@@ -140,7 +140,7 @@ router.post('/',
                 return value;
               }
           ),
-      check('inputState', 'Os dados do campo "Estado" são inválidos')
+      check('state', 'Os dados do campo "Estado" são inválidos')
           .exists().withMessage('O campo "Estado" é obrigatório')
           .not().isEmpty().withMessage('O campo "Estado" é obrigatório')
           .isLength({min: 2, max: 2}).withMessage('O campo "Estado" pode ter entre 1 e 15 caracteres')
@@ -152,7 +152,7 @@ router.post('/',
                 return value;
               }
           ),
-      check('inputCity', 'Os dados do campo "Cidade" são inválidos')
+      check('city', 'Os dados do campo "Cidade" são inválidos')
           .exists().withMessage('O campo "Cidade" é obrigatório')
           .not().isEmpty().withMessage('O campo "Cidade" é obrigatório')
           .isLength({min: 1, max: 100}).withMessage('O campo "Cidade" pode ter entre 1 e 100 caracteres')
@@ -164,7 +164,7 @@ router.post('/',
                 return value;
               }
           ),
-      check('inputCEP', 'Os dados do campo "CEP" são inválidos.')
+      check('cep', 'Os dados do campo "CEP" são inválidos.')
           .optional({checkFalsy: true})
           .exists().withMessage('O campo "CEP" é obrigatório.')
           .not().isEmpty().withMessage('O campo "CEP" é obrigatório.')
@@ -180,7 +180,7 @@ router.post('/',
           )
           .escape()
           .trim(),
-      check('inputEmail', 'Os dados do campo "E-mail" são inválidos')
+      check('email', 'Os dados do campo "E-mail" são inválidos')
           .isEmail().withMessage('O campo "E-mail" é inválido')
           .normalizeEmail()
           .customSanitizer(
@@ -188,93 +188,125 @@ router.post('/',
                 return value === '@' ? '' : value;
               }
           ),
-      check('inputResTel', 'Os dados do campo "Telefone Residencial" são inválidos')
+      check('resTel', 'Os dados do campo "Telefone Residencial" são inválidos')
           .optional({checkFalsy: true})
           .blacklist('()-\\s')
           .trim()
           .isLength({min: 10, max: 11}).withMessage('O campo "Telefone Residencial" deve ter entre 10 e 11 dígitos')
           .isInt(),
-      check('inputCommercialTel', 'Os dados do campo "Telefone Comercial" são inválidos')
+      check('commercialTel', 'Os dados do campo "Telefone Comercial" são inválidos')
           .optional({checkFalsy: true})
           .blacklist('()-\\s')
           .trim()
           .isLength({min: 10, max: 11}).withMessage('O campo "Telefone Comercial" deve ter entre 10 e 11 dígitos')
           .isInt()
           .escape(),
-      check('inputCelPhone', 'Os dados do campo "Telefone Celular" são inválidos')
+      check('celPhone', 'Os dados do campo "Telefone Celular" são inválidos')
           .optional({checkFalsy: true})
           .blacklist('()-\\s')
           .trim()
           .isLength({min: 11, max: 11}).withMessage('O campo "Telefone Celular" deve ter 11 dígitos')
           .isInt().withMessage('O campo "Telefone Celular" deve ser composto somente por números')
           .escape(),
-      check('rbFamilyHistory', 'Os dados do campo "Antecedentes Familiares" são inválidos')
+      check('familyHistory', 'Os dados do campo "Antecedentes Familiares" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('inputProblemDescription', 'Os dados do campo "Quem e qual o problema" são inválidos')
+      check('problemDescription', 'Os dados do campo "Quem e qual o problema" são inválidos')
           .trim()
           .isLength({min: 0, max: 1000}).withMessage('O campo "Quem e qual o problema" pode ter no máximo 1000 caracteres')
           .escape(),
-      check('rbPatientHealthProblem', 'Os dados do campo "Problemas de Saúde" são inválidos')
+      check('patientHealthProblem', 'Os dados do campo "Problemas de Saúde" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('inputHealthProblemDescription', 'Os dados do campo "Quem e qual o problema" são inválidos')
+      check('healthProblemDescription', 'Os dados do campo "Quem e qual o problema" são inválidos')
           .trim()
           .isLength({min: 0, max: 1000}).withMessage('O campo "Quem e qual o problema" pode ter no máximo 1000 caracteres')
           .escape(),
-      check('rbBreastfeeding', 'Os dados do campo "Mama no Peito?" são inválidos')
+      check('assessment[0].breastfeeding', 'Os dados do campo "Mama no Peito?" são inválidos')
           .isIn(['1', '2', '3', undefined]),
-      check('rbBreastfeedingTime', 'Os dados do campo "Tempo entre as mamadas" são inválidos')
+      check('assessment[0].breastfeedingTime', 'Os dados do campo "Tempo entre as mamadas" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('rbBreastfeedingTiredness', 'Os dados do campo "Cansaço para mamar?" são inválidos')
+      check('assessment[0].breastfeedingTiredness', 'Os dados do campo "Cansaço para mamar?" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('rbBreastfeedingSleep', 'Os dados do campo "Mama um pouquinho e dorme?" são inválidos')
+      check('assessment[0].breastfeedingSleep', 'Os dados do campo "Mama um pouquinho e dorme?" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('rbReleasingNipple', 'Os dados do campo "Vai soltando o mamilo?" são inválidos')
+      check('assessment[0].releasingNipple', 'Os dados do campo "Vai soltando o mamilo?" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('rbBiteNipple', 'Os dados do campo "Morde o mamilo?" são inválidos')
+      check('assessment[0].biteNipple', 'Os dados do campo "Morde o mamilo?" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('obsBreastfeeding', 'Os dados do campo "Observações" da pergunta "Mama no Peito?" são inválidos')
+      check('assessment[0].obsBreastfeeding', 'Os dados do campo "Observações" da pergunta "Mama no Peito?" são inválidos')
           .trim()
           .isLength({max: 1000}).withMessage('pode ter no máximo 1000 caracteres')
           .escape(),
-      check('rbQuestionOne', 'Os dados da questão "1. Postura dos lábios em repouso" são inválidos')
+
+      //Pontuação da História Clínica
+      check('assessment[0].clinicalHistoryPoints', 'A pontuação da "História Clínica" é inválida')
+          .isNumeric(),
+
+      check('assessment[0].questionOne', 'Os dados da questão "1. Postura dos lábios em repouso" são inválidos')
           .isIn(['1', '2', '3', undefined]),
-      check('rbQuestionTwo', 'Os dados da questão "2. Tendência do posicionamento da língua durante o choro" são inválidos')
+      check('assessment[0].questionTwo', 'Os dados da questão "2. Tendência do posicionamento da língua durante o choro" são inválidos')
           .isIn(['1', '2', '3', '4', undefined]),
-      check('rbQuestionThree', 'Os dados da questão "3. Forma da ponta da língua quando elevada durante o choro" são inválidos')
+      check('assessment[0].questionThree', 'Os dados da questão "3. Forma da ponta da língua quando elevada durante o choro" são inválidos')
           .isIn(['1', '2', '3', undefined]),
-      check('rbQuestionFour', 'Os dados da questão "4. Frênulo da língua" são inválidos')
+
+      //Pontuação das Questões de Um a Três
+      check('assessment[0].questionsOneToThreePoints', 'A pontuação das questões 1 a 3 é inválida')
+          .isNumeric(),
+
+      check('assessment[0].questionFour', 'Os dados da questão "4. Frênulo da língua" são inválidos')
           .isIn(['1', '2', '3', undefined]),
-      check('rbQuestionFourOne', 'Os dados da questão "4.1. Espessura do frênulo" são inválidos')
+      check('assessment[0].questionFourOne', 'Os dados da questão "4.1. Espessura do frênulo" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('rbQuestionFourTwo', 'Os dados da questão "4.2. Fixação do frênulo na face sublingual (ventral) da língua" são inválidos')
+      check('assessment[0].questionFourTwo', 'Os dados da questão "4.2. Fixação do frênulo na face sublingual (ventral) da língua" são inválidos')
           .isIn(['1', '2', '3', undefined]),
-      check('rbQuestionFourThree', 'Os dados da questão "4.3. Fixação do frênulo no assoalho da boca" são inválidos')
+      check('assessment[0].questionFourThree', 'Os dados da questão "4.3. Fixação do frênulo no assoalho da boca" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('obsBreastfeeding', 'Os dados do campo "Observações" da "Parte I" são inválidos')
+      check('assessment[0].questionFourComments', 'Os dados do campo "Observações" da "Parte I" são inválidos')
           .trim()
           .isLength({max: 1000}).withMessage('O campo "Observações" da "Parte I" pode ter no máximo 1000 caracteres')
           .escape(),
-      check('rbPartTwoQuestionOne', 'Os dados da questão "1.1 Movimento da língua" são inválidos')
+
+      //Inserir Pontuação da Questão 4
+      check('assessment[0].questionFourPoints', 'A pontuação da questão 4 é inválida')
+          .isNumeric(),
+
+      //Inserir Pontuação da Parte I
+      check('assessment[0].questionsOneToFourPoints', 'A pontuação das questões 1 a 4 é inválida')
+          .isNumeric(),
+
+      check('assessment[0].partTwoQuestionOne', 'Os dados da questão "1.1 Movimento da língua" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('rbPartTwoQuestionTwoOne', 'Os dados da questão "2.1 Ritmo da sucção" são inválidos')
+      check('assessment[0].partTwoQuestionTwoOne', 'Os dados da questão "2.1 Ritmo da sucção" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('rbPartTwoQuestionTwoTwo', 'Os dados da questão "2.2 Coordenação entre sucção/deglutição/respiração" são inválidos')
+      check('assessment[0].partTwoQuestionTwoTwo', 'Os dados da questão "2.2 Coordenação entre sucção/deglutição/respiração" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('rbPartTwoQuestionTwoThree', 'Os dados da questão "2.3 "Morde" o mamilo" são inválidos')
+      check('assessment[0].partTwoQuestionTwoThree', 'Os dados da questão "2.3 "Morde" o mamilo" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('rbPartTwoQuestionTwoFour', 'Os dados da questão "2.4 Estalos de língua durante a sucção" são inválidos')
+      check('assessment[0].partTwoQuestionTwoFour', 'Os dados da questão "2.4 Estalos de língua durante a sucção" são inválidos')
           .isIn(['1', '2', undefined]),
-      check('obsSuction', 'Os dados do campo "Observações" da "Parte II" são inválidos')
+      check('assessment[0].obsSuction', 'Os dados do campo "Observações" da "Parte II" são inválidos')
           .trim()
           .isLength({min: 0, max: 1000}).withMessage('O campo "Observações" da "Parte II" pode ter no máximo 1000 caracteres')
           .escape(),
-      check('obsResume', 'Os dados do campo "Observações" do "Resumo Final" são inválidos')
+
+      //Inserir Pontuação da Parte II
+      check('assessment[0].partTwoQuestionPoints', 'A pontuação da "Parte II" é inválida')
+          .isNumeric(),
+
+      //Inserir Pontos Totais Exame Clínico
+      check('assessment[0].clinicalAssessmentPoints', 'A pontuação do "Exame Clínico" é inválida')
+          .isNumeric(),
+
+      //Inserir Pontos Totais do Exame
+      check('assessment[0].historyAssessmentPoints', 'A pontuação total do exame é inválida')
+          .isNumeric(),
+
+      check('assessment[0].obsResume', 'Os dados do campo "Observações" do "Resumo Final" são inválidos')
           .trim()
           .isLength({max: 1000}).withMessage('O campo "Observações" do "Resumo Final" pode ter no máximo 1000 caracteres')
           .escape(),
-      check('rbBehavior', 'Os dados da questão "CONDUTA" no Resumo Final são inválidos')
+      check('assessment[0].behavior', 'Os dados da questão "CONDUTA" no Resumo Final são inválidos')
           .isIn(['1', '2', '3', undefined]),
-      check('descBehavior', 'Os dados do campo "Observações" do "Resumo Final" são inválidos')
+      check('assessment[0].descBehavior', 'Os dados do campo "Observações" do "Resumo Final" são inválidos')
           .trim()
           .isLength({max: 100}).withMessage('O campo "Descrição da conduta" do "Resumo Final" pode ter no máximo 100 caracteres')
           .escape()
@@ -282,46 +314,61 @@ router.post('/',
     function (req, res) {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        console.log("Tô aqui!");
+        //console.log("Tô aqui!");
+       // console.log(req.body.assessment[0].assessmentDate);
         console.log(errors.array());
-        console.log(req.body);
         return res.status(422).json({error: errors.array()
         });
       }
 
       //Criação do exame
       let newAssessment = new Assessment();
+      let assessmentIndex = 0;
       //Início do Exame
       //newAssessment._id = req.body.assessmentId;
-      newAssessment.assessmentDate = req.body.inputAssessmentDate;
-      newAssessment.breastfeeding = req.body.rbBreastfeeding;
-      newAssessment.breastfeedingTime = req.body.rbBreastfeedingTime;
-      newAssessment.breastfeedingTiredness = req.body.rbBreastfeedingTiredness;
-      newAssessment.breastfeedingSleep = req.body.rbBreastfeedingSleep;
-      newAssessment.releasingNipple = req.body.rbReleasingNipple;
-      newAssessment.biteNipple = req.body.rbBiteNipple;
-      newAssessment.obsBreastfeeding = req.body.obsBreastfeeding;
+      newAssessment.assessmentDate = req.body.assessment[assessmentIndex].assessmentDate;
+      newAssessment.breastfeeding = req.body.assessment[assessmentIndex].breastfeeding;
+      newAssessment.breastfeedingTime = req.body.assessment[assessmentIndex].breastfeedingTime;
+      newAssessment.breastfeedingTiredness = req.body.assessment[assessmentIndex].breastfeedingTiredness;
+      newAssessment.breastfeedingSleep = req.body.assessment[assessmentIndex].breastfeedingSleep;
+      newAssessment.releasingNipple = req.body.assessment[assessmentIndex].releasingNipple;
+      newAssessment.biteNipple = req.body.assessment[assessmentIndex].biteNipple;
+      newAssessment.obsBreastfeeding = req.body.assessment[assessmentIndex].obsBreastfeeding;
+      //Pontos História Clínica
+      newAssessment.clinicalHistoryPoints = req.body.assessment[assessmentIndex].clinicalHistoryPoints;
       //Tela 02
-      newAssessment.questionOne = req.body.rbQuestionOne;
-      newAssessment.questionTwo = req.body.rbQuestionTwo;
-      newAssessment.questionThree = req.body.rbQuestionThree;
+      newAssessment.questionOne = req.body.assessment[assessmentIndex].questionOne;
+      newAssessment.questionTwo = req.body.assessment[assessmentIndex].questionTwo;
+      newAssessment.questionThree = req.body.assessment[assessmentIndex].questionThree;
+      //Pontos Questões de Um a Três
+      newAssessment.questionsOneToThreePoints = req.body.assessment[assessmentIndex].questionsOneToThreePoints;
       //Tela 03
-      newAssessment.questionFour = req.body.rbQuestionFour;
-      newAssessment.questionFourOne = req.body.rbQuestionFourOne;
-      newAssessment.questionFourTwo = req.body.rbQuestionFourTwo;
-      newAssessment.questionFourThree = req.body.rbQuestionFourThree;
-      newAssessment.questionFourComments = req.body.inputQuestionFourComments;
+      newAssessment.questionFour = req.body.assessment[assessmentIndex].questionFour;
+      newAssessment.questionFourOne = req.body.assessment[assessmentIndex].questionFourOne;
+      newAssessment.questionFourTwo = req.body.assessment[assessmentIndex].questionTwo;
+      newAssessment.questionFourThree = req.body.assessment[assessmentIndex].questionFourThree;
+      newAssessment.questionFourComments = req.body.assessment[assessmentIndex].questionFourComments;
+      //Pontos Questão 4
+      newAssessment.questionFourPoints = req.body.assessment[assessmentIndex].questionFourPoints;
+      //Pontos da Parte I
+      newAssessment.questionsOneToFourPoints = req.body.assessment[assessmentIndex].questionsOneToFourPoints;
       //Tela 04
-      newAssessment.partTwoQuestionOne = req.body.rbPartTwoQuestionOne;
-      newAssessment.partTwoQuestionTwoOne = req.body.rbPartTwoQuestionTwoOne;
-      newAssessment.partTwoQuestionTwoTwo = req.body.rbPartTwoQuestionTwoTwo;
-      newAssessment.partTwoQuestionTwoThree = req.body.rbPartTwoQuestionTwoThree;
-      newAssessment.partTwoQuestionTwoFour = req.body.rbPartTwoQuestionTwoFour;
-      newAssessment.obsSuction = req.body.obsSuction;
+      newAssessment.partTwoQuestionOne = req.body.assessment[assessmentIndex].partTwoQuestionOne;
+      newAssessment.partTwoQuestionTwoOne = req.body.assessment[assessmentIndex].partTwoQuestionTwoTwo;
+      newAssessment.partTwoQuestionTwoTwo = req.body.assessment[assessmentIndex].partTwoQuestionTwoThree;
+      newAssessment.partTwoQuestionTwoThree = req.body.assessment[assessmentIndex].partTwoQuestionTwoThree;
+      newAssessment.partTwoQuestionTwoFour = req.body.assessment[assessmentIndex].partTwoQuestionTwoFour;
+      newAssessment.obsSuction = req.body.assessment[assessmentIndex].obsSuction;
+      //Pontos da Parte II
+      newAssessment.partTwoQuestionPoints = req.body.assessment[assessmentIndex].partTwoQuestionPoints;
+      //Pontos Totais Exame Clínico
+      newAssessment.clinicalAssessmentPoints = req.body.assessment[assessmentIndex].clinicalAssessmentPoints;
+      //Pontos Totais do Exame
+      newAssessment.historyAssessmentPoints = req.body.assessment[assessmentIndex].historyAssessmentPoints;
       //Tela 05
-      newAssessment.obsResume = req.body.obsResume;
-      newAssessment.behavior = req.body.rbBehavior;
-      newAssessment.descBehavior = req.body.descBehavior;
+      newAssessment.obsResume = req.body.assessment[assessmentIndex].obsResume;
+      newAssessment.behavior = req.body.assessment[assessmentIndex].behavior;
+      newAssessment.descBehavior = req.body.assessment[assessmentIndex].descBehavior;
       //Usuário
       newAssessment.userCPF = req.user.cpf;
       newAssessment.userName = req.user.name;
@@ -333,63 +380,46 @@ router.post('/',
       let patientNew = new Patient();
       //Início do Paciente
       //patientNew._id = req.body.patientId;
-      patientNew.name = req.body.inputName;
-      patientNew.birthDate = req.body.inputBirthDate;
-      patientNew.genre = req.body.rbGenre;
-      patientNew.motherName = req.body.inputMotherName;
-      patientNew.motherCPF = req.body.inputMotherCPF;
-      patientNew.fatherName = req.body.inputFatherName;
-      patientNew.address = req.body.inputAddress;
-      patientNew.residenceNumber = req.body.inputResidenceNumber;
-      patientNew.neighborhood = req.body.inputNeighborhood;
-      patientNew.state = req.body.inputState;
-      patientNew.city = req.body.inputCity;
-      patientNew.cep = req.body.inputCEP;
-      patientNew.email = req.body.inputEmail;
-      patientNew.resTel = req.body.inputResTel;
-      patientNew.commercialTel = req.body.inputCommercialTel;
-      patientNew.celPhone = req.body.inputCelPhone;
-      patientNew.familyHistory = req.body.rbFamilyHistory;
-      patientNew.problemDescription = req.body.inputProblemDescription;
-      patientNew.patientHealthProblem = req.body.rbPatientHealthProblem;
-      patientNew.healthProblemDescription = req.body.inputHealthProblemDescription;
-      patientNew.assessments.push(newAssessment);
+      patientNew.name = req.body.name;
+      patientNew.birthDate = req.body.birthDate;
+      patientNew.genre = req.body.genre;
+      patientNew.motherName = req.body.motherName;
+      patientNew.motherCPF = req.body.motherCPF;
+      patientNew.fatherName = req.body.fatherName;
+      patientNew.address = req.body.address;
+      patientNew.residenceNumber = req.body.residenceNumber;
+      patientNew.neighborhood = req.body.neighborhood;
+      patientNew.state = req.body.state;
+      patientNew.city = req.body.city;
+      patientNew.cep = req.body.cep;
+      patientNew.email = req.body.email;
+      patientNew.resTel = req.body.resTel;
+      patientNew.commercialTel = req.body.commercialTel;
+      patientNew.celPhone = req.body.celPhone;
+      patientNew.familyHistory = req.body.familyHistory;
+      patientNew.problemDescription = req.body.problemDescription;
+      patientNew.patientHealthProblem = req.body.patientHealthProblem;
+      patientNew.healthProblemDescription = req.body.healthProblemDescription;
 
-      //console.log(patientNew);
+      //Insere Exame criado no objeto "Paciente".
+      patientNew.assessments.push(newAssessment);
+      //console.log("Novo Paciente: " + patientNew);
 
       patientNew.save(function (err, doc){
           if (err){
-              if (err.code ===11000){
-                async function findAndUpdate() {
-                  let patientDB = await Patient.findOne({name: patientNew.name, birthDate: patientNew.birthDate, motherName: patientNew.motherName});
-                  patientDB.genre = patientNew.genre;
-                  patientDB.motherCPF = patientNew.motherCPF;
-                  patientDB.fatherName = patientNew.fatherName;
-                  patientDB.address = patientNew.address;
-                  patientDB.residenceNumber = patientNew.residenceNumber;
-                  patientDB.neighborhood = patientNew.neighborhood;
-                  patientDB.state = patientNew.state;
-                  patientDB.city = patientNew.city;
-                  patientDB.cep = patientNew.cep;
-                  patientDB.email = patientNew.email;
-                  patientDB.resTel = patientNew.resTel;
-                  patientDB.commercialTel = patientNew.commercialTel;
-                  patientDB.celPhone = patientNew.celPhone;
-                  patientDB.familyHistory = patientNew.familyHistory;
-                  patientDB.problemDescription = patientNew.problemDescription;
-                  patientDB.patientHealthProblem = patientNew.patientHealthProblem;
-                  patientDB.healthProblemDescription = patientNew.healthProblemDescription;
-                  patientDB.assessments.push(patientNew.assessments[0]);
-                  console.log(patientNew.assessments[0]);
-                  await patientDB.save();
-                  return res.status(200).json({success: "Atualizado"});
+              if (err.code === 11000){
+                async function update () {
+                  let updatedDocsIds = await findAndUpdate(patientNew, true);
+                  console.log("ARRAY IDS: " + updatedDocsIds);
+                  res.status(200).json({success: [{msg: "Paciente atualizado e teste inserido", patientId: updatedDocsIds[0], assessmentId: updatedDocsIds[1]}]});
                 }
-                return findAndUpdate();
+                update();
+              } else {
+                res.status(422).json({success: "Erro de acesso ao Banco de Dados"});
               }
-            res.status(422).json({success: "Erro de acesso ao Banco de Dados"});
           }else {
-            console.log(doc);
-            res.status(200).json({success: "Foi que foi"});
+            //console.log(doc);
+            res.status(200).json({success: [{msg: "Novo paciente inserido com Sucesso", patientId: patientNew._id, assessmentId: patientNew.assessments[0]._id}]});
           }
         });
       // Patient.save(patientNew, function (err) {
@@ -427,6 +457,51 @@ router.get('/patient/requestAssessment', function (req, res, next) {
 router.get('/teste', function (req, res, next) {
   res.send("Teste");
 });
+
+//Funcão que atualiza um paciente no Banco de Dados
+async function findAndUpdate(patientForUpdate, newAssessment) {
+  let patientDB = await Patient.findOne({name: patientForUpdate.name, birthDate: patientForUpdate.birthDate, motherName: patientForUpdate.motherName});
+  patientDB.genre = patientForUpdate.genre;
+  patientDB.motherCPF = patientForUpdate.motherCPF;
+  patientDB.fatherName = patientForUpdate.fatherName;
+  patientDB.address = patientForUpdate.address;
+  patientDB.residenceNumber = patientForUpdate.residenceNumber;
+  patientDB.neighborhood = patientForUpdate.neighborhood;
+  patientDB.state = patientForUpdate.state;
+  patientDB.city = patientForUpdate.city;
+  patientDB.cep = patientForUpdate.cep;
+  patientDB.email = patientForUpdate.email;
+  patientDB.resTel = patientForUpdate.resTel;
+  patientDB.commercialTel = patientForUpdate.commercialTel;
+  patientDB.celPhone = patientForUpdate.celPhone;
+  if (patientDB.familyHistory != patientForUpdate.familyHistory){
+    if (patientDB.familyHistory == 2){
+      patientDB.assessments.forEach(function (assessment){
+        assessment.clinicalHistoryPoints --;
+        assessment.historyAssessmentPoints --;
+      });
+    } else if (patientDB.familyHistory == 1){
+      patientDB.assessments.forEach(function (assessment){
+        assessment.clinicalHistoryPoints ++;
+        assessment.historyAssessmentPoints ++;
+      });
+    }
+  }
+  patientDB.familyHistory = patientForUpdate.familyHistory;
+  patientDB.problemDescription = patientForUpdate.problemDescription;
+  patientDB.patientHealthProblem = patientForUpdate.patientHealthProblem;
+  patientDB.healthProblemDescription = patientForUpdate.healthProblemDescription;
+  if (newAssessment) {
+    patientDB.assessments.push(patientForUpdate.assessments[0]);
+    await patientDB.save();
+    return [patientDB._id, patientDB.assessments[0]._id];
+  } else {
+    let assessmentIndex = patientDB.assessments.findIndex(assessment => assessment._id === patientForUpdate.assessments[0]._id);
+    patientDB.assessments[assessmentIndex] = patientForUpdate.assessments[0];
+    await patientDB.save();
+    return [patientDB._id, patientDB.assessments[assessmentIndex]._id];
+  }
+}
 
 // patientTest = new Patient(
 //     {
