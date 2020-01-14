@@ -39,16 +39,24 @@ $(document).ready(function() {
                 data.patient.assessments[0].releasingNipple,
                 data.patient.assessments[0].biteNipple,
                 data.patient.assessments[0].obsBreastfeeding,
+                //Pontos História Clínica
+                data.patient.assessments[0].clinicalHistoryPoints,
                 //Tela 02
                 data.patient.assessments[0].questionOne,
                 data.patient.assessments[0].questionTwo,
                 data.patient.assessments[0].questionThree,
+                //Pontos Questões de Um a Três
+                data.patient.assessments[0].questionsOneToThreePoints,
                 //Tela 03
                 data.patient.assessments[0].questionFour,
                 data.patient.assessments[0].questionFourOne,
                 data.patient.assessments[0].questionFourTwo,
                 data.patient.assessments[0].questionFourThree,
                 data.patient.assessments[0].questionFourComments,
+                //Pontos Questão 4
+                data.patient.assessments[0].questionFourPoints,
+                //Pontos da Parte I
+                data.patient.assessments[0].questionsOneToFourPoints,
                 //Tela 04
                 data.patient.assessments[0].partTwoQuestionOne,
                 data.patient.assessments[0].partTwoQuestionTwoOne,
@@ -56,9 +64,15 @@ $(document).ready(function() {
                 data.patient.assessments[0].partTwoQuestionTwoThree,
                 data.patient.assessments[0].partTwoQuestionTwoFour,
                 data.patient.assessments[0].obsSuction,
+                //Pontos da Parte II
+                data.patient.assessments[0].partTwoQuestionPoints,
+                //Pontos Totais Exame Clínico
+                data.patient.assessments[0].clinicalAssessmentPoints,
+                //Pontos Totais do Exame
+                data.patient.assessments[0].historyAssessmentPoints,
                 //Tela 05
                 data.patient.assessments[0].obsResume,
-                data.patient.assessments[0].behavior,
+                data.patient.assessments[0].assBehavior,
                 data.patient.assessments[0].descBehavior,
                 //Usuário
                 data.patient.assessments[0].userCPF,
@@ -139,7 +153,7 @@ $(document).ready(function() {
 
           //Resultado
           $("#resObsFinal").text(patient.assessment[0].obsResume);
-          $("#resBehavior").text(patient.behaviorText(0));
+          $("#resBehavior").text(patient.assBehaviorText(0));
           $("#resBehaviorDescription").text(patient.assessment[0].descBehavior);
           $("#resUserFullName").text(patient.assessment[0].userName + " " + patient.assessment[0].userLastName);
           $("#resUserOccupation").text(patient.assessment[0].userOccupation);

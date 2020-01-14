@@ -42,7 +42,7 @@ const assessmentSchema = new mongoose.Schema({
   historyAssessmentPoints: Number,
   //Tela 05
   obsResume: String,
-  behavior: Number,
+  assBehavior: Number,
   descBehavior: String,
   //Usuário
   userCPF: String,

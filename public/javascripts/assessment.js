@@ -1,6 +1,7 @@
+let patient;
 $(document).ready(function() {
   //Cria novo Paciente
-  let patient;
+  //let patient;
 // Formulário principal multi passos
   //Seta a tab inicial como 0
   let currentTab = 0;
@@ -54,6 +55,9 @@ $(document).ready(function() {
     //Envia o formulário na última tela
     if ((currentTab === tabs.length) && n === 1) {
       if(validateForm() && confirm("Confirma a inclusão do exame?")) {
+        patient.assessments[0].obsResume = $("#inputFinalReport").val();
+        patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
+        patient.assessments[0].descBehavior = $("#inputBehavior").val();
         $.ajax({
           method: 'POST',
           contentType: "application/json",
@@ -197,7 +201,10 @@ $(document).ready(function() {
     }
   });
   function successHandler (data) {
+    dados = data;
     console.log(data);
+    let url = 'assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
+    window.open(url, "_blank");
 
     //window.location.replace()
   }
@@ -206,3 +213,4 @@ $(document).ready(function() {
     console.log("Deu errado");
   }
 }); //Fim document ready
+let dados;

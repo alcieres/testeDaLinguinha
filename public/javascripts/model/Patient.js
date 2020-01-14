@@ -65,7 +65,7 @@ function Patient (
   historyAssessmentPoints,
   //Tela 05
   obsResume,
-  behavior,
+  assBehavior,
   descBehavior,
   //Usuário
   userCPF,
@@ -95,7 +95,7 @@ function Patient (
   this.problemDescription = problemDescription;
   this.patientHealthProblem = patientHealthProblem !== undefined ? patientHealthProblem.toString() : undefined;
   this.healthProblemDescription = healthProblemDescription;
-  this.assessment = [{
+  this.assessments = [{
     assessmentId: assessmentId,
     assessmentDate: assessmentDate,
     breastfeeding: breastfeeding !== undefined ? breastfeeding.toString() : undefined,
@@ -138,7 +138,7 @@ function Patient (
     historyAssessmentPoints: historyAssessmentPoints,
     //Tela 05
     obsResume: obsResume,
-    behavior: behavior !== undefined ? behavior.toString() : undefined,
+    assBehavior: assBehavior !== undefined ? assBehavior.toString() : undefined,
     descBehavior: descBehavior,
     //Usuário
     userCPF: userCPF,
@@ -178,7 +178,7 @@ function Patient (
         }
     };
     this.breastfeedingToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].breastfeeding) {
+        switch (this.assessments[indexAssessment].breastfeeding) {
             case "1":
                 return "Aleitamento materno exclusivo";
             case "2":
@@ -190,7 +190,7 @@ function Patient (
         }
     };
     this.breastfeedingTimeToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].breastfeedingTime) {
+        switch (this.assessments[indexAssessment].breastfeedingTime) {
             case "1":
                 return "2h ou mais (0)";
             case "2":
@@ -200,7 +200,7 @@ function Patient (
         }
     };
     this.breastfeedingTirednessToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].breastfeedingTiredness) {
+        switch (this.assessments[indexAssessment].breastfeedingTiredness) {
             case "1":
                 return "Não (0)";
             case "2":
@@ -210,7 +210,7 @@ function Patient (
         }
     };
     this.breastfeedingSleepToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].breastfeedingSleep) {
+        switch (this.assessments[indexAssessment].breastfeedingSleep) {
             case "1":
                 return "Não (0)";
             case "2":
@@ -220,7 +220,7 @@ function Patient (
         }
     };
     this.releasingNippleToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].releasingNipple) {
+        switch (this.assessments[indexAssessment].releasingNipple) {
             case "1":
                 return "Não (0)";
             case "2":
@@ -230,7 +230,7 @@ function Patient (
         }
     };
     this.biteNippleToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].biteNipple) {
+        switch (this.assessments[indexAssessment].biteNipple) {
             case "1":
                 return "Não (0)";
             case "2":
@@ -240,7 +240,7 @@ function Patient (
         }
     };
     this.questionOneToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].questionOne) {
+        switch (this.assessments[indexAssessment].questionOne) {
             case "1":
                 return "Lábios fechados (0)";
             case "2":
@@ -252,7 +252,7 @@ function Patient (
         }
     };
     this.questionTwoToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].questionTwo) {
+        switch (this.assessments[indexAssessment].questionTwo) {
             case "1":
                 return "Língua na linha média (0)";
             case "2":
@@ -266,7 +266,7 @@ function Patient (
         }
     };
     this.questionThreeToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].questionThree) {
+        switch (this.assessments[indexAssessment].questionThree) {
             case "1":
                 return "Arredondada (0)";
             case "2":
@@ -278,7 +278,7 @@ function Patient (
         }
     };
     this.questionFourToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].questionFour) {
+        switch (this.assessments[indexAssessment].questionFour) {
             case "1":
                 return "É possivel visualizar";
             case "2":
@@ -290,7 +290,7 @@ function Patient (
         }
     };
     this.questionFourOneToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].questionFourOne) {
+        switch (this.assessments[indexAssessment].questionFourOne) {
             case "1":
                 return "Delgado (0)";
             case "2":
@@ -300,7 +300,7 @@ function Patient (
         }
     };
     this.questionFourTwoToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].questionFourTwo) {
+        switch (this.assessments[indexAssessment].questionFourTwo) {
             case "1":
                 return "No terço médio (0)";
             case "2":
@@ -312,7 +312,7 @@ function Patient (
         }
     };
     this.questionFourThreeToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].questionFourThree) {
+        switch (this.assessments[indexAssessment].questionFourThree) {
             case "1":
                 return "Visível a partir das carúnculas sublinguais (0)";
             case "2":
@@ -322,7 +322,7 @@ function Patient (
         }
     };
     this.partTwoQuestionOneToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].partTwoQuestionOne) {
+        switch (this.assessments[indexAssessment].partTwoQuestionOne) {
             case "1":
                 return "Adequado: protusão de língua, movimentos coordenados e sucção eficiente (0)";
             case "2":
@@ -332,7 +332,7 @@ function Patient (
         }
     };
     this.partTwoQuestionTwoOneToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].partTwoQuestionTwoOne) {
+        switch (this.assessments[indexAssessment].partTwoQuestionTwoOne) {
             case "1":
                 return "Várias sucções seguidas com pausas curtas (0)";
             case "2":
@@ -342,7 +342,7 @@ function Patient (
         }
     };
     this.partTwoQuestionTwoTwoToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].partTwoQuestionTwoTwo) {
+        switch (this.assessments[indexAssessment].partTwoQuestionTwoTwo) {
             case "1":
                 return "Adequada (0)";
             case "2":
@@ -352,7 +352,7 @@ function Patient (
         }
     };
     this.partTwoQuestionTwoThreeToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].partTwoQuestionTwoThree) {
+        switch (this.assessments[indexAssessment].partTwoQuestionTwoThree) {
             case "1":
                 return "Não (0)";
             case "2":
@@ -362,7 +362,7 @@ function Patient (
         }
     };
     this.partTwoQuestionTwoFourToText = (indexAssessment) => {
-        switch (this.assessment[indexAssessment].partTwoQuestionTwoFour) {
+        switch (this.assessments[indexAssessment].partTwoQuestionTwoFour) {
             case "1":
                 return "Não (0)";
             case "2":
@@ -372,13 +372,13 @@ function Patient (
         }
     };
     this.assessmentDateToText = (indexAssessment) => {
-        return dateToText(this.assessment[indexAssessment].assessmentDate);
+        return dateToText(this.assessments[indexAssessment].assessmentDate);
     };
     this.birthDateToText = () => {
         return dateToText(this.birthDate);
     };
-    this.behaviorText = (indexAssessment) => {
-      switch (this.assessment[indexAssessment].behavior) {
+    this.assBehaviorText = (indexAssessment) => {
+      switch (this.assessments[indexAssessment].assBehavior) {
         case "1":
           return "Não apresenta alteração de frênulo lingual";
         case "2":
@@ -398,35 +398,35 @@ function Patient (
                 points++;
                 break;
         }
-        switch (this.assessment[indexAssessment].breastfeedingTime) {
+        switch (this.assessments[indexAssessment].breastfeedingTime) {
             case "1":
                 break;
             case "2":
                 points = points + 2;
                 break;
         }
-        switch (this.assessment[indexAssessment].breastfeedingTiredness) {
+        switch (this.assessments[indexAssessment].breastfeedingTiredness) {
             case "1":
                 break;
             case "2":
                 points++;
                 break;
         }
-        switch (this.assessment[indexAssessment].breastfeedingSleep) {
+        switch (this.assessments[indexAssessment].breastfeedingSleep) {
             case "1":
                 break;
             case "2":
                 points++;
                 break;
         }
-        switch (this.assessment[indexAssessment].releasingNipple) {
+        switch (this.assessments[indexAssessment].releasingNipple) {
             case "1":
                 break;
             case "2":
                 points++;
                 break;
         }
-        switch (this.assessment[indexAssessment].biteNipple) {
+        switch (this.assessments[indexAssessment].biteNipple) {
             case "1":
                 break;
             case "2":
@@ -437,7 +437,7 @@ function Patient (
     };
     this.oneToThreeQuestionsPoints = (indexAssessment) => {
         let points = 0;
-        switch (this.assessment[indexAssessment].questionOne) {
+        switch (this.assessments[indexAssessment].questionOne) {
             case "1":
                 break;
             case "2":
@@ -447,7 +447,7 @@ function Patient (
                 points++;
                 break;
         }
-        switch (this.assessment[indexAssessment].questionTwo) {
+        switch (this.assessments[indexAssessment].questionTwo) {
             case "1":
                 break;
             case "2":
@@ -459,7 +459,7 @@ function Patient (
                 points = points + 2;
                 break;
         }
-        switch (this.assessment[indexAssessment].questionThree) {
+        switch (this.assessments[indexAssessment].questionThree) {
             case "1":
                 break;
             case "2":
@@ -473,14 +473,14 @@ function Patient (
     };
     this.fourQuestionPoints = (indexAssessment) => {
         let points = 0;
-        switch (this.assessment[indexAssessment].questionFourOne) {
+        switch (this.assessments[indexAssessment].questionFourOne) {
             case "1":
                 break;
             case "2":
                 points = points + 2;
                 break;
         }
-        switch (this.assessment[indexAssessment].questionFourTwo) {
+        switch (this.assessments[indexAssessment].questionFourTwo) {
             case "1":
                 break;
             case "2":
@@ -490,7 +490,7 @@ function Patient (
                 points = points + 3;
                 break;
         }
-        switch (this.assessment[indexAssessment].questionFourThree) {
+        switch (this.assessments[indexAssessment].questionFourThree) {
             case "1":
                 break;
             case "2":
@@ -501,35 +501,35 @@ function Patient (
     };
     this.partTwoQuestionPoints = (indexAssessment) => {
         let points = 0;
-        switch (this.assessment[indexAssessment].partTwoQuestionOne) {
+        switch (this.assessments[indexAssessment].partTwoQuestionOne) {
             case "1":
                 break;
             case "2":
                 points++;
                 break;
         }
-        switch (this.assessment[indexAssessment].partTwoQuestionTwoOne) {
+        switch (this.assessments[indexAssessment].partTwoQuestionTwoOne) {
             case "1":
                 break;
             case "2":
                 points++;
                 break;
         }
-        switch (this.assessment[indexAssessment].partTwoQuestionTwoTwo) {
+        switch (this.assessments[indexAssessment].partTwoQuestionTwoTwo) {
             case "1":
                 break;
             case "2":
                 points++;
                 break;
         }
-        switch (this.assessment[indexAssessment].partTwoQuestionTwoThree) {
+        switch (this.assessments[indexAssessment].partTwoQuestionTwoThree) {
             case "1":
                 break;
             case "2":
                 points++;
                 break;
         }
-        switch (this.assessment[indexAssessment].partTwoQuestionTwoFour) {
+        switch (this.assessments[indexAssessment].partTwoQuestionTwoFour) {
             case "1":
                 break;
             case "2":
