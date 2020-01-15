@@ -65,3 +65,12 @@ footer img {
     max-width: 100%;
   }
 }
+
+/*Dialogs sem botão fechar na barra*/
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+.dialogJquery {
+  display: none;
+}

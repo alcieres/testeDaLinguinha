@@ -53,19 +53,36 @@ $(document).ready(function() {
     currentTab = currentTab + n;
     //Envia o formulário na última tela
     if ((currentTab === tabs.length) && n === 1) {
-      if(validateForm() && confirm("Confirma a inclusão do exame?")) {
-        patient.assessments[0].obsResume = $("#inputFinalReport").val();
-        patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
-        patient.assessments[0].descBehavior = $("#inputBehavior").val();
-        $.ajax({
-          method: 'POST',
-          contentType: "application/json",
-          url: '/assessment',
-          data: JSON.stringify(patient),
-          success: successHandler,
-          error: errorHandler
+      if(validateForm()) {
+        $(function() {
+          $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height: "auto",
+            dialogClass: "no-close",
+            width: 400,
+            modal: true,
+            buttons: {
+              Sim: function() {
+                $( this ).dialog( "close" );
+                patient.assessments[0].obsResume = $("#inputFinalReport").val();
+                patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
+                patient.assessments[0].descBehavior = $("#inputBehavior").val();
+                $.ajax({
+                  method: 'POST',
+                  contentType: "application/json",
+                  url: '/assessment',
+                  data: JSON.stringify(patient),
+                  success: successHandler,
+                  error: errorHandler
+                });
+              },
+              "Não": function() {
+                $( this ).dialog( "close" );
+              }
+            }
+          });
         });
-        return;
+
       }
       currentTab --;
     }else {
@@ -201,15 +218,34 @@ $(document).ready(function() {
     }
   });
   function successHandler (data) {
-    dados = data;
-    console.log(data);
     let url = 'assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
     window.open(url, "_blank");
     //window.location.replace("/assessment")
   }
 
   function errorHandler (data) {
-    console.log("Deu errado");
+    let dialog = $('#dialog-message');
+    dialog.empty();
+    data.responseJSON.error.forEach(error => (dialog.append( "<p>" + error.msg + "</p>" )));
+
+    $( function() {
+      $( "#dialog-message" ).dialog({
+        dialogClass: "no-close",
+        width: 500,
+        title: "Erro de Validação do Teste",
+        modal: true,
+        buttons: {
+          Ok: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+      });
+    } );
+    dados = data;
+    data.responseJSON.error.forEach(error => console.log(error.msg));
+    //console.log(data);
   }
+
+
 }); //Fim document ready
 let dados;

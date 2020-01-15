@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+      $( "#prevBtn" ).click(function() {
+            window.close();
+
+      });
+      $( "#nextBtn" ).click(function() {
+            window.print();
+            $('html, body').animate({scrollTop:$(document).height()}, 'fast');
+      });
+
     $.getJSON( "/assessment/patient/requestAssessment", {
             patient: patientId,
             assessment: assessmentId
@@ -81,7 +90,6 @@ $(document).ready(function() {
                 data.patient.assessments[0].userOccupation,
                 data.patient.assessments[0].userRegistry
             );
-          console.log( patient );
           $("#resName").text(patient.name);
           $("#resGenre").text(patient.genreToText());
           $("#resMotherName").text(patient.motherName);
@@ -163,7 +171,7 @@ $(document).ready(function() {
             console.log( "error" );
         })
         .always(function() {
-            console.log( "complete" );
+            //console.log( "complete" );
         });
 
 

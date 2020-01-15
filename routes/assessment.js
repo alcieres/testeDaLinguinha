@@ -18,7 +18,7 @@ router.post('/',
           .exists().withMessage('O campo "Nome" é obrigatório.')
           .not().isEmpty().withMessage('O campo "Nome" não pode estar vazio.')
           .isLength({min: 3, max: 100}).withMessage('O campo "Nome" pode ter entre 3 e 100 caracteres.')
-          .escape()
+          //.escape()
           .trim()
           .customSanitizer(
               (value) => {
@@ -37,7 +37,7 @@ router.post('/',
           .exists().withMessage('O campo "Nome da Mãe" é obrigatório.')
           .not().isEmpty().withMessage('O campo "Nome da Mãe" é obrigatório.')
           .isLength({min: 3, max: 100}).withMessage('O campo "Nome da Mãe" pode ter entre 3 e 100 caracteres.')
-          .escape()
+          //.escape()
           .trim()
           .customSanitizer(
               (value) => {
@@ -91,13 +91,13 @@ router.post('/',
                 }
                 return value;
               })
-          .escape()
+          //.escape()
           .trim(),
       check('fatherName', 'Os dados do campo "Nome do Pai" são inválidos')
           .optional({ checkFalsy: true })
           .exists().withMessage('O campo "Nome do Pai" deve ser enviado')
           .isLength({min: 3, max: 100}).withMessage('O campo "Nome do Pai" pode ter entre 3 e 100 caracteres')
-          .escape()
+          //.escape()
           .trim()
           .customSanitizer(
               (value) => {
@@ -109,7 +109,7 @@ router.post('/',
           .exists().withMessage('O campo "Endereço" é obrigatório')
           .not().isEmpty().withMessage('O campo "Endereço" é obrigatório')
           .isLength({min: 3, max: 100}).withMessage('O campo "Endereço" pode ter entre 3 e 100 caracteres')
-          .escape()
+          //.escape()
           .trim()
           .customSanitizer(
               (value) => {
@@ -121,7 +121,7 @@ router.post('/',
           .exists().withMessage('O campo "Nome" é obrigatório')
           .not().isEmpty().withMessage('O campo "Nome" é obrigatório')
           .isLength({min: 1, max: 15}).withMessage('O campo "Nome da Mãe" pode ter entre 1 e 15 caracteres')
-          .escape()
+          //.escape()
           .trim()
           .customSanitizer(
               (value) => {
@@ -133,7 +133,7 @@ router.post('/',
           .exists().withMessage('O campo "Bairro" é obrigatório')
           .not().isEmpty().withMessage('O campo "Bairro" é obrigatório')
           .isLength({min: 3, max: 100}).withMessage('O campo "Bairro" pode ter entre 1 e 15 caracteres')
-          .escape()
+          //.escape()
           .trim()
           .customSanitizer(
               (value) => {
@@ -145,7 +145,7 @@ router.post('/',
           .exists().withMessage('O campo "Estado" é obrigatório')
           .not().isEmpty().withMessage('O campo "Estado" é obrigatório')
           .isLength({min: 2, max: 2}).withMessage('O campo "Estado" pode ter entre 1 e 15 caracteres')
-          .escape()
+          //.escape()
           .trim()
           .customSanitizer(
               (value) => {
@@ -157,7 +157,7 @@ router.post('/',
           .exists().withMessage('O campo "Cidade" é obrigatório')
           .not().isEmpty().withMessage('O campo "Cidade" é obrigatório')
           .isLength({min: 1, max: 100}).withMessage('O campo "Cidade" pode ter entre 1 e 100 caracteres')
-          .escape()
+          //.escape()
           .trim()
           .customSanitizer(
               (value) => {
@@ -179,7 +179,7 @@ router.post('/',
                 }
               }
           )
-          .escape()
+          //.escape()
           .trim(),
       check('email', 'Os dados do campo "E-mail" são inválidos')
           .optional({ checkFalsy: true })
@@ -201,27 +201,27 @@ router.post('/',
           .blacklist('()-\\s')
           .trim()
           .isLength({min: 10, max: 11}).withMessage('O campo "Telefone Comercial" deve ter entre 10 e 11 dígitos')
-          .isInt()
-          .escape(),
+          .isInt(),
+          //.escape(),
       check('celPhone', 'Os dados do campo "Telefone Celular" são inválidos')
           .optional({checkFalsy: true})
           .blacklist('()-\\s')
           .trim()
           .isLength({min: 11, max: 11}).withMessage('O campo "Telefone Celular" deve ter 11 dígitos')
-          .isInt().withMessage('O campo "Telefone Celular" deve ser composto somente por números')
-          .escape(),
+          .isInt().withMessage('O campo "Telefone Celular" deve ser composto somente por números'),
+          //.escape(),
       check('familyHistory', 'Os dados do campo "Antecedentes Familiares" são inválidos')
           .isIn(['1', '2', undefined]),
       check('problemDescription', 'Os dados do campo "Quem e qual o problema" são inválidos')
           .trim()
-          .isLength({min: 0, max: 1000}).withMessage('O campo "Quem e qual o problema" pode ter no máximo 1000 caracteres')
-          .escape(),
+          .isLength({min: 0, max: 1000}).withMessage('O campo "Quem e qual o problema" pode ter no máximo 1000 caracteres'),
+          //.escape(),
       check('patientHealthProblem', 'Os dados do campo "Problemas de Saúde" são inválidos')
           .isIn(['1', '2', undefined]),
       check('healthProblemDescription', 'Os dados do campo "Quem e qual o problema" são inválidos')
           .trim()
-          .isLength({min: 0, max: 1000}).withMessage('O campo "Quem e qual o problema" pode ter no máximo 1000 caracteres')
-          .escape(),
+          .isLength({min: 0, max: 1000}).withMessage('O campo "Quem e qual o problema" pode ter no máximo 1000 caracteres'),
+          //.escape(),
       check('assessments[0].breastfeeding', 'Os dados do campo "Mama no Peito?" são inválidos')
           .isIn(['1', '2', '3', undefined]),
       check('assessments[0].breastfeedingTime', 'Os dados do campo "Tempo entre as mamadas" são inválidos')
@@ -236,8 +236,8 @@ router.post('/',
           .isIn(['1', '2', undefined]),
       check('assessments[0].obsBreastfeeding', 'Os dados do campo "Observações" da pergunta "Mama no Peito?" são inválidos')
           .trim()
-          .isLength({max: 1000}).withMessage('pode ter no máximo 1000 caracteres')
-          .escape(),
+          .isLength({max: 1000}).withMessage('pode ter no máximo 1000 caracteres'),
+          //.escape(),
 
       //Pontuação da História Clínica
       check('assessments[0].clinicalHistoryPoints', 'A pontuação da "História Clínica" é inválida')
@@ -264,8 +264,8 @@ router.post('/',
           .isIn(['1', '2', undefined]),
       check('assessments[0].questionFourComments', 'Os dados do campo "Observações" da "Parte I" são inválidos')
           .trim()
-          .isLength({max: 1000}).withMessage('O campo "Observações" da "Parte I" pode ter no máximo 1000 caracteres')
-          .escape(),
+          .isLength({max: 1000}).withMessage('O campo "Observações" da "Parte I" pode ter no máximo 1000 caracteres'),
+          //.escape(),
 
       //Inserir Pontuação da Questão 4
       check('assessments[0].questionFourPoints', 'A pontuação da questão 4 é inválida')
@@ -287,8 +287,8 @@ router.post('/',
           .isIn(['1', '2', undefined]),
       check('assessments[0].obsSuction', 'Os dados do campo "Observações" da "Parte II" são inválidos')
           .trim()
-          .isLength({min: 0, max: 1000}).withMessage('O campo "Observações" da "Parte II" pode ter no máximo 1000 caracteres')
-          .escape(),
+          .isLength({min: 0, max: 1000}).withMessage('O campo "Observações" da "Parte II" pode ter no máximo 1000 caracteres'),
+          //.escape(),
 
       //Inserir Pontuação da Parte II
       check('assessments[0].partTwoQuestionPoints', 'A pontuação da "Parte II" é inválida')
@@ -304,14 +304,14 @@ router.post('/',
 
       check('assessments[0].obsResume', 'Os dados do campo "Observações" do "Resumo Final" são inválidos')
           .trim()
-          .isLength({max: 1000}).withMessage('O campo "Observações" do "Resumo Final" pode ter no máximo 1000 caracteres')
-          .escape(),
+          .isLength({max: 1000}).withMessage('O campo "Observações" do "Resumo Final" pode ter no máximo 1000 caracteres'),
+          //.escape(),
       check('assessments[0].assBehavior', 'Os dados da questão "CONDUTA" no Resumo Final são inválidos')
           .isIn(['1', '2', '3', undefined]),
       check('assessments[0].descBehavior', 'Os dados do campo "Observações" do "Resumo Final" são inválidos')
           .trim()
           .isLength({max: 100}).withMessage('O campo "Descrição da conduta" do "Resumo Final" pode ter no máximo 100 caracteres')
-          .escape()
+          //.escape()
     ],
     function (req, res) {
       const errors = validationResult(req);
@@ -319,8 +319,7 @@ router.post('/',
         //console.log("Tô aqui!");
        // console.log(req.body.assessments[0].assessmentDate);
         //console.log(errors.array());
-        return res.status(422).json({error: errors.array()
-        });
+        return res.status(422).json({error: errors.array()});
       }
 
       //Criação do exame
@@ -456,7 +455,7 @@ router.get('/patient/requestAssessment', function (req, res, next) {
     //console.log(patientSend);
     patientSend.assessments.splice(0, patientSend.assessments.length);
     let assessmentIndex = patientDB.assessments.findIndex(assessment => assessment._id.equals(assessmentIdReq));
-    console.log("Id Assessment = " + assessmentIdReq + ". Index = " + assessmentIndex);
+    //console.log("Id Assessment = " + assessmentIdReq + ". Index = " + assessmentIndex);
     //console.log(patientDB);
     patientSend.assessments.push(patientDB.assessments[assessmentIndex]);
     //console.log(patientSend);
