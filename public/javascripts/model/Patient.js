@@ -384,7 +384,7 @@ function Patient (
         case "2":
           return "Frenotomia sugerida";
         case "3":
-          return "Retornar para monitoramento em:";
+          return "Retornar para monitoramento conforme descrição abaixo";
         default:
           return "Não respondida"
       }

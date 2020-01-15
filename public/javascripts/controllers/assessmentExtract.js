@@ -98,7 +98,7 @@ $(document).ready(function() {
           $("#resBreastfeedingSleep").text(patient.breastfeedingSleepToText(0));
           $("#resReleasingNipple").text(patient.releasingNippleToText(0));
           $("#resBiteNipple").text(patient.biteNippleToText(0));
-          $("#resObsBreastfeeding").text(patient.assessment[0].obsBreastfeeding);
+          $("#resObsBreastfeeding").text(patient.assessments[0].obsBreastfeeding);
           //Pontos das questões da história Clínica
           let clinicalHistoryPoints = patient.ClinicalHistoryPoints(0);
           $("#resClinicalHistoryPoints").text(clinicalHistoryPoints);
@@ -117,7 +117,7 @@ $(document).ready(function() {
           $("#resQuestionFourOne").text(patient.questionFourOneToText(0));
           $("#resQuestionFourTwo").text(patient.questionFourTwoToText(0));
           $("#resQuestionFourThree").text(patient.questionFourThreeToText(0));
-          $("#resQuestionFourComments").text(patient.assessment[0].questionFourComments);
+          $("#resQuestionFourComments").text(patient.assessments[0].questionFourComments);
 
           //Total de pontos da questão 4
           let fourQuestionPoints = patient.fourQuestionPoints(0);
@@ -134,7 +134,7 @@ $(document).ready(function() {
           $("#resPartTwoQuestionTwoTwo").text(patient.partTwoQuestionTwoTwoToText(0));
           $("#resPartTwoQuestionTwoThree").text(patient.partTwoQuestionTwoThreeToText(0));
           $("#resPartTwoQuestionTwoFour").text(patient.partTwoQuestionTwoFourToText(0));
-          $("#resObsSuction").text(patient.assessment[0].obsSuction);
+          $("#resObsSuction").text(patient.assessments[0].obsSuction);
 
           //Colocar total de pontos da avaliação da sucção não nutritiva e nutritiva
           let partTwoQuestionPoints = patient.partTwoQuestionPoints(0);
@@ -152,12 +152,12 @@ $(document).ready(function() {
           (historyAssessmentPoints < 13) ? $("#resHistoryAssessmentPoints").addClass("badge-success") : $("#resHistoryAssessmentPoints").addClass("badge-danger");
 
           //Resultado
-          $("#resObsFinal").text(patient.assessment[0].obsResume);
+          $("#resObsFinal").text(patient.assessments[0].obsResume);
           $("#resBehavior").text(patient.assBehaviorText(0));
-          $("#resBehaviorDescription").text(patient.assessment[0].descBehavior);
-          $("#resUserFullName").text(patient.assessment[0].userName + " " + patient.assessment[0].userLastName);
-          $("#resUserOccupation").text(patient.assessment[0].userOccupation);
-          $("#resUserRegistry").text(patient.assessment[0].userRegistry);
+          $("#resBehaviorDescription").text(patient.assessments[0].descBehavior);
+          $("#resUserFullName").text(patient.assessments[0].userName + " " + patient.assessments[0].userLastName);
+          $("#resUserOccupation").text(patient.assessments[0].userOccupation);
+          $("#resUserRegistry").text(patient.assessments[0].userRegistry);
         })
         .fail(function() {
             console.log( "error" );

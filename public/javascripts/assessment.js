@@ -1,7 +1,6 @@
-let patient;
 $(document).ready(function() {
   //Cria novo Paciente
-  //let patient;
+  let patient;
 // Formulário principal multi passos
   //Seta a tab inicial como 0
   let currentTab = 0;
@@ -66,8 +65,9 @@ $(document).ready(function() {
           success: successHandler,
           error: errorHandler
         });
-        currentTab--;
+        return;
       }
+      currentTab --;
     }else {
       // Esconde a tab atual
       tabs[currentTab - n].style.display = "none";
@@ -205,8 +205,7 @@ $(document).ready(function() {
     console.log(data);
     let url = 'assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
     window.open(url, "_blank");
-
-    //window.location.replace()
+    //window.location.replace("/assessment")
   }
 
   function errorHandler (data) {

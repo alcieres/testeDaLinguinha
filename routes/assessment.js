@@ -318,7 +318,7 @@ router.post('/',
       if (!errors.isEmpty()) {
         //console.log("Tô aqui!");
        // console.log(req.body.assessments[0].assessmentDate);
-        console.log(errors.array());
+        //console.log(errors.array());
         return res.status(422).json({error: errors.array()
         });
       }
@@ -412,7 +412,7 @@ router.post('/',
               if (err.code === 11000){
                 async function update () {
                   let updatedDocsIds = await findAndUpdate(patientNew, true);
-                  console.log("ARRAY IDS: " + 'patientId = ' + updatedDocsIds[0] + ' e assessmentId = ' + updatedDocsIds[1]);
+                  //console.log("ARRAY IDS: " + 'patientId = ' + updatedDocsIds[0] + ' e assessmentId = ' + updatedDocsIds[1]);
                   res.status(200).json({success: [{msg: "Paciente atualizado e teste inserido", patientId: updatedDocsIds[0], assessmentId: updatedDocsIds[1]}]});
                 }
                 update();
@@ -438,7 +438,6 @@ router.post('/',
     });
 
 router.get('/assessmentExtract', function (req, res, next) {
-  console.log("Body do Extrato: " + req.query.patientId);
   let patientId = req.query.patientId;
   let assessmentId = req.query.assessmentId;
 
@@ -448,12 +447,20 @@ router.get('/assessmentExtract', function (req, res, next) {
 router.get('/patient/requestAssessment', function (req, res, next) {
   let patientIdReq = req.query.patient;
   let assessmentIdReq = req.query.assessment;
-  Patient.findById(patientIdReq, function (err, patient) {
+  Patient.findById(patientIdReq, function (err, patientDB) {
     if (err) {
       console.log(err);
     }
-    console.log(patient);
-    res.status(200).json({patient});
+    //console.log(patientDB);
+    let patientSend = JSON.parse(JSON.stringify(patientDB));
+    //console.log(patientSend);
+    patientSend.assessments.splice(0, patientSend.assessments.length);
+    let assessmentIndex = patientDB.assessments.findIndex(assessment => assessment._id.equals(assessmentIdReq));
+    console.log("Id Assessment = " + assessmentIdReq + ". Index = " + assessmentIndex);
+    //console.log(patientDB);
+    patientSend.assessments.push(patientDB.assessments[assessmentIndex]);
+    //console.log(patientSend);
+    res.status(200).json({patient: patientSend});
   });
 });
 
@@ -497,9 +504,9 @@ async function findAndUpdate(patientForUpdate, newAssessment) {
   if (newAssessment) {
     patientDB.assessments.push(patientForUpdate.assessments[0]);
     await patientDB.save();
-    return [patientDB._id, patientDB.assessments[0]._id];
+    return [patientDB._id, patientForUpdate.assessments[0]._id];
   } else {
-    let assessmentIndex = patientDB.assessments.findIndex(assessment => assessment._id === patientForUpdate.assessments[0]._id);
+    let assessmentIndex = patientDB.assessments.findIndex(assessment => assessment._id.equals(patientForUpdate.assessments[0]._id));
     patientDB.assessments[assessmentIndex] = patientForUpdate.assessments[0];
     await patientDB.save();
     return [patientDB._id, patientDB.assessments[assessmentIndex]._id];
