@@ -4,8 +4,8 @@ const isLoggedIn = require('../config/isLogged');
 
 
 /* Página Inicial */
-router.get('/', isLoggedIn, function(req, res, next) {
-  res.render('findPatient', { title: 'Teste da Linguinha', user: req.user });
+router.get('/', isLoggedIn, function(req, res) {
+  res.render('findPatient/findPatient', { title: 'Teste da Linguinha', user: req.user });
 });
 
 module.exports = router;

@@ -1,22 +1,25 @@
 $(document).ready(function() {
   //Cria novo Paciente
   let patient;
-// Formulário principal multi passos
+  // Formulário principal multi passos
   //Seta a tab inicial como 0
   let currentTab = 0;
+  //Seta botão voltar
+  let prevBtn = $('#prevBtn');
+  //Seta botão avançar
+  let nextBtn = $('#nextBtn');
   //Transforma as tabs em um array
   const tabs = $('.tab');
-
-  //Exibir tab atual
+  //Exibir 1º tab
   showTab(currentTab);
 
-// Click do botão voltar do formulário
-  $('#prevBtn').click(function(){
+  // Click do botão voltar do formulário
+  prevBtn.click(function(){
     nextPrev(-1);
     $('html, body').scrollTop(0);
   });
-// Click do botão avançar do formulário
-  $('#nextBtn').click(function(){
+  // Click do botão avançar do formulário
+  nextBtn.click(function(){
     nextPrev(1);
     $('html, body').scrollTop(0);
   });
@@ -26,17 +29,17 @@ $(document).ready(function() {
     tabs[n].style.display = "block";
     //Desabilita o botão voltar na primeira tela e habilita nas próximas
     if (n === 0) {
-      $('#prevBtn').prop('disabled', true);
+      prevBtn.prop('disabled', true);
     } else {
-      $('#prevBtn').prop('disabled', false);
+      prevBtn.prop('disabled', false);
     }
 
     if (n === (tabs.length - 1)) {
-      $('#nextBtn').text('Concluir');
+      nextBtn.text('Concluir');
       //Chama a função que preenche o resumo final com os dados escritos e marcados
       patient = resumeWrite();
     } else {
-      $('#nextBtn').text('Próxima');
+      nextBtn.text('Próxima');
     }
     //... and run a function that will display the correct step indicator:
     fixStepIndicator(n)
@@ -76,13 +79,12 @@ $(document).ready(function() {
                   error: errorHandler
                 });
               },
-              "Não": function() {
+              'Não': function() {
                 $( this ).dialog( "close" );
               }
             }
           });
         });
-
       }
       currentTab --;
     }else {
@@ -156,17 +158,7 @@ $(document).ready(function() {
 
   //Inicialização e configuração do JQueryUi datepicker
   let dateCalendarField = $( ".dateCalendar" );
-  dateCalendarField.datepicker({
-    dateFormat: 'yy-mm-dd',
-    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-    nextText: 'Próximo',
-    prevText: 'Anterior',
-    maxDate: '+0m +0w'
-  });
+  datepickerFormat(dateCalendarField);
 
   $( "#inputAssessmentDate" ).datepicker( "setDate", new Date());
 
