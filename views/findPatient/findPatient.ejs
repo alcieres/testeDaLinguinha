@@ -2,18 +2,23 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/nav.css" />
     <link rel="stylesheet" href="/stylesheets/form.css" />
     <link rel="stylesheet" href="/stylesheets/text.css" />
+    <link rel="stylesheet" href="/javascripts/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" >
 
     <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
     <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
     <script type="text/javascript" src="/javascripts/jquery/jquery-ui.min.js" ></script>
 
     <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
+
+    <script type="text/javascript" src="/javascripts/Util.js" ></script>
+    <script type="text/javascript" src="/javascripts/FindPatient.js" ></script>
 
   </head>
   <body>
@@ -26,47 +31,49 @@
           <h2 class="text-center border border-dark rounded">Buscar Paciente</h2>
         </div>
       </div>
-      <div class="row align-items-center"> <%# Nome / data de nascimento %>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
-          <div class="form-label-group">
-            <input type="text" name="inputName" id="inputName" class="form-control" placeholder="Nome" minlength="5" maxlength="100" autofocus>
-            <label for="inputName">Nome</label>
+      <form id="findPatientsForm">
+        <div class="row align-items-center"> <%# Nome / data de nascimento %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+            <div class="form-label-group">
+              <input type="text" name="inputName" id="inputName" class="form-control" placeholder="Nome" minlength="5" maxlength="100" autofocus>
+              <label for="inputName">Nome</label>
+            </div>
+            <label for="inputName" class="error"></label>
           </div>
-          <label for="inputName" class="error"></label>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
-          <div class="form-label-group">
-            <input type="date" name="inputBirthDate" id="inputBirthDate" class="dateCalendar form-control" placeholder="Data de Nascimento">
-            <label for="inputBirthDate">Data de Nascimento</label>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <div class="form-label-group">
+              <input type="date" name="inputBirthDate" id="inputBirthDate" class="dateCalendar form-control" placeholder="Data de Nascimento">
+              <label for="inputBirthDate">Data de Nascimento</label>
+            </div>
+            <label for="inputBirthDate" class="error"></label>
           </div>
-          <label for="inputBirthDate" class="error"></label>
         </div>
-      </div>
-      <div class="row align-items-center"> <%# Nome da mãe / CPF da mãe %>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
-          <div class="form-label-group">
-            <input type="text" name="inputMotherName" id="inputMotherName" class="form-control" placeholder="Nome da mãe*" minlength="5" maxlength="100" required >
-            <label for="inputMotherName">Nome da mãe</label>
+        <div class="row align-items-center"> <%# Nome da mãe / CPF da mãe %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+            <div class="form-label-group">
+              <input type="text" name="inputMotherName" id="inputMotherName" class="form-control" placeholder="Nome da mãe*" minlength="5" maxlength="100" required >
+              <label for="inputMotherName">Nome da mãe</label>
+            </div>
+            <label for="inputMotherName" class="error"></label>
           </div>
-          <label for="inputMotherName" class="error"></label>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
-          <div class="form-label-group">
-            <input type="text" name="inputMotherCPF" id="inputMotherCPF" class="form-control" placeholder="CPF da mãe" minlength="14" maxlength="14" onkeypress="$(this).mask('000.000.000-00');" >
-            <label for="inputMotherCPF">CPF da mãe</label>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <div class="form-label-group">
+              <input type="text" name="inputMotherCPF" id="inputMotherCPF" class="form-control" placeholder="CPF da mãe" minlength="14" maxlength="14" onkeypress="$(this).mask('000.000.000-00');" >
+              <label for="inputMotherCPF">CPF da mãe</label>
+            </div>
+            <label for="inputMotherCPF" class="error"></label>
           </div>
-          <label for="inputMotherCPF" class="error"></label>
         </div>
-      </div>
-      <div class="row align-items-center"> <%# Data do exame / gênero %>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mr-auto">
-          <div class="form-label-group">
-            <input type="date" name="inputAssessmentDate" id="inputAssessmentDate" class="dateCalendar form-control" placeholder="Data do Exame*" required>
-            <label for="inputAssessmentDate">Data do Exame</label>
+        <div class="row align-items-center"> <%# Data do exame / gênero %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mr-auto">
+            <div class="form-label-group">
+              <input type="date" name="inputAssessmentDate" id="inputAssessmentDate" class="dateCalendar form-control" placeholder="Data do Exame*" required>
+              <label for="inputAssessmentDate">Data do Exame</label>
+            </div>
+            <label for="inputAssessmentDate" class="error"></label>
           </div>
-          <label for="inputAssessmentDate" class="error"></label>
         </div>
-      </div>
+      </form>
     </div> <%# Containner %>
   <div class="container finalContainer"> <%# Containner Botões %>
 

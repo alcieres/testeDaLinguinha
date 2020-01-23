@@ -1,4 +1,11 @@
 $(document).ready(function() {
+
+    // Configuração do botão voltar
+    $('#prevBtn').click(function() {
+        window.history.back();
+        //window.location = "/users";
+    });
+
     $('#resetPasswordBtn').click(function (e) {
         e.preventDefault();
         if (passwordValidateForm() && confirm("Confirma a alteração de sua senha?")) {
