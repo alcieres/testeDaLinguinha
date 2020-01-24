@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/nav.css" />
+    <link rel="stylesheet" href="/stylesheets/form.css" />
+    <link rel="stylesheet" href="/stylesheets/text.css" />
+
+    <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-ui.min.js" ></script>
+
+    <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
+    <script>
+      let patients = '<%- JSON.stringify(patients)%>';
+      patients = JSON.parse(patients);
+      console.log(patients[0]);
+    </script>
+
+  </head>
+  <body>
+
+  <%- include('../partials/nav', {active: "navAssessment"}); %>
+
+  <div class="container finalContainer"> <%# Containner Botões %>
+
+    <div class="row align-items-center"> <%# Descrição da Pontuação %>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 mr-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="backBtn" >Voltar</button>
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 m-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="cleanBtn" >Limpar</button>
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 ml-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="findBtn" >Buscar</button>
+      </div>
+    </div>
+  </div> <%# Containner %>
+
+    <% include ../partials/footer %>

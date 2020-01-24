@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const assessmentSchema = new mongoose.Schema({
-  assessmentDate: { type: Date, default: Date.now },
+  assessmentDate: Date,
   breastfeeding: Number,
   breastfeedingTime: Number,
   breastfeedingTiredness: Number,

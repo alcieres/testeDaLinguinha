@@ -5,19 +5,21 @@ $(document).ready(function() {
     //window.location = "/users";
   });
 
-  $('#findBtn').click(function() {
-    $.ajax({
-      method: 'GET',
-      url: '/findPatient/find',
-      data: $('#findPatientsForm').serialize(),
-      success: successHandler,
-      error: errorHandler
+  $('#cleanBtn').click(function() {
+    $('#findPatientsForm').each (function(){
+      this.reset();
     });
   });
+
+  $('#findBtn').click(function() {
+    $('#findPatientsForm').submit();
+  });
+
 
   //Inicialização e configuração do JQueryUi datepicker
   let dateCalendarField = $( ".dateCalendar" );
   datepickerFormat(dateCalendarField);
+
 
 
 });

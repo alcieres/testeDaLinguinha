@@ -55,7 +55,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Conexão do mongoose
-mongoose.connect(dbConfig.url, { useNewUrlParser: true, useFindAndModify: false }, function(err) {
+mongoose.connect(dbConfig.url, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true }, function(err) {
     if (err) {
         console.log('Could not connect to mongodb on localhost. Ensure that you have mongodb running on localhost and mongodb accepts connections on standard ports!');
     }

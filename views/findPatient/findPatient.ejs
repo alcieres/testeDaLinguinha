@@ -31,7 +31,7 @@
           <h2 class="text-center border border-dark rounded">Buscar Paciente</h2>
         </div>
       </div>
-      <form id="findPatientsForm">
+      <form id="findPatientsForm" action="findPatient/find" method="POST">
         <div class="row align-items-center"> <%# Nome / data de nascimento %>
           <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
             <div class="form-label-group">
@@ -78,10 +78,13 @@
   <div class="container finalContainer"> <%# Containner Botões %>
 
     <div class="row align-items-center"> <%# Descrição da Pontuação %>
-      <div class="col-6 col-sm-4 col-md-4 col-lg-2 mr-auto">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 mr-auto">
         <button class="btn btn-primary btn-block text-uppercase" type="button" id="backBtn" >Voltar</button>
       </div>
-      <div class="col-6 col-sm-4 col-md-4 col-lg-2 ml-auto">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 m-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="cleanBtn" >Limpar</button>
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 ml-auto">
         <button class="btn btn-primary btn-block text-uppercase" type="button" id="findBtn" >Buscar</button>
       </div>
     </div>
