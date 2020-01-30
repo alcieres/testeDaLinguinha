@@ -104,25 +104,35 @@ router.post('/find',
   let motherCPF = req.body.inputMotherCPF;
   let assessmentDate;
   req.body.inputAssessmentDate ? assessmentDate = new Date(req.body.inputAssessmentDate) : assessmentDate = "";
+  let allEmptyFields = true;
 
   let query = Patient.find();
 
   if (name) {
     query.where('name', name);
+    allEmptyFields = false;
   }
   if (birthDate) {
     let birthDateTomorrow = new Date(birthDate.getTime() + 86400000);
     query.where('birthDate', {$gte: birthDate, $lt: birthDateTomorrow});
+    allEmptyFields = false;
   }
   if (assessmentDate) {
     let assessmentDateTomorrow = new Date(assessmentDate.getTime() + 86400000);
     query.where('assessments.assessmentDate', {$gte: assessmentDate, $lt: assessmentDateTomorrow});
+    allEmptyFields = false;
   }
   if (motherName) {
     query.where('motherName', motherName);
+    allEmptyFields = false;
   }
   if (motherCPF) {
     query.where('motherCPF', motherCPF);
+    allEmptyFields = false;
+  }
+
+  if (allEmptyFields){
+    res.status(422).json({ error: [{msg: 'Pelo menos um campo deve ser preenchido.'}]});
   }
 
   console.log("\n Condições:");

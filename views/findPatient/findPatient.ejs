@@ -14,10 +14,14 @@
     <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
     <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
     <script type="text/javascript" src="/javascripts/jquery/jquery-ui.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/jquery.validate.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/additional-methods.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/localization/messages_pt_BR.js" ></script>
 
     <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
 
     <script type="text/javascript" src="/javascripts/Util.js" ></script>
+    <script type="text/javascript" src="/javascripts/controllers/findPatientValidate.js" ></script>
     <script type="text/javascript" src="/javascripts/FindPatient.js" ></script>
 
   </head>
@@ -35,7 +39,7 @@
         <div class="row align-items-center"> <%# Nome / data de nascimento %>
           <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
             <div class="form-label-group">
-              <input type="text" name="inputName" id="inputName" class="form-control" placeholder="Nome" minlength="5" maxlength="100" autofocus>
+              <input type="text" name="inputName" id="inputName" class="form-control" placeholder="Nome" maxlength="100" autofocus>
               <label for="inputName">Nome</label>
             </div>
             <label for="inputName" class="error"></label>
@@ -51,7 +55,7 @@
         <div class="row align-items-center"> <%# Nome da mãe / CPF da mãe %>
           <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
             <div class="form-label-group">
-              <input type="text" name="inputMotherName" id="inputMotherName" class="form-control" placeholder="Nome da mãe*" minlength="5" maxlength="100" required >
+              <input type="text" name="inputMotherName" id="inputMotherName" class="form-control" placeholder="Nome da mãe*" maxlength="100" >
               <label for="inputMotherName">Nome da mãe</label>
             </div>
             <label for="inputMotherName" class="error"></label>
@@ -67,7 +71,7 @@
         <div class="row align-items-center"> <%# Data do exame / gênero %>
           <div class="col-12 col-sm-12 col-md-12 col-lg-4 mr-auto">
             <div class="form-label-group">
-              <input type="date" name="inputAssessmentDate" id="inputAssessmentDate" class="dateCalendar form-control" placeholder="Data do Exame*" required>
+              <input type="date" name="inputAssessmentDate" id="inputAssessmentDate" class="dateCalendar form-control" placeholder="Data do Exame*" >
               <label for="inputAssessmentDate">Data do Exame</label>
             </div>
             <label for="inputAssessmentDate" class="error"></label>
@@ -89,5 +93,11 @@
       </div>
     </div>
   </div> <%# Containner Botões %>
+
+  <div class="dialogJquery" id="dialog-message" title="Título">
+    <p>
+      Mensagem
+    </p>
+  </div>
 
     <% include ../partials/footer %>

@@ -233,11 +233,7 @@ $(document).ready(function() {
         }
       });
     } );
-    dados = data;
-    data.responseJSON.error.forEach(error => console.log(error.msg));
-    //console.log(data);
   }
 
 
 }); //Fim document ready
-let dados;
