@@ -12,4 +12,3 @@ function datepickerFormat(dateField) {
    maxDate: '+0m +0w'
  });
 }
-

@@ -142,7 +142,10 @@ router.post('/list',
     console.log("Erro de Acesso ao Banco de Dados");
   } else {
     console.log(doc);
-    res.render('findPatient/patientsList', {patients: doc, title: 'Teste da Linguinha', user: req.user, error: [] });
+    if (doc.length === 0){
+      doc = "";
+    }
+    res.render('findPatient/patientsList', {patients: doc, title: 'Teste da Linguinha', user: req.user, error: [{msg: 'Nenhum paciente encontrado.'}] });
   }
  });
 });

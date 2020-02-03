@@ -12,6 +12,17 @@ $(document).ready(function() {
   });
 
   $('#findBtn').click(function() {
+    validateAndSubmit();
+  });
+
+  $('#findPatientsForm').keydown(function(e) {
+    let key = e.which;
+    if (key === 13) {
+      validateAndSubmit();
+    }
+  });
+
+function validateAndSubmit (){
   if (formNotEmpty()){
     if (validateFindPatient()){
       $('#findPatientsForm').submit();
@@ -19,7 +30,7 @@ $(document).ready(function() {
   } else {
     dialogHandler("Erro!", "Preencha pelo menos um campo para a busca.");
   }
-  });
+}
 
   //Inicialização e configuração do JQueryUi datepicker
   let dateCalendarField = $( ".dateCalendar" );

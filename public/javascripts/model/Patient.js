@@ -1,4 +1,3 @@
-
 function Patient (
   patientId,
   //Tela 01
@@ -539,8 +538,7 @@ function Patient (
         return points;
     }
   }
-
-function dateToText(date) {
+  function dateToText(date) {
     let day = date.getDate().toString();
     let month = date.getMonth() + 1 + "";
     let year = date.getFullYear();
