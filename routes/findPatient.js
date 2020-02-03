@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const isLoggedIn = require('../config/isLogged');
 const Patient = require('../models/Patient.js');
-const Assessment = require('../models/Assessment.js');
 const { check, validationResult } = require('express-validator');
 
 /* Página Inicial */
@@ -10,12 +9,12 @@ router.get('/', isLoggedIn, function(req, res) {
   res.render('findPatient/findPatient', { title: 'Teste da Linguinha', user: req.user });
 });
 
-router.post('/find',
+router.post('/list',
     isLoggedIn,
     [
       check('inputName', 'Os dados do campo "Nome" são inválidos.')
           .optional({checkFalsy: true})
-          .isLength({min: 3, max: 100}).withMessage('O campo "Nome" pode ter entre 3 e 100 caracteres.')
+          .isLength({max: 100}).withMessage('O campo "Nome" pode ter entre 3 e 100 caracteres.')
           //.escape()
           .trim()
           .customSanitizer(
@@ -32,7 +31,7 @@ router.post('/find',
           .isISO8601({strict: true}),
       check('inputMotherName', 'Os dados do campo "Nome da Mãe" são inválidos.')
           .optional({checkFalsy: true})
-          .isLength({min: 3, max: 100}).withMessage('O campo "Nome da Mãe" pode ter entre 3 e 100 caracteres.')
+          .isLength({max: 100}).withMessage('O campo "Nome da Mãe" pode ter entre 3 e 100 caracteres.')
           //.escape()
           .trim()
           .customSanitizer(
@@ -94,7 +93,7 @@ router.post('/find',
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         console.log(errors.array());
-        return res.status(422).json({error: errors.array()});
+        return res.render('findPatient/patientsList', {patients: "", title: 'Teste da Linguinha', user: req.user, error: errors.array() });
       }
 
   let name = req.body.inputName;
@@ -132,7 +131,7 @@ router.post('/find',
   }
 
   if (allEmptyFields){
-    res.status(422).json({ error: [{msg: 'Pelo menos um campo deve ser preenchido.'}]});
+    res.render('findPatient/patientsList', {patients: "", title: 'Teste da Linguinha', user: req.user, error: [{msg: 'Nenhum paciente encontrado.'}]});
   }
 
   console.log("\n Condições:");
@@ -142,7 +141,8 @@ router.post('/find',
   if (err){
     console.log("Erro de Acesso ao Banco de Dados");
   } else {
-    res.render('findPatient/patientsList', {patients: doc, title: 'Teste da Linguinha', user: req.user });
+    console.log(doc);
+    res.render('findPatient/patientsList', {patients: doc, title: 'Teste da Linguinha', user: req.user, error: [] });
   }
  });
 });
