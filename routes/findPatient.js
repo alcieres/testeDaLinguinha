@@ -137,7 +137,7 @@ router.post('/list',
   console.log("\n Condições:");
   console.log(query._conditions.valueOf());
 
- query.exec((err, doc) =>{
+ query.sort({name: 1}).exec((err, doc) =>{
   if (err){
     console.log("Erro de Acesso ao Banco de Dados");
   } else {
@@ -148,6 +148,18 @@ router.post('/list',
     res.render('findPatient/patientsList', {patients: doc, title: 'Teste da Linguinha', user: req.user, error: [{msg: 'Nenhum paciente encontrado.'}] });
   }
  });
+});
+
+router.get('/:id', isLoggedIn, function(req, res) {
+  let id = req.params.id;
+  Patient.findOne({_id: id}, function (err, doc){
+    if (err){
+      console.log("Erro de Acesso ao Banco de Dados");
+    } else {
+      console.log(doc);
+      res.render('findPatient/patientDetails', {title: 'Teste da Linguinha', user: req.user, patient: doc });
+    }
+  });
 });
 
 module.exports = router;

@@ -16,35 +16,176 @@
 
     <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
 
+    <script type="text/javascript" src="/javascripts/patientDetails.js" ></script>
   </head>
   <body>
 
-  <%- include('partials/nav', {active: "navAssessment"}); %>
+  <%- include('../partials/nav', {active: "navFindPatient"}); %>
+  <% include ../partials/Util.ejs %>
+  <%
+    let formatCPF = function (cpf){
+      cpf = cpf.replace(/[^\d]/g, "");
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    };
+  %>
+  <%
+  let behaviorToText = function (behavior){
+    switch (behavior) {
+      case 1:
+        return "Sem alteração de frênulo lingual";
+      case 2:
+        return "Frenotomia sugerida";
+      case 3:
+        return "Em monitoramento";
+      default:
+        return "Não respondida"
+    }
+  };
+
+ %>
 
     <div class="container mainContainer">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et netus et malesuada fames ac turpis egestas. Tortor at auctor urna nunc id. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. Nisi porta lorem mollis aliquam ut porttitor leo a diam. Lobortis mattis aliquam faucibus purus in massa tempor nec. Arcu dictum varius duis at consectetur lorem. Nisl rhoncus mattis rhoncus urna neque viverra justo nec. Non nisi est sit amet facilisis magna etiam. Id velit ut tortor pretium viverra suspendisse. Tortor aliquam nulla facilisi cras fermentum. Feugiat sed lectus vestibulum mattis ullamcorper velit. Dictum varius duis at consectetur. Dolor sit amet consectetur adipiscing elit ut aliquam. Eget nunc scelerisque viverra mauris in. Ultricies lacus sed turpis tincidunt id aliquet. Aliquam eleifend mi in nulla posuere sollicitudin aliquam.
-      Et pharetra pharetra massa massa ultricies mi. Sed risus pretium quam vulputate dignissim suspendisse in est. Lorem donec massa sapien faucibus et. Diam phasellus vestibulum lorem sed risus. Curabitur gravida arcu ac tortor dignissim convallis aenean. Amet tellus cras adipiscing enim eu turpis egestas pretium. Suscipit adipiscing bibendum est ultricies integer. Vitae tempus quam pellentesque nec. Orci eu lobortis elementum nibh. Arcu dui vivamus arcu felis bibendum ut. Amet est placerat in egestas erat imperdiet. Sed velit dignissim sodales ut eu sem integer. Est ullamcorper eget nulla facilisi etiam dignissim diam quis.
-      Amet tellus cras adipiscing enim. Amet consectetur adipiscing elit ut aliquam purus sit amet. Nulla malesuada pellentesque elit eget. Facilisis gravida neque convallis a cras semper. Risus viverra adipiscing at in tellus integer feugiat. Odio facilisis mauris sit amet massa vitae tortor. Molestie nunc non blandit massa enim nec. Ornare quam viverra orci sagittis eu volutpat odio facilisis. Urna nunc id cursus metus. Ultricies leo integer malesuada nunc vel risus commodo. Felis bibendum ut tristique et. Et pharetra pharetra massa massa ultricies. Consectetur libero id faucibus nisl tincidunt eget nullam non. Metus vulputate eu scelerisque felis imperdiet. Senectus et netus et malesuada fames ac turpis egestas maecenas. Tortor at auctor urna nunc id. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Elit sed vulputate mi sit amet mauris commodo quis imperdiet.
-      Suspendisse faucibus interdum posuere lorem ipsum. Et magnis dis parturient montes. Enim ut tellus elementum sagittis vitae et. Tellus elementum sagittis vitae et leo duis ut diam quam. Sed arcu non odio euismod. Consectetur adipiscing elit ut aliquam purus. Eu ultrices vitae auctor eu augue. In ante metus dictum at tempor commodo ullamcorper a. Eu feugiat pretium nibh ipsum. Nisi porta lorem mollis aliquam ut porttitor. Dignissim suspendisse in est ante in nibh mauris cursus mattis.
-      Convallis aenean et tortor at risus viverra adipiscing at. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Adipiscing elit pellentesque habitant morbi tristique senectus et netus et. Odio facilisis mauris sit amet massa vitae. Pretium quam vulputate dignissim suspendisse. Nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi. Mi sit amet mauris commodo quis. Nisl nunc mi ipsum faucibus vitae aliquet nec. In mollis nunc sed id semper risus. Tortor aliquam nulla facilisi cras fermentum. Vitae tortor condimentum lacinia quis vel eros donec ac. Fusce ut placerat orci nulla pellentesque dignissim enim. Orci phasellus egestas tellus rutrum tellus. Velit euismod in pellentesque massa placerat duis ultricies lacus. Purus in massa tempor nec feugiat nisl pretium fusce.
-    </p>
-
+      <div class="row align-items-center">  <%# Linha do título História Clínica 1 %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <h2 class="text-center border border-dark rounded">Detalhes do Paciente</h2>
+        </div>
+      </div>
+      <div class="row align-items-center mt-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 ml-auto">
+          <p>Nome: <%= patient.name;%></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 mr-auto">
+          <p>Data de Nascimento: <%= dateToText(patient.birthDate);%></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 ml-auto">
+          <p>Gênero: <%= patient.genre === 1 ? 'Masculino' : 'Feminino';%></p>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 ml-auto">
+          <p>Nome da mãe: <%= patient.motherName;%></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 ml-auto">
+          <p>CPF da mãe: <%= formatCPF(patient.motherCPF);%></p>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 ml-auto">
+          <p>Nome do pai: <%= patient.fatherName;%></p>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 ml-auto">
+          <p>Endereço: <%= patient.address;%></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 ml-auto">
+          <p>Número: <%= patient.residenceNumber;%></p>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 ml-auto">
+          <p>Bairro: <%= patient.neighborhood;%></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mr-auto">
+          <p>Cidade: <%= patient.city;%></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-2 ml-auto">
+          <p>Estado: <%= patient.state %></p>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 ml-auto">
+          <p>CEP: <%= patient.cep;%></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 ml-auto">
+          <p>E-mail: <%= patient.email;%></p>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 ml-auto">
+          <p >Tel. residencial: <span class="telMask"><%= patient.resTel;%></span></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mr-auto">
+          <p>Tel. Trabalho: <span class="telMask"><%= patient.commercialTel;%></span></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 ml-auto">
+          <p>Celular: <span class="telMask"><%= patient.cellPhone %></span></p>
+        </div>
+      </div>
     </div> <%# Containner %>
 
-  <div class="container finalContainer"> <%# Containner Botões %>
-
+  <div class="container mainContainer"> <%# Containner Botões %>
     <div class="row align-items-center"> <%# Descrição da Pontuação %>
       <div class="col-12 col-sm-4 col-md-4 col-lg-2 mr-auto">
-        <button class="btn btn-primary btn-block text-uppercase" type="button" id="backBtn" >Voltar</button>
-      </div>
-      <div class="col-12 col-sm-4 col-md-4 col-lg-2 m-auto">
-        <button class="btn btn-primary btn-block text-uppercase" type="button" id="cleanBtn" >Limpar</button>
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="deleteBtn" >Excluir</button>
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-2 ml-auto">
-        <button class="btn btn-primary btn-block text-uppercase" type="button" id="findBtn" >Buscar</button>
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="editBtn" >Editar</button>
       </div>
     </div>
   </div> <%# Containner %>
 
-    <% include partials/footer %>
+  <div class="container mainContainer">
+      <div class="row align-items-center"> <%# Descrição da Pontuação %>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th scope="col" class="text-center">Data da Avaliação</th>
+              <th scope="col" class="text-center">Pontos (História Clínica)</th>
+              <th scope="col" class="text-center">Pontos (Exame Clínico)</th>
+              <th scope="col" class="text-center">Total de Pontos</th>
+              <th scope="col" class="text-center">Conduta</th>
+              <th scope="col" class="text-center">Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% patient.assessments.forEach(function(assessment){%>
+              <tr>
+                <th scope="row" class="text-center"><%= dateToText(assessment.assessmentDate);%></th>
+                <td class="text-center"><%= assessment.clinicalHistoryPoints;%></td>
+                <td class="text-center"><%= assessment.clinicalAssessmentPoints;%></td>
+                <td class="text-center"><%= assessment.historyAssessmentPoints;%></td>
+                <td class="text-center"><%= behaviorToText(assessment.assBehavior);%></td>
+                <td class="text-center text-nowrap">
+                  <a href="assessment/<%=patient._id%>" class="mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
+                      <path fill="none" d="M0 0h24v24H0V0z"/>
+                      <path opacity=".3" d="M12 6c-3.79 0-7.17 2.13-8.82 5.5C4.83 14.87 8.21 17 12 17s7.17-2.13 8.82-5.5C19.17 8.13 15.79 6 12 6zm0 10c-2.48 0-4.5-2.02-4.5-4.5S9.52 7 12 7s4.5 2.02 4.5 4.5S14.48 16 12 16z"/>
+                      <path d="M12 4C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 13c-3.79 0-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6s7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17zm0-10c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7zm0 7c-1.38 0-2.5-1.12-2.5-2.5S10.62 9 12 9s2.5 1.12 2.5 2.5S13.38 14 12 14z"/>
+                    </svg>
+                  </a>
+                  <a href="assessment/<%=patient._id%>/edit" class="ml-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
+                      <path fill="none" d="M0 0h24v24H0V0z"/>
+                      <path opacity=".3" d="M5 18.08V19h.92l9.06-9.06-.92-.92z"/>
+                      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z"/>
+                    </svg>
+                  </a>
+                  <a href="assessment/<%=patient._id%>/delete" class="ml-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
+                      <path fill="none" d="M0 0h24v24H0V0z"/>
+                      <path d="M3 8v16h18v-16h-18zm5 12c0 .552-.448 1-1 1s-1-.448-1-1v-8c0-.552.448-1 1-1s1 .448 1 1v8zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-8c0-.552.448-1 1-1s1 .448 1 1v8zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-8c0-.552.448-1 1-1s1 .448 1 1v8zm4-15.375l-.409 1.958-19.591-4.099.409-1.958 5.528 1.099c.881.185 1.82-.742 2.004-1.625l5.204 1.086c-.184.882.307 2.107 1.189 2.291l5.666 1.248z"/>
+                    </svg>
+                  </a>
+                </td>
+              </tr>
+            <%});%>
+          </tbody>
+        </table>
+    </div>
+  </div> <%# Containner %>
+
+  <div class="container finalContainer"> <%# Containner Botões %>
+    <div class="row align-items-center"> <%# Descrição da Pontuação %>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 mr-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="backBtn" >Voltar</button>
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 ml-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="newTestBtn" >Novo Teste</button>
+      </div>
+    </div>
+  </div> <%# Containner %>
+
+    <% include ../partials/footer %>
+
+
