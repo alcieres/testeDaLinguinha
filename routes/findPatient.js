@@ -92,7 +92,7 @@ router.post('/list',
     function(req, res) {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        console.log(errors.array());
+        //console.log(errors.array());
         return res.render('findPatient/patientsList', {patients: "", title: 'Teste da Linguinha', user: req.user, error: errors.array() });
       }
 
@@ -134,14 +134,14 @@ router.post('/list',
     res.render('findPatient/patientsList', {patients: "", title: 'Teste da Linguinha', user: req.user, error: [{msg: 'Nenhum paciente encontrado.'}]});
   }
 
-  console.log("\n Condições:");
-  console.log(query._conditions.valueOf());
+  // console.log("\n Condições:");
+  // console.log(query._conditions.valueOf());
 
  query.sort({name: 1}).exec((err, doc) =>{
   if (err){
     console.log("Erro de Acesso ao Banco de Dados");
   } else {
-    console.log(doc);
+    //console.log(doc);
     if (doc.length === 0){
       doc = "";
     }
@@ -156,8 +156,21 @@ router.get('/:id', isLoggedIn, function(req, res) {
     if (err){
       console.log("Erro de Acesso ao Banco de Dados");
     } else {
-      console.log(doc);
+      //console.log(doc);
       res.render('findPatient/patientDetails', {title: 'Teste da Linguinha', user: req.user, patient: doc });
+    }
+  });
+});
+
+router.get('/:id/edit', isLoggedIn, function(req, res) {
+  let id = req.params.id;
+  Patient.findOne({_id: id}, function (err, doc){
+    if (err){
+      console.log("Erro de Acesso ao Banco de Dados");
+    } else {
+      doc.assessments = "";
+      console.log(doc);
+      res.render('findPatient/editPatient', {title: 'Teste da Linguinha', user: req.user, patient: doc });
     }
   });
 });

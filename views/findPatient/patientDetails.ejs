@@ -21,27 +21,45 @@
   <body>
 
   <%- include('../partials/nav', {active: "navFindPatient"}); %>
-  <% include ../partials/Util.ejs %>
+
   <%
     let formatCPF = function (cpf){
-      cpf = cpf.replace(/[^\d]/g, "");
       return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
     };
-  %>
-  <%
-  let behaviorToText = function (behavior){
-    switch (behavior) {
-      case 1:
-        return "Sem alteração de frênulo lingual";
-      case 2:
-        return "Frenotomia sugerida";
-      case 3:
-        return "Em monitoramento";
-      default:
-        return "Não respondida"
-    }
-  };
 
+    let behaviorToText = function (behavior){
+      switch (behavior) {
+        case 1:
+          return "Sem alteração de frênulo lingual";
+        case 2:
+          return "Frenotomia sugerida";
+        case 3:
+          return "Em monitoramento";
+        default:
+          return "Não respondida"
+      }
+    };
+
+    let telFormat = function (tel) {
+        if (!tel){
+          return "";
+        }
+        tel.length === 10 ? tel = tel.replace(/(^)(\d{2})(\d{4})(\d{2})/, "$1($2) $3 $4") : tel = tel.replace(/(^)(\d{2})(\d{5})(\d{2})/, "$1($2) $3 $4");
+      return tel;
+    };
+
+    let dateToText = function (date) {
+      let day = date.getDate().toString();
+      let month = date.getMonth() + 1 + "";
+      let year = date.getFullYear();
+      if (day.length < 2){
+        day = 0  + "" + day;
+      }
+      if (month.length < 2){
+        month = 0 + "" + month;
+      }
+      return day + "/" + month + '/' + year;
+    };
  %>
 
     <div class="container mainContainer">
@@ -103,13 +121,13 @@
       </div>
       <div class="row align-items-center">
         <div class="col-12 col-sm-12 col-md-12 col-lg-4 ml-auto">
-          <p >Tel. residencial: <span class="telMask"><%= patient.resTel;%></span></p>
+          <p >Tel. residencial: <span class="telMask"><%= telFormat(patient.resTel);%></span></p>
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-4 mr-auto">
-          <p>Tel. Trabalho: <span class="telMask"><%= patient.commercialTel;%></span></p>
+          <p>Tel. Trabalho: <span class="telMask"><%= telFormat(patient.commercialTel);%></span></p>
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-4 ml-auto">
-          <p>Celular: <span class="telMask"><%= patient.cellPhone %></span></p>
+          <p>Celular: <span class="telMask"><%= telFormat(patient.cellPhone); %></span></p>
         </div>
       </div>
     </div> <%# Containner %>
@@ -120,7 +138,7 @@
         <button class="btn btn-primary btn-block text-uppercase" type="button" id="deleteBtn" >Excluir</button>
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-2 ml-auto">
-        <button class="btn btn-primary btn-block text-uppercase" type="button" id="editBtn" >Editar</button>
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="editBtn" onclick="location.href = '<%= patient._id %>/edit';">Editar</button>
       </div>
     </div>
   </div> <%# Containner %>

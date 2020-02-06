@@ -114,26 +114,6 @@ $(document).ready(function() {
   inputState.val('RS');
   findCities('RS');
 
-  //Busca a lista de cidades no banco e atualiza a lista de cidades
-  function findCities(state){
-    $.getJSON( "city/citiesListByState", {
-      state: state,
-    })
-        .done(function(data) {
-          let citiesSelect =  $("#inputCity");
-          citiesSelect.empty();
-          $.each(data.cities, function (index, item) {
-            citiesSelect.append(new Option(item.c, item.c));
-          });
-          if (state === 'RS'){
-            citiesSelect.val('Osório');
-          }
-        })
-        .fail(function() {
-          console.log( "error" );
-        });
-  }
-
   // Desabilita radios de "Mama no peito?" por padrão ao carregar página da tela 01
   $(".breastfeedingCmd").prop('disabled', true);
   $(".breastfeedingCmdCss").css('opacity', '.2');
@@ -152,9 +132,9 @@ $(document).ready(function() {
   });
 
   //Setar data do exame como data de hoje
-  $('input[type=date]').on('click', function(event) {
-    event.preventDefault();
-  });
+  // $('input[type=date]').on('click', function(event) {
+  //   event.preventDefault();
+  // });
 
   //Inicialização e configuração do JQueryUi datepicker
   let dateCalendarField = $( ".dateCalendar" );
