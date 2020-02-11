@@ -14,7 +14,7 @@ function datepickerFormat(dateField) {
 }
 
 //Busca a lista de cidades no banco e atualiza a lista de cidades
-function findCities(state){
+function findCities(state, city){
   $.getJSON( "/city/citiesListByState", {
     state: state,
   })
@@ -24,9 +24,14 @@ function findCities(state){
         $.each(data.cities, function (index, item) {
           citiesSelect.append(new Option(item.c, item.c));
         });
-        if (state === 'RS'){
-          citiesSelect.val('Osório');
-        }
+
+          if(city){
+            $.each(data.cities, function (index, item) {
+              if (!item.c.toString().localeCompare(city, 'en', {sensitivity: 'base'})){
+                citiesSelect.val(item.c);
+              }
+            });
+          }
       })
       .fail(function() {
         console.log( "error" );

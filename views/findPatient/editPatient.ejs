@@ -24,10 +24,15 @@
     <script type="text/javascript" src="/javascripts/model/Patient.js" ></script>
     <script type="text/javascript" src="/javascripts/controllers/assessmentValidate.js" ></script>
     <script type="text/javascript" src="/javascripts/editPatient.js" ></script>
+    <script>
+        let patient = jQuery.parseJSON( '<%- patient%>' );
+    </script>
 </head>
 <body>
 
 <%- include('../partials/nav', {active: "navFindPatient"}); %>
+
+
 
 <div class="container mainContainer">
     <form id="editPatient">
@@ -52,13 +57,13 @@
                 <label for="inputBirthDate" class="error"></label>
             </div>
         </div>
-        <div class="row align-items-center"> <%# Data do exame / gênero %>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-4 mr-auto">
+        <div class="row align-items-center"> <%# Nome do pai / gênero %>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 mr-auto">
                 <div class="form-label-group">
-                    <input type="date" name="inputAssessmentDate" id="inputAssessmentDate" class="dateCalendar form-control" placeholder="Data do Exame*" required>
-                    <label for="inputAssessmentDate">Data do Exame<span class="requiredField">*</span></label>
+                    <input type="text" name="inputFatherName" id="inputFatherName" class="form-control" placeholder="Nome do pai" minlength="5" maxlength="100" >
+                    <label for="inputFatherName">Nome do pai</label>
                 </div>
-                <label for="inputAssessmentDate" class="error"></label>
+                <label for="inputFatherName" class="error"></label>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 ml-auto mb-3">
                 <fieldset id="fieldRbGenre">
@@ -93,15 +98,6 @@
                     <label for="inputMotherCPF">CPF da mãe</label>
                 </div>
                 <label for="inputMotherCPF" class="error"></label>
-            </div>
-        </div>
-        <div class="row align-items-center"> <%# Nome do pai %>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-8 mr-auto">
-                <div class="form-label-group">
-                    <input type="text" name="inputFatherName" id="inputFatherName" class="form-control" placeholder="Nome do pai" minlength="5" maxlength="100" >
-                    <label for="inputFatherName">Nome do pai</label>
-                </div>
-                <label for="inputFatherName" class="error"></label>
             </div>
         </div>
         <div class="row align-items-center"> <%# Logradouro / número da residência %>

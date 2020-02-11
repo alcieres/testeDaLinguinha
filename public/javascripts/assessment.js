@@ -112,7 +112,7 @@ $(document).ready(function() {
   });
   //Seleciona estado com "RS"
   inputState.val('RS');
-  findCities('RS');
+  findCities('RS', 'Osório');
 
   // Desabilita radios de "Mama no peito?" por padrão ao carregar página da tela 01
   $(".breastfeedingCmd").prop('disabled', true);

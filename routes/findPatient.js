@@ -170,7 +170,7 @@ router.get('/:id/edit', isLoggedIn, function(req, res) {
     } else {
       doc.assessments = "";
       console.log(doc);
-      res.render('findPatient/editPatient', {title: 'Teste da Linguinha', user: req.user, patient: doc });
+      res.render('findPatient/editPatient', {title: 'Teste da Linguinha', user: req.user, patient: JSON.stringify(doc) });
     }
   });
 });
