@@ -37,3 +37,34 @@ function findCities(state, city){
         console.log( "error" );
       });
 }
+
+//Formata a data UTC eno formato  yyyy-MM-dd
+function formatDate (date)
+{
+  date = new Date(date);
+  let d = date.getDate();
+  let m = date.getMonth() + 1;
+  let y = date.getFullYear();
+  if(d < 10) {
+    d = '0' + d
+  }
+  if(m < 10) {
+    m = '0' + m
+  }
+  return y + "-" + m + "-" + d;
+}
+
+function dateToText (date)
+{
+  date = new Date(date);
+  let d = date.getDate();
+  let m = date.getMonth() + 1;
+  let y = date.getFullYear();
+  if(d < 10) {
+    d = '0' + d
+  }
+  if(m < 10) {
+    m = '0' + m
+  }
+  return d + "/" + m + "/" + y;
+}

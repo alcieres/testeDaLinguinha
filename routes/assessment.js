@@ -5,9 +5,18 @@ const Patient = require('../models/Patient.js');
 const Assessment = require('../models/Assessment.js');
 const { check, validationResult } = require('express-validator');
 
-/* Página Inicial */
+/*
+Página Inicial
+- Site do teste da linguinha em si.
+- Permite três modos
+  1: Modo para inserção de novo paciente ou atualização de paciente e novo exame (caso o paciente já exista.
+  2: Modo para edição de um teste existente em paciente já existente (trazendo de início os dados do paciente e do teste em questão pré-preenchidos)
+    e permite a atualização dos dados do paciente.
+  3: Modo para inserção de novo exame para um paciente já existente (trazendo de início os dados do paciente pré-preenchidos) e também permite
+     a atualização dos dados do paciente.
+*/
 router.get('/', isLoggedIn, function (req, res, next) {
-  res.render('assessment/assessment', {title: 'Teste da Linguinha', user: req.user});
+  res.render('assessment/assessment', {title: 'Teste da Linguinha', user: req.user, patientId: "", assessmentId: '', mode: 1});
 });
 
 // ROTA CREATE - Rota para inserção de um novo paciente com o primeiro exame no banco
@@ -316,12 +325,8 @@ router.post('/',
     function (req, res) {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        //console.log("Tô aqui!");
-       // console.log(req.body.assessments[0].assessmentDate);
-        //console.log(errors.array());
         return res.status(422).json({error: errors.array()});
       }
-
       //Criação do exame
       let newAssessment = new Assessment();
       let assessmentIndex = 0;
@@ -423,43 +428,31 @@ router.post('/',
             res.status(200).json({success: [{msg: "Novo paciente inserido com Sucesso", patientId: patientNew._id, assessmentId: patientNew.assessments[0]._id}]});
           }
         });
-      // Patient.save(patientNew, function (err) {
-      //   if (err) {
-      //     console.log('error while user register!', err);
-      //     if (err.name === "UserExistsError") {
-      //       res.status(422).json({error: [{msg: 'CPF já cadastrado para outro usuário.'}]});
-      //     } else {
-      //       res.status(422).json({error: [{msg: 'Erro de acesso ao banco de dados.'}]});
-      //     }
-      //   }
-      //   res.status(201).json({success: [{msg: 'Novo usuário registrado com sucesso.'}]});
-      // });
     });
 
-router.get('/assessmentExtract', function (req, res, next) {
+router.get('/assessmentExtract', isLoggedIn, function (req, res, next) {
   let patientId = req.query.patientId;
   let assessmentId = req.query.assessmentId;
-
   res.render('assessment/assessmentExtract', {title: 'Teste da Linguinha', user: req.user, patientId, assessmentId});
 });
 
-router.get('/patient/requestAssessment', function (req, res, next) {
-  let patientIdReq = req.query.patient;
-  let assessmentIdReq = req.query.assessment;
+/*
+   Essa rota recebe uma requisição de um teste de um determinado paciente, procura o paciente no banco, e envia os dados pessoais do
+paciente juntamente com os dados do exame requerido
+*/
+router.get('/patient/requestAssessment', isLoggedIn, function (req, res, next) {
+  let patientIdReq = req.query.patient.trim();
+  let assessmentIdReq = req.query.assessment.trim();
   Patient.findById(patientIdReq, function (err, patientDB) {
     if (err) {
       console.log(err);
+    } else {
+      let patientSend = JSON.parse(JSON.stringify(patientDB));
+      patientSend.assessments.splice(0, patientSend.assessments.length);
+      let assessmentIndex = patientDB.assessments.findIndex(assessment => assessment._id.equals(assessmentIdReq));
+      patientSend.assessments.push(patientDB.assessments[assessmentIndex]);
+      res.status(200).json({patient: patientSend});
     }
-    //console.log(patientDB);
-    let patientSend = JSON.parse(JSON.stringify(patientDB));
-    //console.log(patientSend);
-    patientSend.assessments.splice(0, patientSend.assessments.length);
-    let assessmentIndex = patientDB.assessments.findIndex(assessment => assessment._id.equals(assessmentIdReq));
-    //console.log("Id Assessment = " + assessmentIdReq + ". Index = " + assessmentIndex);
-    //console.log(patientDB);
-    patientSend.assessments.push(patientDB.assessments[assessmentIndex]);
-    //console.log(patientSend);
-    res.status(200).json({patient: patientSend});
   });
 });
 

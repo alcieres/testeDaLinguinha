@@ -23,10 +23,17 @@
   <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
 
   <script type="text/javascript" src="/javascripts/util.js" ></script>
-  <script type="text/javascript" src="/javascripts/model/Patient.js" ></script>
+  <script type="text/javascript" src="/javascripts/models/Assessment.js" ></script>
+  <script type="text/javascript" src="/javascripts/models/Patient.js" ></script>
   <script type="text/javascript" src="/javascripts/controllers/assessmentValidate.js" ></script>
   <script type="text/javascript" src="/javascripts/controllers/resumeWrite.js" ></script>
   <script type="text/javascript" src="/javascripts/assessment.js" ></script>
+  <script>
+    let patientId = '<%= patientId%>';
+    let assessmentId = '<%= assessmentId%>';
+    let mode = '<%= mode%>';
+    console.log("Paciente: " + patientId + "\nTeste: " + assessmentId + "\nModo: " + mode);
+  </script>
 
 </head>
 
@@ -294,6 +301,32 @@
       </div>
     </div> <%# FIM Containner História Clínica 2 %>
 
+    <div class="container mainContainer p-2 accordionDiv">
+      <div id="accordionBreastfeeding">
+        <h3>Section 1</h3>
+        <div>
+          <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+        </div>
+        <h3>Section 2</h3>
+        <div>
+          <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna. </p>
+        </div>
+        <h3>Section 3</h3>
+        <div>
+          <p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui. </p>
+          <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+            <li>List item three</li>
+          </ul>
+        </div>
+        <h3>Section 4</h3>
+        <div>
+          <p>Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est. </p><p>Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
+        </div>
+      </div>
+    </div>
+
     <div class="container mainContainer"> <%# Containner História Clínica 3 %>
       <div class="row align-items-center"> <%# Pergunta mama no peito %>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
@@ -333,7 +366,7 @@
         </div>
       </div>
       <ul>
-        <div class="row align-items-center"> <%# Tempo entre as mamadas %>
+        <div class="row align-items-center breastfeedingDiv"> <%# Tempo entre as mamadas %>
           <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
             <li class="breastfeedingCmdCss">Tempo entre as mamadas:</li>
           </div>
@@ -357,7 +390,7 @@
           </div>
         </div>
 
-        <div class="row align-items-center"> <%# Cansaço para mamar %>
+        <div class="row align-items-center breastfeedingDiv"> <%# Cansaço para mamar %>
           <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
             <li class="breastfeedingCmdCss">Cansaço para mamar?</li>
           </div>
@@ -382,7 +415,7 @@
           </div>
         </div>
 
-        <div class="row align-items-center"> <%# Mama um pouquinho e dorme %>
+        <div class="row align-items-center breastfeedingDiv"> <%# Mama um pouquinho e dorme %>
           <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
             <li class="breastfeedingCmdCss">Mama um pouquinho e dorme?</li>
           </div>
@@ -407,7 +440,7 @@
           </div>
         </div>
 
-        <div class="row align-items-center"> <%# Vai soltando o mamilo %>
+        <div class="row align-items-center breastfeedingDiv"> <%# Vai soltando o mamilo %>
           <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
             <li class="breastfeedingCmdCss">Vai soltando o mamilo?</li>
           </div>
@@ -432,7 +465,7 @@
           </div>
         </div>
 
-        <div class="row align-items-center"> <%# Morde o mamilo %>
+        <div class="row align-items-center breastfeedingDiv"> <%# Morde o mamilo %>
           <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
             <li class="breastfeedingCmdCss">Morde o mamilo?</li>
           </div>
@@ -459,7 +492,7 @@
 
         <div class="row align-items-center"> <%# Textarea Mama no Peito: Observações  %>
           <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
-            <div class="form-label-group">
+            <div class="form-label-group mt-3">
               <textarea id="obsBreastfeeding" name="obsBreastfeeding" class="form-control pt-3" placeholder="Observações" minlength="1" maxlength="1000" rows="4"></textarea>
               <label for="obsBreastfeeding">Observações:</label>
             </div>
@@ -1305,7 +1338,7 @@
 </div>
 
 <div class="dialogJquery" id="dialog-confirm" title="Confirmação">
-  <p><span class="ui-icon ui-icon-alert" style="margin:12px 12px 12px 0;font-size: 30px !important;"></span>Confirma a inclusão do exame?</p>
+  <p><span class="ui-icon ui-icon-alert"></span><span id="dialogMsg"></span></p>
 </div>
 
 <% include ../partials/footer %>

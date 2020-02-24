@@ -8,18 +8,8 @@ $(document).ready(function() {
   let inputState = $('#inputState');
   inputState.val(patient.state);
   findCities(inputState.val(), patient.city);
-  console.log(patient.city);
   inputState.change(function() {
     findCities(inputState.val(), "")
-  });
-
-
-  $('#backBtn').click(function() {
-    window.history.back();
-  });
-
-  $('#saveBtn').click(function() {
-    alert("Esse botão vai SALVAR as alterações no paciente");
   });
 
   $('#inputName').val(patient.name);
@@ -38,21 +28,60 @@ $(document).ready(function() {
   $('#inputCommercialTel').val(patient.commercialTel).mask('(00) 0000-00000');
   $('#inputCelPhone').val(patient.celPhone).mask('(00) 0000-00000');
 
-//Formata a data UTC eno formato  yyyy-MM-dd
-  function formatDate (date)
-  {
-    date = new Date(date);
-    let d = date.getDate();
-    let m = date.getMonth() + 1;
-    let y = date.getFullYear();
-    if(d < 10) {
-      d = '0' + d
+  $('#backBtn').click(function() {
+    window.location.replace("/findPatient/" + patient._id);
+  });
+
+  $('#saveBtn').click(function() {
+    if(validateForm('#editPatient')) {
+      $(function() {
+        $( "#dialog-confirm" ).dialog({
+          resizable: false,
+          height: "auto",
+          dialogClass: "no-close",
+          width: 400,
+          modal: true,
+          buttons: {
+            Sim: function() {
+              $( this ).dialog( "close" );
+              $.ajax({
+                method: 'PUT',
+                url: '/editPatient/patient/' + patient._id,
+                data: $('#editPatient').serialize(),
+                success: successHandler,
+                error: errorHandler
+              });
+            },
+            'Não': function() {
+              $( this ).dialog( "close" );
+            }
+          }
+        });
+      });
     }
-    if(m < 10) {
-      m = '0' + m
-    }
-    return y + "-" + m + "-" + d;
+  });
+
+  function successHandler () {
+    window.location.replace("/findPatient/" + patient._id);
   }
 
+  function errorHandler (data) {
+    let dialog = $('#dialog-message');
+    dialog.empty();
+    data.responseJSON.error.forEach(error => (dialog.append( "<p>" + error.msg + "</p>" )));
 
+    $( function() {
+      $( "#dialog-message" ).dialog({
+        dialogClass: "no-close",
+        width: 500,
+        title: "Erro de Validação do Teste",
+        modal: true,
+        buttons: {
+          Ok: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+      });
+    } );
+  }
 });

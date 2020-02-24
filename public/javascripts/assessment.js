@@ -49,41 +49,26 @@ $(document).ready(function() {
   function nextPrev(n) {
 
     // Sair da função se algum dado do formulário for inválido
-    if (n === 1 && !validateForm()){
+    if (n === 1 && !validateForm('#assForm')){
       return;
     }
     // Incrementa ou decrementa a tab atual
     currentTab = currentTab + n;
     //Envia o formulário na última tela
     if ((currentTab === tabs.length) && n === 1) {
-      if(validateForm()) {
+      if(validateForm('#assForm')) {
         $(function() {
-          $( "#dialog-confirm" ).dialog({
-            resizable: false,
-            height: "auto",
-            dialogClass: "no-close",
-            width: 400,
-            modal: true,
-            buttons: {
-              Sim: function() {
-                $( this ).dialog( "close" );
-                patient.assessments[0].obsResume = $("#inputFinalReport").val();
-                patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
-                patient.assessments[0].descBehavior = $("#inputBehavior").val();
-                $.ajax({
-                  method: 'POST',
-                  contentType: "application/json",
-                  url: '/assessment',
-                  data: JSON.stringify(patient),
-                  success: successHandler,
-                  error: errorHandler
-                });
-              },
-              'Não': function() {
-                $( this ).dialog( "close" );
-              }
-            }
-          });
+          switch(mode) {
+            case '1':
+              insertNewPatient();
+              break;
+            case '2':
+              editPatientAssessment();
+              break;
+            case '3':
+              newPatientAssessment();
+              break;
+          }
         });
       }
       currentTab --;
@@ -110,6 +95,7 @@ $(document).ready(function() {
   inputState.change(function() {
     findCities(inputState.val())
   });
+
   //Seleciona estado com "RS"
   inputState.val('RS');
   findCities('RS', 'Osório');
@@ -117,61 +103,28 @@ $(document).ready(function() {
   // Desabilita radios de "Mama no peito?" por padrão ao carregar página da tela 01
   $(".breastfeedingCmd").prop('disabled', true);
   $(".breastfeedingCmdCss").css('opacity', '.2');
+  $(".breastfeedingDiv").hide();
 
   // Função para desabilitar os botões caso clique em sem aleitamento materno
   $("input[name=rbBreastfeeding]").change(function() {
     if ($(this).val() === "3") {
-      $(".breastfeedingCmd").prop('checked', false, 'disabled', true);
+      $(".breastfeedingCmd").prop('checked', false, 'disabled', true, 'click', false);
       $(".breastfeedingCmdCss").css('opacity', '.2');
+      $(".breastfeedingDiv").hide();
     }
     // Caso outra opção seja marcada habilita os botões.
     else {
-      $(".breastfeedingCmd").prop('disabled', false);
+      $(".breastfeedingCmd").prop('disabled', false, 'checked', false);
       $(".breastfeedingCmdCss").css('opacity', '1');
+      $(".breastfeedingDiv").show();
     }
   });
-
-  //Setar data do exame como data de hoje
-  // $('input[type=date]').on('click', function(event) {
-  //   event.preventDefault();
-  // });
 
   //Inicialização e configuração do JQueryUi datepicker
   let dateCalendarField = $( ".dateCalendar" );
   datepickerFormat(dateCalendarField);
 
   $( "#inputAssessmentDate" ).datepicker( "setDate", new Date());
-
-  //Caso seja setada data superior a de hoje, o sistema retorna a data para a data de hoje
-  // dateCalendarField.on('focusout', function () {
-  //   let valueArray = dateCalendarField.val().split('-');
-  //   let today = new Date();
-  //   let dateSelected = new Date(valueArray[0], valueArray[1] - 1, valueArray[2]);
-  //   console.log(dateCalendarField.val());
-  //   dateCalendarField.val(today > dateSelected ? formatDate(dateSelected) : formatDate(today));
-  // });
-  // function formatDate(date) {
-  //      let month = '' + (date.getMonth() + 1);
-  //       let day = '' + date.getDate();
-  //       let year = date.getFullYear();
-  //   return [year, month, day].join('-');
-  // }
-
-  // document.getElementsByName("inputAssessmentDate")[0].valueAsDate = new Date();
-  // let today = new Date();
-  // let dd = today.getDate();
-  // let mm = today.getMonth()+1; //January is 0!
-  // let yyyy = today.getFullYear();
-  // if(dd<10){
-  //   dd='0'+dd
-  // }
-  // if(mm<10){
-  //   mm='0'+mm
-  // }
-  // today = yyyy+'-'+mm+'-'+dd;
-  // document.getElementById("inputAssessmentDate").setAttribute("max", today);
-  //Limite da data para hoje no campo
-  //???
 
   // Desabilitar radios da Questão 4 por padrão ao carregar página da tela 03
   $(".questionFourCmd").prop('disabled', true);
@@ -189,11 +142,118 @@ $(document).ready(function() {
       $(".questionFourCmdCss").css('opacity', '1');
     }
   });
-  function successHandler (data) {
-    let url = 'assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
-    window.open(url, "_blank");
-    //window.location.replace("/assessment")
-  }
+
+  $( function() {
+    $( "#accordionBreastfeeding" ).accordion({
+      collapsible: true,
+      active: false
+    });
+  } );
+
+  let insertNewPatient = function () {
+    jQuery("#dialogMsg").text("Confirma a inclusão do exame?");
+    $( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height: "auto",
+      dialogClass: "no-close",
+      width: 400,
+      modal: true,
+      buttons: {
+        Sim: function() {
+          $( this ).dialog( "close" );
+          patient.assessments[0].obsResume = $("#inputFinalReport").val();
+          patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
+          patient.assessments[0].descBehavior = $("#inputBehavior").val();
+          $.ajax({
+            method: 'POST',
+            contentType: "application/json",
+            url: '/assessment',
+            data: JSON.stringify(patient),
+            success: successHandler,
+            error: errorHandler
+          });
+        },
+        'Não': function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+    function successHandler (data) {
+      let url = 'assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
+      window.open(url, "_blank");
+      //window.location.replace("/assessment")
+    }
+  };
+
+  let editPatientAssessment = function () {
+    jQuery("#dialogMsg").text("Confirma a edição do exame?");
+    $( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height: "auto",
+      dialogClass: "no-close",
+      width: 400,
+      modal: true,
+      buttons: {
+        Sim: function() {
+          $( this ).dialog( "close" );
+          patient.assessments[0].obsResume = $("#inputFinalReport").val();
+          patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
+          patient.assessments[0].descBehavior = $("#inputBehavior").val();
+          $.ajax({
+            method: 'POST',
+            contentType: "application/json",
+            url: '/assessment',
+            data: JSON.stringify(patient),
+            success: successHandler,
+            error: errorHandler
+          });
+        },
+        'Não': function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+    function successHandler (data) {
+      let url = 'assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
+      window.open(url, "_blank");
+      //window.location.replace("/assessment")
+    }
+  };
+
+  let newPatientAssessment = function () {
+    jQuery("#dialogMsg").text("Confirma a inclusão do exame?");
+    $( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height: "auto",
+      dialogClass: "no-close",
+      width: 400,
+      modal: true,
+      buttons: {
+        Sim: function() {
+          $( this ).dialog( "close" );
+          patient.assessments[0].obsResume = $("#inputFinalReport").val();
+          patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
+          patient.assessments[0].descBehavior = $("#inputBehavior").val();
+          $.ajax({
+            method: 'POST',
+            contentType: "application/json",
+            url: '/assessment',
+            data: JSON.stringify(patient),
+            success: successHandler,
+            error: errorHandler
+          });
+        },
+        'Não': function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+    function successHandler (data) {
+      let url = 'assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
+      window.open(url, "_blank");
+      //window.location.replace("/assessment")
+    }
+  };
 
   function errorHandler (data) {
     let dialog = $('#dialog-message');
@@ -213,6 +273,76 @@ $(document).ready(function() {
         }
       });
     } );
+  }
+
+  if (mode === '2' || mode === '3'){
+
+    $.getJSON( "/editPatient/requestPatient", {
+      patient: patientId
+    })
+        .done(function(data) {
+          console.log( data );
+          let patientDB = data.patient;
+
+          $('#inputName').val(patientDB.name);
+          $('#inputBirthDate').val(formatDate(patientDB.birthDate));
+          $('#inputFatherName').val(patientDB.fatherName);
+          $("input[name='rbGenre'][value='"+ patientDB.genre +"']").prop('checked', true);
+          $('#inputMotherName').val(patientDB.motherName);
+          $('#inputMotherCPF').val(patientDB.motherCPF).mask('000.000.000-00');
+          $('#inputAddress').val(patientDB.address);
+          $('#inputResidenceNumber').val(patientDB.residenceNumber);
+          $('#inputNeighborhood').val(patientDB.neighborhood);
+          //Atualiza lista de cidades quando se muda o estado
+          inputState.val(patientDB.state);
+          findCities(inputState.val(), patientDB.city);
+          $('#inputCity').val(patientDB.city);
+          $('#inputCEP').val(patientDB.cep).mask('00000-000');
+          $('#inputEmail').val(patientDB.email);
+          $('#inputResTel').val(patientDB.resTel).mask('(00) 0000-00000');
+          $('#inputCommercialTel').val(patientDB.commercialTel).mask('(00) 0000-00000');
+          $('#inputCelPhone').val(patientDB.celPhone).mask('(00) 0000-00000');
+          $("input[name='rbFamilyHistory'][value='"+ patientDB.familyHistory +"']").prop('checked', true);
+          $('#inputProblemDescription').val(patientDB.problemDescription);
+          $("input[name='rbPatientHealthProblem'][value='"+ patientDB.patientHealthProblem +"']").prop('checked', true);
+          $('#inputHealthProblemDescription').val(patientDB.healthProblemDescription);
+          switch (mode) {
+            case '2':
+              let assessmentIndex = 0;
+              console.log(typeof patientDB.assessments);
+              assessmentIndex = patientDB.assessments.findIndex(assessment => assessment._id === assessmentId);
+              $('#inputAssessmentDate').val(formatDate(patientDB.assessments[assessmentIndex].assessmentDate));
+              $("input[name='rbBreastfeeding'][value='"+ patientDB.assessments[assessmentIndex].breastfeeding +"']").prop('checked', true).trigger('change');
+              if (patientDB.assessments.length >1 ){
+                $('#accordionBreastfeedingDiv').append('<div id="accordionBreastfeeding">');
+                patientDB.assessments.forEach(function (assessment, index) {
+                  let newItem = '<h3>'
+                                + dateToText(assessment.assessmentDate)
+                                + '</h3>'
+                                + '<div>'
+                                + '</div>';
+
+                  $('#accordionBreastfeeding')
+                      .append('<h3>')
+                      .append('<div>');
+
+
+
+                });
+              }
+              break;
+            case '3':
+              break;
+          }
+
+
+        })
+        .fail(function() {
+          console.log( "error" );
+        })
+        .always(function() {
+          //console.log( "complete" );
+        });
   }
 
 

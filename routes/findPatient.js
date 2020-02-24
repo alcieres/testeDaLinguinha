@@ -162,17 +162,6 @@ router.get('/:id', isLoggedIn, function(req, res) {
   });
 });
 
-router.get('/:id/edit', isLoggedIn, function(req, res) {
-  let id = req.params.id;
-  Patient.findOne({_id: id}, function (err, doc){
-    if (err){
-      console.log("Erro de Acesso ao Banco de Dados");
-    } else {
-      doc.assessments = "";
-      console.log(doc);
-      res.render('findPatient/editPatient', {title: 'Teste da Linguinha', user: req.user, patient: JSON.stringify(doc) });
-    }
-  });
-});
+
 
 module.exports = router;

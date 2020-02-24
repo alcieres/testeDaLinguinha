@@ -21,8 +21,9 @@
     <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
 
     <script type="text/javascript" src="/javascripts/util.js" ></script>
-    <script type="text/javascript" src="/javascripts/model/Patient.js" ></script>
+    <script type="text/javascript" src="/javascripts/models/Patient.js" ></script>
     <script type="text/javascript" src="/javascripts/controllers/assessmentValidate.js" ></script>
+    <script type="text/javascript" src="/javascripts/util.js" ></script>
     <script type="text/javascript" src="/javascripts/editPatient.js" ></script>
     <script>
         let patient = jQuery.parseJSON( '<%- patient%>' );
@@ -226,4 +227,12 @@
 
 <% include ../partials/footer %>
 
+<div class="dialogJquery" id="dialog-message" title="Título">
+    <p>
+        Mensagem
+    </p>
+</div>
 
+<div class="dialogJquery" id="dialog-confirm" title="Confirmação">
+    <p><span class="ui-icon ui-icon-alert" style="margin:12px 12px 12px 0;font-size: 30px !important;"></span>Confirma a atualização do paciente?</p>
+</div>

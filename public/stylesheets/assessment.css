@@ -25,6 +25,10 @@ input.invalid {
     background-color: #ffdddd;
 }
 
+.accordionDiv {
+    display: none;
+}
+
 /* ------------------------------ Tabela do Relatório Final ------------------------------ */
 
 @media (max-width: 991.98px){
