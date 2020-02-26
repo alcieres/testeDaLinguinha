@@ -14,158 +14,91 @@ $(document).ready(function() {
             assessment: assessmentId
     })
         .done(function(data) {
-            console.log( data );
-            let patient = new Patient(
-                data.patient._id,
-                //Tela 01
-                data.patient.name,
-                new Date(data.patient.birthDate),
-                data.patient.genre,
-                data.patient.motherName,
-                data.patient.motherCPF,
-                data.patient.fatherName,
-                data.patient.address,
-                data.patient.residenceNumber,
-                data.patient.neighborhood,
-                data.patient.state,
-                data.patient.city,
-                data.patient.cep,
-                data.patient.email,
-                data.patient.resTel,
-                data.patient.commercialTel,
-                data.patient.celPhone,
-                data.patient.familyHistory,
-                data.patient.problemDescription,
-                data.patient.patientHealthProblem,
-                data.patient.healthProblemDescription,
-                //Início do Exame
-                data.patient.assessments[0]._id,
-                new Date(data.patient.assessments[0].assessmentDate),
-                data.patient.assessments[0].breastfeeding,
-                data.patient.assessments[0].breastfeedingTime,
-                data.patient.assessments[0].breastfeedingTiredness,
-                data.patient.assessments[0].breastfeedingSleep,
-                data.patient.assessments[0].releasingNipple,
-                data.patient.assessments[0].biteNipple,
-                data.patient.assessments[0].obsBreastfeeding,
-                //Pontos História Clínica
-                data.patient.assessments[0].clinicalHistoryPoints,
-                //Tela 02
-                data.patient.assessments[0].questionOne,
-                data.patient.assessments[0].questionTwo,
-                data.patient.assessments[0].questionThree,
-                //Pontos Questões de Um a Três
-                data.patient.assessments[0].questionsOneToThreePoints,
-                //Tela 03
-                data.patient.assessments[0].questionFour,
-                data.patient.assessments[0].questionFourOne,
-                data.patient.assessments[0].questionFourTwo,
-                data.patient.assessments[0].questionFourThree,
-                data.patient.assessments[0].questionFourComments,
-                //Pontos Questão 4
-                data.patient.assessments[0].questionFourPoints,
-                //Pontos da Parte I
-                data.patient.assessments[0].questionsOneToFourPoints,
-                //Tela 04
-                data.patient.assessments[0].partTwoQuestionOne,
-                data.patient.assessments[0].partTwoQuestionTwoOne,
-                data.patient.assessments[0].partTwoQuestionTwoTwo,
-                data.patient.assessments[0].partTwoQuestionTwoThree,
-                data.patient.assessments[0].partTwoQuestionTwoFour,
-                data.patient.assessments[0].obsSuction,
-                //Pontos da Parte II
-                data.patient.assessments[0].partTwoQuestionPoints,
-                //Pontos Totais Exame Clínico
-                data.patient.assessments[0].clinicalAssessmentPoints,
-                //Pontos Totais do Exame
-                data.patient.assessments[0].historyAssessmentPoints,
-                //Tela 05
-                data.patient.assessments[0].obsResume,
-                data.patient.assessments[0].assBehavior,
-                data.patient.assessments[0].descBehavior,
-                //Usuário
-                data.patient.assessments[0].userCPF,
-                data.patient.assessments[0].userName,
-                data.patient.assessments[0].userLastName,
-                data.patient.assessments[0].userOccupation,
-                data.patient.assessments[0].userRegistry
-            );
-          $("#resName").text(patient.name);
-          $("#resGenre").text(patient.genreToText());
-          $("#resMotherName").text(patient.motherName);
-          $("#resBirthDate").text(patient.birthDateToText());
-          $("#resFatherName").text(patient.fatherName);
-          $("#resAssessmentDate").text(patient.assessmentDateToText(0));
-          $("#resFamilyHistory").text(patient.familyHistoryToText());
-          $("#resProblemDescription").text(patient.problemDescription);
-          $("#resPatientHealthProblem").text(patient.patientHealthProblemToText());
-          $("#resHealthProblemDescription").text(patient.healthProblemDescription);
-          $("#resBreastfeeding").text(patient.breastfeedingToText(0));
-          $("#resBreastfeedingTime").text(patient.breastfeedingTimeToText(0));
-          $("#resBreastfeedingTiredness").text(patient.breastfeedingTirednessToText(0));
-          $("#resBreastfeedingSleep").text(patient.breastfeedingSleepToText(0));
-          $("#resReleasingNipple").text(patient.releasingNippleToText(0));
-          $("#resBiteNipple").text(patient.biteNippleToText(0));
-          $("#resObsBreastfeeding").text(patient.assessments[0].obsBreastfeeding);
-          //Pontos das questões da história Clínica
-          let clinicalHistoryPoints = patient.ClinicalHistoryPoints(0);
-          $("#resClinicalHistoryPoints").text(clinicalHistoryPoints);
-          (clinicalHistoryPoints < 4) ? $("#resClinicalHistoryPoints").addClass("badge-success") : $("#resClinicalHistoryPoints").addClass("badge-danger");
+            let patient = jsonToPatient(data);
+            //Início do processo de escrever na tela
+            $("#resName").text(patient.getName());
+            $("#resGenre").text(patient.genreToText());
+            $("#resMotherName").text(patient.getMotherName());
+            $("#resBirthDate").text(patient.birthDateToText());
+            $("#resFatherName").text(patient.getFatherName());
+            $("#resAssessmentDate").text(patient.assessments[0].assessmentDateToText());
+            $("#resFamilyHistory").text(patient.familyHistoryToText());
+            $("#resProblemDescription").text(patient.getProblemDescription());
+            $("#resPatientHealthProblem").text(patient.patientHealthProblemToText());
+            $("#resHealthProblemDescription").text(patient.getHealthProblemDescription());
+            $("#resBreastfeeding").text(patient.assessments[0].breastfeedingToText());
+            $("#resBreastfeedingTime").text(patient.assessments[0].breastfeedingTimeToText());
+            $("#resBreastfeedingTiredness").text(patient.assessments[0].breastfeedingTirednessToText());
+            $("#resBreastfeedingSleep").text(patient.assessments[0].breastfeedingSleepToText());
+            $("#resReleasingNipple").text(patient.assessments[0].releasingNippleToText());
+            $("#resBiteNipple").text(patient.assessments[0].biteNippleToText());
+            $("#resObsBreastfeeding").text(patient.assessments[0].getObsBreastfeeding());
+            //Pontos das questões da história Clínica
+            let clinicalHistoryPoints = patient.assessments[0].getClinicalHistoryPoints();
+            let resClinicalHistoryPoints = $("#resClinicalHistoryPoints");
+            resClinicalHistoryPoints.text(clinicalHistoryPoints);
+            (clinicalHistoryPoints < 4) ? resClinicalHistoryPoints.addClass("badge-success") : resClinicalHistoryPoints.addClass("badge-danger");
+            // Início do Exame
+            $("#resQuestionOne").text(patient.assessments[0].questionOneToText());
+            $("#resQuestionTwo").text(patient.assessments[0].questionTwoToText());
+            $("#resQuestionThree").text(patient.assessments[0].questionThreeToText());
 
-          $("#resQuestionOne").text(patient.questionOneToText(0));
-          $("#resQuestionTwo").text(patient.questionTwoToText(0));
-          $("#resQuestionThree").text(patient.questionThreeToText(0));
+            //Pontos das questões 1 a 3
+            let oneToThreeQuestionsPoints = patient.assessments[0].getQuestionsOneToThreePoints();
+            let resQuestionsOneToThreePoints = $("#resQuestionsOneToThreePoints");
+            resQuestionsOneToThreePoints.text(oneToThreeQuestionsPoints);
+            (oneToThreeQuestionsPoints < 4) ? resQuestionsOneToThreePoints.addClass("badge-success") : resQuestionsOneToThreePoints.addClass("badge-danger");
 
-          //Pontos das questões 1 a 3
-          let oneToThreeQuestionsPoints = patient.oneToThreeQuestionsPoints(0);
-          $("#resQuestionsOneToThreePoints").text(oneToThreeQuestionsPoints);
-          (oneToThreeQuestionsPoints < 4) ? $("#resQuestionsOneToThreePoints").addClass("badge-success") : $("#resQuestionsOneToThreePoints").addClass("badge-danger");
+            $("#resQuestionFour").text(patient.assessments[0].questionFourToText());
+            $("#resQuestionFourOne").text(patient.assessments[0].questionFourOneToText());
+            $("#resQuestionFourTwo").text(patient.assessments[0].questionFourTwoToText());
+            $("#resQuestionFourThree").text(patient.assessments[0].questionFourThreeToText());
+            $("#resQuestionFourComments").text(patient.assessments[0].getQuestionFourComments());
 
-          $("#resQuestionFour").text(patient.questionFourToText(0));
-          $("#resQuestionFourOne").text(patient.questionFourOneToText(0));
-          $("#resQuestionFourTwo").text(patient.questionFourTwoToText(0));
-          $("#resQuestionFourThree").text(patient.questionFourThreeToText(0));
-          $("#resQuestionFourComments").text(patient.assessments[0].questionFourComments);
+            //Total de pontos da questão 4
+            let fourQuestionPoints = patient.assessments[0].getQuestionFourPoints();
+            let resQuestionFourPoints = $("#resQuestionFourPoints");
+            resQuestionFourPoints.text(fourQuestionPoints);
+            (fourQuestionPoints < 3) ? resQuestionFourPoints.addClass("badge-success") : resQuestionFourPoints.addClass("badge-danger");
 
-          //Total de pontos da questão 4
-          let fourQuestionPoints = patient.fourQuestionPoints(0);
-          $("#resQuestionFourPoints").text(fourQuestionPoints);
-          (fourQuestionPoints < 3) ? $("#resQuestionFourPoints").addClass("badge-success") : $("#resQuestionFourPoints").addClass("badge-danger");
+            //Total de pontos das questões 1 a 4
+            let oneToFourQuestionsPoints = patient.assessments[0].getQuestionsOneToFourPoints();
+            let resQuestionsOneToFourPoints = $("#resQuestionsOneToFourPoints");
+            resQuestionsOneToFourPoints.text(oneToFourQuestionsPoints);
+            (oneToFourQuestionsPoints < 7) ? resQuestionsOneToFourPoints.addClass("badge-success") : resQuestionsOneToFourPoints.addClass("badge-danger");
 
-          //Total de pontos das questões 1 a 4
-          let oneToFourQuestionsPoints = oneToThreeQuestionsPoints + fourQuestionPoints;
-          $("#resQuestionsOneToFourPoints").text(oneToFourQuestionsPoints);
-          (oneToFourQuestionsPoints < 7) ? $("#resQuestionsOneToFourPoints").addClass("badge-success") : $("#resQuestionsOneToFourPoints").addClass("badge-danger");
+            $("#resPartTwoQuestionOne").text(patient.assessments[0].partTwoQuestionOneToText());
+            $("#resPartTwoQuestionTwoOne").text(patient.assessments[0].partTwoQuestionTwoOneToText());
+            $("#resPartTwoQuestionTwoTwo").text(patient.assessments[0].partTwoQuestionTwoTwoToText());
+            $("#resPartTwoQuestionTwoThree").text(patient.assessments[0].partTwoQuestionTwoThreeToText());
+            $("#resPartTwoQuestionTwoFour").text(patient.assessments[0].partTwoQuestionTwoFourToText());
+            $("#resObsSuction").text(patient.assessments[0].obsSuction);
 
-          $("#resPartTwoQuestionOne").text(patient.partTwoQuestionOneToText(0));
-          $("#resPartTwoQuestionTwoOne").text(patient.partTwoQuestionTwoOneToText(0));
-          $("#resPartTwoQuestionTwoTwo").text(patient.partTwoQuestionTwoTwoToText(0));
-          $("#resPartTwoQuestionTwoThree").text(patient.partTwoQuestionTwoThreeToText(0));
-          $("#resPartTwoQuestionTwoFour").text(patient.partTwoQuestionTwoFourToText(0));
-          $("#resObsSuction").text(patient.assessments[0].obsSuction);
+            //Total de pontos da avaliação da sucção não nutritiva e nutritiva
+            let partTwoQuestionPoints = patient.assessments[0].getPartTwoQuestionPoints();
+            let resPartTwoQuestionPoints = $("#resPartTwoQuestionPoints");
+            resPartTwoQuestionPoints.text(partTwoQuestionPoints);
+            (partTwoQuestionPoints < 2) ? resPartTwoQuestionPoints.addClass("badge-success") : resPartTwoQuestionPoints.addClass("badge-danger");
 
-          //Colocar total de pontos da avaliação da sucção não nutritiva e nutritiva
-          let partTwoQuestionPoints = patient.partTwoQuestionPoints(0);
-          $("#resPartTwoQuestionPoints").text(partTwoQuestionPoints);
-          (partTwoQuestionPoints < 2) ? $("#resPartTwoQuestionPoints").addClass("badge-success") : $("#resPartTwoQuestionPoints").addClass("badge-danger");
+            //Total de pontos do do exame clínico
+            let clinicalAssessmentPoints = patient.assessments[0].getClinicalAssessmentPoints();
+            let resClinicalAssessmentPoints = $("#resClinicalAssessmentPoints");
+            resClinicalAssessmentPoints.text(clinicalAssessmentPoints);
+            (clinicalAssessmentPoints < 9) ? resClinicalAssessmentPoints.addClass("badge-success") : resClinicalAssessmentPoints.addClass("badge-danger");
 
-          //Colocar total de pontos do do exame clínico
-          let clinicalAssessmentPoints = oneToFourQuestionsPoints + partTwoQuestionPoints;
-          $("#resClinicalAssessmentPoints").text(clinicalAssessmentPoints);
-          (clinicalAssessmentPoints < 9) ? $("#resClinicalAssessmentPoints").addClass("badge-success") : $("#resClinicalAssessmentPoints").addClass("badge-danger");
+            //Total de geral de pontos
+            let historyAssessmentPoints = patient.assessments[0].getHistoryAssessmentPoints();
+            let resHistoryAssessmentPoints = $("#resHistoryAssessmentPoints");
+            resHistoryAssessmentPoints.text(historyAssessmentPoints);
+            (historyAssessmentPoints < 13) ? resHistoryAssessmentPoints.addClass("badge-success") : resHistoryAssessmentPoints.addClass("badge-danger");
 
-          //Colocar total de geral de pontos
-          let historyAssessmentPoints = clinicalHistoryPoints + clinicalAssessmentPoints;
-          $("#resHistoryAssessmentPoints").text(historyAssessmentPoints);
-          (historyAssessmentPoints < 13) ? $("#resHistoryAssessmentPoints").addClass("badge-success") : $("#resHistoryAssessmentPoints").addClass("badge-danger");
-
-          //Resultado
-          $("#resObsFinal").text(patient.assessments[0].obsResume);
-          $("#resBehavior").text(patient.assBehaviorText(0));
-          $("#resBehaviorDescription").text(patient.assessments[0].descBehavior);
-          $("#resUserFullName").text(patient.assessments[0].userName + " " + patient.assessments[0].userLastName);
-          $("#resUserOccupation").text(patient.assessments[0].userOccupation);
-          $("#resUserRegistry").text(patient.assessments[0].userRegistry);
+            //Resultado
+            $("#resObsFinal").text(patient.assessments[0].getObsResume());
+            $("#resBehavior").text(patient.assessments[0].assBehaviorText());
+            patient.assessments[0].getDescBehavior() === "" ? $("#resBehaviorDescriptionLabel").hide() : $("#resBehaviorDescription").text(patient.assessments[0].getDescBehavior());
+            $("#resUserFullName").text(patient.assessments[0].getUserName() + " " + patient.assessments[0].getUserLastName());
+            $("#resUserOccupation").text(patient.assessments[0].getUserOccupation());
+            $("#resUserRegistry").text(patient.assessments[0].getUserRegistry());
         })
         .fail(function() {
             console.log( "error" );

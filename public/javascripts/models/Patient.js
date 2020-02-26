@@ -128,7 +128,7 @@ function Patient () {
     return familyHistory;
   };
   this.setFamilyHistory = (data) => {
-    familyHistory = data !== undefined ? familyHistory.toString() : undefined;
+    familyHistory = data !== undefined ? data.toString() : undefined;
   };
   this.getProblemDescription = () => {
     return problemDescription;
@@ -140,7 +140,7 @@ function Patient () {
     return patientHealthProblem;
   };
   this.setPatientHealthProblem = (data) => {
-    patientHealthProblem = data !== undefined ? patientHealthProblem.toString() : undefined;
+    patientHealthProblem = data !== undefined ? data.toString() : undefined;
   };
   this.getHealthProblemDescription = () => {
     return healthProblemDescription;
@@ -150,7 +150,7 @@ function Patient () {
   };
 
   this.genreToText = () => {
-      switch (this.genre) {
+      switch (genre) {
           case "1":
               return "Masculino";
           case "2":
@@ -160,7 +160,7 @@ function Patient () {
       }
   };
   this.familyHistoryToText = () => {
-      switch (this.familyHistory) {
+      switch (familyHistory) {
           case "1":
               return "Não (0)";
           case "2":
@@ -170,7 +170,7 @@ function Patient () {
       }
   };
   this.patientHealthProblemToText = () => {
-      switch (this.patientHealthProblem) {
+      switch (patientHealthProblem) {
           case "1":
               return "Não";
           case "2":
@@ -180,11 +180,11 @@ function Patient () {
       }
   };
   this.birthDateToText = () => {
-      return dateToText(this.birthDate);
+      return dateToText(birthDate);
   };
   this.updateClinicalHistoryPoints = (indexAssessment) => {
       let points = 0;
-      switch (this.familyHistory) {
+      switch (familyHistory) {
           case "1":
                break;
           case "2":
@@ -349,16 +349,4 @@ function Patient () {
     let target = this.assessments[indexAssessment];
     target.setHistoryAssessmentPoints(target.getClinicalHistoryPoints() + target.getClinicalAssessmentPoints());
   };
-}
-function dateToText(date) {
-  let day = date.getDate().toString();
-  let month = date.getMonth() + 1 + "";
-  let year = date.getFullYear();
-  if (day.length < 2){
-      day = 0  + "" + day;
-  }
-  if (month.length < 2){
-      month = 0 + "" + month;
-  }
-  return day + "/" + month + '/' + year;
 };

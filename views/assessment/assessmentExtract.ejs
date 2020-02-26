@@ -21,6 +21,8 @@
       let patientId = '<%= patientId%>';
       let assessmentId = '<%= assessmentId%>';
     </script>
+    <script type="text/javascript" src="/javascripts/util.js" ></script>
+    <script type="text/javascript" src="/javascripts/models/Assessment.js" ></script>
     <script type="text/javascript" src="/javascripts/models/Patient.js" ></script>
     <script type="text/javascript" src="/javascripts/controllers/assessmentExtract.js" ></script>
 
@@ -184,7 +186,7 @@
         </p>
         <p>Observações: <span id="resObsFinal"> </span></p>
         <p class="font-weight-bold mt-3">CONDUTA: <span id="resBehavior">resposta</span></p>
-        <p>Descrição: <span id="resBehaviorDescription"> </span></p>
+        <p id="resBehaviorDescriptionLabel">Descrição: <span id="resBehaviorDescription"> </span></p>
         <p class="mt-5 text-center mb-0">____________________________________</p>
         <p class="text-center my-0 py-0 mb-0" id="resUserFullName">nome</p>
         <p class="text-center my-0 py-0 mb-0" id="resUserOccupation">fonoaudióloga</p>

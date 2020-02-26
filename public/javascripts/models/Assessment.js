@@ -151,7 +151,7 @@ function Assessment (){
   this.setQuestionFourOne = (data) => {
     questionFourOne = data !== undefined ? data.toString() : undefined;
   };
-  this.getquestionFourTwo = () => {
+  this.getQuestionFourTwo = () => {
     return questionFourTwo;
   };
   this.setQuestionFourTwo = (data) => {
