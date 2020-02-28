@@ -273,7 +273,7 @@ function Patient () {
               points = points + 2;
               break;
       }
-      switch (this.assessments[indexAssessment].getquestionFourTwo()) {
+      switch (this.assessments[indexAssessment].getQuestionFourTwo()) {
           case "1":
               break;
           case "2":
@@ -349,4 +349,84 @@ function Patient () {
     let target = this.assessments[indexAssessment];
     target.setHistoryAssessmentPoints(target.getClinicalHistoryPoints() + target.getClinicalAssessmentPoints());
   };
+
+  this.toJSON = (indexAssessment) => {
+    return {
+      patientId,
+      name,
+      birthDate,
+      genre,
+      motherName,
+      motherCPF,
+      fatherName,
+      address,
+      residenceNumber,
+      neighborhood,
+      state,
+      city,
+      cep,
+      email,
+      resTel,
+      commercialTel,
+      celPhone,
+      familyHistory,
+      problemDescription,
+      patientHealthProblem,
+      healthProblemDescription,
+      assessments: [{
+        //Início do Exame
+        assessmentId: this.assessments[indexAssessment].getAssessmentId(),
+        assessmentDate: this.assessments[indexAssessment].getAssessmentDate(),
+        breastfeeding: this.assessments[indexAssessment].getBreastfeeding(),
+        breastfeedingTime: this.assessments[indexAssessment].getBreastfeedingTime(),
+        breastfeedingTiredness: this.assessments[indexAssessment].getBreastfeedingTiredness(),
+        breastfeedingSleep: this.assessments[indexAssessment].getBreastfeedingSleep(),
+        releasingNipple: this.assessments[indexAssessment].getReleasingNipple(),
+        biteNipple: this.assessments[indexAssessment].getBiteNipple(),
+        obsBreastfeeding: this.assessments[indexAssessment].getObsBreastfeeding(),
+        //Pontos História Clínica
+        clinicalHistoryPoints: this.assessments[indexAssessment].getClinicalHistoryPoints(),
+        //Tela 02
+        questionOne: this.assessments[indexAssessment].getQuestionOne(),
+        questionTwo: this.assessments[indexAssessment].getQuestionTwo(),
+        questionThree: this.assessments[indexAssessment].getQuestionThree(),
+        //Pontos Questões de Um a Três
+        questionsOneToThreePoints: this.assessments[indexAssessment].getQuestionsOneToThreePoints(),
+        //Tela 03
+        questionFour: this.assessments[indexAssessment].getQuestionFour(),
+        questionFourOne: this.assessments[indexAssessment].getQuestionFourOne(),
+        questionFourTwo: this.assessments[indexAssessment].getQuestionFourTwo(),
+        questionFourThree: this.assessments[indexAssessment].getQuestionFourThree(),
+        questionFourComments: this.assessments[indexAssessment].getQuestionFourComments(),
+        //Pontos Questão 4
+        questionFourPoints: this.assessments[indexAssessment].getQuestionFourPoints(),
+        //Pontos da Parte I
+        questionsOneToFourPoints: this.assessments[indexAssessment].getQuestionsOneToFourPoints(),
+        //Tela 04
+        partTwoQuestionOne: this.assessments[indexAssessment].getPartTwoQuestionOne(),
+        partTwoQuestionTwoOne: this.assessments[indexAssessment].getPartTwoQuestionTwoOne(),
+        partTwoQuestionTwoTwo: this.assessments[indexAssessment].getPartTwoQuestionTwoTwo(),
+        partTwoQuestionTwoThree: this.assessments[indexAssessment].getPartTwoQuestionTwoThree(),
+        partTwoQuestionTwoFour: this.assessments[indexAssessment].getPartTwoQuestionTwoFour(),
+        obsSuction: this.assessments[indexAssessment].getObsSuction(),
+        //Pontos da Parte II
+        partTwoQuestionPoints: this.assessments[indexAssessment].getPartTwoQuestionPoints(),
+        //Pontos Totais Exame Clínico
+        clinicalAssessmentPoints: this.assessments[indexAssessment].getClinicalAssessmentPoints(),
+        //Pontos Totais do Exame
+        historyAssessmentPoints: this.assessments[indexAssessment].getHistoryAssessmentPoints(),
+        //Tela 05
+        obsResume: this.assessments[indexAssessment].getObsResume(),
+        assBehavior: this.assessments[indexAssessment].getAssBehavior(),
+        descBehavior: this.assessments[indexAssessment].getDescBehavior(),
+        //Usuário
+        userCPF: this.assessments[indexAssessment].getUserCPF(),
+        userName: this.assessments[indexAssessment].getUserName(),
+        userLastName: this.assessments[indexAssessment].getUserLastName(),
+        userOccupation: this.assessments[indexAssessment].getUserOccupation(),
+        userRegistry: this.assessments[indexAssessment].getUserRegistry()
+      }]
+    }
+  };
+
 };

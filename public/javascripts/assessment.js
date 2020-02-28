@@ -143,13 +143,6 @@ $(document).ready(function() {
     }
   });
 
-  $( function() {
-    $( "#accordionBreastfeeding" ).accordion({
-      collapsible: true,
-      active: false
-    });
-  } );
-
   let insertNewPatient = function () {
     jQuery("#dialogMsg").text("Confirma a inclusão do exame?");
     $( "#dialog-confirm" ).dialog({
@@ -161,9 +154,9 @@ $(document).ready(function() {
       buttons: {
         Sim: function() {
           $( this ).dialog( "close" );
-          patient.assessments[0].obsResume = $("#inputFinalReport").val();
-          patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
-          patient.assessments[0].descBehavior = $("#inputBehavior").val();
+          patient.assessments[0].setObsResume($("#inputFinalReport").val());
+          patient.assessments[0].setAssBehavior($("input[name='rbBehavior']:checked").val());
+          patient.assessments[0].setDescBehavior($("#inputBehavior").val());
           $.ajax({
             method: 'POST',
             contentType: "application/json",
@@ -196,14 +189,15 @@ $(document).ready(function() {
       buttons: {
         Sim: function() {
           $( this ).dialog( "close" );
-          patient.assessments[0].obsResume = $("#inputFinalReport").val();
-          patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
-          patient.assessments[0].descBehavior = $("#inputBehavior").val();
+          patient.assessments[0].setAssessmentId(assessmentId);
+          patient.assessments[0].setObsResume($("#inputFinalReport").val());
+          patient.assessments[0].setAssBehavior($("input[name='rbBehavior']:checked").val());
+          patient.assessments[0].setDescBehavior($("#inputBehavior").val());
           $.ajax({
-            method: 'POST',
+            method: 'PUT',
             contentType: "application/json",
-            url: '/assessment',
-            data: JSON.stringify(patient),
+            url: '/editPatient/assessmentEdit',
+            data: JSON.stringify(patient.toJSON(0)),
             success: successHandler,
             error: errorHandler
           });
@@ -281,57 +275,77 @@ $(document).ready(function() {
       patient: patientId
     })
         .done(function(data) {
-          console.log( data );
-          let patientDB = data.patient;
+          let patientDB = jsonToPatient(data);
 
-          $('#inputName').val(patientDB.name);
-          $('#inputBirthDate').val(formatDate(patientDB.birthDate));
-          $('#inputFatherName').val(patientDB.fatherName);
-          $("input[name='rbGenre'][value='"+ patientDB.genre +"']").prop('checked', true);
-          $('#inputMotherName').val(patientDB.motherName);
-          $('#inputMotherCPF').val(patientDB.motherCPF).mask('000.000.000-00');
-          $('#inputAddress').val(patientDB.address);
-          $('#inputResidenceNumber').val(patientDB.residenceNumber);
-          $('#inputNeighborhood').val(patientDB.neighborhood);
+          $('#inputName').val(patientDB.getName());
+          $('#inputBirthDate').val(formatDate(patientDB.getBirthDate()));
+          $('#inputFatherName').val(patientDB.getFatherName());
+          $("input[name='rbGenre'][value='"+ patientDB.getGenre() +"']").prop('checked', true);
+          $('#inputMotherName').val(patientDB.getMotherName());
+          $('#inputMotherCPF').val(patientDB.getMotherCPF()).mask('000.000.000-00');
+          $('#inputAddress').val(patientDB.getAddress());
+          $('#inputResidenceNumber').val(patientDB.getResidenceNumber());
+          $('#inputNeighborhood').val(patientDB.getNeighborhood());
           //Atualiza lista de cidades quando se muda o estado
-          inputState.val(patientDB.state);
-          findCities(inputState.val(), patientDB.city);
-          $('#inputCity').val(patientDB.city);
-          $('#inputCEP').val(patientDB.cep).mask('00000-000');
-          $('#inputEmail').val(patientDB.email);
-          $('#inputResTel').val(patientDB.resTel).mask('(00) 0000-00000');
-          $('#inputCommercialTel').val(patientDB.commercialTel).mask('(00) 0000-00000');
-          $('#inputCelPhone').val(patientDB.celPhone).mask('(00) 0000-00000');
-          $("input[name='rbFamilyHistory'][value='"+ patientDB.familyHistory +"']").prop('checked', true);
-          $('#inputProblemDescription').val(patientDB.problemDescription);
-          $("input[name='rbPatientHealthProblem'][value='"+ patientDB.patientHealthProblem +"']").prop('checked', true);
-          $('#inputHealthProblemDescription').val(patientDB.healthProblemDescription);
+          inputState.val(patientDB.getState());
+          findCities(inputState.val(), patientDB.getCity());
+          $('#inputCity').val(patientDB.getCity());
+          $('#inputCEP').val(patientDB.getCep()).mask('00000-000');
+          $('#inputEmail').val(patientDB.getEmail());
+          $('#inputResTel').val(patientDB.getResTel()).mask('(00) 0000-00000');
+          $('#inputCommercialTel').val(patientDB.getCommercialTel()).mask('(00) 0000-00000');
+          $('#inputCelPhone').val(patientDB.getCelPhone()).mask('(00) 0000-00000');
+          $("input[name='rbFamilyHistory'][value='"+ patientDB.getFamilyHistory()+"']").prop('checked', true);
+          $('#inputProblemDescription').val(patientDB.getProblemDescription());
+          $("input[name='rbPatientHealthProblem'][value='"+ patientDB.getPatientHealthProblem() +"']").prop('checked', true);
+          $('#inputHealthProblemDescription').val(patientDB.getHealthProblemDescription());
           switch (mode) {
             case '2':
               let assessmentIndex = 0;
-              console.log(typeof patientDB.assessments);
-              assessmentIndex = patientDB.assessments.findIndex(assessment => assessment._id === assessmentId);
-              $('#inputAssessmentDate').val(formatDate(patientDB.assessments[assessmentIndex].assessmentDate));
-              $("input[name='rbBreastfeeding'][value='"+ patientDB.assessments[assessmentIndex].breastfeeding +"']").prop('checked', true).trigger('change');
-              if (patientDB.assessments.length >1 ){
-                $('#accordionBreastfeedingDiv').append('<div id="accordionBreastfeeding">');
-                patientDB.assessments.forEach(function (assessment, index) {
-                  let newItem = '<h3>'
-                                + dateToText(assessment.assessmentDate)
-                                + '</h3>'
-                                + '<div>'
-                                + '</div>';
-
-                  $('#accordionBreastfeeding')
-                      .append('<h3>')
-                      .append('<div>');
-
-
-
+              assessmentIndex = patientDB.assessments.findIndex(assessment => assessment.getAssessmentId() === assessmentId);
+              $('#inputAssessmentDate').val(formatDate(patientDB.assessments[assessmentIndex].getAssessmentDate()));
+              $("input[name='rbBreastfeeding'][value='"+ patientDB.assessments[assessmentIndex].getBreastfeeding() +"']").prop('checked', true).trigger('change');
+              $("input[name='rbBreastfeedingTime'][value='"+ patientDB.assessments[assessmentIndex].getBreastfeedingTime() +"']").prop('checked', true);
+              $("input[name='rbBreastfeedingTiredness'][value='"+ patientDB.assessments[assessmentIndex].getBreastfeedingTiredness() +"']").prop('checked', true);
+              $("input[name='rbBreastfeedingSleep'][value='"+ patientDB.assessments[assessmentIndex].getBreastfeedingSleep() +"']").prop('checked', true);
+              $("input[name='rbReleasingNipple'][value='"+ patientDB.assessments[assessmentIndex].getReleasingNipple() +"']").prop('checked', true);
+              $("input[name='rbBiteNipple'][value='"+ patientDB.assessments[assessmentIndex].getBiteNipple() +"']").prop('checked', true);
+              $('#obsBreastfeeding').val(patientDB.assessments[assessmentIndex].getObsBreastfeeding());
+              $("input[name='rbQuestionOne'][value='"+ patientDB.assessments[assessmentIndex].getQuestionOne() +"']").prop('checked', true);
+              $("input[name='rbQuestionTwo'][value='"+ patientDB.assessments[assessmentIndex].getQuestionTwo() +"']").prop('checked', true);
+              $("input[name='rbQuestionThree'][value='"+ patientDB.assessments[assessmentIndex].getQuestionThree() +"']").prop('checked', true);
+              $("input[name='rbQuestionFour'][value='"+ patientDB.assessments[assessmentIndex].getQuestionFour() +"']").prop('checked', true).trigger('change');
+              $("input[name='rbQuestionFourOne'][value='"+ patientDB.assessments[assessmentIndex].getQuestionFourOne() +"']").prop('checked', true);
+              $("input[name='rbQuestionFourTwo'][value='"+ patientDB.assessments[assessmentIndex].getQuestionFourTwo() +"']").prop('checked', true);
+              $("input[name='rbQuestionFourThree'][value='"+ patientDB.assessments[assessmentIndex].getQuestionFourThree() +"']").prop('checked', true);
+              $('#inputQuestionFourComments').val(patientDB.assessments[assessmentIndex].getQuestionFourComments());
+              $("input[name='rbPartTwoQuestionOne'][value='"+ patientDB.assessments[assessmentIndex].getPartTwoQuestionOne() +"']").prop('checked', true);
+              $("input[name='rbPartTwoQuestionTwoOne'][value='"+ patientDB.assessments[assessmentIndex].getPartTwoQuestionTwoOne() +"']").prop('checked', true);
+              $("input[name='rbPartTwoQuestionTwoTwo'][value='"+ patientDB.assessments[assessmentIndex].getPartTwoQuestionTwoTwo() +"']").prop('checked', true);
+              $("input[name='rbPartTwoQuestionTwoThree'][value='"+ patientDB.assessments[assessmentIndex].getPartTwoQuestionTwoThree() +"']").prop('checked', true);
+              $("input[name='rbPartTwoQuestionTwoFour'][value='"+ patientDB.assessments[assessmentIndex].getPartTwoQuestionTwoFour() +"']").prop('checked', true);
+              $('#inputSuctionComments').val(patientDB.assessments[assessmentIndex].getObsSuction());
+              $('#inputFinalReport').val(patientDB.assessments[assessmentIndex].getObsResume());
+              $("input[name='rbBehavior'][value='"+ patientDB.assessments[assessmentIndex].getAssBehavior() +"']").prop('checked', true);
+              $('#inputBehavior').val(patientDB.assessments[assessmentIndex].getDescBehavior());
+              if (patientDB.assessments.length > 1){
+                createAccordions();
+                patientDB.assessments.forEach(function (assessment) {
+                  if (assessment.getAssessmentId() !== assessmentId){
+                    accordionWrite(assessment);
+                  }
                 });
+                $('.accordionDiv').show();
               }
               break;
             case '3':
+              if (patientDB.assessments.length > 0){
+                createAccordions();
+                patientDB.assessments.forEach(function (assessment) {
+                  accordionWrite(assessment);
+                });
+                $('.accordionDiv').show();
+              }
               break;
           }
 

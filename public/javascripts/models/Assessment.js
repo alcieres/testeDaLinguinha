@@ -489,7 +489,7 @@ function Assessment (){
         return "Não respondida"
     }
   };
-  this.assBehaviorText = () => {
+  this.assBehaviorToText = () => {
     switch (assBehavior) {
       case "1":
         return "Não apresenta alteração de frênulo lingual";

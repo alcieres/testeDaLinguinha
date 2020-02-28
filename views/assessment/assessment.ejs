@@ -27,19 +27,19 @@
   <script type="text/javascript" src="/javascripts/models/Patient.js" ></script>
   <script type="text/javascript" src="/javascripts/controllers/assessmentValidate.js" ></script>
   <script type="text/javascript" src="/javascripts/controllers/resumeWrite.js" ></script>
+  <script type="text/javascript" src="/javascripts/assessmentAccordion.js" ></script>
   <script type="text/javascript" src="/javascripts/assessment.js" ></script>
   <script>
     let patientId = '<%= patientId%>';
     let assessmentId = '<%= assessmentId%>';
     let mode = '<%= mode%>';
-    console.log("Paciente: " + patientId + "\nTeste: " + assessmentId + "\nModo: " + mode);
   </script>
 
 </head>
 
 <body>
 
-<%- include('../partials/nav', {active: "navAssessment"}); %>
+<%- include('../partials/nav'); %>
 
 <form id="assForm"> <%# Início do formulário principal %>
 
@@ -301,36 +301,13 @@
       </div>
     </div> <%# FIM Containner História Clínica 2 %>
 
-    <div class="container mainContainer p-2 accordionDiv">
-      <div id="accordionBreastfeeding">
-        <h3>Section 1</h3>
-        <div>
-          <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-        </div>
-        <h3>Section 2</h3>
-        <div>
-          <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna. </p>
-        </div>
-        <h3>Section 3</h3>
-        <div>
-          <p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui. </p>
-          <ul>
-            <li>List item one</li>
-            <li>List item two</li>
-            <li>List item three</li>
-          </ul>
-        </div>
-        <h3>Section 4</h3>
-        <div>
-          <p>Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est. </p><p>Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
-        </div>
-      </div>
+    <div class="container mainContainer p-2 accordionDiv" id="accordionBreastfeedingDiv">
     </div>
 
     <div class="container mainContainer"> <%# Containner História Clínica 3 %>
       <div class="row align-items-center"> <%# Pergunta mama no peito %>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
-          <p>Mama no Peito?</p>
+          <p>Mama no peito?</p>
         </div>
       </div>
       <div class="row align-items-center"> <%# Radio Button mama no peito %>
@@ -503,7 +480,6 @@
       </ul>
 
     </div> <%# Containner História Clínica 3 %>
-
     <div class="container mainContainer"> <%# Containner História Clínica 4 %>
 
       <div class="row align-items-center"> <%# Descrição da Pontuação %>
@@ -520,8 +496,9 @@
   </div>
 
   <div class="tab"> <%# Tela 02 %>
+    <div class="container mainContainer p-2 accordionDiv" id="accordionQuestionsOneToThreeDiv">
+    </div>
     <div class="container mainContainer"> <%# Containner Exame Clínico Parte I 1 %>
-
       <div class="row align-items-center">  <%# Título Exame Clínico %>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto my-4">
           <h2 class="text-center border border-dark rounded">Exame Clínico <br><small>(sugere-se filmagem para posterior análise)</small></h2>
@@ -704,11 +681,12 @@
           </p>
         </div>
       </div>
-
     </div> <%# Containner Exame Clínico Parte I 2 %>
   </div>
 
   <div class="tab"> <%# Tela 03 %>
+    <div class="container mainContainer p-2 accordionDiv" id="accordionQuestionFourDiv">
+    </div>
     <div class="container mainContainer"> <%# Containner Exame Clínico Parte I (2ª Tela) 1 %>
 
       <div class="row align-items-center">  <%# Título Exame Clínico %>
@@ -933,6 +911,9 @@
   </div>
 
   <div class="tab"> <%# Tela 04 %>
+
+    <div class="container mainContainer p-2 accordionDiv" id="accordionPartTwoDiv">
+    </div>
     <div class="container mainContainer"> <%# Containner Avaliação da sucção não nutritiva e nutritiva 1 %>
 
       <div class="row align-items-center">  <%# Linha do título Avaliação da sucção não nutritiva e nutritiva 1 %>
@@ -1308,8 +1289,9 @@
         </div>
       </div>
     </div> <%# FIM Containner Relatório Final 1 %>
+    <div class="container mainContainer p-2 accordionDiv" id="accordionFinalResumeDiv">
+    </div>
   </div>
-
   <div class="container finalContainer"> <%# Containner Botões %>
 
     <div class="row align-items-center"> <%# Descrição da Pontuação %>
