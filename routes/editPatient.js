@@ -10,9 +10,11 @@ router.put('/patient/:id', isLoggedIn, validation.validate('patient'), editPatie
 
 router.get('/assessmentEdit', isLoggedIn, editPatientController.assessmentEditGet);
 
-router.put('/assessmentEdit', isLoggedIn, /*validation.validate('assessment'),*/ editPatientController.assessmentEditPost);
+router.put('/assessmentEdit', isLoggedIn, validation.validate('assessment'), editPatientController.assessmentEditPut);
 
 router.get('/assessmentNew', isLoggedIn, editPatientController.assessmentNewGet);
+
+router.put('/assessmentNew', isLoggedIn, validation.validate('assessment'), editPatientController.assessmentNewPut);
 
 router.get('/requestPatient', isLoggedIn, editPatientController.requestPatientGet);
 

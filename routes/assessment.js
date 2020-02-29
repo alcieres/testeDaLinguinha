@@ -16,9 +16,8 @@ Página Inicial
 router.get('/', isLoggedIn, assessmentController.assessmentCreateGet);
 // ROTA CREATE - Rota para inserção de um novo paciente com o primeiro exame no banco
 router.post('/', isLoggedIn, validation.validate('assessment'), assessmentController.assessmentCreatePost);
-  /*
-  Rota que abre o extrato resumido de um teste para visualização e impressão
-  */
+
+//Rota que abre o extrato resumido de um teste para visualização e impressão
 router.get('/assessmentExtract', isLoggedIn, assessmentController.assessmentExtractGet);
 /*
    Essa rota recebe uma requisição de um teste de um determinado paciente, procura o paciente no banco, e envia os dados pessoais do

@@ -351,82 +351,86 @@ function Patient () {
   };
 
   this.toJSON = (indexAssessment) => {
-    return {
-      patientId,
-      name,
-      birthDate,
-      genre,
-      motherName,
-      motherCPF,
-      fatherName,
-      address,
-      residenceNumber,
-      neighborhood,
-      state,
-      city,
-      cep,
-      email,
-      resTel,
-      commercialTel,
-      celPhone,
-      familyHistory,
-      problemDescription,
-      patientHealthProblem,
-      healthProblemDescription,
-      assessments: [{
-        //Início do Exame
-        assessmentId: this.assessments[indexAssessment].getAssessmentId(),
-        assessmentDate: this.assessments[indexAssessment].getAssessmentDate(),
-        breastfeeding: this.assessments[indexAssessment].getBreastfeeding(),
-        breastfeedingTime: this.assessments[indexAssessment].getBreastfeedingTime(),
-        breastfeedingTiredness: this.assessments[indexAssessment].getBreastfeedingTiredness(),
-        breastfeedingSleep: this.assessments[indexAssessment].getBreastfeedingSleep(),
-        releasingNipple: this.assessments[indexAssessment].getReleasingNipple(),
-        biteNipple: this.assessments[indexAssessment].getBiteNipple(),
-        obsBreastfeeding: this.assessments[indexAssessment].getObsBreastfeeding(),
-        //Pontos História Clínica
-        clinicalHistoryPoints: this.assessments[indexAssessment].getClinicalHistoryPoints(),
-        //Tela 02
-        questionOne: this.assessments[indexAssessment].getQuestionOne(),
-        questionTwo: this.assessments[indexAssessment].getQuestionTwo(),
-        questionThree: this.assessments[indexAssessment].getQuestionThree(),
-        //Pontos Questões de Um a Três
-        questionsOneToThreePoints: this.assessments[indexAssessment].getQuestionsOneToThreePoints(),
-        //Tela 03
-        questionFour: this.assessments[indexAssessment].getQuestionFour(),
-        questionFourOne: this.assessments[indexAssessment].getQuestionFourOne(),
-        questionFourTwo: this.assessments[indexAssessment].getQuestionFourTwo(),
-        questionFourThree: this.assessments[indexAssessment].getQuestionFourThree(),
-        questionFourComments: this.assessments[indexAssessment].getQuestionFourComments(),
-        //Pontos Questão 4
-        questionFourPoints: this.assessments[indexAssessment].getQuestionFourPoints(),
-        //Pontos da Parte I
-        questionsOneToFourPoints: this.assessments[indexAssessment].getQuestionsOneToFourPoints(),
-        //Tela 04
-        partTwoQuestionOne: this.assessments[indexAssessment].getPartTwoQuestionOne(),
-        partTwoQuestionTwoOne: this.assessments[indexAssessment].getPartTwoQuestionTwoOne(),
-        partTwoQuestionTwoTwo: this.assessments[indexAssessment].getPartTwoQuestionTwoTwo(),
-        partTwoQuestionTwoThree: this.assessments[indexAssessment].getPartTwoQuestionTwoThree(),
-        partTwoQuestionTwoFour: this.assessments[indexAssessment].getPartTwoQuestionTwoFour(),
-        obsSuction: this.assessments[indexAssessment].getObsSuction(),
-        //Pontos da Parte II
-        partTwoQuestionPoints: this.assessments[indexAssessment].getPartTwoQuestionPoints(),
-        //Pontos Totais Exame Clínico
-        clinicalAssessmentPoints: this.assessments[indexAssessment].getClinicalAssessmentPoints(),
-        //Pontos Totais do Exame
-        historyAssessmentPoints: this.assessments[indexAssessment].getHistoryAssessmentPoints(),
-        //Tela 05
-        obsResume: this.assessments[indexAssessment].getObsResume(),
-        assBehavior: this.assessments[indexAssessment].getAssBehavior(),
-        descBehavior: this.assessments[indexAssessment].getDescBehavior(),
-        //Usuário
-        userCPF: this.assessments[indexAssessment].getUserCPF(),
-        userName: this.assessments[indexAssessment].getUserName(),
-        userLastName: this.assessments[indexAssessment].getUserLastName(),
-        userOccupation: this.assessments[indexAssessment].getUserOccupation(),
-        userRegistry: this.assessments[indexAssessment].getUserRegistry()
-      }]
-    }
-  };
+    let patientJSON = {};
+    patientJSON.patientId = patientId;
+    patientJSON.name = name;
+    patientJSON.birthDate = birthDate;
+    patientJSON.genre = genre;
+    patientJSON.motherName = motherName;
+    patientJSON.motherCPF = motherCPF;
+    patientJSON.fatherName = fatherName;
+    patientJSON.address = address;
+    patientJSON.residenceNumber = residenceNumber;
+    patientJSON.neighborhood = neighborhood;
+    patientJSON.state = state;
+    patientJSON.city = city;
+    patientJSON.cep = cep;
+    patientJSON.email = email;
+    patientJSON.resTel = resTel;
+    patientJSON.commercialTel = commercialTel;
+    patientJSON.celPhone = celPhone;
+    patientJSON.familyHistory = familyHistory;
+    patientJSON.problemDescription = problemDescription;
+    patientJSON.patientHealthProblem = patientHealthProblem;
+    patientJSON.healthProblemDescription = healthProblemDescription;
+    patientJSON.assessments = [];
 
+    let assessmentJSON = {};
+    //Início do Exame
+    assessmentJSON.assessmentId = this.assessments[indexAssessment].getAssessmentId();
+    assessmentJSON.assessmentDate = this.assessments[indexAssessment].getAssessmentDate();
+    assessmentJSON.breastfeeding = this.assessments[indexAssessment].getBreastfeeding();
+    assessmentJSON.breastfeedingTime = this.assessments[indexAssessment].getBreastfeedingTime();
+    assessmentJSON.breastfeedingTiredness = this.assessments[indexAssessment].getBreastfeedingTiredness();
+    assessmentJSON.breastfeedingSleep = this.assessments[indexAssessment].getBreastfeedingSleep();
+    assessmentJSON.releasingNipple = this.assessments[indexAssessment].getReleasingNipple();
+    assessmentJSON.biteNipple = this.assessments[indexAssessment].getBiteNipple();
+    assessmentJSON.obsBreastfeeding = this.assessments[indexAssessment].getObsBreastfeeding();
+    //Pontos História Clínica
+    assessmentJSON.clinicalHistoryPoints = this.assessments[indexAssessment].getClinicalHistoryPoints();
+    //Tela 02
+    assessmentJSON.questionOne = this.assessments[indexAssessment].getQuestionOne();
+    assessmentJSON.questionTwo = this.assessments[indexAssessment].getQuestionTwo();
+    assessmentJSON.questionThree = this.assessments[indexAssessment].getQuestionThree();
+    //Pontos Questões de Um a Três
+    assessmentJSON.questionsOneToThreePoints = this.assessments[indexAssessment].getQuestionsOneToThreePoints();
+    //Tela 03
+    assessmentJSON.questionFour = this.assessments[indexAssessment].getQuestionFour();
+    assessmentJSON.questionFourOne = this.assessments[indexAssessment].getQuestionFourOne();
+    assessmentJSON.questionFourTwo = this.assessments[indexAssessment].getQuestionFourTwo();
+    assessmentJSON.questionFourThree = this.assessments[indexAssessment].getQuestionFourThree();
+    assessmentJSON.questionFourComments = this.assessments[indexAssessment].getQuestionFourComments();
+    //Pontos Questão 4
+    assessmentJSON.questionFourPoints = this.assessments[indexAssessment].getQuestionFourPoints();
+    //Pontos da Parte I
+    assessmentJSON.questionsOneToFourPoints = this.assessments[indexAssessment].getQuestionsOneToFourPoints();
+    //Tela 04
+    assessmentJSON.partTwoQuestionOne = this.assessments[indexAssessment].getPartTwoQuestionOne();
+    assessmentJSON.partTwoQuestionTwoOne = this.assessments[indexAssessment].getPartTwoQuestionTwoOne();
+    assessmentJSON.partTwoQuestionTwoTwo = this.assessments[indexAssessment].getPartTwoQuestionTwoTwo();
+    assessmentJSON.partTwoQuestionTwoThree = this.assessments[indexAssessment].getPartTwoQuestionTwoThree();
+    assessmentJSON.partTwoQuestionTwoFour = this.assessments[indexAssessment].getPartTwoQuestionTwoFour();
+    assessmentJSON.obsSuction = this.assessments[indexAssessment].getObsSuction();
+    //Pontos da Parte II
+    assessmentJSON.partTwoQuestionPoints = this.assessments[indexAssessment].getPartTwoQuestionPoints();
+    //Pontos Totais Exame Clínico
+    assessmentJSON.clinicalAssessmentPoints = this.assessments[indexAssessment].getClinicalAssessmentPoints();
+    //Pontos Totais do Exame
+    assessmentJSON.historyAssessmentPoints = this.assessments[indexAssessment].getHistoryAssessmentPoints();
+    //Tela 05
+    assessmentJSON.obsResume = this.assessments[indexAssessment].getObsResume();
+    assessmentJSON.assBehavior = this.assessments[indexAssessment].getAssBehavior();
+    assessmentJSON.descBehavior = this.assessments[indexAssessment].getDescBehavior();
+    //Usuário
+    assessmentJSON.userCPF = this.assessments[indexAssessment].getUserCPF();
+    assessmentJSON.userName = this.assessments[indexAssessment].getUserName();
+    assessmentJSON.userLastName = this.assessments[indexAssessment].getUserLastName();
+    assessmentJSON.userOccupation = this.assessments[indexAssessment].getUserOccupation();
+    assessmentJSON.userRegistry = this.assessments[indexAssessment].getUserRegistry();
+
+    patientJSON.assessments.push(assessmentJSON);
+    console.log(patientJSON);
+
+    return JSON.stringify(patientJSON);
+  };
 };

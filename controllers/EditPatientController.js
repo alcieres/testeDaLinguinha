@@ -1,4 +1,5 @@
 const Patient = require('../models/Patient.js');
+const Assessment = require('../models/Assessment.js');
 const { validationResult } = require('express-validator');
 
 exports.editPatientGet = function(req, res) {
@@ -8,7 +9,7 @@ exports.editPatientGet = function(req, res) {
       console.log("Erro de Acesso ao Banco de Dados");
     } else {
       doc.assessments = "";
-      console.log(doc);
+      //console.log(doc);
       res.render('editPatient/editPatient', {title: 'Teste da Linguinha', user: req.user, patient: JSON.stringify(doc) });
     }
   });
@@ -78,116 +79,7 @@ exports.assessmentEditGet = function (req, res, next) {
   res.render('assessment/assessment', {title: 'Teste da Linguinha', user: req.user, patientId, assessmentId, mode: 2, active: 'navFindPatient'});
 };
 
-exports.assessmentEditPost = function (req, res) {
-  // const errors = validationResult(req);
-  // if (!errors.isEmpty()) {
-  //   return res.status(422).json({error: errors.array()});
-  // }
-  //Criação do exame
-  let newAssessment = new Assessment();
-  let assessmentIndex = 0;
-  //Início do Exame
-  newAssessment._id = req.body.assessmentId;
-  newAssessment.assessmentDate = req.body.assessments[assessmentIndex].assessmentDate;
-  newAssessment.breastfeeding = req.body.assessments[assessmentIndex].breastfeeding;
-  newAssessment.breastfeedingTime = req.body.assessments[assessmentIndex].breastfeedingTime;
-  newAssessment.breastfeedingTiredness = req.body.assessments[assessmentIndex].breastfeedingTiredness;
-  newAssessment.breastfeedingSleep = req.body.assessments[assessmentIndex].breastfeedingSleep;
-  newAssessment.releasingNipple = req.body.assessments[assessmentIndex].releasingNipple;
-  newAssessment.biteNipple = req.body.assessments[assessmentIndex].biteNipple;
-  newAssessment.obsBreastfeeding = req.body.assessments[assessmentIndex].obsBreastfeeding;
-  //Pontos História Clínica
-  newAssessment.clinicalHistoryPoints = req.body.assessments[assessmentIndex].clinicalHistoryPoints;
-  //Tela 02
-  newAssessment.questionOne = req.body.assessments[assessmentIndex].questionOne;
-  newAssessment.questionTwo = req.body.assessments[assessmentIndex].questionTwo;
-  newAssessment.questionThree = req.body.assessments[assessmentIndex].questionThree;
-  //Pontos Questões de Um a Três
-  newAssessment.questionsOneToThreePoints = req.body.assessments[assessmentIndex].questionsOneToThreePoints;
-  //Tela 03
-  newAssessment.questionFour = req.body.assessments[assessmentIndex].questionFour;
-  newAssessment.questionFourOne = req.body.assessments[assessmentIndex].questionFourOne;
-  newAssessment.questionFourTwo = req.body.assessments[assessmentIndex].questionTwo;
-  newAssessment.questionFourThree = req.body.assessments[assessmentIndex].questionFourThree;
-  newAssessment.questionFourComments = req.body.assessments[assessmentIndex].questionFourComments;
-  //Pontos Questão 4
-  newAssessment.questionFourPoints = req.body.assessments[assessmentIndex].questionFourPoints;
-  //Pontos da Parte I
-  newAssessment.questionsOneToFourPoints = req.body.assessments[assessmentIndex].questionsOneToFourPoints;
-  //Tela 04
-  newAssessment.partTwoQuestionOne = req.body.assessments[assessmentIndex].partTwoQuestionOne;
-  newAssessment.partTwoQuestionTwoOne = req.body.assessments[assessmentIndex].partTwoQuestionTwoTwo;
-  newAssessment.partTwoQuestionTwoTwo = req.body.assessments[assessmentIndex].partTwoQuestionTwoThree;
-  newAssessment.partTwoQuestionTwoThree = req.body.assessments[assessmentIndex].partTwoQuestionTwoThree;
-  newAssessment.partTwoQuestionTwoFour = req.body.assessments[assessmentIndex].partTwoQuestionTwoFour;
-  newAssessment.obsSuction = req.body.assessments[assessmentIndex].obsSuction;
-  //Pontos da Parte II
-  newAssessment.partTwoQuestionPoints = req.body.assessments[assessmentIndex].partTwoQuestionPoints;
-  //Pontos Totais Exame Clínico
-  newAssessment.clinicalAssessmentPoints = req.body.assessments[assessmentIndex].clinicalAssessmentPoints;
-  //Pontos Totais do Exame
-  newAssessment.historyAssessmentPoints = req.body.assessments[assessmentIndex].historyAssessmentPoints;
-  //Tela 05
-  newAssessment.obsResume = req.body.assessments[assessmentIndex].obsResume;
-  newAssessment.assBehavior = req.body.assessments[assessmentIndex].assBehavior;
-  newAssessment.descBehavior = req.body.assessments[assessmentIndex].descBehavior;
-  //Usuário
-  newAssessment.userCPF = req.user.cpf;
-  newAssessment.userName = req.user.name;
-  newAssessment.userLastName = req.user.lastName;
-  newAssessment.userOccupation = req.user.occupation;
-  newAssessment.userRegistry = req.user.registry;
-
-  //Criação do Paciente
-  let patientNew = new Patient();
-  //Início do Paciente
-  patientNew._id = req.body.patientId;
-  patientNew.name = req.body.name;
-  patientNew.birthDate = req.body.birthDate;
-  patientNew.genre = req.body.genre;
-  patientNew.motherName = req.body.motherName;
-  patientNew.motherCPF = req.body.motherCPF;
-  patientNew.fatherName = req.body.fatherName;
-  patientNew.address = req.body.address;
-  patientNew.residenceNumber = req.body.residenceNumber;
-  patientNew.neighborhood = req.body.neighborhood;
-  patientNew.state = req.body.state;
-  patientNew.city = req.body.city;
-  patientNew.cep = req.body.cep;
-  patientNew.email = req.body.email;
-  patientNew.resTel = req.body.resTel;
-  patientNew.commercialTel = req.body.commercialTel;
-  patientNew.celPhone = req.body.celPhone;
-  patientNew.familyHistory = req.body.familyHistory;
-  patientNew.problemDescription = req.body.problemDescription;
-  patientNew.patientHealthProblem = req.body.patientHealthProblem;
-  patientNew.healthProblemDescription = req.body.healthProblemDescription;
-
-  //Insere Exame criado no objeto "Paciente".
-  patientNew.assessments.push(newAssessment);
-  console.log(patientNew);
-
-  // async function update () {
-  //   let updatedDocsIds = await findAndUpdate(patientNew, false);
-  //   //console.log("ARRAY IDS: " + 'patientId = ' + updatedDocsIds[0] + ' e assessmentId = ' + updatedDocsIds[1]);
-  //   if (updatedDocsIds !== 'Erro ao salvar teste'){
-  //     res.status(200).json({success: [{msg: "Paciente atualizado e teste inserido", patientId: updatedDocsIds[0], assessmentId: updatedDocsIds[1]}]});
-  //   } else {
-  //     return res.status(422).json({error: [{msg: 'Erro ao salvar teste'}]});
-  //
-  //   }
-  //
-  // }
-  // update();
-
-};
-
-exports.assessmentNewGet = function (req, res) {
-  let patientId = req.query.patientId;
-  res.render('assessment/assessment', {title: 'Teste da Linguinha', user: req.user, patientId, assessmentId: "", mode: 3, active: 'navFindPatient'});
-};
-
-exports.assessmentNewPost = function (req, res) {
+exports.assessmentEditPut = function (req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).json({error: errors.array()});
@@ -196,7 +88,7 @@ exports.assessmentNewPost = function (req, res) {
   let newAssessment = new Assessment();
   let assessmentIndex = 0;
   //Início do Exame
-  //newAssessment._id = req.body.assessmentId;
+  newAssessment._id = req.body.assessments[assessmentIndex].assessmentId;
   newAssessment.assessmentDate = req.body.assessments[assessmentIndex].assessmentDate;
   newAssessment.breastfeeding = req.body.assessments[assessmentIndex].breastfeeding;
   newAssessment.breastfeedingTime = req.body.assessments[assessmentIndex].breastfeedingTime;
@@ -274,7 +166,115 @@ exports.assessmentNewPost = function (req, res) {
 
   //Insere Exame criado no objeto "Paciente".
   patientNew.assessments.push(newAssessment);
-  //console.log("Novo Paciente: " + patientNew);
+  //console.log(patientNew);
+
+  async function update () {
+    let updatedDocsIds = await findAndUpdate(patientNew, false);
+    //console.log("ARRAY IDS: " + 'patientId = ' + updatedDocsIds[0] + ' e assessmentId = ' + updatedDocsIds[1]);
+    if (updatedDocsIds !== 'Erro ao salvar teste'){
+      res.status(200).json({success: [{msg: "Paciente atualizado e teste inserido", patientId: updatedDocsIds[0], assessmentId: updatedDocsIds[1]}]});
+    } else {
+       return res.status(422).json({error: [{msg: 'Erro ao salvar teste'}]});
+
+    }
+
+  }
+  update();
+};
+
+exports.assessmentNewGet = function (req, res) {
+  let patientId = req.query.patientId;
+  res.render('assessment/assessment', {title: 'Teste da Linguinha', user: req.user, patientId, assessmentId: "", mode: 3, active: 'navFindPatient'});
+};
+
+exports.assessmentNewPut = function (req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({error: errors.array()});
+  }
+  //Criação do exame
+  let newAssessment = new Assessment();
+  let assessmentIndex = 0;
+  //Início do Exame
+  //newAssessment._id = req.body.assessments[assessmentIndex].assessmentId;
+  newAssessment.assessmentDate = req.body.assessments[assessmentIndex].assessmentDate;
+  newAssessment.breastfeeding = req.body.assessments[assessmentIndex].breastfeeding;
+  newAssessment.breastfeedingTime = req.body.assessments[assessmentIndex].breastfeedingTime;
+  newAssessment.breastfeedingTiredness = req.body.assessments[assessmentIndex].breastfeedingTiredness;
+  newAssessment.breastfeedingSleep = req.body.assessments[assessmentIndex].breastfeedingSleep;
+  newAssessment.releasingNipple = req.body.assessments[assessmentIndex].releasingNipple;
+  newAssessment.biteNipple = req.body.assessments[assessmentIndex].biteNipple;
+  newAssessment.obsBreastfeeding = req.body.assessments[assessmentIndex].obsBreastfeeding;
+  //Pontos História Clínica
+  newAssessment.clinicalHistoryPoints = req.body.assessments[assessmentIndex].clinicalHistoryPoints;
+  //Tela 02
+  newAssessment.questionOne = req.body.assessments[assessmentIndex].questionOne;
+  newAssessment.questionTwo = req.body.assessments[assessmentIndex].questionTwo;
+  newAssessment.questionThree = req.body.assessments[assessmentIndex].questionThree;
+  //Pontos Questões de Um a Três
+  newAssessment.questionsOneToThreePoints = req.body.assessments[assessmentIndex].questionsOneToThreePoints;
+  //Tela 03
+  newAssessment.questionFour = req.body.assessments[assessmentIndex].questionFour;
+  newAssessment.questionFourOne = req.body.assessments[assessmentIndex].questionFourOne;
+  newAssessment.questionFourTwo = req.body.assessments[assessmentIndex].questionTwo;
+  newAssessment.questionFourThree = req.body.assessments[assessmentIndex].questionFourThree;
+  newAssessment.questionFourComments = req.body.assessments[assessmentIndex].questionFourComments;
+  //Pontos Questão 4
+  newAssessment.questionFourPoints = req.body.assessments[assessmentIndex].questionFourPoints;
+  //Pontos da Parte I
+  newAssessment.questionsOneToFourPoints = req.body.assessments[assessmentIndex].questionsOneToFourPoints;
+  //Tela 04
+  newAssessment.partTwoQuestionOne = req.body.assessments[assessmentIndex].partTwoQuestionOne;
+  newAssessment.partTwoQuestionTwoOne = req.body.assessments[assessmentIndex].partTwoQuestionTwoTwo;
+  newAssessment.partTwoQuestionTwoTwo = req.body.assessments[assessmentIndex].partTwoQuestionTwoThree;
+  newAssessment.partTwoQuestionTwoThree = req.body.assessments[assessmentIndex].partTwoQuestionTwoThree;
+  newAssessment.partTwoQuestionTwoFour = req.body.assessments[assessmentIndex].partTwoQuestionTwoFour;
+  newAssessment.obsSuction = req.body.assessments[assessmentIndex].obsSuction;
+  //Pontos da Parte II
+  newAssessment.partTwoQuestionPoints = req.body.assessments[assessmentIndex].partTwoQuestionPoints;
+  //Pontos Totais Exame Clínico
+  newAssessment.clinicalAssessmentPoints = req.body.assessments[assessmentIndex].clinicalAssessmentPoints;
+  //Pontos Totais do Exame
+  newAssessment.historyAssessmentPoints = req.body.assessments[assessmentIndex].historyAssessmentPoints;
+  //Tela 05
+  newAssessment.obsResume = req.body.assessments[assessmentIndex].obsResume;
+  newAssessment.assBehavior = req.body.assessments[assessmentIndex].assBehavior;
+  newAssessment.descBehavior = req.body.assessments[assessmentIndex].descBehavior;
+  //Usuário
+  newAssessment.userCPF = req.user.cpf;
+  newAssessment.userName = req.user.name;
+  newAssessment.userLastName = req.user.lastName;
+  newAssessment.userOccupation = req.user.occupation;
+  newAssessment.userRegistry = req.user.registry;
+
+  //Criação do Paciente
+  let patientNew = new Patient();
+  //Início do Paciente
+  patientNew._id = req.body.patientId;
+  patientNew.name = req.body.name;
+  patientNew.birthDate = req.body.birthDate;
+  patientNew.genre = req.body.genre;
+  patientNew.motherName = req.body.motherName;
+  patientNew.motherCPF = req.body.motherCPF;
+  patientNew.fatherName = req.body.fatherName;
+  patientNew.address = req.body.address;
+  patientNew.residenceNumber = req.body.residenceNumber;
+  patientNew.neighborhood = req.body.neighborhood;
+  patientNew.state = req.body.state;
+  patientNew.city = req.body.city;
+  patientNew.cep = req.body.cep;
+  patientNew.email = req.body.email;
+  patientNew.resTel = req.body.resTel;
+  patientNew.commercialTel = req.body.commercialTel;
+  patientNew.celPhone = req.body.celPhone;
+  patientNew.familyHistory = req.body.familyHistory;
+  patientNew.problemDescription = req.body.problemDescription;
+  patientNew.patientHealthProblem = req.body.patientHealthProblem;
+  patientNew.healthProblemDescription = req.body.healthProblemDescription;
+
+  //Insere Exame criado no objeto "Paciente".
+  patientNew.assessments.push(newAssessment);
+  //console.log(patientNew);
 
   async function update () {
     let updatedDocsIds = await findAndUpdate(patientNew, true);
@@ -283,11 +283,11 @@ exports.assessmentNewPost = function (req, res) {
       res.status(200).json({success: [{msg: "Paciente atualizado e teste inserido", patientId: updatedDocsIds[0], assessmentId: updatedDocsIds[1]}]});
     } else {
       return res.status(422).json({error: [{msg: 'Erro ao salvar teste'}]});
+
     }
 
   }
   update();
-
 };
 
 exports.requestPatientGet = function (req, res) {
@@ -303,8 +303,11 @@ exports.requestPatientGet = function (req, res) {
 
 //Função que atualiza um paciente no Banco de Dados
 async function findAndUpdate(patientForUpdate, newAssessment) {
-  let patientDB = await Patient.findOne({name: patientForUpdate.name, birthDate: patientForUpdate.birthDate, motherName: patientForUpdate.motherName});
+  let patientDB = await Patient.findById(patientForUpdate._id);
+  patientDB.name = patientForUpdate.name;
+  patientDB.birthDate = patientForUpdate.birthDate;
   patientDB.genre = patientForUpdate.genre;
+  patientDB.motherName = patientForUpdate.motherName;
   patientDB.motherCPF = patientForUpdate.motherCPF;
   patientDB.fatherName = patientForUpdate.fatherName;
   patientDB.address = patientForUpdate.address;

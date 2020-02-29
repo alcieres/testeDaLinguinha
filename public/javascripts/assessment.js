@@ -15,6 +15,9 @@ $(document).ready(function() {
 
   // Click do botão voltar do formulário
   prevBtn.click(function(){
+    if (currentTab === 0){
+      window.history.back();
+    }
     nextPrev(-1);
     $('html, body').scrollTop(0);
   });
@@ -28,11 +31,11 @@ $(document).ready(function() {
     // Exibe a tab atual na tela
     tabs[n].style.display = "block";
     //Desabilita o botão voltar na primeira tela e habilita nas próximas
-    if (n === 0) {
-      prevBtn.prop('disabled', true);
-    } else {
-      prevBtn.prop('disabled', false);
-    }
+    // if (n === 0) {
+    //   prevBtn.prop('disabled', true);
+    // } else {
+    //   prevBtn.prop('disabled', false);
+    // }
 
     if (n === (tabs.length - 1)) {
       nextBtn.text('Concluir');
@@ -161,7 +164,7 @@ $(document).ready(function() {
             method: 'POST',
             contentType: "application/json",
             url: '/assessment',
-            data: JSON.stringify(patient),
+            data: patient.toJSON(0),
             success: successHandler,
             error: errorHandler
           });
@@ -178,6 +181,7 @@ $(document).ready(function() {
     }
   };
 
+  // Edita um teste já realizado
   let editPatientAssessment = function () {
     jQuery("#dialogMsg").text("Confirma a edição do exame?");
     $( "#dialog-confirm" ).dialog({
@@ -189,15 +193,17 @@ $(document).ready(function() {
       buttons: {
         Sim: function() {
           $( this ).dialog( "close" );
+          patient.setPatientId(patientId);
           patient.assessments[0].setAssessmentId(assessmentId);
           patient.assessments[0].setObsResume($("#inputFinalReport").val());
           patient.assessments[0].setAssBehavior($("input[name='rbBehavior']:checked").val());
           patient.assessments[0].setDescBehavior($("#inputBehavior").val());
+          console.log(patient.toJSON(0));
           $.ajax({
             method: 'PUT',
             contentType: "application/json",
             url: '/editPatient/assessmentEdit',
-            data: JSON.stringify(patient.toJSON(0)),
+            data: patient.toJSON(0),
             success: successHandler,
             error: errorHandler
           });
@@ -208,7 +214,7 @@ $(document).ready(function() {
       }
     });
     function successHandler (data) {
-      let url = 'assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
+      let url = '/assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
       window.open(url, "_blank");
       //window.location.replace("/assessment")
     }
@@ -225,14 +231,15 @@ $(document).ready(function() {
       buttons: {
         Sim: function() {
           $( this ).dialog( "close" );
+          patient.setPatientId(patientId);
           patient.assessments[0].obsResume = $("#inputFinalReport").val();
           patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
           patient.assessments[0].descBehavior = $("#inputBehavior").val();
           $.ajax({
-            method: 'POST',
+            method: 'PUT',
             contentType: "application/json",
-            url: '/assessment',
-            data: JSON.stringify(patient),
+            url: '/editPatient/assessmentNew',
+            data: patient.toJSON(0),
             success: successHandler,
             error: errorHandler
           });
@@ -243,7 +250,7 @@ $(document).ready(function() {
       }
     });
     function successHandler (data) {
-      let url = 'assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
+      let url = '/assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
       window.open(url, "_blank");
       //window.location.replace("/assessment")
     }
@@ -270,13 +277,11 @@ $(document).ready(function() {
   }
 
   if (mode === '2' || mode === '3'){
-
     $.getJSON( "/editPatient/requestPatient", {
       patient: patientId
     })
         .done(function(data) {
           let patientDB = jsonToPatient(data);
-
           $('#inputName').val(patientDB.getName());
           $('#inputBirthDate').val(formatDate(patientDB.getBirthDate()));
           $('#inputFatherName').val(patientDB.getFatherName());
@@ -348,8 +353,6 @@ $(document).ready(function() {
               }
               break;
           }
-
-
         })
         .fail(function() {
           console.log( "error" );
@@ -358,6 +361,4 @@ $(document).ready(function() {
           //console.log( "complete" );
         });
   }
-
-
 }); //Fim document ready
