@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/stylesheets/nav.css" />
     <link rel="stylesheet" href="/stylesheets/form.css" />
     <link rel="stylesheet" href="/stylesheets/text.css" />
+    <link rel="stylesheet" href="/javascripts/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" >
 
     <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
     <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
@@ -26,7 +27,6 @@
   var formatCPF = function (cpf){
     return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   }
-
   var behaviorToText = function (behavior){
     switch (behavior) {
       case 1:
@@ -39,7 +39,6 @@
         return "Não respondida"
     }
   }
-
   var telFormat = function (tel) {
     if (!tel){
       return "";
@@ -47,7 +46,6 @@
     tel.length === 10 ? tel = tel.replace(/(^)(\d{2})(\d{4})(\d{2})/, "$1($2) $3 $4") : tel = tel.replace(/(^)(\d{2})(\d{5})(\d{2})/, "$1($2) $3 $4");
     return tel;
   }
-
   var dateToText = function (date) {
     let day = date.getDate().toString();
     let month = date.getMonth() + 1 + "";
@@ -135,7 +133,7 @@
   <div class="container mainContainer"> <%# Containner Botões %>
     <div class="row align-items-center"> <%# Descrição da Pontuação %>
       <div class="col-12 col-sm-4 col-md-4 col-lg-2 mr-auto">
-        <button class="btn btn-primary btn-block text-uppercase" type="button" id="deleteBtn" >Excluir</button>
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="deleteBtn" onclick="deletePatient('<%= patient._id %>')">Excluir</button>
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-2 ml-auto">
         <button class="btn btn-primary btn-block text-uppercase" type="button" id="editBtn" onclick="location.replace('/editPatient/<%= patient._id %>/edit');">Editar</button>
@@ -205,3 +203,13 @@
   </div> <%# Containner %>
 
     <% include ../partials/footer %>
+
+  <div class="dialogJquery" id="dialog-message" title="Título">
+    <p>
+      Mensagem
+    </p>
+  </div>
+
+  <div class="dialogJquery" id="dialog-confirm" title="Confirmação">
+    <p><span class="ui-icon ui-icon-alert" style="margin:12px 12px 12px 0;font-size: 30px !important;"></span>Confirma a exclusão do paciente?</p>
+  </div>

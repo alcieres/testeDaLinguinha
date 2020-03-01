@@ -502,5 +502,85 @@ exports.validate = (method) => {
         //.escape()
       ]
     }
+    case 'find': {
+      return [
+        check('inputName', 'Os dados do campo "Nome" são inválidos.')
+            .optional({checkFalsy: true})
+            .isLength({max: 100}).withMessage('O campo "Nome" pode ter entre 3 e 100 caracteres.')
+            //.escape()
+            .trim()
+            .customSanitizer(
+                (value) => {
+                  value = value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
+                  return value;
+                }
+            ),
+        check('inputBirthDate', 'A data de nascimento é inválida.')
+            .optional({checkFalsy: true})
+            .isISO8601({strict: true}),
+        check('assessments[0].assessmentDate', 'A data do teste é inválida.')
+            .optional({checkFalsy: true})
+            .isISO8601({strict: true}),
+        check('inputMotherName', 'Os dados do campo "Nome da Mãe" são inválidos.')
+            .optional({checkFalsy: true})
+            .isLength({max: 100}).withMessage('O campo "Nome da Mãe" pode ter entre 3 e 100 caracteres.')
+            //.escape()
+            .trim()
+            .customSanitizer(
+                (value) => {
+                  value = value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
+                  return value;
+                }
+            ),
+        check('inputMotherCPF', 'Os dados do campo "CPF da Mãe" são inválidos.')
+            .optional({checkFalsy: true})
+            .exists().withMessage('O campo "CPF da Mãe" deve ser enviado.')
+            .isLength({min: 14, max: 14}).withMessage('O campo "CPF da Mãe" deve ter 14 dígitos.')
+            .blacklist('.-')
+            .isInt()
+            .custom(
+                (value) => {
+                  let sum = 0;
+                  let rest;
+                  if (value.length !== 11 ||
+                      value === "00000000000" ||
+                      value === "11111111111" ||
+                      value === "22222222222" ||
+                      value === "33333333333" ||
+                      value === "44444444444" ||
+                      value === "55555555555" ||
+                      value === "66666666666" ||
+                      value === "77777777777" ||
+                      value === "88888888888" ||
+                      value === "99999999999") {
+                    throw new Error('O CPF informado é inválido.');
+                  }
+                  for (let i = 1; i <= 9; i++) {
+                    sum += parseInt(value.substring(i - 1, i)) * (11 - i);
+                  }
+                  rest = (sum * 10) % 11;
+                  if ((rest === 10) || (rest === 11)) {
+                    rest = 0;
+                  }
+                  if (rest !== parseInt(value.substring(9, 10))) {
+                    throw new Error('O CPF informado é inválido.');
+                  }
+                  sum = 0;
+                  for (let i = 1; i <= 10; i++) {
+                    sum += parseInt(value.substring(i - 1, i)) * (12 - i);
+                  }
+                  rest = (sum * 10) % 11;
+                  if ((rest === 10) || (rest === 11)) {
+                    rest = 0;
+                  }
+                  if (rest !== parseInt(value.substring(10, 11))) {
+                    throw new Error('O CPF informado é inválido.');
+                  }
+                  return value;
+                })
+            //.escape()
+            .trim()
+      ]
+    }
   }
 };

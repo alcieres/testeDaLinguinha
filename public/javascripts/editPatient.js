@@ -29,7 +29,13 @@ $(document).ready(function() {
   $('#inputCelPhone').val(patient.celPhone).mask('(00) 0000-00000');
 
   $('#backBtn').click(function() {
-    window.location.replace("/findPatient/" + patient._id);
+    if ('referrer' in document) {
+      //window.location = document.referrer;
+      /* OR */
+      location.replace(document.referrer);
+    } else {
+      window.history.back();
+    }
   });
 
   $('#saveBtn').click(function() {
@@ -62,7 +68,14 @@ $(document).ready(function() {
   });
 
   function successHandler () {
-    window.location.replace("/findPatient/" + patient._id);
+    //window.location.replace("/findPatient/" + patient._id);
+    if ('referrer' in document) {
+      //window.location = document.referrer;
+      /* OR */
+      location.replace(document.referrer);
+    } else {
+      window.history.back();
+    }
   }
 
   function errorHandler (data) {

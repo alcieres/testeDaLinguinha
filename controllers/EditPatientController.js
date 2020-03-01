@@ -1,7 +1,7 @@
 const Patient = require('../models/Patient.js');
 const Assessment = require('../models/Assessment.js');
 const { validationResult } = require('express-validator');
-
+// Controle da rota que exibe a página de edição de dados pessoais de um paciente
 exports.editPatientGet = function(req, res) {
   let id = req.params.id;
   Patient.findOne({_id: id}, function (err, doc){
@@ -14,7 +14,7 @@ exports.editPatientGet = function(req, res) {
     }
   });
 };
-
+// Controle da rota que encaminha os dados alterados de um paciente, sem alterar ou adicionar teste
 exports.editPatientPut = function(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -72,13 +72,13 @@ exports.editPatientPut = function(req, res) {
         }
       })
 };
-
-exports.assessmentEditGet = function (req, res, next) {
+// Controle da rota que abre a página para edição de um paciente e um teste já existente
+exports.assessmentEditGet = function (req, res) {
   let patientId = req.query.patientId;
   let assessmentId = req.query.assessmentId;
   res.render('assessment/assessment', {title: 'Teste da Linguinha', user: req.user, patientId, assessmentId, mode: 2, active: 'navFindPatient'});
 };
-
+// Controle da rota que encaminha os dados alterados de um paciente e um exame existente e salva no banco
 exports.assessmentEditPut = function (req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -181,12 +181,12 @@ exports.assessmentEditPut = function (req, res) {
   }
   update();
 };
-
+// Controle da rota que abre a página para edição de um paciente e um novo teste
 exports.assessmentNewGet = function (req, res) {
   let patientId = req.query.patientId;
   res.render('assessment/assessment', {title: 'Teste da Linguinha', user: req.user, patientId, assessmentId: "", mode: 3, active: 'navFindPatient'});
 };
-
+// Controle da rota que encaminha os dados alterados de um paciente e um exame novo e salva no banco
 exports.assessmentNewPut = function (req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -289,7 +289,7 @@ exports.assessmentNewPut = function (req, res) {
   }
   update();
 };
-
+//Controle da rota que recebe uma requisição de paciente e retorna um paciente com todos os exames
 exports.requestPatientGet = function (req, res) {
   let patientIdReq = req.query.patient.trim();
   Patient.findById(patientIdReq, function (err, patientDB) {

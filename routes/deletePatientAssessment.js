@@ -7,3 +7,5 @@ const deleteController = require('../controllers/DeletePatientAssessmentControll
 router.delete('/patient/:id', isLoggedIn, deleteController.patientDelete);
 //Deleta um teste de um paciente
 router.delete('/patient/:id/assessment/:id', isLoggedIn, deleteController.assessmentDelete);
+
+module.exports = router;
