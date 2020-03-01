@@ -170,14 +170,14 @@
                       <path d="M12 4C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 13c-3.79 0-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6s7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17zm0-10c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7zm0 7c-1.38 0-2.5-1.12-2.5-2.5S10.62 9 12 9s2.5 1.12 2.5 2.5S13.38 14 12 14z"/>
                     </svg>
                   </a>
-                  <a href="/editPatient/assessmentEdit/?patientId=<%= patient._id.toString(); %>&assessmentId=<%= assessment._id.toString(); %>" class="ml-3">
+                  <a href="/editPatient/assessmentEdit/?patientId=<%= patient._id %>&assessmentId=<%= assessment._id %>" class="ml-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
                       <path fill="none" d="M0 0h24v24H0V0z"/>
                       <path opacity=".3" d="M5 18.08V19h.92l9.06-9.06-.92-.92z"/>
                       <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z"/>
                     </svg>
                   </a>
-                  <a href="assessment/<%=patient._id%>/delete" class="ml-3">
+                  <a href="#" onclick="deleteAssessment('<%= patient._id %>', '<%= assessment._id %>');return false;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
                       <path fill="none" d="M0 0h24v24H0V0z"/>
                       <path d="M3 8v16h18v-16h-18zm5 12c0 .552-.448 1-1 1s-1-.448-1-1v-8c0-.552.448-1 1-1s1 .448 1 1v8zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-8c0-.552.448-1 1-1s1 .448 1 1v8zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-8c0-.552.448-1 1-1s1 .448 1 1v8zm4-15.375l-.409 1.958-19.591-4.099.409-1.958 5.528 1.099c.881.185 1.82-.742 2.004-1.625l5.204 1.086c-.184.882.307 2.107 1.189 2.291l5.666 1.248z"/>
@@ -211,5 +211,5 @@
   </div>
 
   <div class="dialogJquery" id="dialog-confirm" title="Confirmação">
-    <p><span class="ui-icon ui-icon-alert" style="margin:12px 12px 12px 0;font-size: 30px !important;"></span>Confirma a exclusão do paciente?</p>
+    <p><span class="ui-icon ui-icon-alert" style="margin:12px 12px 12px 0;font-size: 30px !important;"></span><span id="dialogText">Confirma a exclusão do paciente?</span></p>
   </div>
