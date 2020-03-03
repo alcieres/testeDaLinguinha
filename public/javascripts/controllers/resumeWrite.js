@@ -1,4 +1,6 @@
 //Criação do paciente com os resultados da avaliação
+let testPatient;
+
 function resumeWrite() {
     let patient = new Patient();
     //Tela 01
@@ -53,6 +55,7 @@ function resumeWrite() {
     patient.assessments.push(assessment);
     patient.updateHistoryAssessmentPoints(0);
     //Escreve dados do paciente e exame na tela
+    testPatient = patient;
     writePatient(patient);
 
     return patient;
