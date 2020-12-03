@@ -322,7 +322,16 @@ router.put("/:id",
     }
 
     function updateUser(){
-        User.findByIdAndUpdate(id, {cpf: cpf, name: name, lastName:lastName, occupation: occupation, email: email, registry: registry, admin: admin},function(err){
+        User.findByIdAndUpdate(id,
+            {cpf: cpf,
+              name: name,
+              lastName:lastName,
+              occupation: occupation,
+              email: email,
+              registry: registry,
+              admin: admin
+            },
+            function(err){
             if (err){
                 console.log(err);
                 return res.json({ error: [{msg: 'Erro ao atualizar o usuário.'}]});
@@ -334,9 +343,7 @@ router.put("/:id",
                     req.user.occupation = occupation;
                     req.user.email = email;
                     req.user.registry = registry;
-                    //console.log(req.user);
                 }
-
                 res.status(200).json({ success: {msg: 'Usuário atualizado com sucesso.'}});
             }
         });

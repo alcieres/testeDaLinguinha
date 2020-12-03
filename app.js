@@ -14,6 +14,8 @@ const loginRouter = require('./routes/login');
 const homeRouter = require('./routes/home');
 const assessmentRouter = require('./routes/assessment');
 const findPatientRouter = require('./routes/findPatient');
+const editPatientRouter = require('./routes/editPatient');
+const deletePatientAssessmentRouter = require('./routes/deletePatientAssessment');
 const reportsRouter = require('./routes/reports');
 const usersRouter = require('./routes/users');
 const userRouter = require('./routes/user');
@@ -55,7 +57,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Conexão do mongoose
-mongoose.connect(dbConfig.url, { useNewUrlParser: true, useFindAndModify: false }, function(err) {
+mongoose.connect(dbConfig.url, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true }, function(err) {
     if (err) {
         console.log('Could not connect to mongodb on localhost. Ensure that you have mongodb running on localhost and mongodb accepts connections on standard ports!');
     }
@@ -76,6 +78,8 @@ app.use('/', loginRouter);
 app.use('/home', homeRouter);
 app.use('/assessment', assessmentRouter);
 app.use('/findPatient', findPatientRouter);
+app.use('/editPatient', editPatientRouter);
+app.use('/delete', deletePatientAssessmentRouter);
 app.use('/reports', reportsRouter);
 app.use('/users', usersRouter);
 app.use('/user', userRouter);

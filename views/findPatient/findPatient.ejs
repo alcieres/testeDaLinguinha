@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/nav.css" />
+    <link rel="stylesheet" href="/stylesheets/form.css" />
+    <link rel="stylesheet" href="/stylesheets/text.css" />
+    <link rel="stylesheet" href="/javascripts/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" >
+
+    <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-ui.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/jquery.validate.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/additional-methods.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/localization/messages_pt_BR.js" ></script>
+
+    <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
+
+    <script type="text/javascript" src="/javascripts/util.js" ></script>
+    <script type="text/javascript" src="/javascripts/controllers/findPatientValidate.js" ></script>
+    <script type="text/javascript" src="/javascripts/findPatient.js" ></script>
+
+  </head>
+  <body>
+
+  <%- include('../partials/nav', {active: "navFindPatient"}); %>
+
+    <div class="container mainContainer">
+      <div class="row align-items-center">  <%# Linha do título História Clínica 1 %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <h2 class="text-center border border-dark rounded">Buscar Paciente</h2>
+        </div>
+      </div>
+      <form id="findPatientsForm" action="/findPatient/list" method="POST">
+        <div class="row align-items-center"> <%# Nome / data de nascimento %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+            <div class="form-label-group">
+              <input type="text" name="inputName" id="inputName" class="form-control" placeholder="Nome" maxlength="100" autofocus>
+              <label for="inputName">Nome</label>
+            </div>
+            <label for="inputName" class="error"></label>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <div class="form-label-group">
+              <input type="date" name="inputBirthDate" id="inputBirthDate" class="dateCalendar form-control" placeholder="Data de Nascimento">
+              <label for="inputBirthDate">Data de Nascimento</label>
+            </div>
+            <label for="inputBirthDate" class="error"></label>
+          </div>
+        </div>
+        <div class="row align-items-center"> <%# Nome da mãe / CPF da mãe %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+            <div class="form-label-group">
+              <input type="text" name="inputMotherName" id="inputMotherName" class="form-control" placeholder="Nome da mãe*" maxlength="100" >
+              <label for="inputMotherName">Nome da mãe</label>
+            </div>
+            <label for="inputMotherName" class="error"></label>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <div class="form-label-group">
+              <input type="text" name="inputMotherCPF" id="inputMotherCPF" class="form-control" placeholder="CPF da mãe" minlength="14" maxlength="14" onkeypress="$(this).mask('000.000.000-00');" >
+              <label for="inputMotherCPF">CPF da mãe</label>
+            </div>
+            <label for="inputMotherCPF" class="error"></label>
+          </div>
+        </div>
+        <div class="row align-items-center"> <%# Data do exame / gênero %>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 mr-auto">
+            <div class="form-label-group">
+              <input type="date" name="inputAssessmentDate" id="inputAssessmentDate" class="dateCalendar form-control" placeholder="Data do Exame*" >
+              <label for="inputAssessmentDate">Data do Exame</label>
+            </div>
+            <label for="inputAssessmentDate" class="error"></label>
+          </div>
+        </div>
+      </form>
+    </div> <%# Containner %>
+  <div class="container finalContainer"> <%# Containner Botões %>
+
+    <div class="row align-items-center"> <%# Descrição da Pontuação %>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 mr-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="backBtn" >Voltar</button>
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 m-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="button" id="cleanBtn" >Limpar</button>
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-2 ml-auto">
+        <button class="btn btn-primary btn-block text-uppercase" type="submit" id="findBtn" >Buscar</button>
+      </div>
+    </div>
+  </div> <%# Containner Botões %>
+
+  <div class="dialogJquery" id="dialog-message" title="Título">
+    <p>
+      Mensagem
+    </p>
+  </div>
+
+    <% include ../partials/footer %>

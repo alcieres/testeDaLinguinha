@@ -1,16 +1,16 @@
-function validateForm() {
+function validateForm(form) {
     //Não validar campos para realização dos testes
     return true;
 
     //Data máxima para o dia atual
     $.validator.addMethod("maxDate", function(value, element) {
         let valueArray = value.split('-');
-        //   let today = new Date();
         let curDate = new Date();
         let inputDate = new Date(valueArray[0], valueArray[1] - 1, valueArray[2]);
+        console.log(inputDate + "data " + curDate);
         return inputDate < curDate;
 
-    }, "A data digitada não pode ser maior que a data de hoje.");
+    }, "A data não pode ser maior que a data de hoje.");
 
     //Data não inferior a 100 anos atrás
     $.validator.addMethod("minDate", function(value, element) {
@@ -20,7 +20,7 @@ function validateForm() {
 
         return curDate.getFullYear() - inputDate.getFullYear() < 100;
 
-    }, "A data digitada não pode ser anterior há 100 anos.");
+    }, "A data não pode ser anterior há 100 anos.");
 
     // Validação de Celular
     jQuery.validator.addMethod('cellPhone', function (value, element) {
@@ -145,5 +145,5 @@ function validateForm() {
             },
         }
     }); //Fim validação do formulário
-    return ($('#assForm').valid());
+    return ($(form).valid());
 }

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/nav.css" />
+    <link rel="stylesheet" href="/stylesheets/form.css" />
+    <link rel="stylesheet" href="/stylesheets/text.css" />
+    <link rel="stylesheet" href="/javascripts/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" >
+
+    <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/jquery.validate.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/additional-methods.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/jquery/jquery-validation-1.19.1/localization/messages_pt_BR.js" ></script>
+
+    <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
+
+    <script type="text/javascript" src="/javascripts/util.js" ></script>
+    <script type="text/javascript" src="/javascripts/models/Assessment.js" ></script>
+    <script type="text/javascript" src="/javascripts/models/Patient.js" ></script>
+    <script type="text/javascript" src="/javascripts/controllers/assessmentValidate.js" ></script>
+    <script type="text/javascript" src="/javascripts/editPatient.js" ></script>
+    <script>
+        let patient = jQuery.parseJSON( '<%- patient%>' );
+    </script>
+</head>
+<body>
+
+<%- include('../partials/nav', {active: "navFindPatient"}); %>
+
+
+
+<div class="container mainContainer">
+    <form id="editPatient">
+        <div class="row align-items-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+                <h2 class="text-center border border-dark rounded">Atualizar Dados Cadastrais do Paciente</h2>
+            </div>
+        </div>
+        <div class="row align-items-center mt-3"> <%# Nome / data de nascimento %>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputName" id="inputName" class="form-control" placeholder="Nome*" minlength="5" maxlength="100" required autofocus >
+                    <label for="inputName">Nome<span class="requiredField">*</span></label>
+                </div>
+                <label for="inputName" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+                <div class="form-label-group">
+                    <input type="date" name="inputBirthDate" id="inputBirthDate" class="dateCalendar form-control" placeholder="Data de Nascimento*" required>
+                    <label for="inputBirthDate">Data de Nascimento<span class="requiredField">*</span></label>
+                </div>
+                <label for="inputBirthDate" class="error"></label>
+            </div>
+        </div>
+        <div class="row align-items-center"> <%# Nome do pai / gênero %>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 mr-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputFatherName" id="inputFatherName" class="form-control" placeholder="Nome do pai" minlength="5" maxlength="100" >
+                    <label for="inputFatherName">Nome do pai</label>
+                </div>
+                <label for="inputFatherName" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 ml-auto mb-3">
+                <fieldset id="fieldRbGenre">
+                    <legend>Gênero<span class="requiredField">*</span></legend>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mb-3">
+                            <input type="radio" class="option-input radio" name="rbGenre" value="1" required>Masculino
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label mb-3">
+                            <input type="radio" class="option-input radio" name="rbGenre" value="2">Feminino
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </fieldset>
+                <label for="rbGenre" class="error" id="labelErrorRadioButton"></label>
+            </div>
+        </div>
+        <div class="row align-items-center"> <%# Nome da mãe / CPF da mãe %>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputMotherName" id="inputMotherName" class="form-control" placeholder="Nome da mãe*" minlength="5" maxlength="100" required >
+                    <label for="inputMotherName">Nome da mãe<span class="requiredField">*</span></label>
+                </div>
+                <label for="inputMotherName" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputMotherCPF" id="inputMotherCPF" class="form-control" placeholder="CPF da mãe" minlength="14" maxlength="14" onkeypress="$(this).mask('000.000.000-00');" >
+                    <label for="inputMotherCPF">CPF da mãe</label>
+                </div>
+                <label for="inputMotherCPF" class="error"></label>
+            </div>
+        </div>
+        <div class="row align-items-center"> <%# Logradouro / número da residência %>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputAddress" id="inputAddress" class="form-control" placeholder="Logradouro*" minlength="5" maxlength="300" required >
+                    <label for="inputAddress">Logradouro<span class="requiredField">*</span></label>
+                </div>
+                <label for="inputAddress" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputResidenceNumber" id="inputResidenceNumber" class="form-control" placeholder="Número*" minlength="1" maxlength="15" required >
+                    <label for="inputResidenceNumber">Número<span class="requiredField">*</span></label>
+                </div>
+                <label for="inputResidenceNumber" class="error"></label>
+            </div>
+        </div>
+        <div class="row align-items-center"> <%# Bairro / Cidade / Estado %>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-5 mx-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputNeighborhood" id="inputNeighborhood" class="form-control" placeholder="Bairro*" minlength="5" maxlength="100" required >
+                    <label for="inputNeighborhood">Bairro<span class="requiredField">*</span></label>
+                </div>
+                <label for="inputNeighborhood" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 mx-auto">
+                <div class="form-label-group">
+                    <select name="inputState" id="inputState" class="form-control" required>
+                        <option disabled selected value="">Selecione</option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AM">AM</option>
+                        <option value="AP">AP</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MG">MG</option>
+                        <option value="MS">MS</option>
+                        <option value="MT">MT</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="PR">PR</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="RS">RS</option>
+                        <option value="SC">SC</option>
+                        <option value="SE">SE</option>
+                        <option value="SP">SP</option>
+                        <option value="TO">TO</option>
+                    </select>
+                    <label for="inputState">Estado<span class="requiredField">*</span></label>
+                </div>
+                <label for="inputState" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-5 mx-auto">
+                <div class="form-label-group">
+                    <select name="inputCity" id="inputCity" class="form-control" required>
+                        <option disabled selected value="">Selecione</option>
+                    </select>
+                    <label for="inputCity">Cidade<span class="requiredField">*</span></label>
+                </div>
+                <label for="inputCity" class="error"></label>
+            </div>
+        </div>
+        <div class="row align-items-center"> <%# CEP / E-mail %>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputCEP" id="inputCEP" class="form-control" placeholder="CEP" minlength="9" maxlength="10" onkeypress="$(this).mask('00000-000')" >
+                    <label for="inputCEP">CEP</label>
+                </div>
+                <label for="inputCEP" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+                <div class="form-label-group">
+                    <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="E-mail" >
+                    <label for="inputEmail">E-mail</label>
+                </div>
+                <label for="inputEmail" class="error"></label>
+            </div>
+        </div>
+        <div class="row align-items-center"> <%# Telefone Residencial / Telefone Trabalho / Celular %>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputResTel" id="inputResTel" class="form-control" placeholder="Telefone Residencial" minlength="14" maxlength="15" onkeypress="$(this).mask('(00) 0000-00000')" >
+                    <label for="inputResTel">Telefone Residencial</label>
+                </div>
+                <label for="inputResTel" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputCommercialTel" id="inputCommercialTel" class="form-control" placeholder="Telefone Comercial" minlength="14" maxlength="15" onkeypress="$(this).mask('(00) 0000-00000')" >
+                    <label for="inputCommercialTel">Telefone Comercial</label>
+                </div>
+                <label for="inputCommercialTel" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+                <div class="form-label-group">
+                    <input type="text" name="inputCelPhone" id="inputCelPhone" class="form-control" placeholder="Celular" minlength="14" maxlength="15" onkeypress="$(this).mask('(00) 0000-00000')" >
+                    <label for="inputCelPhone">Celular</label>
+                </div>
+                <label for="inputCelPhone" class="error"></label>
+            </div>
+        </div>
+    </form>
+</div> <%# FIM Containner %>
+
+<div class="container finalContainer"> <%# Containner Botões %>
+    <div class="row align-items-center"> <%# Descrição da Pontuação %>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2 mr-auto">
+            <button class="btn btn-primary btn-block text-uppercase" type="button" id="backBtn" >Voltar</button>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2 ml-auto">
+            <button class="btn btn-primary btn-block text-uppercase" type="button" id="saveBtn" >Salvar</button>
+        </div>
+    </div>
+</div> <%# Containner %>
+
+
+<% include ../partials/footer %>
+
+<div class="dialogJquery" id="dialog-message" title="Título">
+    <p>
+        Mensagem
+    </p>
+</div>
+
+<div class="dialogJquery" id="dialog-confirm" title="Confirmação">
+    <p><span class="ui-icon ui-icon-alert" style="margin:12px 12px 12px 0;font-size: 30px !important;"></span>Confirma a atualização do paciente?</p>
+</div>

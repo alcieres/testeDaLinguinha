@@ -1,6 +1,5 @@
 function passwordValidateForm() {
     //Não validar campos para realização dos testes
-    return true;
     $("#passwordReset").validate({
         ignore: ":hidden",
         rules:{
