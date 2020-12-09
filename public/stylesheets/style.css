@@ -32,8 +32,9 @@ body {
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
   background-color: azure;
   margin-top: 10px;
-  margin-bottom: 60px;
+  /*margin-bottom: 60px;*/
   padding: 20px;
+  padding-bottom: 60px
   /*min-height: 80%;*/
 }
 
