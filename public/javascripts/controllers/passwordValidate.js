@@ -12,7 +12,7 @@ function passwordValidateForm() {
                 required: true,
                 minlength: 6,
                 maxlength: 16,
-                equalTo: '#password'
+                equalTo: '#inputPassword'
             },
         },
         messages: {
