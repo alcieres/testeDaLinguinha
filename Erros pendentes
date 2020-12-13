@@ -1,0 +1,4 @@
+tela editPatient: Validação da data de nascimento do formulário sempre retorna true.
+
+datas de nascimento e do exame com conflito entre o UTC e horário local
+

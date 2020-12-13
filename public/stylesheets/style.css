@@ -25,17 +25,10 @@ body {
   padding: 20px;
 }
 
-.finalContainer {
-  border: 0;
-  border-radius: 1rem;
-  border-color: rgb(196, 195, 195);
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-  background-color: azure;
+.finalFooter {
+  background-color: rgba(0, 0, 0, 0.0);
   margin-top: 10px;
-  /*margin-bottom: 60px;*/
-  padding: 20px;
-  padding-bottom: 60px
-  /*min-height: 80%;*/
+  height: 50px;
 }
 
 footer {
@@ -61,7 +54,7 @@ footer img {
 }
 
 @media (max-width: 991.98px) {
-  .mainContainer, .finalContainer {
+  .mainContainer {
     width: 100% !important;
     max-width: 100%;
   }

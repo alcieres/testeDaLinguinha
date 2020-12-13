@@ -1,3 +1,15 @@
 Tópicos
-Qual será a política de senha?
-Esconder textfields quando desnecessários no formulário?
+- Qual será a política de senha?
+seis caracteres, pelo menos
+
+- Política de validação dos formulários
+no logradouro pelo menos 3 caracteres
+bairro 1 caractere
+nenhum telefone será obrigatório
+campo antecedentes familiares sem número mínimo de caracteres
+campos condicionais auto ocultável
+campo observação no final da parte i questão 4
+
+- Esconder textfields quando desnecessários no formulário?
+	Sim
+

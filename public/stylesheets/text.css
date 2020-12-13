@@ -17,7 +17,7 @@ p{
     font-size: 15px;
   }
   
-  .mainContainer h2, .finalContainer h2 {
+  .mainContainer h2 {
     /* display: inline; */
     padding: 15px 0px;
     line-height: 20px;
