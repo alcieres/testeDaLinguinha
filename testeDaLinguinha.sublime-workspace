@@ -239,24 +239,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "public/javascripts/assessment.js",
-			"settings":
-			{
-				"buffer_size": 8585,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/javascripts/model/Patient.js",
-			"settings":
-			{
-				"buffer_size": 3431,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -309,32 +291,42 @@
 	[
 		"/home/alcieres/TCC/testeDaLinguinha",
 		"/home/alcieres/TCC/testeDaLinguinha/public",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/model",
-		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets"
+		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets",
+		"/home/alcieres/TCC/testeDaLinguinha/views",
+		"/home/alcieres/TCC/testeDaLinguinha/views/assessment"
 	],
 	"file_history":
 	[
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/assessmentValidate.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/modelo.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/text.css",
+		"/home/alcieres/TCC/testeDaLinguinha/views/partials/nav.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/partials/footer.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/style.css",
+		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessment.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/usersAdm/users.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/user/changePassword.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientsList.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/findPatient.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient/editPatient.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessmentExtract.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/model/Patient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/jquery-validation-1.19.1/localization/messages_pt_BR.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/form.css",
-		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/style.css",
 		"/home/alcieres/TCC/testeDaLinguinha/models/pacient.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/model/Patient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/class/Patient.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/partials/nav.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/teste.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/class/patient.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/modelo.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/login.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/nav.css",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/jquery-validation-1.19.1/localization/messages_pt_BR.min.js",
 		"/home/alcieres/TCC/testeDaLinguinha/bin/www",
 		"/home/alcieres/TCC/links.txt",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
 		"/home/alcieres/.ssh/config",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/jquery-ui.min.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/text.css",
 		"/home/alcieres/TCC/testeDaLinguinha/app.js",
 		"/home/alcieres/TCC/testeDaLinguinha/testeDaLinguinha.sublime-project",
 		"/home/alcieres/webII/prova2/prova2/views/produto.ejs",
@@ -432,27 +424,18 @@
 		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/admEditaNoticia.ejs",
 		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/admNovaNoticia.ejs",
 		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/admNoticia.ejs",
-		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/noticias.ejs",
-		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/public/app.css",
-		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/app.js",
-		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/admNoticias.ejs",
-		"/home/alcieres/Área de Trabalho/webII/Aula12/resolucao-prova/views/artigo.ejs",
-		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/noticia.ejs",
-		"/home/alcieres/Área de Trabalho/webII/Aula10/blogOld/views/noticias.ejs",
-		"/home/alcieres/Área de Trabalho/webII/Aula10/blogOld/app.js",
-		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/novaNoticia.ejs",
-		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/editaNoticia.ejs",
-		"/home/alcieres/Área de Trabalho/webII/aula03/express/exercicio02.js"
+		"/home/alcieres/Área de Trabalho/webII/Aula10/blog/views/noticias.ejs"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
 		"height": 101.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -460,6 +443,11 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"<p ",
+			"<p",
+			"finalContainer",
+			"final",
+			"finalContainer",
 			"}",
 			"rbquestionFourCmd",
 			"QuestionFourCmd",
@@ -493,69 +481,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "public/javascripts/assessment.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8585,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8488,
-								8488
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3548.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "public/javascripts/model/Patient.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3431,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3008,
-								3008
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2541.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -598,7 +525,7 @@
 	"project": "testeDaLinguinha.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -636,7 +563,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 216.0,
+	"side_bar_width": 337.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

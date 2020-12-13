@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/stylesheets/nav.css" />
     <link rel="stylesheet" href="/stylesheets/form.css" />
     <link rel="stylesheet" href="/stylesheets/text.css" />
-
+    <style>
+      p {text-indent: 4em;}
+    </style>
     <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
     <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
     <script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js" ></script>
@@ -19,7 +21,47 @@
 
     <%- include('partials/nav', {active: "home"}); %>
 
-    <div class="container finalContainer">
+    <div class="container mainContainer">
+      <div class="row align-items-center">  <%# Linha do título%>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <h2 class="text-center border border-dark rounded">Versão Beta 1 - Teste da Linguinha</h2>
+        </div>
+      </div>
+      <div class="row align-items-center">  <%# Linha do título%>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p class="my-2 text-indent-8">Nessa versão inicial já é possível executar o teste da linguinha, editar e excluir os exames e pacientes cadastrados.</p>
+        </div>
+      </div>
+      <div class="row align-items-center">  <%# Linha do título%>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p class="my-2">Na parte de usuários, estão habilitados dois tipos: o usuário comum e o administrador. Em ambos é possível realizar e editar os exames, no entanto, somente o(s) administrador(es) podem cadastrar e editar usuários.</p>
+        </div>
+      </div>
+      <div class="row align-items-center">  <%# Linha do título%>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p class="my-2">Podemos marcar uma reunião ou outra maneira de contato remoto para que eu ensine a utilizar o sistema ou dirimir qualquer dúvida.</p>
+        </div>
+      </div>
+      <div class="row align-items-center">  <%# Linha do título%>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p class="my-2">Bugs e inconformidades podem ser reportados pelo Whatsapp (no grupo que criamos) ou no e-mail alcieres@gmail.com, como preferirem. Enquanto eu estiver em São Paulo estarei bem limitado para fazer correções por falta de estrutura e tempo, mas o que eu puder corrigir já o farei. Deverei retornar ao RS em meados de janeiro para retomar minhas obrigações.</p>
+        </div>
+      </div>
+      <div class="row align-items-center">  <%# Linha do título%>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p class="my-2">Espero que gostem!</p>
+        </div>
+      </div>
+      <div class="row align-items-center">  <%# Linha do título%>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p class="my-2">Att.</p>
+        </div>
+      </div>
+      <div class="row align-items-center">  <%# Linha do título%>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <p class="my-2">Alcieres</p>
+        </div>
+      </div>
 
     </div> <%# Containner %>
 
