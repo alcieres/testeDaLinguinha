@@ -41,7 +41,7 @@ function findCities(state, city){
 //Formata a data UTC no formato  yyyy-MM-dd
 function formatDate (date)
 {
-  date = new Date(date);
+  date = new Date(new Date(date).getTime() + (new Date(date).getTimezoneOffset() * 180 * 1000));
   let d = date.getDate();
   let m = date.getMonth() + 1;
   let y = date.getFullYear();
@@ -56,7 +56,7 @@ function formatDate (date)
 
 function dateToText (date)
 {
-  date = new Date(date);
+  date = new Date(new Date(date).getTime() + (new Date(date).getTimezoneOffset() * 180 * 1000));
   let d = date.getDate();
   let m = date.getMonth() + 1;
   let y = date.getFullYear();

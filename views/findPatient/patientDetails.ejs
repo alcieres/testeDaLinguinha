@@ -47,16 +47,17 @@
     return tel;
   }
   var dateToText = function (date) {
-    let day = date.getDate().toString();
-    let month = date.getMonth() + 1 + "";
-    let year = date.getFullYear();
-    if (day.length < 2){
-      day = 0  + "" + day;
+    date = new Date(new Date(date).getTime() + (new Date(date).getTimezoneOffset() * 180 * 1000));
+    let d = date.getDate();
+    let m = date.getMonth() + 1;
+    let y = date.getFullYear();
+    if(d < 10) {
+      d = '0' + d
     }
-    if (month.length < 2){
-      month = 0 + "" + month;
+    if(m < 10) {
+      m = '0' + m
     }
-    return day + "/" + month + '/' + year;
+    return d + "/" + m + "/" + y;
   }
   %>
 
