@@ -24,7 +24,7 @@ exports.findPatientPost = (req, res) => {
   let query = Patient.find();
 
   if (name) {
-    query.where('name', name);
+    query.where('name', {$regex: name, $options: '$i'});
     allEmptyFields = false;
   }
   if (birthDate) {
@@ -38,7 +38,7 @@ exports.findPatientPost = (req, res) => {
     allEmptyFields = false;
   }
   if (motherName) {
-    query.where('motherName', motherName);
+    query.where('motherName', {$regex: motherName, $options: '$i'});
     allEmptyFields = false;
   }
   if (motherCPF) {

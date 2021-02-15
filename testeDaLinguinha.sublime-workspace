@@ -263,24 +263,7 @@
 			"file": "controllers/EditPatientController.js",
 			"settings":
 			{
-				"buffer_size": 18271,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "controllers/DeletePatientAssessmentController.js",
-			"settings":
-			{
-				"buffer_size": 1224,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/javascripts/assessment.js",
-			"settings":
-			{
-				"buffer_size": 15340,
+				"buffer_size": 22743,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -340,14 +323,19 @@
 	"expanded_folders":
 	[
 		"/home/alcieres/TCC/testeDaLinguinha",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers",
 		"/home/alcieres/TCC/testeDaLinguinha/models",
+		"/home/alcieres/TCC/testeDaLinguinha/public",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts",
 		"/home/alcieres/TCC/testeDaLinguinha/routes"
 	],
 	"file_history":
 	[
 		"/home/alcieres/TCC/testeDaLinguinha/controllers/AssessmentController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/routes/editPatient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientDetails.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/models/Assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
 		"/home/alcieres/TCC/testeDaLinguinha/package.json",
 		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/app.js",
@@ -356,7 +344,6 @@
 		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessment.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessmentExtract.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient/editPatient.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientDetails.js",
 		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/findPatient.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Assessment.js",
@@ -377,7 +364,6 @@
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/text.css",
 		"/home/alcieres/TCC/testeDaLinguinha/views/partials/nav.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/style.css",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/model/Patient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/jquery-validation-1.19.1/localization/messages_pt_BR.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/form.css",
@@ -471,9 +457,7 @@
 		"/home/alcieres/Área de Trabalho/multiroom_chat/config/server.js",
 		"/home/alcieres/udemy/chat/config/server.js",
 		"/home/alcieres/udemy/chat/app.js",
-		"/home/alcieres/udemy/portalDeNoticias/app.js",
-		"/home/alcieres/webII/Dicas Mongo.txt",
-		"/home/alcieres/Área de Trabalho/multiroom_chat/package.json"
+		"/home/alcieres/udemy/portalDeNoticias/app.js"
 	],
 	"find":
 	{
@@ -547,6 +531,11 @@
 	"groups":
 	[
 		{
+			"sheets":
+			[
+			]
+		},
+		{
 			"selected": 0,
 			"sheets":
 			[
@@ -556,95 +545,28 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18271,
+						"buffer_size": 22743,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								17874,
-								17874
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 4273.0,
+						"translation.y": 5109.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "controllers/DeletePatientAssessmentController.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1224,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								950,
-								950
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "public/javascripts/assessment.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15340,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6572,
-								6572
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2220.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
 				}
-			]
-		},
-		{
-			"sheets":
-			[
 			]
 		}
 	],
@@ -676,7 +598,7 @@
 		"cols":
 		[
 			0.0,
-			0.620017248697,
+			0.482307438902,
 			1.0
 		],
 		"rows":
@@ -732,7 +654,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
@@ -740,7 +662,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 337.0,
+	"side_bar_width": 269.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
