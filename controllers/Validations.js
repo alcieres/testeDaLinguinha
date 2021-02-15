@@ -297,7 +297,7 @@ exports.validate = (method) => {
             .isLength({max: 1000}).withMessage('O campo "Observações" do "Resumo Final" pode ter no máximo 1000 caracteres'),
         //.escape(),
         check('assessments[0].assBehavior', 'Os dados da questão "CONDUTA" no Resumo Final são inválidos')
-            .isIn(['1', '2', '3', undefined]),
+            .isIn(['1', '2', '3', '4', undefined]),
         check('assessments[0].descBehavior', 'Os dados do campo "Observações" do "Resumo Final" são inválidos')
             .trim()
             .isLength({max: 100}).withMessage('O campo "Descrição da conduta" do "Resumo Final" pode ter no máximo 100 caracteres')

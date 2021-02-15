@@ -497,6 +497,8 @@ function Assessment (){
         return "Frenotomia sugerida";
       case "3":
         return "Retornar para monitoramento conforme descrição abaixo";
+      case "4":
+        return "Alteração de frênulo lingual sem interferência na mobilidade da língua";
       default:
         return "Não respondida"
     }
