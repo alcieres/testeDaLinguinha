@@ -43,7 +43,7 @@ exports.editPatientPut = function(req, res) {
   patientEdit.resTel = req.body.inputResTel;
   patientEdit.commercialTel = req.body.inputCommercialTel;
   patientEdit.celPhone = req.body.inputCelPhone;
-  console.log(patientEdit);
+  //console.log(patientEdit);
 
   Patient.findOneAndUpdate({_id: req.params.id},
       {
@@ -347,10 +347,75 @@ async function findAndUpdate(patientForUpdate, newAssessment) {
     return [patientDB._id, patientForUpdate.assessments[0]._id];
   } else {
     let assessmentIndex = patientDB.assessments.findIndex(assessment => assessment._id.equals(patientForUpdate.assessments[0]._id));
-    patientDB.assessments[assessmentIndex] = patientForUpdate.assessments[0];
+    //patientDB.assessments[assessmentIndex] = patientForUpdate.assessments[0];
+    
+    patientDB.assessments[assessmentIndex].assessmentDate = patientForUpdate.assessments[0].assessmentDate;
+    patientDB.assessments[assessmentIndex].breastfeeding = patientForUpdate.assessments[0].breastfeeding;
+    patientDB.assessments[assessmentIndex].breastfeedingTime = patientForUpdate.assessments[0].breastfeedingTime;
+    patientDB.assessments[assessmentIndex].breastfeedingTiredness = patientForUpdate.assessments[0].breastfeedingTiredness;
+    patientDB.assessments[assessmentIndex].breastfeedingSleep = patientForUpdate.assessments[0].breastfeedingSleep;
+    patientDB.assessments[assessmentIndex].releasingNipple = patientForUpdate.assessments[0].releasingNipple;
+    patientDB.assessments[assessmentIndex].biteNipple = patientForUpdate.assessments[0].biteNipple;
+    patientDB.assessments[assessmentIndex].obsBreastfeeding = patientForUpdate.assessments[0].obsBreastfeeding;
+    //Pontos História Clínica
+    patientDB.assessments[assessmentIndex].clinicalHistoryPoints = patientForUpdate.assessments[0].clinicalHistoryPoints;
+    //Tela 02
+    patientDB.assessments[assessmentIndex].questionOne = patientForUpdate.assessments[0].questionOne;
+    patientDB.assessments[assessmentIndex].questionTwo = patientForUpdate.assessments[0].questionTwo;
+    patientDB.assessments[assessmentIndex].questionThree = patientForUpdate.assessments[0].questionThree;
+    //Pontos Questões de Um a Três
+    patientDB.assessments[assessmentIndex].questionsOneToThreePoints = patientForUpdate.assessments[0].questionsOneToThreePoints;
+    //Tela 03
+    patientDB.assessments[assessmentIndex].questionFour = patientForUpdate.assessments[0].questionFour;
+    patientDB.assessments[assessmentIndex].questionFourOne = patientForUpdate.assessments[0].questionFourOne;
+    patientDB.assessments[assessmentIndex].questionFourTwo = patientForUpdate.assessments[0].questionFourTwo;
+    patientDB.assessments[assessmentIndex].questionFourThree = patientForUpdate.assessments[0].questionFourThree;
+    patientDB.assessments[assessmentIndex].questionFourComments = patientForUpdate.assessments[0].questionFourComments;
+    //Pontos Questão 4
+    patientDB.assessments[assessmentIndex].questionFourPoints = patientForUpdate.assessments[0].questionFourPoints;
+    //Pontos da Parte I
+    patientDB.assessments[assessmentIndex].questionsOneToFourPoints = patientForUpdate.assessments[0].questionsOneToFourPoints;
+    //Tela 04
+    patientDB.assessments[assessmentIndex].partTwoQuestionOne = patientForUpdate.assessments[0].partTwoQuestionOne;
+    patientDB.assessments[assessmentIndex].partTwoQuestionTwoOne = patientForUpdate.assessments[0].partTwoQuestionTwoOne;
+    patientDB.assessments[assessmentIndex].partTwoQuestionTwoTwo = patientForUpdate.assessments[0].partTwoQuestionTwoTwo;
+    patientDB.assessments[assessmentIndex].partTwoQuestionTwoThree = patientForUpdate.assessments[0].partTwoQuestionTwoThree;
+    patientDB.assessments[assessmentIndex].partTwoQuestionTwoFour = patientForUpdate.assessments[0].partTwoQuestionTwoFour;
+    patientDB.assessments[assessmentIndex].obsSuction = patientForUpdate.assessments[0].obsSuction;
+    //Pontos da Parte II
+    patientDB.assessments[assessmentIndex].partTwoQuestionPoints = patientForUpdate.assessments[0].partTwoQuestionPoints;
+    //Pontos Totais Exame Clínico
+    patientDB.assessments[assessmentIndex].clinicalAssessmentPoints = patientForUpdate.assessments[0].clinicalAssessmentPoints;
+    //Pontos Totais do Exame
+    patientDB.assessments[assessmentIndex].historyAssessmentPoints = patientForUpdate.assessments[0].historyAssessmentPoints;
+    //Tela 05
+    patientDB.assessments[assessmentIndex].obsResume = patientForUpdate.assessments[0].obsResume;
+    patientDB.assessments[assessmentIndex].assBehavior = patientForUpdate.assessments[0].assBehavior;
+    patientDB.assessments[assessmentIndex].descBehavior = patientForUpdate.assessments[0].descBehavior;
+    //Usuário
+    patientDB.assessments[assessmentIndex].userCPF = patientForUpdate.assessments[0].userCPF;
+    patientDB.assessments[assessmentIndex].userName = patientForUpdate.assessments[0].userName;
+    patientDB.assessments[assessmentIndex].userLastName = patientForUpdate.assessments[0].userLastName;
+    patientDB.assessments[assessmentIndex].userOccupation = patientForUpdate.assessments[0].userOccupation;
+    patientDB.assessments[assessmentIndex].userRegistry = patientForUpdate.assessments[0].userRegistry;
+    
+    console.log("\n\npatientForUpdate\n\n");
+    console.log(patientForUpdate);
+    console.log("\n\nPatientDB\n\n");
+    console.log(patientDB);
+
+    // Patient.findById(patientDB._id).then((patient) => {
+    //   const assessment = patient.assessments.id(patientForUpdate.assessments[0]._id); // returns a matching subdocument
+    //   assessment.set(patientForUpdate.assessments[0]); // updates the address while keeping its schema  
+    //             });  
+
+    //Consultar: https://stackoverflow.com/questions/46190153/update-object-inside-the-array-in-mongodb-using-mongoose   
+
     await patientDB.save(function (err) {
       if (err){
         return 'Erro ao salvar teste';
+      }else{
+        console.log("+++++++++++++++++++++++ TO AQUI +++++++++++++++");
       }
     });
     return [patientDB._id, patientDB.assessments[assessmentIndex]._id];

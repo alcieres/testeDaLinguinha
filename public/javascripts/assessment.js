@@ -216,7 +216,8 @@ $(document).ready(function() {
     function successHandler (data) {
       let url = '/assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
       window.open(url, "_blank");
-      window.location.replace("/assessment")
+      window.location.replace("/assessment");
+      window.history.back();
     }
   };
 

@@ -1,13 +1,8 @@
 $(document).ready(function() {
   //Atualizar a página quando acessada a partir dos botões voltar e avançar
-  // $(window).on('popstate', function() {
-  //   location.reload(true);
-  // });
-
-  // $('#deleteBtn').click(function() {
-  //   alert("Esse botão vai APAGAR o paciente");
-  // });
-
+  if(performance.navigation.type == 2){
+    location.reload(true);
+  }
   $('#backBtn').click(function() {
     window.history.back();
   });
