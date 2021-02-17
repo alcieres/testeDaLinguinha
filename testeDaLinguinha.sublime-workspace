@@ -259,15 +259,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "controllers/EditPatientController.js",
-			"settings":
-			{
-				"buffer_size": 22743,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -280,6 +271,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
 			[
 				"package ins",
 				"Package Control: Install Package"
@@ -295,10 +294,6 @@
 			[
 				"install",
 				"Package Control: Install Package"
-			],
-			[
-				"insta",
-				"Install Package Control"
 			]
 		],
 		"width": 0.0
@@ -323,30 +318,34 @@
 	"expanded_folders":
 	[
 		"/home/alcieres/TCC/testeDaLinguinha",
-		"/home/alcieres/TCC/testeDaLinguinha/models",
-		"/home/alcieres/TCC/testeDaLinguinha/public",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts",
-		"/home/alcieres/TCC/testeDaLinguinha/routes"
+		"/home/alcieres/TCC/testeDaLinguinha/controllers",
+		"/home/alcieres/TCC/testeDaLinguinha/views",
+		"/home/alcieres/TCC/testeDaLinguinha/views/assessment",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient"
 	],
 	"file_history":
 	[
 		"/home/alcieres/TCC/testeDaLinguinha/controllers/AssessmentController.js",
+		"/home/alcieres/Área de Trabalho/terminal",
+		"/home/alcieres/.cache/.fr-bg3nM0/testeDaLinguinha-1.1.1-beta/controllers/FindPatientController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/Validations.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessment.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/FindPatientController.js",
 		"/home/alcieres/TCC/testeDaLinguinha/routes/editPatient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientDetails.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/models/Assessment.js",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
 		"/home/alcieres/TCC/testeDaLinguinha/package.json",
-		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/app.js",
 		"/home/alcieres/TCC/testeDaLinguinha/bin/www",
 		"/home/alcieres/TCC/testeDaLinguinha/config/db.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessment.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessmentExtract.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient/editPatient.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/findPatient.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Patient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/views/partials/footer.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/teste.ejs",
@@ -453,11 +452,7 @@
 		"/home/alcieres/webII/treino/carro/app.js",
 		"/home/alcieres/webII/treino/carro/package.json",
 		"/home/alcieres/webII/aula12/resolucao-prova-alteracao/app.js",
-		"/home/alcieres/Área de Trabalho/multiroom_chat/app.js",
-		"/home/alcieres/Área de Trabalho/multiroom_chat/config/server.js",
-		"/home/alcieres/udemy/chat/config/server.js",
-		"/home/alcieres/udemy/chat/app.js",
-		"/home/alcieres/udemy/portalDeNoticias/app.js"
+		"/home/alcieres/Área de Trabalho/multiroom_chat/app.js"
 	],
 	"find":
 	{
@@ -476,6 +471,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"entre o t",
+			"assB",
+			"conduta",
 			"console.log",
 			"assessmentEdit",
 			"Edit",
@@ -536,37 +534,8 @@
 			]
 		},
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "controllers/EditPatientController.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 22743,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 5109.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -654,7 +623,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

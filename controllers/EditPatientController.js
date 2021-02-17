@@ -108,7 +108,7 @@ exports.assessmentEditPut = function (req, res) {
   //Tela 03
   newAssessment.questionFour = req.body.assessments[assessmentIndex].questionFour;
   newAssessment.questionFourOne = req.body.assessments[assessmentIndex].questionFourOne;
-  newAssessment.questionFourTwo = req.body.assessments[assessmentIndex].questionTwo;
+  newAssessment.questionFourTwo = req.body.assessments[assessmentIndex].questionFourTwo;
   newAssessment.questionFourThree = req.body.assessments[assessmentIndex].questionFourThree;
   newAssessment.questionFourComments = req.body.assessments[assessmentIndex].questionFourComments;
   //Pontos Questão 4
@@ -117,8 +117,8 @@ exports.assessmentEditPut = function (req, res) {
   newAssessment.questionsOneToFourPoints = req.body.assessments[assessmentIndex].questionsOneToFourPoints;
   //Tela 04
   newAssessment.partTwoQuestionOne = req.body.assessments[assessmentIndex].partTwoQuestionOne;
-  newAssessment.partTwoQuestionTwoOne = req.body.assessments[assessmentIndex].partTwoQuestionTwoTwo;
-  newAssessment.partTwoQuestionTwoTwo = req.body.assessments[assessmentIndex].partTwoQuestionTwoThree;
+  newAssessment.partTwoQuestionTwoOne = req.body.assessments[assessmentIndex].partTwoQuestionTwoOne;
+  newAssessment.partTwoQuestionTwoTwo = req.body.assessments[assessmentIndex].partTwoQuestionTwoTwo;
   newAssessment.partTwoQuestionTwoThree = req.body.assessments[assessmentIndex].partTwoQuestionTwoThree;
   newAssessment.partTwoQuestionTwoFour = req.body.assessments[assessmentIndex].partTwoQuestionTwoFour;
   newAssessment.obsSuction = req.body.assessments[assessmentIndex].obsSuction;
