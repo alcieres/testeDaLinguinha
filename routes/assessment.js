@@ -13,16 +13,12 @@ Página Inicial
   3: Modo para inserção de novo exame para um paciente já existente (trazendo de início os dados do paciente pré-preenchidos) e também permite
      a atualização dos dados do paciente.
 */
+
+// ROTA GET - Rota para exibição da tela do exame
 router.get('/', isLoggedIn, AssessmentController.assessmentCreateGet);
+
 // ROTA CREATE - Rota para inserção de um novo paciente com o primeiro exame no banco
 router.post('/', isLoggedIn, validation.validate('assessment'), AssessmentController.assessmentCreatePost);
 
-//Rota que abre o extrato resumido de um teste para visualização e impressão
-router.get('/assessmentExtract', isLoggedIn, AssessmentController.assessmentExtractGet);
-/*
-   Essa rota recebe uma requisição de um teste de um determinado paciente, procura o paciente no banco, e envia os dados pessoais do
-paciente juntamente com os dados do exame requerido
-*/
-router.get('/patient/requestAssessment', isLoggedIn, AssessmentController.assessmentRequestGet);
 
 module.exports = router;

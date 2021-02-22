@@ -13,6 +13,7 @@ const flash = require('connect-flash');
 const loginRouter = require('./routes/login');
 const homeRouter = require('./routes/home');
 const assessmentRouter = require('./routes/assessment');
+const assessmentExtractRouter = require('./routes/assessmentExtract');
 const findPatientRouter = require('./routes/findPatient');
 const editPatientRouter = require('./routes/editPatient');
 const deletePatientAssessmentRouter = require('./routes/deletePatientAssessment');
@@ -21,7 +22,7 @@ const usersRouter = require('./routes/users');
 const userRouter = require('./routes/user');
 const logoutRouter = require('./routes/logout');
 const cityRouter = require('./routes/city');
-const testRouter = require('./routes/teste');
+const testRouter = require('./test/test');
 
 const methodOverride = require("method-override");
 
@@ -77,6 +78,7 @@ app.use(methodOverride("_method"));
 app.use('/', loginRouter);
 app.use('/home', homeRouter);
 app.use('/assessment', assessmentRouter);
+app.use('/assessmentExtract', assessmentExtractRouter); 
 app.use('/findPatient', findPatientRouter);
 app.use('/editPatient', editPatientRouter);
 app.use('/delete', deletePatientAssessmentRouter);
@@ -85,7 +87,7 @@ app.use('/users', usersRouter);
 app.use('/user', userRouter);
 app.use('/logout', logoutRouter);
 app.use('/city', cityRouter);
-app.use('/teste', testRouter);
+app.use('/test', testRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

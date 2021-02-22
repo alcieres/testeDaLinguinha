@@ -175,7 +175,7 @@ $(document).ready(function() {
       }
     });
     function successHandler (data) {
-      let url = 'assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
+      let url = '/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
       window.open(url, "_blank");
       window.location.replace("/assessment")
     }
@@ -214,7 +214,7 @@ $(document).ready(function() {
       }
     });
     function successHandler (data) {
-      let url = '/assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
+      let url = '/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
       window.open(url, "_blank");
       window.location.replace("/assessment");
       window.history.back();
@@ -251,7 +251,7 @@ $(document).ready(function() {
       }
     });
     function successHandler (data) {
-      let url = '/assessment/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
+      let url = '/assessmentExtract?patientId=' + data.success[0].patientId + '&assessmentId=' + data.success[0].assessmentId;
       window.open(url, "_blank");
       window.location.replace("/assessment")
     }

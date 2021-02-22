@@ -4,16 +4,16 @@
 		"selected_items":
 		[
 			[
+				"assessment",
+				"assessmentExtractRouter"
+			],
+			[
 				"assessme",
 				"assessments"
 			],
 			[
 				"console",
 				"console.log"
-			],
-			[
-				"assessment",
-				"assessmentIndex"
 			],
 			[
 				"findOne",
@@ -318,29 +318,36 @@
 	"expanded_folders":
 	[
 		"/home/alcieres/TCC/testeDaLinguinha",
+		"/home/alcieres/TCC/testeDaLinguinha/bin",
 		"/home/alcieres/TCC/testeDaLinguinha/controllers",
-		"/home/alcieres/TCC/testeDaLinguinha/views",
-		"/home/alcieres/TCC/testeDaLinguinha/views/assessment",
-		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient"
+		"/home/alcieres/TCC/testeDaLinguinha/models",
+		"/home/alcieres/TCC/testeDaLinguinha/routes"
 	],
 	"file_history":
 	[
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/ExtractController.js",
 		"/home/alcieres/TCC/testeDaLinguinha/controllers/AssessmentController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/test/test.js",
+		"/home/alcieres/TCC/testeDaLinguinha/models/Assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/routes/assessmentExtract.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/routes/assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/app.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/editPatient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/routes/home.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/assessmentExtract.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/FindPatientController.js",
 		"/home/alcieres/Área de Trabalho/terminal",
 		"/home/alcieres/.cache/.fr-bg3nM0/testeDaLinguinha-1.1.1-beta/controllers/FindPatientController.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/controllers/Validations.js",
 		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessment.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/FindPatientController.js",
 		"/home/alcieres/TCC/testeDaLinguinha/routes/editPatient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientDetails.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
-		"/home/alcieres/TCC/testeDaLinguinha/models/Assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/package.json",
-		"/home/alcieres/TCC/testeDaLinguinha/app.js",
 		"/home/alcieres/TCC/testeDaLinguinha/bin/www",
 		"/home/alcieres/TCC/testeDaLinguinha/config/db.js",
 		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessmentExtract.ejs",
@@ -357,7 +364,6 @@
 		"/home/alcieres/TCC/testeDaLinguinha/views/usersAdm/userNewViewEdit.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/usersAdm/users.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/util.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/assessmentExtract.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/assessmentExtract.css",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/assessmentValidate.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/text.css",
@@ -446,13 +452,7 @@
 		"/home/alcieres/webII/prova2/TIPOS DE DADOS MYSQL.txt",
 		"/home/alcieres/webII/prova2/Dicas Prova",
 		"/home/alcieres/webII/Configs.txt",
-		"/home/alcieres/webII/prova2/joins",
-		"/home/alcieres/Área de Trabalho/multiroom_chat/app/controllers/chat.js",
-		"/home/alcieres/webII/treino/trabalho2/app.js",
-		"/home/alcieres/webII/treino/carro/app.js",
-		"/home/alcieres/webII/treino/carro/package.json",
-		"/home/alcieres/webII/aula12/resolucao-prova-alteracao/app.js",
-		"/home/alcieres/Área de Trabalho/multiroom_chat/app.js"
+		"/home/alcieres/webII/prova2/joins"
 	],
 	"find":
 	{
@@ -471,6 +471,11 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"assessmentExtract",
+			"assessment/assessmentExtract",
+			"requestAssessment",
+			"assessmentExtract",
+			"patient/requestAssessment",
 			"entre o t",
 			"assB",
 			"conduta",
@@ -567,7 +572,7 @@
 		"cols":
 		[
 			0.0,
-			0.482307438902,
+			0.594347209425,
 			1.0
 		],
 		"rows":
@@ -623,7 +628,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

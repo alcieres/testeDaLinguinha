@@ -9,7 +9,7 @@ $(document).ready(function() {
             $('html, body').animate({scrollTop:$(document).height()}, 'fast');
       });
 
-    $.getJSON( "/assessment/patient/requestAssessment", {
+    $.getJSON( "/assessmentExtract/patient/requestAssessment", {
             patient: patientId,
             assessment: assessmentId
     })
