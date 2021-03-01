@@ -306,7 +306,7 @@ exports.validate = (method) => {
     }
     case 'patient': {
       return [
-        check('inputName', 'Os dados do campo "Nome" são inválidos.')
+        check('name', 'Os dados do campo "Nome" são inválidos.')
             .exists().withMessage('O campo "Nome" é obrigatório.')
             .not().isEmpty().withMessage('O campo "Nome" não pode estar vazio.')
             .isLength({min: 3, max: 100}).withMessage('O campo "Nome" pode ter entre 3 e 100 caracteres.')
@@ -318,12 +318,12 @@ exports.validate = (method) => {
                   return value;
                 }
             ),
-        check('inputBirthDate', 'A data de nascimento é inválida.')
+        check('birthDate', 'A data de nascimento é inválida.')
             .isISO8601({strict: true}),
-        check('rbGenre', 'O campo "Gênero" é inválido.')
+        check('genre', 'O campo "Gênero" é inválido.')
             .exists().withMessage('O campo "Gênero" é obrigatório.')
             .isInt({min: 1, max: 2}),
-        check('inputMotherName', 'Os dados do campo "Nome da Mãe" são inválidos.')
+        check('motherName', 'Os dados do campo "Nome da Mãe" são inválidos.')
             .exists().withMessage('O campo "Nome da Mãe" é obrigatório.')
             .not().isEmpty().withMessage('O campo "Nome da Mãe" é obrigatório.')
             .isLength({min: 3, max: 100}).withMessage('O campo "Nome da Mãe" pode ter entre 3 e 100 caracteres.')
@@ -335,7 +335,7 @@ exports.validate = (method) => {
                   return value;
                 }
             ),
-        check('inputMotherCPF', 'Os dados do campo "CPF da Mãe" são inválidos.')
+        check('motherCPF', 'Os dados do campo "CPF da Mãe" são inválidos.')
             .optional({checkFalsy: true})
             .exists().withMessage('O campo "CPF da Mãe" deve ser enviado.')
             .isLength({min: 14, max: 14}).withMessage('O campo "CPF da Mãe" deve ter 14 dígitos.')
@@ -383,7 +383,7 @@ exports.validate = (method) => {
                 })
             //.escape()
             .trim(),
-        check('inputFatherName', 'Os dados do campo "Nome do Pai" são inválidos')
+        check('fatherName', 'Os dados do campo "Nome do Pai" são inválidos')
             .optional({ checkFalsy: true })
             .exists().withMessage('O campo "Nome do Pai" deve ser enviado')
             .isLength({min: 3, max: 100}).withMessage('O campo "Nome do Pai" pode ter entre 3 e 100 caracteres')
@@ -395,7 +395,7 @@ exports.validate = (method) => {
                   return value;
                 }
             ),
-        check('inputAddress', 'Os dados do campo "Endereço" são inválidos')
+        check('address', 'Os dados do campo "Endereço" são inválidos')
             .exists().withMessage('O campo "Endereço" é obrigatório')
             .not().isEmpty().withMessage('O campo "Endereço" é obrigatório')
             .isLength({min: 3, max: 100}).withMessage('O campo "Endereço" pode ter entre 3 e 100 caracteres')
@@ -407,7 +407,7 @@ exports.validate = (method) => {
                   return value;
                 }
             ),
-        check('inputResidenceNumber', 'Os dados do campo "Número" são inválidos')
+        check('residenceNumber', 'Os dados do campo "Número" são inválidos')
             .exists().withMessage('O campo "Número" é obrigatório')
             .not().isEmpty().withMessage('O campo "Número" é obrigatório')
             .isLength({min: 1, max: 15}).withMessage('O campo "Número" pode ter entre 1 e 15 caracteres')
@@ -419,7 +419,7 @@ exports.validate = (method) => {
                   return value;
                 }
             ),
-        check('inputNeighborhood', 'Os dados do campo "Bairro" são inválidos')
+        check('neighborhood', 'Os dados do campo "Bairro" são inválidos')
             .exists().withMessage('O campo "Bairro" é obrigatório')
             .not().isEmpty().withMessage('O campo "Bairro" é obrigatório')
             .isLength({min: 3, max: 100}).withMessage('O campo "Bairro" pode ter entre 1 e 15 caracteres')
@@ -431,7 +431,7 @@ exports.validate = (method) => {
                   return value;
                 }
             ),
-        check('inputState', 'Os dados do campo "Estado" são inválidos')
+        check('state', 'Os dados do campo "Estado" são inválidos')
             .exists().withMessage('O campo "Estado" é obrigatório')
             .not().isEmpty().withMessage('O campo "Estado" é obrigatório')
             .isLength({min: 2, max: 2}).withMessage('O campo "Estado" pode ter entre 1 e 15 caracteres')
@@ -443,7 +443,7 @@ exports.validate = (method) => {
                   return value;
                 }
             ),
-        check('inputCity', 'Os dados do campo "Cidade" são inválidos')
+        check('city', 'Os dados do campo "Cidade" são inválidos')
             .exists().withMessage('O campo "Cidade" é obrigatório')
             .not().isEmpty().withMessage('O campo "Cidade" é obrigatório')
             .isLength({min: 1, max: 100}).withMessage('O campo "Cidade" pode ter entre 1 e 100 caracteres')
@@ -455,7 +455,7 @@ exports.validate = (method) => {
                   return value;
                 }
             ),
-        check('inputCEP', 'Os dados do campo "CEP" são inválidos.')
+        check('cep', 'Os dados do campo "CEP" são inválidos.')
             .optional({checkFalsy: true})
             .exists().withMessage('O campo "CEP" é obrigatório.')
             .not().isEmpty().withMessage('O campo "CEP" é obrigatório.')
@@ -471,7 +471,7 @@ exports.validate = (method) => {
             )
             //.escape()
             .trim(),
-        check('inputEmail', 'Os dados do campo "E-mail" são inválidos')
+        check('email', 'Os dados do campo "E-mail" são inválidos')
             .optional({ checkFalsy: true })
             .isEmail().withMessage('O campo "E-mail" é inválido')
             .normalizeEmail()
@@ -480,20 +480,20 @@ exports.validate = (method) => {
                   return value === '@' ? '' : value;
                 }
             ),
-        check('inputResTel', 'Os dados do campo "Telefone Residencial" são inválidos')
+        check('resTel', 'Os dados do campo "Telefone Residencial" são inválidos')
             .optional({checkFalsy: true})
             .blacklist('()-\\s')
             .trim()
             .isLength({min: 10, max: 11}).withMessage('O campo "Telefone Residencial" deve ter entre 10 e 11 dígitos')
             .isInt(),
-        check('inputCommercialTel', 'Os dados do campo "Telefone Comercial" são inválidos')
+        check('commercialTel', 'Os dados do campo "Telefone Comercial" são inválidos')
             .optional({checkFalsy: true})
             .blacklist('()-\\s')
             .trim()
             .isLength({min: 10, max: 11}).withMessage('O campo "Telefone Comercial" deve ter entre 10 e 11 dígitos')
             .isInt(),
         //.escape(),
-        check('inputCelPhone', 'Os dados do campo "Telefone Celular" são inválidos')
+        check('celPhone', 'Os dados do campo "Telefone Celular" são inválidos')
             .optional({checkFalsy: true})
             .blacklist('()-\\s')
             .trim()

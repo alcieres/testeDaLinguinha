@@ -429,7 +429,7 @@ function Patient () {
     assessmentJSON.userRegistry = this.assessments[indexAssessment].getUserRegistry();
 
     patientJSON.assessments.push(assessmentJSON);
-    console.log(patientJSON);
+    //console.log(patientJSON);
 
     return JSON.stringify(patientJSON);
   };

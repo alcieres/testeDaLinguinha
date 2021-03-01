@@ -318,23 +318,36 @@
 	"expanded_folders":
 	[
 		"/home/alcieres/TCC/testeDaLinguinha",
-		"/home/alcieres/TCC/testeDaLinguinha/bin",
 		"/home/alcieres/TCC/testeDaLinguinha/controllers",
 		"/home/alcieres/TCC/testeDaLinguinha/models",
-		"/home/alcieres/TCC/testeDaLinguinha/routes"
+		"/home/alcieres/TCC/testeDaLinguinha/public",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models",
+		"/home/alcieres/TCC/testeDaLinguinha/routes",
+		"/home/alcieres/TCC/testeDaLinguinha/views",
+		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient"
 	],
 	"file_history":
 	[
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/ExtractController.js",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/AssessmentController.js",
-		"/home/alcieres/TCC/testeDaLinguinha/test/test.js",
 		"/home/alcieres/TCC/testeDaLinguinha/models/Assessment.js",
-		"/home/alcieres/TCC/testeDaLinguinha/routes/assessmentExtract.js",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
-		"/home/alcieres/TCC/testeDaLinguinha/routes/assessment.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
-		"/home/alcieres/TCC/testeDaLinguinha/app.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/AssessmentController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessment.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/editPatient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/models/Patient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/Validations.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/resumeWrite.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Patient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient/editPatient.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/routes/assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/routes/editPatient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/testeDaLinguinha.sublime-project",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/ExtractController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/test/test.js",
+		"/home/alcieres/TCC/testeDaLinguinha/routes/assessmentExtract.js",
+		"/home/alcieres/TCC/testeDaLinguinha/app.js",
 		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/routes/home.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/assessmentExtract.js",
@@ -342,18 +355,13 @@
 		"/home/alcieres/Área de Trabalho/terminal",
 		"/home/alcieres/.cache/.fr-bg3nM0/testeDaLinguinha-1.1.1-beta/controllers/FindPatientController.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Assessment.js",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/Validations.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessment.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/routes/editPatient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientDetails.js",
 		"/home/alcieres/TCC/testeDaLinguinha/package.json",
 		"/home/alcieres/TCC/testeDaLinguinha/bin/www",
 		"/home/alcieres/TCC/testeDaLinguinha/config/db.js",
 		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessmentExtract.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient/editPatient.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/findPatient.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Patient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/views/partials/footer.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/teste.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/modelo.ejs",
@@ -381,7 +389,6 @@
 		"/home/alcieres/TCC/links.txt",
 		"/home/alcieres/.ssh/config",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/jquery-ui.min.js",
-		"/home/alcieres/TCC/testeDaLinguinha/testeDaLinguinha.sublime-project",
 		"/home/alcieres/webII/prova2/prova2/views/produto.ejs",
 		"/home/alcieres/webII/J Prova/connectionBD.js",
 		"/home/alcieres/webII/aula13/teste/app.js",
@@ -450,9 +457,7 @@
 		"/home/alcieres/webII/prova2/group by",
 		"/home/alcieres/webII/prova2/Dicas mySQL.sql",
 		"/home/alcieres/webII/prova2/TIPOS DE DADOS MYSQL.txt",
-		"/home/alcieres/webII/prova2/Dicas Prova",
-		"/home/alcieres/webII/Configs.txt",
-		"/home/alcieres/webII/prova2/joins"
+		"/home/alcieres/webII/prova2/Dicas Prova"
 	],
 	"find":
 	{
@@ -471,6 +476,13 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			",\n",
+			"patient",
+			"wr",
+			"w",
+			"write",
+			"writer",
+			"/requestPatient",
 			"assessmentExtract",
 			"assessment/assessmentExtract",
 			"requestAssessment",
@@ -572,7 +584,7 @@
 		"cols":
 		[
 			0.0,
-			0.594347209425,
+			0.482910729463,
 			1.0
 		],
 		"rows":
@@ -592,7 +604,7 @@
 	},
 	"output.nodejs":
 	{
-		"height": 96.0
+		"height": 116.0
 	},
 	"pinned_build_system": "",
 	"project": "testeDaLinguinha.sublime-project",
@@ -628,7 +640,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

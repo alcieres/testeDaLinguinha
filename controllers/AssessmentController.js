@@ -14,36 +14,15 @@ exports.assessmentCreatePost = function (req, res) {
     return res.status(422).json({error: errors.array()});
   }
 
-let newAssessment = new Assessment();
-newAssessment.reqCreateNewAssessment(req, 0);
+  let assessmentNew = new Assessment();
+  assessmentNew.reqCreateNewAssessment(req, 1);
 
   //Criação do Paciente
   let patientNew = new Patient();
-  //Início do Paciente
-  //patientNew._id = req.body.patientId;
-  patientNew.name = req.body.name;
-  patientNew.birthDate = req.body.birthDate;
-  patientNew.genre = req.body.genre;
-  patientNew.motherName = req.body.motherName;
-  patientNew.motherCPF = req.body.motherCPF;
-  patientNew.fatherName = req.body.fatherName;
-  patientNew.address = req.body.address;
-  patientNew.residenceNumber = req.body.residenceNumber;
-  patientNew.neighborhood = req.body.neighborhood;
-  patientNew.state = req.body.state;
-  patientNew.city = req.body.city;
-  patientNew.cep = req.body.cep;
-  patientNew.email = req.body.email;
-  patientNew.resTel = req.body.resTel;
-  patientNew.commercialTel = req.body.commercialTel;
-  patientNew.celPhone = req.body.celPhone;
-  patientNew.familyHistory = req.body.familyHistory;
-  patientNew.problemDescription = req.body.problemDescription;
-  patientNew.patientHealthProblem = req.body.patientHealthProblem;
-  patientNew.healthProblemDescription = req.body.healthProblemDescription;
-
+  patientNew.reqCreateNewPatient(req, false);
+  
   //Insere Exame criado no objeto "Paciente".
-  patientNew.assessments.push(newAssessment);
+  patientNew.assessments.push(assessmentNew);
   //console.log("Novo Paciente: " + patientNew);
 
   patientNew.save(function (err, doc){

@@ -108,7 +108,7 @@ req = {
 let assessment = new Assessment;
 assessment.reqCreateNewAssessment(req, 0);
 
-console.log(util.inspect(assessment, false, null, true /* enable colors */));
+//console.log(util.inspect(assessment, false, null, true /* enable colors */));
 
 
 

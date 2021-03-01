@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   //Inicialização e configuração do JQueryUi datepicker
   let dateCalendarField = $( ".dateCalendar" );
   datepickerFormat(dateCalendarField);
@@ -49,11 +48,29 @@ $(document).ready(function() {
           modal: true,
           buttons: {
             Sim: function() {
+              let patientToSend = {};
+              patientToSend.name = $('#inputName').val();
+              patientToSend.birthDate = $('#inputBirthDate').val();
+              patientToSend.genre = $("input[name='rbGenre']:checked").val();
+              patientToSend.motherName = $('#inputMotherName').val();
+              patientToSend.motherCPF = $('#inputMotherCPF').val();
+              patientToSend.fatherName = $('#inputFatherName').val();
+              patientToSend.address = $('#inputAddress').val();
+              patientToSend.residenceNumber = $('#inputResidenceNumber').val();
+              patientToSend.neighborhood = $('#inputNeighborhood').val();
+              patientToSend.state = $('#inputState').val();
+              patientToSend.city = $('#inputCity').val();
+              patientToSend.cep = $('#inputCEP').val();
+              patientToSend.email = $('#inputEmail').val();
+              patientToSend.resTel = $('#inputResTel').val();
+              patientToSend.commercialTel = $('#inputCommercialTel').val();
+              patientToSend.celPhone = $('#inputCelPhone').val();
+
               $( this ).dialog( "close" );
               $.ajax({
                 method: 'PUT',
                 url: '/editPatient/patient/' + patient._id,
-                data: $('#editPatient').serialize(),
+                data: patientToSend,
                 success: successHandler,
                 error: errorHandler
               });
@@ -87,7 +104,7 @@ $(document).ready(function() {
       $( "#dialog-message" ).dialog({
         dialogClass: "no-close",
         width: 500,
-        title: "Erro de Validação do Teste",
+        title: "Erro de Atualização!",
         modal: true,
         buttons: {
           Ok: function() {
@@ -95,6 +112,6 @@ $(document).ready(function() {
           }
         }
       });
-    } );
+    });
   }
 });
