@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/stylesheets/form.css" />
     <link rel="stylesheet" href="/stylesheets/text.css" />
     <link rel="stylesheet" href="/stylesheets/userNewViewEdit.css" />
+    <link rel="stylesheet" href="/javascripts/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" >    
 
     <script type="text/javascript" src="/javascripts/jquery/jquery-3.4.1.min.js" ></script>
     <script type="text/javascript" src="/javascripts/jquery/jquery.mask.min.js" ></script>
@@ -50,9 +51,6 @@
                         id="inputName"
                         class="form-control"
                         placeholder="Nome*"
-                        minlength="5"
-                        maxlength="100"
-                        required
                         autofocus
                         value="<%=profile !== null ? profile.name : '';%>" >
                 <label for="inputName">Nome<span class="requiredField">*</span></label>
@@ -68,9 +66,6 @@
                         id="inputLastName"
                         class="form-control"
                         placeholder="Sobrenome*"
-                        minlength="5"
-                        maxlength="100"
-                        required
                         value="<%=profile !== null ? profile.lastName : '';%>"
                 >
                 <label for="inputLastName">Sobrenome<span class="requiredField">*</span></label>
@@ -88,8 +83,6 @@
                         id="inputCPF"
                         class="form-control"
                         placeholder="CPF*"
-                        minlength="14"
-                        maxlength="14"
                         required
                         onkeypress="$(this).mask('000.000.000-00');"
                         value="<%=profile !== null ? profile.cpf : '';%>"
@@ -106,9 +99,6 @@
                         id="inputRegistry"
                         class="form-control"
                         placeholder="Registro no Conselho*"
-                        minlength="5"
-                        maxlength="10"
-                        required
                         value="<%=profile !== null ? profile.registry : '';%>"
                 >
                 <label for="inputRegistry">Registro no Conselho<span class="requiredField">*</span></label>
@@ -123,9 +113,6 @@
                         id="inputOccupation"
                         class="form-control"
                         placeholder="Profissão*"
-                        minlength="5"
-                        maxlength="20"
-                        required
                         value="<%=profile !== null ? profile.occupation : '';%>"
                 >
                 <label for="inputOccupation">Profissão<span class="requiredField">*</span></label>
@@ -243,3 +230,5 @@
   </div> <%# Containner %>
 
     <%- include ('../partials/footer') %>
+
+    <%- include ('../partials/modal') %>

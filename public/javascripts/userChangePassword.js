@@ -6,22 +6,41 @@ $(document).ready(function() {
         //window.location = "/users";
     });
 
+    // Configuração do botão de "REINICIALIZAR"
     $('#resetPasswordBtn').click(function (e) {
         e.preventDefault();
-        if (passwordValidateForm() && confirm("Confirma a alteração de sua senha?")) {
-            $.ajax({
-                url: '/user/changePassword',
-                method: 'PUT',
-                data: $('#passwordReset').serialize(),
-                success: successHandler,
-                error: errorHandler
-            }).done(function (res) {
-                if (typeof res.success !== 'undefined') {
-                    console.log((res));
-                    $('#inputPassword').val('');
-                    $('#inputPasswordConfirm').val('');
-                    //window.location.replace('/users')
-                }
+        if (passwordValidateForm()) {
+            $(function () {
+                $('#dialogMsg').text('Confirma a alteração de sua senha?');
+                $("#dialog-confirm").dialog({
+                  resizable: false,
+                  height: "auto",
+                  dialogClass: "no-close",
+                  width: 400,
+                  modal: true,
+                  buttons: {
+                    Sim: function () {
+                      $(this).dialog("close");
+                      $.ajax({
+                        url: '/user/changePassword',
+                        method: 'PUT',
+                        data: $('#passwordReset').serialize(),
+                        success: successHandler,
+                        error: errorHandler
+                    }).done(function (res) {
+                        if (typeof res.success !== 'undefined') {
+                            //console.log((res));
+                            $('#inputPassword').val('');
+                            $('#inputPasswordConfirm').val('');
+                            //window.location.replace('/users')
+                        }
+                    });
+                },
+                'Não': function () {
+                  $(this).dialog("close");
+              }
+          }
+      });
             });
         }
     });

@@ -40,6 +40,7 @@ $(document).ready(function() {
   $('#saveBtn').click(function() {
     if(validateForm('#editPatient')) {
       $(function() {
+        jQuery("#dialogMsg").text("Confirma a atualização do paciente?");
         $( "#dialog-confirm" ).dialog({
           resizable: false,
           height: "auto",

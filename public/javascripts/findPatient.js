@@ -40,7 +40,6 @@ function validateAndSubmit (){
     let dialog = $('#dialog-message');
     dialog.empty();
     dialog.append( "<p>" + msg + "</p>" );
-
     $( function() {
       $( "#dialog-message" ).dialog({
         dialogClass: "no-close",
@@ -55,6 +54,4 @@ function validateAndSubmit (){
       });
     } );
   }
-
-
 });

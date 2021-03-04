@@ -259,6 +259,78 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "views/partials/modal.ejs",
+			"settings":
+			{
+				"buffer_size": 247,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/javascripts/userNewViewEdit.js",
+			"settings":
+			{
+				"buffer_size": 5419,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/assessment/assessment.ejs",
+			"settings":
+			{
+				"buffer_size": 66000,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n  <head>\n    <meta charset=\"utf-8\"/>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title><%= title %></title>\n    <link rel=\"stylesheet\" href=\"/stylesheets/bootstrap/bootstrap.css\" />\n    <link rel=\"stylesheet\" href=\"/stylesheets/style.css\" />\n    <link rel=\"stylesheet\" href=\"/stylesheets/nav.css\" />\n    <link rel=\"stylesheet\" href=\"/stylesheets/form.css\" />\n    <link rel=\"stylesheet\" href=\"/stylesheets/text.css\" />\n    <link rel=\"stylesheet\" href=\"/javascripts/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css\" >\n\n    <script type=\"text/javascript\" src=\"/javascripts/jquery/jquery-3.4.1.min.js\" ></script>\n    <script type=\"text/javascript\" src=\"/javascripts/jquery/jquery.mask.min.js\" ></script>\n    <script type=\"text/javascript\" src=\"/javascripts/jquery/jquery-ui.min.js\" ></script>\n\n    <script type=\"text/javascript\" src=\"/javascripts/bootstrap/bootstrap.min.js\" ></script>\n\n    <script type=\"text/javascript\" src=\"/javascripts/patientDetails.js\" ></script>\n  </head>\n  <body>\n\n  <%- include('../partials/nav', {active: \"navFindPatient\"}); %>\n\n  <%\n  var formatCPF = function (cpf){\n    return cpf.replace(/(\\d{3})(\\d{3})(\\d{3})(\\d{2})/, \"$1.$2.$3-$4\");\n  }\n  var behaviorToText = function (behavior){\n    switch (behavior) {\n      case 1:\n        return \"Sem alteração de frênulo lingual\";\n      case 2:\n        return \"Frenotomia sugerida\";\n      case 3:\n        return \"Em monitoramento\";\n      case 4:\n        return \"Alteração de frênulo lingual sem interferência na mobilidade da língua\";\n      default:\n        return \"Não respondida\"\n    }\n  }\n  var telFormat = function (tel) {\n    if (!tel){\n      return \"\";\n    }\n    tel.length === 10 ? tel = tel.replace(/(^)(\\d{2})(\\d{4})(\\d{2})/, \"$1($2) $3 $4\") : tel = tel.replace(/(^)(\\d{2})(\\d{5})(\\d{2})/, \"$1($2) $3 $4\");\n    return tel;\n  }\n  var dateToText = function (date) {\n    date = new Date(new Date(date).getTime() + (new Date(date).getTimezoneOffset() * 180 * 1000));\n    let d = date.getDate();\n    let m = date.getMonth() + 1;\n    let y = date.getFullYear();\n    if(d < 10) {\n      d = '0' + d\n    }\n    if(m < 10) {\n      m = '0' + m\n    }\n    return d + \"/\" + m + \"/\" + y;\n  }\n  %>\n\n    <div class=\"container mainContainer\">\n      <div class=\"row align-items-center\">  <%# Linha do título História Clínica 1 %>\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-12 mx-auto\">\n          <h2 class=\"text-center border border-dark rounded\">Detalhes do Paciente</h2>\n        </div>\n      </div>\n      <div class=\"row align-items-center mt-3\">\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-6 ml-auto\">\n          <p>Nome: <%= patient.name;%></p>\n        </div>\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-3 mr-auto\">\n          <p>Nascimento: <%= dateToText(patient.birthDate);%></p>\n        </div>\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-3 ml-auto\">\n          <p>Gênero: <%= (patient.genre == 1) ? 'Masculino' : 'Feminino';%></p>\n        </div>\n      </div>\n      <div class=\"row align-items-center\">\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-6 ml-auto\">\n          <p>Nome da mãe: <%= patient.motherName;%></p>\n        </div>\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-6 ml-auto\">\n          <p>CPF da mãe: <%= formatCPF(patient.motherCPF);%></p>\n        </div>\n      </div>\n      <div class=\"row align-items-center\">\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-12 ml-auto\">\n          <p>Nome do pai: <%= patient.fatherName;%></p>\n        </div>\n      </div>\n      <div class=\"row align-items-center\">\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-6 ml-auto\">\n          <p>Endereço: <%= patient.address;%></p>\n        </div>\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-6 ml-auto\">\n          <p>Número: <%= patient.residenceNumber;%></p>\n        </div>\n      </div>\n      <div class=\"row align-items-center\">\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-6 ml-auto\">\n          <p>Bairro: <%= patient.neighborhood;%></p>\n        </div>\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-4 mr-auto\">\n          <p>Cidade: <%= patient.city;%></p>\n        </div>\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-2 ml-auto\">\n          <p>Estado: <%= patient.state %></p>\n        </div>\n      </div>\n      <div class=\"row align-items-center\">\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-6 ml-auto\">\n          <p>CEP: <%= patient.cep;%></p>\n        </div>\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-6 ml-auto\">\n          <p>E-mail: <%= patient.email;%></p>\n        </div>\n      </div>\n      <div class=\"row align-items-center\">\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-4 ml-auto\">\n          <p >Tel. residencial: <span class=\"telMask\"><%= telFormat(patient.resTel);%></span></p>\n        </div>\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-4 mr-auto\">\n          <p>Tel. Trabalho: <span class=\"telMask\"><%= telFormat(patient.commercialTel);%></span></p>\n        </div>\n        <div class=\"col-12 col-sm-12 col-md-12 col-lg-4 ml-auto\">\n          <p>Celular: <span class=\"telMask\"><%= telFormat(patient.celPhone); %></span></p>\n        </div>\n      </div>\n    </div> <%# Containner %>\n\n  <div class=\"container mainContainer\"> <%# Containner Botões %>\n    <div class=\"row align-items-center\"> <%# Descrição da Pontuação %>\n      <div class=\"col-12 col-sm-4 col-md-4 col-lg-2 mr-auto\">\n        <button class=\"btn btn-primary btn-block text-uppercase\" type=\"button\" id=\"deleteBtn\" onclick=\"deletePatient('<%= patient._id %>')\">Excluir</button>\n      </div>\n      <div class=\"col-12 col-sm-4 col-md-4 col-lg-2 ml-auto\">\n        <button class=\"btn btn-primary btn-block text-uppercase\" type=\"button\" id=\"editBtn\" onclick=\"location.replace('/editPatient/<%= patient._id %>/edit');\">Editar</button>\n      </div>\n    </div>\n  </div> <%# Containner %>\n\n  <div class=\"container mainContainer\">\n      <div class=\"row align-items-center\"> <%# Descrição da Pontuação %>\n        <table class=\"table table-responsive\">\n          <thead>\n            <tr>\n              <th scope=\"col\" class=\"text-center\">Data da Avaliação</th>\n              <th scope=\"col\" class=\"text-center\">Pontos (História Clínica)</th>\n              <th scope=\"col\" class=\"text-center\">Pontos (Exame Clínico)</th>\n              <th scope=\"col\" class=\"text-center\">Total de Pontos</th>\n              <th scope=\"col\" class=\"text-center\">Conduta</th>\n              <th scope=\"col\" class=\"text-center\">Opções</th>\n            </tr>\n          </thead>\n          <tbody>\n            <% patient.assessments.forEach(function(assessment){ %>\n              <tr>\n                <th scope=\"row\" class=\"text-center\"><%= dateToText(assessment.assessmentDate); %></th>\n                <td class=\"text-center\"><%= assessment.clinicalHistoryPoints; %></td>\n                <td class=\"text-center\"><%= assessment.clinicalAssessmentPoints; %></td>\n                <td class=\"text-center\"><%= assessment.historyAssessmentPoints; %></td>\n                <td class=\"text-center\"><%= behaviorToText(assessment.assBehavior); %></td>\n                <td class=\"text-center text-nowrap\">\n                  <a href=\"/assessmentExtract?patientId=<%= patient._id.toString(); %>&assessmentId=<%= assessment._id.toString(); %>\"  target=\"_blank\" class=\"mr-3\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"35\" height=\"35\" viewBox=\"0 0 24 24\">\n                      <path fill=\"none\" d=\"M0 0h24v24H0V0z\"/>\n                      <path opacity=\".3\" d=\"M12 6c-3.79 0-7.17 2.13-8.82 5.5C4.83 14.87 8.21 17 12 17s7.17-2.13 8.82-5.5C19.17 8.13 15.79 6 12 6zm0 10c-2.48 0-4.5-2.02-4.5-4.5S9.52 7 12 7s4.5 2.02 4.5 4.5S14.48 16 12 16z\"/>\n                      <path d=\"M12 4C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 13c-3.79 0-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6s7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17zm0-10c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7zm0 7c-1.38 0-2.5-1.12-2.5-2.5S10.62 9 12 9s2.5 1.12 2.5 2.5S13.38 14 12 14z\"/>\n                    </svg>\n                  </a>\n                  <a href=\"/editPatient/assessmentEdit/?patientId=<%= patient._id %>&assessmentId=<%= assessment._id %>\" class=\"ml-3\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"35\" height=\"35\" viewBox=\"0 0 24 24\">\n                      <path fill=\"none\" d=\"M0 0h24v24H0V0z\"/>\n                      <path opacity=\".3\" d=\"M5 18.08V19h.92l9.06-9.06-.92-.92z\"/>\n                      <path d=\"M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z\"/>\n                    </svg>\n                  </a>\n                  <a href=\"#\" onclick=\"deleteAssessment('<%= patient._id %>', '<%= assessment._id %>');return false;\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"35\" height=\"35\" viewBox=\"0 0 24 24\">\n                      <path fill=\"none\" d=\"M0 0h24v24H0V0z\"/>\n                      <path d=\"M3 8v16h18v-16h-18zm5 12c0 .552-.448 1-1 1s-1-.448-1-1v-8c0-.552.448-1 1-1s1 .448 1 1v8zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-8c0-.552.448-1 1-1s1 .448 1 1v8zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-8c0-.552.448-1 1-1s1 .448 1 1v8zm4-15.375l-.409 1.958-19.591-4.099.409-1.958 5.528 1.099c.881.185 1.82-.742 2.004-1.625l5.204 1.086c-.184.882.307 2.107 1.189 2.291l5.666 1.248z\"/>\n                    </svg>\n                  </a>\n                </td>\n              </tr>\n            <%});%>\n          </tbody>\n        </table>\n    </div>\n  </div> <%# Containner %>\n\n  <div class=\"container mainContainer\"> <%# Containner Botões %>\n    <div class=\"row align-items-center\"> <%# Descrição da Pontuação %>\n      <div class=\"col-12 col-sm-4 col-md-4 col-lg-2 mr-auto\">\n        <button class=\"btn btn-primary btn-block text-uppercase\" type=\"button\" id=\"backBtn\" >Voltar</button>\n      </div>\n      <div class=\"col-12 col-sm-4 col-md-4 col-lg-2 ml-auto\">\n        <button class=\"btn btn-primary btn-block text-uppercase\" type=\"button\" id=\"newTestBtn\" onclick=\"window.location.href='/editPatient/assessmentNew/?patientId=<%= patient._id.toString(); %>'\" >Novo Teste</button>\n      </div>\n    </div>\n  </div> <%# Containner %>\n\n  <%- include ('../partials/footer') %>\n\n  <%- include ('../partials/modal') %>",
+			"file": "views/findPatient/patientDetails.ejs",
+			"file_size": 10485,
+			"file_write_time": 132591901127089580,
+			"settings":
+			{
+				"buffer_size": 10443,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/usersAdm/userNewViewEdit.ejs",
+			"settings":
+			{
+				"buffer_size": 11179,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "$(document).ready(function() {\n  //Atualizar a página quando acessada a partir dos botões voltar e avançar\n  if(performance.navigation.type == 2){\n    location.reload(true);\n  }\n  $('#backBtn').click(function() {\n    window.history.back();\n  });\n});dialog\n\nlet deletePatient = (patientId) => {\n  $(function () {\n    $('#dialogMsg').text('Confirma a exclusão do paciente?');\n    $(\"#dialog-confirm\").dialog({\n      resizable: false,\n      height: \"auto\",\n      dialogClass: \"no-close\",\n      width: 400,\n      modal: true,\n      buttons: {\n        Sim: function () {\n          $(this).dialog(\"close\");\n          $.ajax({\n            method: 'DELETE',\n            url: '/delete/patient/' + patientId + '/delete',\n            success: successHandler,\n            error: errorHandler\n          });\n        },\n        'Não': function () {\n          $(this).dialog(\"close\");\n        }\n      }\n    });\n  });\n  function successHandler () {\n    window.location.replace(\"/findPatient/\");\n  }\n};\n\nlet deleteAssessment = (patientId, assessmentId) => {\n  $(function () {\n    $('#dialogMsg').text('Deseja realmente excluir esse teste?');\n    $(\"#dialog-confirm\").dialog({\n      resizable: false,\n      height: \"auto\",\n      dialogClass: \"no-close\",\n      width: 400,\n      modal: true,\n      buttons: {\n        Sim: function () {\n          $(this).dialog(\"close\");\n          $.ajax({\n            method: 'DELETE',\n            url: '/delete/patient/' + patientId + '/assessment/' + assessmentId + '/delete',\n            success: successHandler,\n            error: errorHandler\n          });\n        },\n        'Não': function () {\n          $(this).dialog(\"close\");\n        }\n      }\n    });\n  });\n  function successHandler () {\n    location.reload();\n  }\n};\n\nfunction errorHandler (data) {\n  let dialog = $('#dialog-message');\n  dialog.empty();\n  data.responseJSON.error.forEach(error => (dialog.append( \"<p>\" + error.msg + \"</p>\" )));\n  $( function() {\n    $( \"#dialog-message\" ).dialog({\n      dialogClass: \"no-close\",\n      width: 500,\n      title: \"Erro ao deletar paciente\",\n      modal: true,\n      buttons: {\n        Ok: function() {\n          $( this ).dialog( \"close\" );\n        }\n      }\n    });\n  });\n}",
+			"file": "public/javascripts/patientDetails.js",
+			"file_size": 2199,
+			"file_write_time": 132591903667639242,
+			"settings":
+			{
+				"buffer_size": 2199,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "$(document).ready(function() {\n\n    // Configuração do botão voltar\n    $('#prevBtn').click(function() {\n        window.history.back();\n        //window.location = \"/users\";\n    });\n\n    // Configuração do botão de \"REINICIALIZAR\"\n    $('#resetPasswordBtn').click(function (e) {\n        e.preventDefault();\n        if (passwordValidateForm()) {\n            $(function () {\n                $('#dialogMsg').text('Confirma a alteração de sua senha?');\n                $(\"#dialog-confirm\").dialog({\n                  resizable: false,\n                  height: \"auto\",\n                  dialogClass: \"no-close\",\n                  width: 400,\n                  modal: true,\n                  buttons: {\n                    Sim: function () {\n                      $(this).dialog(\"close\");\n                      $.ajax({\n                        url: '/user/changePassword',\n                        method: 'PUT',\n                        data: $('#passwordReset').serialize(),\n                        success: successHandler,\n                        error: errorHandler\n                    }).done(function (res) {\n                        if (typeof res.success !== 'undefined') {\n                            //console.log((res));\n                            $('#inputPassword').val('');\n                            $('#inputPasswordConfirm').val('');\n                            //window.location.replace('/users')\n                        }\n                    });\n                },\n                'Não': function () {\n                  $(this).dialog(\"close\");\n              }\n          }\n      });\n            });\n        }\n    });\n    function successHandler (data) {\n        //console.log(data);\n        //teste = data;\n        let success = data.success;\n        $('#passwordMessage').prop('class', 'alert alert-success text-center mt-3 mb-0 p-0').text('').append(success.msg + '<br>').show(0).delay(5000).hide(0);\n        //setTimeout(function(){ window.location.reload(); }, 5000);\n    }\n\n    function errorHandler (data) {\n        let errors = data.responseJSON.error;\n        $('#passwordMessage').prop('class', 'alert alert-danger text-center mt-3 mb-0 p-0').text('');\n        $(errors).each(function (key, value) {\n            $('#passwordMessage').append(value.msg + '<br>').show(0).delay(5000).hide(0);\n        });\n    }\n\n});",
+			"file": "public/javascripts/userChangePassword.js",
+			"file_size": 2325,
+			"file_write_time": 132591990960653037,
+			"settings":
+			{
+				"buffer_size": 2334,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -318,34 +390,48 @@
 	"expanded_folders":
 	[
 		"/home/alcieres/TCC/testeDaLinguinha",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers",
-		"/home/alcieres/TCC/testeDaLinguinha/models",
 		"/home/alcieres/TCC/testeDaLinguinha/public",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models",
 		"/home/alcieres/TCC/testeDaLinguinha/routes",
 		"/home/alcieres/TCC/testeDaLinguinha/views",
-		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient"
+		"/home/alcieres/TCC/testeDaLinguinha/views/usersAdm"
 	],
 	"file_history":
 	[
-		"/home/alcieres/TCC/testeDaLinguinha/models/Assessment.js",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/AssessmentController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/routes/users.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/user/changePassword.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/routes/user.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/scriptAll.js",
 		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessment.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/editPatient.js",
-		"/home/alcieres/TCC/testeDaLinguinha/models/Patient.js",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient/editPatient.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/findPatient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/findPatient.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientsList.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientList.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/editPatient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessmentExtract.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/partials/modal.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessmentAccordion.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/loginForm.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientDetails.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/userChangePassword.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/userNewViewEdit.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/users.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/util.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/AssessmentController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/package.json",
+		"/home/alcieres/TCC/testeDaLinguinha/models/Assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/test/test.js",
+		"/home/alcieres/TCC/testeDaLinguinha/models/Patient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/controllers/Validations.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/resumeWrite.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Patient.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient/editPatient.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/routes/assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/routes/editPatient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/testeDaLinguinha.sublime-project",
 		"/home/alcieres/TCC/testeDaLinguinha/controllers/ExtractController.js",
-		"/home/alcieres/TCC/testeDaLinguinha/test/test.js",
 		"/home/alcieres/TCC/testeDaLinguinha/routes/assessmentExtract.js",
 		"/home/alcieres/TCC/testeDaLinguinha/app.js",
 		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs",
@@ -356,22 +442,15 @@
 		"/home/alcieres/.cache/.fr-bg3nM0/testeDaLinguinha-1.1.1-beta/controllers/FindPatientController.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientDetails.js",
-		"/home/alcieres/TCC/testeDaLinguinha/package.json",
 		"/home/alcieres/TCC/testeDaLinguinha/bin/www",
 		"/home/alcieres/TCC/testeDaLinguinha/config/db.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessmentExtract.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/findPatient.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/partials/footer.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/teste.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/modelo.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientsList.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/reports/period.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/reports/points.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/views/user/changePassword.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/usersAdm/userNewViewEdit.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/usersAdm/users.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/util.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/assessmentExtract.css",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/assessmentValidate.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/text.css",
@@ -446,18 +525,7 @@
 		"/home/alcieres/webII/treino/trabalho/app.js",
 		"/home/alcieres/webII/aula12/resolucao-prova-mysql/tabelas.sql",
 		"/etc/mysql/mysql.conf.d/mysqld.cnf",
-		"/etc/mysql/mysql.cnf",
-		"/home/alcieres/webII/aula12/resolucao-prova-mysql/public/blog.css",
-		"/home/alcieres/webII/aula10/blog/public/app.css",
-		"/home/alcieres/webII/aula10/blog/views/noticias.ejs",
-		"/home/alcieres/webII/aula12/resolucao-prova-mysql/package.json",
-		"/home/alcieres/webII/aula12/resolucao-prova-mysql/package-lock.json",
-		"/home/alcieres/webII/treino/trabalho2/tabelas",
-		"/home/alcieres/webII/trabalhoFinal/mapsTeste.html",
-		"/home/alcieres/webII/prova2/group by",
-		"/home/alcieres/webII/prova2/Dicas mySQL.sql",
-		"/home/alcieres/webII/prova2/TIPOS DE DADOS MYSQL.txt",
-		"/home/alcieres/webII/prova2/Dicas Prova"
+		"/etc/mysql/mysql.cnf"
 	],
 	"find":
 	{
@@ -468,14 +536,25 @@
 		"height": 101.0,
 		"where_history":
 		[
+			"<open files>",
+			"/home/alcieres/TCC/testeDaLinguinha/bin,/home/alcieres/TCC/testeDaLinguinha/cidades,/home/alcieres/TCC/testeDaLinguinha/config,/home/alcieres/TCC/testeDaLinguinha/controllers,/home/alcieres/TCC/testeDaLinguinha/models,/home/alcieres/TCC/testeDaLinguinha/routes,/home/alcieres/TCC/testeDaLinguinha/test,/home/alcieres/TCC/testeDaLinguinha/views,/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers,/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models,",
+			"/home/alcieres/TCC/testeDaLinguinha/bin,/home/alcieres/TCC/testeDaLinguinha/cidades,/home/alcieres/TCC/testeDaLinguinha/config,/home/alcieres/TCC/testeDaLinguinha/controllers,/home/alcieres/TCC/testeDaLinguinha/models,/home/alcieres/TCC/testeDaLinguinha/public,/home/alcieres/TCC/testeDaLinguinha/routes,/home/alcieres/TCC/testeDaLinguinha/test,/home/alcieres/TCC/testeDaLinguinha/views",
 			""
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"alert",
+			"passwordMessage",
+			"dialog",
+			"alert",
+			"'Erro ao salvar teste'",
+			"erro de validação do teste",
+			"erro de validacao do teste",
+			"teste",
 			",\n",
 			"patient",
 			"wr",
@@ -546,13 +625,223 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "views/partials/modal.ejs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 247,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/EJS/EJS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/javascripts/userNewViewEdit.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5419,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								713,
+								713
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/assessment/assessment.ejs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 66000,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1935,
+								1935
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/EJS/EJS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 3,
+					"file": "views/findPatient/patientDetails.ejs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10443,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10405,
+								10405
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/EJS/EJS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2934.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "views/usersAdm/userNewViewEdit.ejs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								562,
+								562
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/EJS/EJS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/javascripts/patientDetails.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2199,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								700,
+								700
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "public/javascripts/userChangePassword.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2334,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1204,
+								1204
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -584,7 +873,7 @@
 		"cols":
 		[
 			0.0,
-			0.482910729463,
+			0.565867044705,
 			1.0
 		],
 		"rows":

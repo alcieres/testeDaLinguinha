@@ -1,20 +1,22 @@
 function userValidateForm() {
-    //Não validar campos para realização dos testes
-    return true;
+    //return true;
     $("#userForm").validate({
         ignore: ":hidden",
         rules:{
             inputName: {
                 required: true,
+                minlength: 1,
                 maxlength: 50,
             },
             inputLastName: {
                 required: true,
+                minlength: 1,
                 maxlength: 50,
             },
             inputCPF: {
                 required: true,
                 cpfBR: true,
+                minlength: 14,
                 maxlength: 14
             },
             inputRegistry: {
@@ -30,7 +32,7 @@ function userValidateForm() {
             inputEmail: {
                 required: true,
                 email: true,
-                maxlength: 50
+                maxlength: 100
             }
         }
     }); //Fim validação do formulário

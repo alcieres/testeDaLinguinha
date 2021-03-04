@@ -6,11 +6,11 @@ $(document).ready(function() {
   $('#backBtn').click(function() {
     window.history.back();
   });
-});
+});dialog
 
 let deletePatient = (patientId) => {
   $(function () {
-    $('#dialogText').text('Confirma a exclusão do paciente?');
+    $('#dialogMsg').text('Confirma a exclusão do paciente?');
     $("#dialog-confirm").dialog({
       resizable: false,
       height: "auto",
@@ -40,7 +40,7 @@ let deletePatient = (patientId) => {
 
 let deleteAssessment = (patientId, assessmentId) => {
   $(function () {
-    $('#dialogText').text('Deseja realmente excluir esse teste?');
+    $('#dialogMsg').text('Deseja realmente excluir esse teste?');
     $("#dialog-confirm").dialog({
       resizable: false,
       height: "auto",

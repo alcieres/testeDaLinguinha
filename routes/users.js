@@ -8,7 +8,7 @@ const { check, validationResult } = require('express-validator');
 router.get('/', isAdmLoggedIn, function(req, res, next) {
 User.find({}).sort({name: 1, lastName: 1}).exec( function (err, docs) {
     if(err){
-      console.log(err);
+      //console.log(err);
     } else {
       res.render('usersAdm/users', { title: 'Teste da Linguinha', user: req.user, users: docs });
     }
@@ -33,13 +33,13 @@ router.post("/",
         check ('inputName', 'Os dados do campo "Nome" são inválidos')
             .exists().withMessage('O campo "Nome" é obrigatório')
             .not().isEmpty().withMessage('O campo "Nome" é obrigatório')
-            .isLength({max: 50}).withMessage('O campo "Nome" pode ter no máximo 50 caracteres')
+            .isLength({min: 1, max: 50}).withMessage('O campo "Nome" pode ter no máximo 50 caracteres')
             .escape()
             .trim(),
         check ('inputLastName', 'Os dados do campo "Sobrenome" são inválidos')
             .exists().withMessage('O campo "Sobrenome" é obrigatório')
             .not().isEmpty().withMessage('O campo "Sobrenome" é obrigatório')
-            .isLength({max: 50}).withMessage('O campo "Sobrenome" pode ter no máximo 50 caracteres')
+            .isLength({min: 1, max: 50}).withMessage('O campo "Sobrenome" pode ter no máximo 50 caracteres')
             .escape()
             .trim(),
         check ('inputCPF', 'Os dados do campo "CPF" são inválidos')
@@ -98,12 +98,13 @@ router.post("/",
         check ('inputOccupation', 'Os dados do campo "Profissão" são inválidos')
             .exists().withMessage('O campo "Profissão" é obrigatório')
             .not().isEmpty().withMessage('O campo "Profissão" é obrigatório')
-            .isLength({max: 50}).withMessage('O campo "Profissão" deve ter no máximo 50 caracteres')
+            .isLength({min: 3, max: 30}).withMessage('O campo "Profissão" deve ter no máximo 50 caracteres')
             .escape()
             .trim(),
         check ('inputEmail', 'Os dados do campo "E-mail" são inválidos')
             .exists().withMessage('O campo "E-mail" é obrigatório')
             .not().isEmpty().withMessage('O campo "E-mail" é obrigatório')
+            .isLength({min: 3, max: 100}).withMessage('O campo "E-mail" deve ter no máximo 100 caracteres')
             .isEmail().withMessage('O campo "E-mail" é inválido')
             .normalizeEmail(),
         check ('cbAdm', 'Os dados do campo "Administrador" são inválidos')
@@ -124,8 +125,8 @@ router.post("/",
     function (req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        console.log(errors.array());
-        res.status(422).json({ error: errors.array() });
+        //console.log(errors.array());
+        return res.status(422).json({ error: errors.array() });
     }
 
     let name = req.body.inputName;
@@ -149,7 +150,7 @@ router.post("/",
         }),
         password, function(err) {
             if (err) {
-                console.log('error while user register!', err);
+                //console.log('error while user register!', err);
                 if (err.name === "UserExistsError"){
                     res.status(422).json({ error: [{msg: 'CPF já cadastrado para outro usuário.'}]});
                 } else{
@@ -160,7 +161,7 @@ router.post("/",
         });
 });
 
-//ROTA SHOW - Rota para exibição dos dados do usuário
+//ROTA SHOW - Rota para exibição dos dados de um usuário
 router.get('/:cpf', isAdmLoggedIn, function(req, res) {
     User.findByUsername(req.params.cpf, function (err, doc) {
         res.render('usersAdm/userNewViewEdit', {
@@ -173,7 +174,7 @@ router.get('/:cpf', isAdmLoggedIn, function(req, res) {
     });
 });
 
-//Rota para exibição dos dados do usuário para edição
+//ROTA SHOW - Rota para exibição da tela de edição de um usuário
 router.get('/:cpf/edit', isAdmLoggedIn, function(req, res) {
     User.findByUsername(req.params.cpf, function (err, doc) {
         res.render('usersAdm/userNewViewEdit', {
@@ -272,7 +273,7 @@ router.put("/:id",
     function(req,res){
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        console.log(errors.array());
+        //console.log(errors.array());
         return res.status(422).json({ error: errors.array()
         });
     }
@@ -292,8 +293,8 @@ router.put("/:id",
     async function checkUpdateUser() {
             user = await User.findById(id, function (err, doc) {
                 if (err) {
-                    console.log(err);
-                    return res.json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
+                    //console.log(err);
+                    return res.status(422).json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
                 } else {
                     //console.log("doc: " + doc);
                 }
@@ -303,8 +304,8 @@ router.put("/:id",
             }else if (user.cpf !== cpf){
                     let tempUser = await User.findOne({cpf: cpf}, function (err, doc) {
                         if (err) {
-                            console.log(err);
-                            return res.json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
+                            //console.log(err);
+                            return res.status(422).json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
                         } else {
                             //console.log("doc: " + doc);
                         }
@@ -312,7 +313,7 @@ router.put("/:id",
                     if (tempUser === null){
                         updateUser();
                     }else if (tempUser._id !== id){
-                        return res.json({ error: [{msg: 'Já existe outro usuário com esse CPF.'}]});
+                        return res.status(422).json({ error: [{msg: 'Já existe outro usuário com esse CPF.'}]});
                     } else {
                         updateUser();
                     }
@@ -333,8 +334,8 @@ router.put("/:id",
             },
             function(err){
             if (err){
-                console.log(err);
-                return res.json({ error: [{msg: 'Erro ao atualizar o usuário.'}]});
+                //console.log(err);
+                return res.status(422).json({ error: [{msg: 'Erro ao atualizar o usuário.'}]});
             } else{
                 if ((user.cpf === userCpf)){
                     req.user.cpf = cpf;
@@ -344,7 +345,7 @@ router.put("/:id",
                     req.user.email = email;
                     req.user.registry = registry;
                 }
-                res.status(200).json({ success: {msg: 'Usuário atualizado com sucesso.'}});
+                res.status(200).json({ success: [{msg: 'Usuário atualizado com sucesso.'}]});
             }
         });
     }
@@ -352,8 +353,7 @@ router.put("/:id",
     checkUpdateUser();
 });
 
-//Rota deletar usuário, ela não permite que o usuário logado apague a própria conta e
-// retorna erro para usuário
+//ROTA DELETE - Deletar usuário, ela não permite que o usuário logado apague a própria conta e, nesse caso, retorna erro para usuário
 router.delete("/:id", isAdmLoggedIn, function(req, res){
     let user;
     let id = req.params.id;
@@ -363,78 +363,79 @@ router.delete("/:id", isAdmLoggedIn, function(req, res){
             user = await User.findById(id, function (err, doc) {
                 if (err) {
                     //console.log(err);
-                    res.json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
+                    res.status(422).json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
                 } else {
                     //console.log("doc: " + doc);
                 }
             });
         } catch (e) {
-            console.log(e);
+            //console.log(e);
         }
         if (user.cpf !== req.user.cpf) {
             User.findByIdAndRemove(id, function(err){
                 if (err){
-                    res.json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
+                    res.status(422).json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
                     //console.log(err);
                 } else{
-                    res.status(200).json({ success: {msg: 'Usuário deletado'}});
+                    res.status(200).json({ success: [{msg: 'Usuário deletado'}]});
                 }
             });
         } else {
-            return res.json({ error: [{msg: 'Não é possível excluir o próprio usuário.'}]});
+            return res.status(422).json({ error: [{msg: 'Não é possível excluir o próprio usuário.'}]});
         }
     }
     deleteUser();
 });
 
+//ROTA UPDATE - Reseta a senha do usuário a trocando por outra de escolha do administrador
 router.put ("/:id/passwordReset",
     isAdmLoggedIn,
     [
-        check("inputPassword", "Senha inválida.")
-            .exists().withMessage('O campo "Senha" é obrigatório')
-            .not().isEmpty().withMessage('O campo "Senha" é obrigatório')
-            .trim()
-            .isLength({ min: 6, max: 16 }).withMessage('A senha deve ter entre 6 e 16 caracteres.')
-            .custom(
-                (value, {req}) => {
-                    if (value !== req.body.inputPasswordConfirm) {
-                        throw new Error("A senha diverge entre os dois campos.");
-                    } else {
-                        return value;
-                    }
-                })
+    check("inputPassword", "Senha inválida.")
+    .exists().withMessage('O campo "Senha" é obrigatório')
+    .not().isEmpty().withMessage('O campo "Senha" é obrigatório')
+    .trim()
+    .isLength({ min: 6, max: 16 }).withMessage('A senha deve ter entre 6 e 16 caracteres.')
+    .custom(
+        (value, {req}) => {
+            if (value !== req.body.inputPasswordConfirm) {
+                throw new Error("A senha diverge entre os dois campos.");
+            } else {
+                return value;
+            }
+        })
     ],
-function (req, res) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        console.log(errors.array());
-        return res.status(422).json({ error: errors.array() });
-    }
-    let newPassword = req.body.inputPassword;
-    console.log("-----=========>" + newPassword);
+    function (req, res) {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            //console.log(errors.array());
+            return res.status(422).json({ error: errors.array() });
+        }
+        let newPassword = req.body.inputPassword;
+        //console.log("-----=========>" + newPassword);
         User.findById(req.params.id, function (err, doc) {
-            console.log(doc);
+            //console.log(doc);
             if (err) {
-                console.log(err);
-                res.json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
+                //console.log(err);
+                res.status(422).json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
             } else {
                 doc.setPassword(newPassword, function(err, user){
                     if(err){
-                        console.log(err);
+                        //console.log(err);
                         res.status(422).json({ error: [{msg: 'Erro ao redefinir a senha.'}]});
                     }else {
                         doc.save(function(error){
                             if (error) {
-                                console.log(error);
+                                //console.log(error);
                                 res.status(422).json({ error: [{msg: 'Erro ao gravar redefinição da senha.'}]});
                             }
                         });
-                        res.status(200).json({ success: {msg: 'Senha reinicializada com sucesso.'}});
-                        console.log("-----=========>" + newPassword);
+                        res.status(200).json({ success: [{msg: 'Senha reinicializada com sucesso.'}]});
+                        //console.log("-----=========>" + newPassword);
                     }
                 });
             }
         });
-});
+    });
 
 module.exports = router;
