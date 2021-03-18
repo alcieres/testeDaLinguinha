@@ -86,26 +86,26 @@
       <div class="col-lg-9 mx-auto report-content">
         <div class="row">
           <div class="col-lg-6">
-            <p class="mb-0">Antecedentes Familiares: <span id="resFamilyHistory">resposta</span></p>
-            <p class="mb-0">Quem e qual Problema: <span id="resProblemDescription"> </span></p>
-            <p class="mb-0">Problemas de Saúde: <span id="resPatientHealthProblem">resposta</span></p>
-            <p class="mb-0">Quais: <span id="resHealthProblemDescription"> </span></p>
+            <p class="mb-0">Antecedentes Familiares: <span id="resFamilyHistory"></span></p>
+            <p class="mb-0" id="pResProblemDescription">Quem e qual Problema: <span id="resProblemDescription"> </span></p>
+            <p class="mb-0">Problemas de Saúde: <span id="resPatientHealthProblem"></span></p>
+            <p class="mb-0" id="pResHealthProblemDescription">Quais: <span id="resHealthProblemDescription"> </span></p>
           </div>
           <div class="col-lg-6 mx-auto">
-            <p class="mb-0">Amamentação? <span id="resBreastfeeding">resposta</span></p>
-            <ul class="mb-0">
-              <li>Tempo entre as mamadas: <span id="resBreastfeedingTime">resposta</span></li>
-              <li>Cansaço para mamar? <span id="resBreastfeedingTiredness">resposta</span></li>
-              <li>Mama um pouquinho e dorme? <span id="resBreastfeedingSleep">resposta</span></li>
-              <li>Vai soltando o mamilo? <span id="resReleasingNipple">resposta</span></li>
-              <li>Morde o mamilo? <span id="resBiteNipple">resposta</span></li>
+            <p class="mb-0">Amamentação? <span id="resBreastfeeding"></span></p>
+            <ul class="mb-0" id="ulResBreastfeeding">
+              <li>Tempo entre as mamadas: <span id="resBreastfeedingTime"></span></li>
+              <li>Cansaço para mamar? <span id="resBreastfeedingTiredness"></span></li>
+              <li>Mama um pouquinho e dorme? <span id="resBreastfeedingSleep"></span></li>
+              <li>Vai soltando o mamilo? <span id="resReleasingNipple"></span></li>
+              <li>Morde o mamilo? <span id="resBiteNipple"></span></li>
             </ul>
-            <p class="mb-0">Observações: <span id="resObsBreastfeeding"> </span></p>
+            <p class="mb-0 hidden">Observações: <span id="resObsBreastfeeding"> </span></p>
           </div>
           <div class="row px-1">
             <div class="col-lg-12 mx-auto">
               <p class="font-weight-bold">
-                TOTAL DE PONTOS: <span class="badge badge-pill" id="resClinicalHistoryPoints">resposta</span>. Quando a soma da História Clínica for <u>igual ou maior que 4</u>,
+                TOTAL DE PONTOS: <span class="badge badge-pill" id="resClinicalHistoryPoints"></span>. Quando a soma da História Clínica for <u>igual ou maior que 4</u>,
                 pode-se considerar a interferência do frênulo nos movimentos da língua.
               </p>
             </div>
@@ -122,48 +122,48 @@
       <div class="col-lg-9 mx-auto report-content">
         <h5 class="font-weight-bold mt-3">PARTE I - AVALIAÇÃO ANATOMOFUNCIONAL</h5>
         <ol>
-          <li>Postura de lábios em repouso: <span id="resQuestionOne">resposta</span></li>
-          <li>Tendência do posicionamento da língua durante o choro: <span id="resQuestionTwo">resposta</span></li>
-          <li>Forma da ponta da língua quando elevada durante o choro: <span id="resQuestionThree">resposta</span></li>
+          <li>Postura de lábios em repouso: <span id="resQuestionOne"></span></li>
+          <li>Tendência do posicionamento da língua durante o choro: <span id="resQuestionTwo"></span></li>
+          <li>Forma da ponta da língua quando elevada durante o choro: <span id="resQuestionThree"></span></li>
         </ol>
         <p class="font-weight-bold">
-          TOTAL DE PONTOS: <span class="badge badge-pill" id="resQuestionsOneToThreePoints">resposta</span>. Quando a soma dos itens 1, 2 e 3 for <u>igual ou maior que 4</u>,
+          TOTAL DE PONTOS: <span class="badge badge-pill" id="resQuestionsOneToThreePoints"></span>. Quando a soma dos itens 1, 2 e 3 for <u>igual ou maior que 4</u>,
           pode-se considerar a interferência do frênulo nos movimentos da língua.
         </p>
         <ol start="4">
-          <li>Frênulo da língua: <span id="resQuestionFour">resposta</span></li>
-          <ol>
-            <li class="subLiItem">4.1. Espessura do frênulo: <span id="resQuestionFourOne">resposta</span></li>
-            <li class="subLiItem">4.2. Fixação do frênulo na face sublingual (ventral) da língua: <span id="resQuestionFourTwo">resposta</span></li>
-            <li class="subLiItem">4.3. Fixação do frênulo no assoalho da boca: <span id="resQuestionFourThree">resposta</span></li>
+          <li>Frênulo da língua: <span id="resQuestionFour"></span></li>
+          <ol id="olResQuestionFour">
+            <li class="subLiItem">4.1. Espessura do frênulo: <span id="resQuestionFourOne"></span></li>
+            <li class="subLiItem">4.2. Fixação do frênulo na face sublingual (ventral) da língua: <span id="resQuestionFourTwo"></span></li>
+            <li class="subLiItem">4.3. Fixação do frênulo no assoalho da boca: <span id="resQuestionFourThree"></span></li>
           </ol>
         </ol>
-        <p>Observações: <span id="resQuestionFourComments"> </span></p>
+        <p class="hidden">Observações: <span id="resQuestionFourComments"> </span></p>
         <p class="font-weight-bold">
-          TOTAL DE PONTOS (Frênulo): <span class="badge badge-pill" id="resQuestionFourPoints">resposta</span>. Quando a soma do item 4 for <u>igual ou maior que 3</u>,
+          TOTAL DE PONTOS (Frênulo): <span class="badge badge-pill" id="resQuestionFourPoints"></span>. Quando a soma do item 4 for <u>igual ou maior que 3</u>,
           pode-se considerar a interferência do frênulo nos movimentos da língua.
         </p>
         <p class="font-weight-bold">
-          TOTAL DE PONTOS (Frênulo + Choro): <span class="badge badge-pill" id="resQuestionsOneToFourPoints">resposta</span>. Quando a soma dos itens 1, 2, 3 e 4 for <u>igual ou maior que 7</u>,
+          TOTAL DE PONTOS (Frênulo + Choro): <span class="badge badge-pill" id="resQuestionsOneToFourPoints"></span>. Quando a soma dos itens 1, 2, 3 e 4 for <u>igual ou maior que 7</u>,
           pode-se considerar a interferência do frênulo nos movimentos da língua.
         </p>
         <h5 class="font-weight-bold mt-3">PARTE II - AVALIAÇÃO DA SUCÇÃO NÃO NUTRITIVA E NUTRITIVA</h5>
         <ol>
           <li>Sucção não nutritiva:</li>
           <ol>
-            <li class="subLiItem">1.1. Movimento da língua: <span id="resPartTwoQuestionOne">resposta</span></li>
+            <li class="subLiItem">1.1. Movimento da língua: <span id="resPartTwoQuestionOne"></span></li>
           </ol>
           <li>Sucção nutritiva na amamentação:</li>
           <ol>
-            <li class="subLiItem">2.1. Ritmo na sucção: <span id="resPartTwoQuestionTwoOne">resposta</span></li>
-            <li class="subLiItem">2.2. Coordenação entre sucção / deglutição / respiração: <span id="resPartTwoQuestionTwoTwo">resposta</span></li>
-            <li class="subLiItem">2.3. "Morde" o mamilo: <span id="resPartTwoQuestionTwoThree">resposta</span></li>
-            <li class="subLiItem">2.4. Estalos de língua durante a sucção: <span id="resPartTwoQuestionTwoFour">resposta</span></li>
+            <li class="subLiItem">2.1. Ritmo na sucção: <span id="resPartTwoQuestionTwoOne"></span></li>
+            <li class="subLiItem">2.2. Coordenação entre sucção / deglutição / respiração: <span id="resPartTwoQuestionTwoTwo"></span></li>
+            <li class="subLiItem">2.3. "Morde" o mamilo: <span id="resPartTwoQuestionTwoThree"></span></li>
+            <li class="subLiItem">2.4. Estalos de língua durante a sucção: <span id="resPartTwoQuestionTwoFour"></span></li>
           </ol>
         </ol>
-        <p>Observações: <span id="resObsSuction"> </span></p>
+        <p class="hidden">Observações: <span id="resObsSuction"> </span></p>
         <p class="font-weight-bold">
-          TOTAL DE PONTOS: <span class="badge badge-pill" id="resPartTwoQuestionPoints">resposta</span>. Quando a soma da avaliação da sucção não nutritiva e nutritiva for <u>igual ou maior que 2</u>,
+          TOTAL DE PONTOS: <span class="badge badge-pill" id="resPartTwoQuestionPoints"></span>. Quando a soma da avaliação da sucção não nutritiva e nutritiva for <u>igual ou maior que 2</u>,
           pode-se considerar a interferência do frênulo nos movimentos da língua.
         </p>
       </div>
@@ -174,15 +174,15 @@
       </div>
       <div class="col-lg-9 mx-auto report-content">
         <p class="font-weight-bold mt-3">
-          TOTAL DE PONTOS (exame clínico): <span class="badge badge-pill" id="resClinicalAssessmentPoints">resposta</span>. Quando a soma do exame clínico for <u>igual ou maior que 9</u>,
+          TOTAL DE PONTOS (exame clínico): <span class="badge badge-pill" id="resClinicalAssessmentPoints"></span>. Quando a soma do exame clínico for <u>igual ou maior que 9</u>,
           pode-se considerar a interferência do frênulo nos movimentos da língua.
         </p>
         <p class="font-weight-bold">
-          TOTAL DE PONTOS (história e exame clínico): <span class="badge badge-pill" id="resHistoryAssessmentPoints">resposta</span>. Quando a soma da história e do exame clínico for <u>igual ou maior que 13</u>,
+          TOTAL DE PONTOS (história e exame clínico): <span class="badge badge-pill" id="resHistoryAssessmentPoints"></span>. Quando a soma da história e do exame clínico for <u>igual ou maior que 13</u>,
           pode-se considerar a interferência do frênulo nos movimentos da língua.
         </p>
-        <p>Observações: <span id="resObsFinal"> </span></p>
-        <p class="font-weight-bold mt-3">CONDUTA: <span id="resBehavior">resposta</span></p>
+        <p class="hidden">Observações: <span id="resObsFinal"> </span></p>
+        <p class="font-weight-bold mt-3">CONDUTA: <span id="resBehavior"></span></p>
         <p id="resBehaviorDescriptionLabel">Descrição: <span id="resBehaviorDescription"> </span></p>
         <p class="mt-5 text-center mb-0">____________________________________</p>
         <p class="text-center my-0 py-0 mb-0" id="resUserFullName">nome</p>

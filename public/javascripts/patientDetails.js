@@ -6,7 +6,7 @@ $(document).ready(function() {
   $('#backBtn').click(function() {
     window.history.back();
   });
-});dialog
+});
 
 let deletePatient = (patientId) => {
   $(function () {

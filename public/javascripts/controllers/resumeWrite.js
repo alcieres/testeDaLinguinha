@@ -21,18 +21,27 @@ function resumeWrite() {
     patient.setCommercialTel($('#inputCommercialTel').val());
     patient.setCelPhone($('#inputCelPhone').val());
     patient.setFamilyHistory($("input[name='rbFamilyHistory']:checked").val());
-    patient.setProblemDescription($("#inputProblemDescription").val());
+    ($("input[name='rbFamilyHistory']:checked").val() === '2') ? patient.setProblemDescription($("#inputProblemDescription").val()) : patient.setProblemDescription("");
     patient.setPatientHealthProblem($("input[name='rbPatientHealthProblem']:checked").val());
-    patient.setHealthProblemDescription($("#inputHealthProblemDescription").val());
+    ($("input[name='rbPatientHealthProblem']:checked").val() === '2') ? patient.setHealthProblemDescription($("#inputHealthProblemDescription").val()) : patient.setHealthProblemDescription("");
     //Início do Exame
     let assessment = new Assessment();
     assessment.setAssessmentDate(new Date($('#inputAssessmentDate').val()));
     assessment.setBreastfeeding($("input[name='rbBreastfeeding']:checked").val());
-    assessment.setBreastfeedingTime($("input[name='rbBreastfeedingTime']:checked").val());
-    assessment.setBreastfeedingTiredness($("input[name='rbBreastfeedingTiredness']:checked").val());
-    assessment.setBreastfeedingSleep($("input[name='rbBreastfeedingSleep']:checked").val());
-    assessment.setReleasingNipple($("input[name='rbReleasingNipple']:checked").val());
-    assessment.setBiteNipple($("input[name='rbBiteNipple']:checked").val());
+    if ($("input[name='rbBreastfeeding']:checked").val() ==='1' || $("input[name='rbBreastfeeding']:checked").val() ==='2') {
+        assessment.setBreastfeedingTime($("input[name='rbBreastfeedingTime']:checked").val());
+        assessment.setBreastfeedingTiredness($("input[name='rbBreastfeedingTiredness']:checked").val());
+        assessment.setBreastfeedingSleep($("input[name='rbBreastfeedingSleep']:checked").val());
+        assessment.setReleasingNipple($("input[name='rbReleasingNipple']:checked").val());
+        assessment.setBiteNipple($("input[name='rbBiteNipple']:checked").val());
+    } else if ($("input[name='rbBreastfeeding']:checked").val() ==='3') {
+        assessment.setBreastfeedingTime(undefined);
+        assessment.setBreastfeedingTiredness(undefined);
+        assessment.setBreastfeedingSleep(undefined);
+        assessment.setReleasingNipple(undefined);
+        assessment.setBiteNipple(undefined);
+    }
+
     assessment.setObsBreastfeeding($("#obsBreastfeeding").val());
     //Tela 02
     assessment.setQuestionOne($("input[name='rbQuestionOne']:checked").val());
@@ -40,9 +49,15 @@ function resumeWrite() {
     assessment.setQuestionThree($("input[name='rbQuestionThree']:checked").val());
     //Tela 03
     assessment.setQuestionFour($("input[name='rbQuestionFour']:checked").val());
-    assessment.setQuestionFourOne($("input[name='rbQuestionFourOne']:checked").val());
-    assessment.setQuestionFourTwo($("input[name='rbQuestionFourTwo']:checked").val());
-    assessment.setQuestionFourThree($("input[name='rbQuestionFourThree']:checked").val());
+    if ($("input[name='rbQuestionFour']:checked").val() === '1' || $("input[name='rbQuestionFour']:checked").val() ==='3'){
+        assessment.setQuestionFourOne($("input[name='rbQuestionFourOne']:checked").val());
+        assessment.setQuestionFourTwo($("input[name='rbQuestionFourTwo']:checked").val());
+        assessment.setQuestionFourThree($("input[name='rbQuestionFourThree']:checked").val());
+    } else if ($("input[name='rbQuestionFour']:checked").val() === '2'){
+        assessment.setQuestionFourOne(undefined);
+        assessment.setQuestionFourTwo(undefined);
+        assessment.setQuestionFourThree(undefined);
+    }
     assessment.setQuestionFourComments($("#inputQuestionFourComments").val());
     //Tela 04
     assessment.setPartTwoQuestionOne($("input[name='rbPartTwoQuestionOne']:checked").val());

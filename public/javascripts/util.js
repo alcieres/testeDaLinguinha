@@ -162,15 +162,31 @@ function writePatient(patient){
   $("#resFatherName").text(patient.getFatherName());
   $("#resAssessmentDate").text(patient.assessments[0].assessmentDateToText());
   $("#resFamilyHistory").text(patient.familyHistoryToText());
-  $("#resProblemDescription").text(patient.getProblemDescription());
+  if (patient.getFamilyHistory() === '1'){
+    $("#pResProblemDescription").hide();
+  } else {
+    $("#pResProblemDescription").show();
+    $("#pResProblemDescription").text(patient.getProblemDescription());
+  }
   $("#resPatientHealthProblem").text(patient.patientHealthProblemToText());
-  $("#resHealthProblemDescription").text(patient.getHealthProblemDescription());
+  if (patient.getPatientHealthProblem() === '1'){
+    $("#pResHealthProblemDescription").hide();
+  } else {
+    $("#pResHealthProblemDescription").show();
+    $("#pResHealthProblemDescription").text(patient.getProblemDescription());
+  }
   $("#resBreastfeeding").text(patient.assessments[0].breastfeedingToText());
-  $("#resBreastfeedingTime").text(patient.assessments[0].breastfeedingTimeToText());
-  $("#resBreastfeedingTiredness").text(patient.assessments[0].breastfeedingTirednessToText());
-  $("#resBreastfeedingSleep").text(patient.assessments[0].breastfeedingSleepToText());
-  $("#resReleasingNipple").text(patient.assessments[0].releasingNippleToText());
-  $("#resBiteNipple").text(patient.assessments[0].biteNippleToText());
+  if (patient.assessments[0].getBreastfeeding() === '3'){
+    $("#ulResBreastfeeding").hide();
+  } else {
+    $("#ulResBreastfeeding").show();
+    $("#resBreastfeedingTime").text(patient.assessments[0].breastfeedingTimeToText());
+    $("#resBreastfeedingTiredness").text(patient.assessments[0].breastfeedingTirednessToText());
+    $("#resBreastfeedingSleep").text(patient.assessments[0].breastfeedingSleepToText());
+    $("#resReleasingNipple").text(patient.assessments[0].releasingNippleToText());
+    $("#resBiteNipple").text(patient.assessments[0].biteNippleToText());
+  }
+
   $("#resObsBreastfeeding").text(patient.assessments[0].getObsBreastfeeding());
   //Pontos das questões da história Clínica
   let clinicalHistoryPoints = patient.assessments[0].getClinicalHistoryPoints();
@@ -188,10 +204,16 @@ function writePatient(patient){
   (oneToThreeQuestionsPoints < 4) ? resQuestionsOneToThreePoints.addClass("badge-success") : resQuestionsOneToThreePoints.addClass("badge-danger");
   //Tela 03
   $("#resQuestionFour").text(patient.assessments[0].questionFourToText());
-  $("#resQuestionFourOne").text(patient.assessments[0].questionFourOneToText());
-  $("#resQuestionFourTwo").text(patient.assessments[0].questionFourTwoToText());
-  $("#resQuestionFourThree").text(patient.assessments[0].questionFourThreeToText());
-  $("#resQuestionFourComments").text(patient.assessments[0].getQuestionFourComments());
+   if (patient.assessments[0].getQuestionFour() === '2'){
+    $("#olResQuestionFour").hide();
+  } else {
+    $("#olResQuestionFour").show();
+    $("#resQuestionFourOne").text(patient.assessments[0].questionFourOneToText());
+    $("#resQuestionFourTwo").text(patient.assessments[0].questionFourTwoToText());
+    $("#resQuestionFourThree").text(patient.assessments[0].questionFourThreeToText());
+    $("#resQuestionFourComments").text(patient.assessments[0].getQuestionFourComments());
+  }
+  
   //Total de pontos da questão 4
   let fourQuestionPoints = patient.assessments[0].getQuestionFourPoints();
   let resQuestionFourPoints = $("#resQuestionFourPoints");

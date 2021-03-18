@@ -16,7 +16,7 @@
     @page {
         margin: 1cm;
     }
-    nav, footer, video, audio, object, embed {
+    nav, footer, video, audio, object, embed, .hidden {
         display:none;
     }
     .print {

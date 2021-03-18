@@ -103,6 +103,28 @@ $(document).ready(function() {
   inputState.val('RS');
   findCities('RS', 'Osório');
 
+// Desabilita Text Area "Quem e qual problema" quando a página é carregada ou quando é marcado "não" em "antecedentes familiares"
+  $("#rowProblemDescription").hide();  
+  $("input[name=rbFamilyHistory]").change(function() {
+    if ($(this).val() === "2") {
+      $("#rowProblemDescription").show();
+    }
+    else {
+      $("#rowProblemDescription").hide();
+    }
+  });
+
+  // Desabilita Text Area "Quais" quando a página é carregada ou quando é marcado "não" em "problemas de saúde"
+  $("#rowHealthProblemDescription").hide();  
+  $("input[name=rbPatientHealthProblem]").change(function() {
+    if ($(this).val() === "2") {
+      $("#rowHealthProblemDescription").show();
+    }
+    else {
+      $("#rowHealthProblemDescription").hide();
+    }
+  });
+
   // Desabilita radios de "Mama no peito?" por padrão ao carregar página da tela 01
   $(".breastfeedingCmd").prop('disabled', true);
   $(".breastfeedingCmdCss").css('opacity', '.2');
@@ -146,6 +168,18 @@ $(document).ready(function() {
     }
   });
 
+  // Desabilita Input Text "Descrição" quando a página é carregada ou quando a opção "Retornar para monitoramento em" não está marcada
+  $("#divInputBehavior").hide();  
+  $("input[name=rbBehavior]").change(function() {
+    if ($(this).val() === "3") {
+      $("#divInputBehavior").show();
+    }
+    else {
+      $("#divInputBehavior").hide();
+    }
+  });
+
+  //Insere um novo paciente
   let insertNewPatient = function () {
     jQuery("#dialogMsg").text("Confirma a inclusão do exame?");
     $( "#dialog-confirm" ).dialog({
@@ -159,7 +193,11 @@ $(document).ready(function() {
           $( this ).dialog( "close" );
           patient.assessments[0].setObsResume($("#inputFinalReport").val());
           patient.assessments[0].setAssBehavior($("input[name='rbBehavior']:checked").val());
-          patient.assessments[0].setDescBehavior($("#inputBehavior").val());
+          if ($("input[name='rbBehavior']:checked").val() === '3') {
+            patient.assessments[0].setDescBehavior($("#inputBehavior").val());
+          } else {
+            patient.assessments[0].setDescBehavior('');
+          }
           $.ajax({
             method: 'POST',
             contentType: "application/json",
@@ -197,7 +235,11 @@ $(document).ready(function() {
           patient.assessments[0].setAssessmentId(assessmentId);
           patient.assessments[0].setObsResume($("#inputFinalReport").val());
           patient.assessments[0].setAssBehavior($("input[name='rbBehavior']:checked").val());
-          patient.assessments[0].setDescBehavior($("#inputBehavior").val());
+          if ($("input[name='rbBehavior']:checked").val() === '3') {
+            patient.assessments[0].setDescBehavior($("#inputBehavior").val());
+          } else {
+            patient.assessments[0].setDescBehavior('');
+          }
           console.log(patient.toJSON(0));
           $.ajax({
             method: 'PUT',
@@ -235,7 +277,11 @@ $(document).ready(function() {
           patient.setPatientId(patientId);
           patient.assessments[0].obsResume = $("#inputFinalReport").val();
           patient.assessments[0].assBehavior = $("input[name='rbBehavior']:checked").val();
-          patient.assessments[0].descBehavior = $("#inputBehavior").val();
+          if ($("input[name='rbBehavior']:checked").val() === '3') {
+            patient.assessments[0].setDescBehavior($("#inputBehavior").val());
+          } else {
+            patient.assessments[0].setDescBehavior('');
+          }
           $.ajax({
             method: 'PUT',
             contentType: "application/json",
@@ -277,6 +323,12 @@ $(document).ready(function() {
     } );
   }
 
+/*
+Função que trata se é um paciente existente com um novo teste ou a edição de um teste existente
+mode 2 significa a edição de um teste existente
+mode 3 indica a adição de um novo teste
+*/
+
   if (mode === '2' || mode === '3'){
     $.getJSON( "/editPatient/requestPatient", {
       patient: patientId
@@ -303,8 +355,14 @@ $(document).ready(function() {
           $('#inputCelPhone').val(patientDB.getCelPhone()).mask('(00) 0000-00000');
           $("input[name='rbFamilyHistory'][value='"+ patientDB.getFamilyHistory()+"']").prop('checked', true);
           $('#inputProblemDescription').val(patientDB.getProblemDescription());
+          //Mostra ou oculta campo "Quem e qual problema" de acordo com a opção marcada
+          ($("input[name=rbFamilyHistory]:checked").val() === "2") ? $("#rowProblemDescription").show() : $("#rowProblemDescription").hide();
+
           $("input[name='rbPatientHealthProblem'][value='"+ patientDB.getPatientHealthProblem() +"']").prop('checked', true);
           $('#inputHealthProblemDescription').val(patientDB.getHealthProblemDescription());
+          //Mostra ou oculta campo "Quais" de acordo com a opção marcada
+          ($("input[name=rbPatientHealthProblem]:checked").val() === "2") ? $("#rowHealthProblemDescription").show() : $("#rowHealthProblemDescription").hide();
+
           switch (mode) {
             case '2':
               let assessmentIndex = 0;
@@ -334,6 +392,8 @@ $(document).ready(function() {
               $('#inputFinalReport').val(patientDB.assessments[assessmentIndex].getObsResume());
               $("input[name='rbBehavior'][value='"+ patientDB.assessments[assessmentIndex].getAssBehavior() +"']").prop('checked', true);
               $('#inputBehavior').val(patientDB.assessments[assessmentIndex].getDescBehavior());
+              //Mostra ou oculta campo "Quais" de acordo com a opção marcada
+              ($("input[name=rbBehavior]:checked").val() === "3") ? $("#divInputBehavior").show() : $("#divInputBehavior").hide();
               if (patientDB.assessments.length > 1){
                 createAccordions();
                 patientDB.assessments.forEach(function (assessment) {

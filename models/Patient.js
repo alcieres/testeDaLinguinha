@@ -36,12 +36,13 @@ patientSchema.index({ name: 1, birthDate: 1, motherName: 1 }, {unique: true});
 Função para preencher dados de um paciente
 Recebe a requisição e o tipo.
 o tipo pode ser:
-- 1: Criar novo paciente sem (não recebe o "_id");
+- 1: Criar novo paciente (não recebe o "_id");
 - 2: Editar somente dados cadastrais o paciente;
 - 3: Editar dados cadastrais e aspectos fixos da saúde do paciente.
 */
 
 patientSchema.methods.reqCreateNewPatient = function (req, type) {
+  console.log(util.inspect(req.body, false, null, true /* enable colors */));
   if (type == 2){
     this._id = req.params.id;
   }
@@ -64,7 +65,7 @@ patientSchema.methods.reqCreateNewPatient = function (req, type) {
   this.resTel = req.body.resTel;
   this.commercialTel = req.body.commercialTel;
   this.celPhone = req.body.celPhone;
-  if (type == !2){
+  if (type != 2){
     this.familyHistory = req.body.familyHistory;
     this.problemDescription = req.body.problemDescription;
     this.patientHealthProblem = req.body.patientHealthProblem;

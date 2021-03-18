@@ -140,7 +140,6 @@ function validateForm(form) {
                 cellPhone: true
             },
             inputProblemDescription: {
-                minlength: 1,
                 maxlength: 1000
             },
         }
