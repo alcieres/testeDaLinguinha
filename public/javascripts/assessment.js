@@ -149,7 +149,9 @@ $(document).ready(function() {
   let dateCalendarField = $( ".dateCalendar" );
   datepickerFormat(dateCalendarField);
 
-  $( "#inputAssessmentDate" ).datepicker( "setDate", new Date());
+  if (mode!= 2) {
+    $( "#inputAssessmentDate" ).datepicker( "setDate", new Date());
+  }
 
   // Desabilitar radios da Questão 4 por padrão ao carregar página da tela 03
   $(".questionFourCmd").prop('disabled', true);

@@ -22,13 +22,101 @@
   <%- include('../partials/nav', {active: "navReports"}); %>
 
     <div class="container mainContainer">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et netus et malesuada fames ac turpis egestas. Tortor at auctor urna nunc id. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Et ligula ullamcorper malesuada proin libero nunc consequat interdum. Nisi porta lorem mollis aliquam ut porttitor leo a diam. Lobortis mattis aliquam faucibus purus in massa tempor nec. Arcu dictum varius duis at consectetur lorem. Nisl rhoncus mattis rhoncus urna neque viverra justo nec. Non nisi est sit amet facilisis magna etiam. Id velit ut tortor pretium viverra suspendisse. Tortor aliquam nulla facilisi cras fermentum. Feugiat sed lectus vestibulum mattis ullamcorper velit. Dictum varius duis at consectetur. Dolor sit amet consectetur adipiscing elit ut aliquam. Eget nunc scelerisque viverra mauris in. Ultricies lacus sed turpis tincidunt id aliquet. Aliquam eleifend mi in nulla posuere sollicitudin aliquam.
-      Et pharetra pharetra massa massa ultricies mi. Sed risus pretium quam vulputate dignissim suspendisse in est. Lorem donec massa sapien faucibus et. Diam phasellus vestibulum lorem sed risus. Curabitur gravida arcu ac tortor dignissim convallis aenean. Amet tellus cras adipiscing enim eu turpis egestas pretium. Suscipit adipiscing bibendum est ultricies integer. Vitae tempus quam pellentesque nec. Orci eu lobortis elementum nibh. Arcu dui vivamus arcu felis bibendum ut. Amet est placerat in egestas erat imperdiet. Sed velit dignissim sodales ut eu sem integer. Est ullamcorper eget nulla facilisi etiam dignissim diam quis.
-      Amet tellus cras adipiscing enim. Amet consectetur adipiscing elit ut aliquam purus sit amet. Nulla malesuada pellentesque elit eget. Facilisis gravida neque convallis a cras semper. Risus viverra adipiscing at in tellus integer feugiat. Odio facilisis mauris sit amet massa vitae tortor. Molestie nunc non blandit massa enim nec. Ornare quam viverra orci sagittis eu volutpat odio facilisis. Urna nunc id cursus metus. Ultricies leo integer malesuada nunc vel risus commodo. Felis bibendum ut tristique et. Et pharetra pharetra massa massa ultricies. Consectetur libero id faucibus nisl tincidunt eget nullam non. Metus vulputate eu scelerisque felis imperdiet. Senectus et netus et malesuada fames ac turpis egestas maecenas. Tortor at auctor urna nunc id. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Elit sed vulputate mi sit amet mauris commodo quis imperdiet.
-      Suspendisse faucibus interdum posuere lorem ipsum. Et magnis dis parturient montes. Enim ut tellus elementum sagittis vitae et. Tellus elementum sagittis vitae et leo duis ut diam quam. Sed arcu non odio euismod. Consectetur adipiscing elit ut aliquam purus. Eu ultrices vitae auctor eu augue. In ante metus dictum at tempor commodo ullamcorper a. Eu feugiat pretium nibh ipsum. Nisi porta lorem mollis aliquam ut porttitor. Dignissim suspendisse in est ante in nibh mauris cursus mattis.
-      Convallis aenean et tortor at risus viverra adipiscing at. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Adipiscing elit pellentesque habitant morbi tristique senectus et netus et. Odio facilisis mauris sit amet massa vitae. Pretium quam vulputate dignissim suspendisse. Nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi. Mi sit amet mauris commodo quis. Nisl nunc mi ipsum faucibus vitae aliquet nec. In mollis nunc sed id semper risus. Tortor aliquam nulla facilisi cras fermentum. Vitae tortor condimentum lacinia quis vel eros donec ac. Fusce ut placerat orci nulla pellentesque dignissim enim. Orci phasellus egestas tellus rutrum tellus. Velit euismod in pellentesque massa placerat duis ultricies lacus. Purus in massa tempor nec feugiat nisl pretium fusce.
-    </p>
+      <div class="row align-items-center">  <%# Linha do título%>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+          <h2 class="text-center border border-dark rounded">Relatório Por Período</h2>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Período inicial e final %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+          <div class="row align-items-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+              <p class="mb-0">Período do Exame</p>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 mx-auto">
+              <div class="form-label-group">
+                <input type="date" name="inputInitialAssessmentDate" id="inputInitialAssessmentDate" class="dateCalendar form-control" placeholder="Data Inicial*" required>
+                <label for="inputInitialAssessmentDate">Data Inicial<span class="requiredField">*</span></label>
+              </div>
+              <label for="inputInitialAssessmentDate" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 mx-auto">
+              <div class="form-label-group">
+                <input type="date" name="inputFinalAssessmentDate" id="inputFinalAssessmentDate" class="dateCalendar form-control" placeholder="Data Final*" required>
+                <label for="inputFinalAssessmentDate">Data Final<span class="requiredField">*</span></label>
+              </div>
+              <label for="inputFinalAssessmentDate" class="error"></label>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 ml-auto mb-3">
+          <fieldset id="fieldRbGenre">
+            <legend>Gênero<span class="requiredField">*</span></legend>
+            <div class="form-check-inline">
+              <label class="form-check-label mb-3">
+                <input type="radio" class="option-input radio" name="rbGenre" value="1" required>Masculino
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label mb-3">
+                <input type="radio" class="option-input radio" name="rbGenre" value="2">Feminino
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </fieldset>
+          <label for="rbGenre" class="error" id="labelErrorRadioButton"></label>
+        </div>
+      </div>
+      <div class="row align-items-center"> <%# Data de Nascimento inicial e final %>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mx-auto">
+          <div class="row align-items-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+              <p class="mb-0">Período de Nascimento</p>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 mx-auto">
+              <div class="form-label-group">
+                <input type="date" name="inputInitialBirthDate" id="inputInitialBirthDate" class="dateCalendar form-control" placeholder="Data Inicial*" required>
+                <label for="inputInitialBirthDate">Data Inicial<span class="requiredField">*</span></label>
+              </div>
+              <label for="inputInitialBirthDate" class="error"></label>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 mx-auto">
+              <div class="form-label-group">
+                <input type="date" name="inputFinalBirthDate" id="inputFinalBirthDate" class="dateCalendar form-control" placeholder="Data Final*" required>
+                <label for="inputFinalBirthDate">Data Final<span class="requiredField">*</span></label>
+              </div>
+              <label for="inputFinalBirthDate" class="error"></label>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 mx-auto">
+            <div class="row align-items-center">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+                <p class="mb-0">Conduta</p>
+              </div>
+            </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+              <div class="form-label-group">
+                <select name="inputBehavior" id="inputBehavior" class="form-control" required>
+                  <option disabled selected value="">Selecione</option>
+                  <option value="1">Não apresenta alteração de frênulo lingual</option>
+                  <option value="2">Alteração de frênulo lingual sem interferência na mobilidade da língua</option>
+                  <option value="3">Frenotomia sugerida</option>
+                  <option value="4">Retornar para monitoramento</option>
+                </select>
+                <label for="inputBehavior">Conduta<span class="requiredField">*</span></label>
+              </div>
+              <label for="inputBehavior" class="error"></label>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div> <%# Containner %>
 

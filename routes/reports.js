@@ -13,14 +13,30 @@ router.get('/points', isLoggedIn, function(req, res, next) {
   res.render('reports/points', { title: 'Teste da Linguinha', user: req.user });
 });
 
-let teste = async () => {
-  const aggregate = await Patient.aggregate([{$group: {"_id": "$genre", resultado: {$sum: 1}}}], (err, doc) =>{
-    console.log(doc);
-  });
-
-};
-
-teste();
-
-
 module.exports = router;
+
+/*
+Relatório por data
+
+data inicial do exame
+data final do exame
+data de nascimento inicial
+data de nascimento final
+Gênero
+Conduta
+--------------------------------
+Listar pacientes com link para ele e para o exame
+Quantidade total de ocorrências
+
+-*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*-
+
+PARTE I - AVALIAÇÃO ANATOMOFUNCIONAL
+Inicial e final
+PARTE II - AVALIAÇÃO DA SUCÇÃO NÃO NUTRITIVA E NUTRITIVA
+Inicial e final
+TOTAL
+Inicial e final
+--------------------------------
+Listar pacientes com link para ele e para o exame
+Quantidade total de ocorrências
+ */
