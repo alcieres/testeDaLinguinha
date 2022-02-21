@@ -58,13 +58,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Conexão do mongoose
-mongoose.connect(dbConfig.url, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true }, function(err) {
+mongoose.connect(dbConfig.url, function(err) {
     if (err) {
-        console.log('Could not connect to mongodb on localhost. Ensure that you have mongodb running on localhost and mongodb accepts connections on standard ports!');
+        console.log('Erro de conexão com o banco de dados!');
     }
 });
 
-mongoose.set('useCreateIndex', true);
+//mongoose.set('useCreateIndex', true);
 
 //Configuração do Body Parser
 app.use(bodyParser.urlencoded({extended: true}));
@@ -104,59 +104,59 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+/* 
+const User = require("./models/User");
+User.register(new User({
+        cpf: "83266238060",
+        name: "Clark",
+        lastName: "Kent",
+        occupation: "Super Fonoaudiólogo",
+        email: "kal-el@gmail.com",
+        registry: "11223344",
+        date: new Date,
+        admin: true
+    }),
+      "oi1234", function(err) {
+      if (err) {
+        console.log('error while user register!', err);
+        return;
+      }
+      console.log('user registered!');
+    });
 
-// const User = require("./models/User");
-// User.register(new User({
-//         cpf: "83266238060",
-//         name: "Clark",
-//         lastName: "Kent",
-//         occupation: "Super Fonoaudiólogo",
-//         email: "kal-el@gmail.com",
-//         registry: "11223344",
-//         date: new Date,
-//         admin: true
-//     }),
-//       "oi1234", function(err) {
-//       if (err) {
-//         console.log('error while user register!', err);
-//         return;
-//       }
-//       console.log('user registered!');
-//     });
-//
-// User.register(new User({
-//         cpf: "30091046009",
-//         name: "Tony",
-//         lastName: "Stark",
-//         occupation: "Fonoaudiólogo de Ferro",
-//         email: "markvii@gmail.com",
-//         registry: "33665588",
-//         date: new Date,
-//         admin: false
-//     }),
-//     "oi1234", function(err) {
-//         if (err) {
-//             console.log('error while user register!', err);
-//             return;
-//         }
-//         console.log('user registered!');
-//     });
-// User.register(new User({
-//         cpf: "01617131067",
-//         name: "Bruce",
-//         lastName: "Banner",
-//         occupation: "Fonoaudiólogo Furioso",
-//         email: "hulk@gmail.com",
-//         registry: "99665533",
-//         date: new Date,
-//         admin: false
-//     }),
-//     "oi1234", function(err) {
-//         if (err) {
-//             console.log('error while user register!', err);
-//             return;
-//         }
-//         console.log('user registered!');
-//     });
-
+User.register(new User({
+        cpf: "30091046009",
+        name: "Tony",
+        lastName: "Stark",
+        occupation: "Fonoaudiólogo de Ferro",
+        email: "markvii@gmail.com",
+        registry: "33665588",
+        date: new Date,
+        admin: false
+    }),
+    "oi1234", function(err) {
+        if (err) {
+            console.log('error while user register!', err);
+            return;
+        }
+        console.log('user registered!');
+    });
+User.register(new User({
+        cpf: "01617131067",
+        name: "Bruce",
+        lastName: "Banner",
+        occupation: "Fonoaudiólogo Furioso",
+        email: "hulk@gmail.com",
+        registry: "99665533",
+        date: new Date,
+        admin: false
+    }),
+    "oi1234", function(err) {
+        if (err) {
+            console.log('error while user register!', err);
+            return;
+        }
+        console.log('user registered!');
+    });
+ */
 module.exports = app;

@@ -362,20 +362,20 @@ router.delete("/:id", isAdmLoggedIn, function(req, res){
         try {
             user = await User.findById(id, function (err, doc) {
                 if (err) {
-                    //console.log(err);
+                    console.log(err);
                     res.status(422).json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
                 } else {
-                    //console.log("doc: " + doc);
+                    console.log("doc: " + doc);
                 }
-            });
+            }).clone();
         } catch (e) {
-            //console.log(e);
+            console.log(e);
         }
         if (user.cpf !== req.user.cpf) {
             User.findByIdAndRemove(id, function(err){
                 if (err){
                     res.status(422).json({ error: [{msg: 'Erro de acesso ao banco de dados.'}]});
-                    //console.log(err);
+                    console.log(err);
                 } else{
                     res.status(200).json({ success: [{msg: 'Usuário deletado'}]});
                 }
