@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6240f7a7-1bb3-4708-9dd8-d899e37cf619" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/javascripts/controllers/passwordValidate.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/controllers/passwordValidate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/reports.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/reports.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1TwULq469d7gk1CN6P3aFw0XJWg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/javascripts/controllers" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.EJS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/editPatient" />
+      <recent name="$PROJECT_DIR$/views/findPatient" />
+      <recent name="$PROJECT_DIR$/controllers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/javascripts/controllers" />
+      <recent name="$PROJECT_DIR$/views/findPatient" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="NodeJSConfigurationType" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
+      <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
+        <browser start="true" />
+      </EXTENSION>
+      <method v="2" />
+    </configuration>
+    <configuration name="www" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
+      <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
+        <browser start="true" url="http://10.0.0.116:3000/" />
+      </EXTENSION>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="4" Folder0="$USER_HOME$/IntelliJ.Portuguese.Brazil.Dictionary-master" Folder1="$USER_HOME$/IntelliJ.Portuguese.Brazil.Dictionary-master" Folder2="$USER_HOME$/IntelliJ.Portuguese.Brazil.Dictionary-master" Folder3="$USER_HOME$/IntelliJ.Portuguese.Brazil.Dictionary-master" CustomDictionaries="4" CustomDictionary0="$USER_HOME$/IntelliJ.Portuguese.Brazil.Dictionary-master/portuguese-brazil.dic" CustomDictionary1="$USER_HOME$/IntelliJ.Portuguese.Brazil.Dictionary-master/portuguese-brazil_technical-terms.dic" CustomDictionary2="$USER_HOME$/IntelliJ.Portuguese.Brazil.Dictionary-master/portuguese-brazil_technical-terms_without-accents.dic" CustomDictionary3="$USER_HOME$/IntelliJ.Portuguese.Brazil.Dictionary-master/portuguese-brazil_without-accents.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6240f7a7-1bb3-4708-9dd8-d899e37cf619" name="Default Changelist" comment="" />
+      <created>1574370600248</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574370600248</updated>
+      <workItem from="1574370607750" duration="12825000" />
+      <workItem from="1575504543612" duration="27000" />
+      <workItem from="1575504584754" duration="609000" />
+      <workItem from="1575572595081" duration="5130000" />
+      <workItem from="1578757238485" duration="12914000" />
+      <workItem from="1578927694745" duration="17259000" />
+      <workItem from="1579011350755" duration="11601000" />
+      <workItem from="1579041075185" duration="8124000" />
+      <workItem from="1579098058179" duration="12680000" />
+      <workItem from="1579188075472" duration="4091000" />
+      <workItem from="1579623958692" duration="1347000" />
+      <workItem from="1579716919889" duration="17456000" />
+      <workItem from="1579887534486" duration="19785000" />
+      <workItem from="1580420802982" duration="6661000" />
+      <workItem from="1580659348997" duration="46988000" />
+      <workItem from="1581368234321" duration="13562000" />
+      <workItem from="1581444478208" duration="14176000" />
+      <workItem from="1581801653337" duration="3977000" />
+      <workItem from="1582150028704" duration="479000" />
+      <workItem from="1582323736437" duration="1095000" />
+      <workItem from="1582384089346" duration="22190000" />
+      <workItem from="1582468306009" duration="17699000" />
+      <workItem from="1582646165717" duration="10767000" />
+      <workItem from="1582726201677" duration="16424000" />
+      <workItem from="1582747965441" duration="5558000" />
+      <workItem from="1582828132119" duration="23429000" />
+      <workItem from="1582899918273" duration="3109000" />
+      <workItem from="1582991691828" duration="16480000" />
+      <workItem from="1583068832308" duration="4590000" />
+      <workItem from="1583258784166" duration="9362000" />
+      <workItem from="1585423551165" duration="5641000" />
+    </task>
+    <task id="LOCAL-00001" summary="Rota create terminada, próximo passo fazer lançar mensagens de erro do servidor no frontend e colocar as funções nos botões do assessmentExtract">
+      <created>1574383455833</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574383455833</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Adicionados os campos de pontuação no BD e arrumada a rota create. Próximo passo, exibir a página do extrato com os dados do teste, já que está exibindo um teste fixo.">
+      <created>1578954658245</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1578954658245</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Erros detectados no create arrumados (campos do resumo final incluídos) mudado o nome do array assessment do frontend para assessments e relatório final funcionando completamente no frontend. Falta fazer o backend enviar somente o teste em voga.">
+      <created>1579027534843</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1579027534843</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Create finalizado. Próximo passo, realizar testes e passar para a parte de edição dos dados.">
+      <created>1579049209524</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579049209524</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Testes do create realizados e criada dialog de erros do servidor. Iniciar rota update no front end e editar rota.">
+      <created>1579120443432</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1579120443432</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Iniciada a rota find e update no frontend">
+      <created>1579723159731</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1579723159731</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Iniciada a rota find e update no frontend. Executados testes para busca de pacientes e ajustado layout mobile">
+      <created>1579743301449</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1579743301449</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Melhorias efetuadas no front e backend da tela de busca. backend faltando somente negar pesquisa com todos os campos em branco e faltam alguns testes. No frontend, falta a validação dos dados antes do envio do formulário. Tela de listagem de pacientes iniciada, falta a formatação dos dados no frontend. Efetuar melhorias na comunicação dos JSONs.">
+      <created>1579907863986</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1579907863986</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Tela de buscar pacientes finalizada no front e backend, próxima tela a ser iniciada é a de listagem de pacientes.">
+      <created>1580428083206</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1580428083206</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Tela de listagem de pacientes em fase de finalização, próxima tela a ser feita é a de exibição de paciente">
+      <created>1580691111348</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1580691111348</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Tela de listagem de pacientes finalizada, próxima tela a ser feita é a de exibição de paciente">
+      <created>1580745716531</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1580745716531</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Tela de detalhamento terminada no backend e em fase de finalização no frontend. falta definir as funções dos botões e um método para enviar o id do paciente juntamente com o id do exame.">
+      <created>1580867034194</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1580867034194</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Tela de detalhamento terminada no backend e em fase de finalização no frontend. falta definir as funções dos botões e um método para enviar o id do paciente juntamente com o id do exame. Incluida a função do botão editar e iniciada a criação da tela de edição dos dados do paciente. Falta ajustar a rota edit e criar a rota put com as validações no front e backend.">
+      <created>1580952927196</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1580952927196</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Tela de edição de paciente praticamente finalizada, falta a rota PUT no backend e atribuir as funções para o botão salvar.">
+      <created>1581382300283</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1581382300283</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Iniciada as funções de edição do exame, foram necessárias alterações nas classes do Frontend. Foi modificada a classe Patient e criada a classe Assessment. É necessário alterar o arquivo resumeWrite.js e o assessmentExtract.js e realizar testes nas modificações.">
+      <created>1582504820118</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1582504820118</updated>
+    </task>
+    <task id="LOCAL-00016" summary="As alterações no assessmentExtract.js foram concluídas, foi criada uma nova função no util.js para a transformação do json de um paciente para a Classe paciente do JavaScript. É necessário, ainda, alterar o arquivo resumeWrite.js para atualizar para a nova função criada.">
+      <created>1582677723375</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1582677723375</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Rota Edit terminada na exibição do frontend, falta configurar a rota no backend e a comunicação do front. Resolver bug no envio do JSON para gravar no banco.">
+      <created>1582858684726</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1582858684726</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Rota Edit totalmente finalizada, faltando somente realizar os testes. Iniciadas as rotas delete.">
+      <created>1583004349546</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1583004349546</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Iniciada a rota delete patient. Falta a rota de deletar teste e os testes das rotas feitas.">
+      <created>1583022689988</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1583022689988</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Rota delete terminada, próximo passo fazer relatórios e bateria de testes.">
+      <created>1583073419440</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1583073419440</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Arrumado bug criado na tela de edição de paciente.">
+      <created>1583271845350</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1583271845350</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Arrumado bug criado na tela de edição de paciente.">
+      <created>1583271879846</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1583271879846</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Arrumado bug criado na tela de edição de paciente.">
+      <created>1583271934957</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1583271934957</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Rota create terminada, próximo passo fazer lançar mensagens de erro do servidor no frontend e colocar as funções nos botões do assessmentExtract" />
+    <MESSAGE value="Adicionados os campos de pontuação no BD e arrumada a rota create. Próximo passo, exibir a página do extrato com os dados do teste, já que está exibindo um teste fixo." />
+    <MESSAGE value="Erros detectados no create arrumados (campos do resumo final incluídos) mudado o nome do array assessment do frontend para assessments e relatório final funcionando completamente no frontend. Falta fazer o backend enviar somente o teste em voga." />
+    <MESSAGE value="Create finalizado. Próximo passo, realizar testes e passar para a parte de edição dos dados." />
+    <MESSAGE value="Testes do create realizados e criada dialog de erros do servidor. Iniciar rota update no front end e editar rota." />
+    <MESSAGE value="Iniciada a rota find e update no frontend" />
+    <MESSAGE value="Iniciada a rota find e update no frontend. Executados testes para busca de pacientes e ajustado layout mobile" />
+    <MESSAGE value="Melhorias efetuadas no front e backend da tela de busca. backend faltando somente negar pesquisa com todos os campos em branco e faltam alguns testes. No frontend, falta a validação dos dados antes do envio do formulário. Tela de listagem de pacientes iniciada, falta a formatação dos dados no frontend. Efetuar melhorias na comunicação dos JSONs." />
+    <MESSAGE value="Tela de buscar pacientes finalizada no front e backend, próxima tela a ser iniciada é a de listagem de pacientes." />
+    <MESSAGE value="Tela de listagem de pacientes em fase de finalização, próxima tela a ser feita é a de exibição de paciente" />
+    <MESSAGE value="Tela de listagem de pacientes finalizada, próxima tela a ser feita é a de exibição de paciente" />
+    <MESSAGE value="Tela de detalhamento terminada no backend e em fase de finalização no frontend. falta definir as funções dos botões e um método para enviar o id do paciente juntamente com o id do exame." />
+    <MESSAGE value="Tela de detalhamento terminada no backend e em fase de finalização no frontend. falta definir as funções dos botões e um método para enviar o id do paciente juntamente com o id do exame. Incluida a função do botão editar e iniciada a criação da tela de edição dos dados do paciente. Falta ajustar a rota edit e criar a rota put com as validações no front e backend." />
+    <MESSAGE value="Tela de edição de paciente praticamente finalizada, falta a rota PUT no backend e atribuir as funções para o botão salvar." />
+    <MESSAGE value="Iniciada as funções de edição do exame, foram necessárias alterações nas classes do Frontend. Foi modificada a classe Patient e criada a classe Assessment. É necessário alterar o arquivo resumeWrite.js e o assessmentExtract.js e realizar testes nas modificações." />
+    <MESSAGE value="As alterações no assessmentExtract.js foram concluídas, foi criada uma nova função no util.js para a transformação do json de um paciente para a Classe paciente do JavaScript. É necessário, ainda, alterar o arquivo resumeWrite.js para atualizar para a nova função criada." />
+    <MESSAGE value="Rota Edit terminada na exibição do frontend, falta configurar a rota no backend e a comunicação do front. Resolver bug no envio do JSON para gravar no banco." />
+    <MESSAGE value="Rota Edit totalmente finalizada, faltando somente realizar os testes. Iniciada as rotas delete." />
+    <MESSAGE value="Rota Edit totalmente finalizada, faltando somente realizar os testes. Iniciadas as rotas delete." />
+    <MESSAGE value="Iniciada a rota delete patient. Falta a rota de deletar teste e os testes das rotas feitas." />
+    <MESSAGE value="Rota delete terminada, próximo passo fazer relatórios e bateria de testes." />
+    <MESSAGE value="Arrumado bug criado na tela de edição de paciente." />
+    <option name="LAST_COMMIT_MESSAGE" value="Arrumado bug criado na tela de edição de paciente." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="875" y="145" key="#EJS" timestamp="1580856409365">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="875" y="145" key="#EJS/0.0.2560.1040@0.0.2560.1040" timestamp="1580856409365" />
+    <state x="875" y="180" width="800" height="672" key="#Inspections" timestamp="1583019782732">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="875" y="180" width="800" height="672" key="#Inspections/0.0.2560.1040@0.0.2560.1040" timestamp="1583019782732" />
+    <state x="875" y="180" width="800" height="762" key="#Intentions" timestamp="1579721855830">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="875" y="180" width="800" height="762" key="#Intentions/0.0.2560.1040@0.0.2560.1040" timestamp="1579721855830" />
+    <state x="1047" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580663341011">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1047" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1580663341011" />
+    <state x="1035" y="312" width="479" height="409" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580853708110">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1035" y="312" width="479" height="409" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1040@0.0.2560.1040" timestamp="1580853708110" />
+    <state x="572" y="30" width="1406" height="973" key="CommitChangelistDialog2" timestamp="1583271934829">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="572" y="30" width="1406" height="973" key="CommitChangelistDialog2/0.0.2560.1040@0.0.2560.1040" timestamp="1583271934829" />
+    <state x="100" y="100" width="2153" height="839" key="DiffContextDialog" timestamp="1578765101199">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="100" y="100" width="2153" height="839" key="DiffContextDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1578765101199" />
+    <state x="1063" y="277" width="424" height="479" key="FileChooserDialogImpl" timestamp="1579021351097">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1063" y="277" width="424" height="479" key="FileChooserDialogImpl/0.0.2560.1040@0.0.2560.1040" timestamp="1579021351097" />
+    <state width="1180" height="338" key="GridCell.Tab.0.bottom" timestamp="1585431339136">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1180" height="338" key="GridCell.Tab.0.bottom/0.0.2560.1040@0.0.2560.1040" timestamp="1585431339136" />
+    <state width="1921" height="119" key="GridCell.Tab.0.bottom/0.0.2560.930@0.0.2560.930" timestamp="1580743348961" />
+    <state width="1180" height="338" key="GridCell.Tab.0.center" timestamp="1585431339134">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1180" height="338" key="GridCell.Tab.0.center/0.0.2560.1040@0.0.2560.1040" timestamp="1585431339134" />
+    <state width="1921" height="119" key="GridCell.Tab.0.center/0.0.2560.930@0.0.2560.930" timestamp="1580743348958" />
+    <state width="1180" height="338" key="GridCell.Tab.0.left" timestamp="1585431339133">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1180" height="338" key="GridCell.Tab.0.left/0.0.2560.1040@0.0.2560.1040" timestamp="1585431339133" />
+    <state width="1921" height="119" key="GridCell.Tab.0.left/0.0.2560.930@0.0.2560.930" timestamp="1580743348956" />
+    <state width="1180" height="338" key="GridCell.Tab.0.right" timestamp="1585431339135">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1180" height="338" key="GridCell.Tab.0.right/0.0.2560.1040@0.0.2560.1040" timestamp="1585431339135" />
+    <state width="1921" height="119" key="GridCell.Tab.0.right/0.0.2560.930@0.0.2560.930" timestamp="1580743348959" />
+    <state width="1269" height="316" key="GridCell.Tab.1.bottom" timestamp="1582747949343">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.1.bottom/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949343" />
+    <state width="1269" height="316" key="GridCell.Tab.1.center" timestamp="1582747949341">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.1.center/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949341" />
+    <state width="1269" height="316" key="GridCell.Tab.1.left" timestamp="1582747949341">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.1.left/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949341" />
+    <state width="1269" height="316" key="GridCell.Tab.1.right" timestamp="1582747949342">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.1.right/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949342" />
+    <state width="1269" height="316" key="GridCell.Tab.2.bottom" timestamp="1582747949345">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.2.bottom/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949345" />
+    <state width="1269" height="316" key="GridCell.Tab.2.center" timestamp="1582747949344">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.2.center/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949344" />
+    <state width="1269" height="316" key="GridCell.Tab.2.left" timestamp="1582747949343">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.2.left/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949343" />
+    <state width="1269" height="316" key="GridCell.Tab.2.right" timestamp="1582747949344">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.2.right/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949344" />
+    <state width="1269" height="316" key="GridCell.Tab.3.bottom" timestamp="1582747949347">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.3.bottom/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949347" />
+    <state width="1269" height="316" key="GridCell.Tab.3.center" timestamp="1582747949346">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.3.center/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949346" />
+    <state width="1269" height="316" key="GridCell.Tab.3.left" timestamp="1582747949346">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.3.left/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949346" />
+    <state width="1269" height="316" key="GridCell.Tab.3.right" timestamp="1582747949347">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1269" height="316" key="GridCell.Tab.3.right/0.0.2560.1040@0.0.2560.1040" timestamp="1582747949347" />
+    <state x="784" y="154" width="1040" height="725" key="SettingsEditor" timestamp="1580856669054">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="784" y="154" width="1040" height="725" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1580856669054" />
+    <state x="875" y="251" width="800" height="531" key="Vcs.Push.Dialog.v2" timestamp="1583271942401">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="875" y="251" width="800" height="531" key="Vcs.Push.Dialog.v2/0.0.2560.1040@0.0.2560.1040" timestamp="1583271942401" />
+    <state x="100" y="99" width="2360" height="840" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1583267895598">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="100" y="99" width="2360" height="840" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1583267895598" />
+    <state x="874" y="208" width="812" height="622" key="find.popup" timestamp="1582830098119">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="874" y="208" width="812" height="622" key="find.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1582830098119" />
+    <state x="875" y="181" width="800" height="672" key="scopes" timestamp="1579021332314">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="875" y="181" width="800" height="672" key="scopes/0.0.2560.1040@0.0.2560.1040" timestamp="1579021332314" />
+    <state x="943" y="228" width="672" height="678" key="search.everywhere.popup" timestamp="1582853486995">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="943" y="228" width="672" height="678" key="search.everywhere.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1582853486995" />
+  </component>
+</project>
