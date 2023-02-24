@@ -1,4 +1,5 @@
 const createError = require('http-errors');
+const https = require("https");
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -24,6 +25,8 @@ const logoutRouter = require('./routes/logout');
 const cityRouter = require('./routes/city');
 const testRouter = require('./test/test');
 
+
+
 const methodOverride = require("method-override");
 
 const favicon = require('serve-favicon');
@@ -36,6 +39,7 @@ app.use(expressSession({
   resave: false,
   saveUninitialized: false
 }));
+
 
 //Configuração do Passport
 require('./config/passport')(passport);

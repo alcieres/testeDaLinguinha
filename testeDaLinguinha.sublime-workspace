@@ -5,7 +5,7 @@
 		[
 			[
 				"assessment",
-				"assessmentDate"
+				"assessmentExtractRouter"
 			],
 			[
 				"assessme",
@@ -260,84 +260,21 @@
 	"buffers":
 	[
 		{
-			"file": "controllers/FindPatientController.js",
+			"contents": "",
+			"file": "Erros pendentes",
+			"file_size": 163,
+			"file_write_time": 132573766999374576,
 			"settings":
 			{
-				"buffer_size": 2692,
-				"encoding": "UTF-8",
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "test/test.js",
+			"file": ".git/config",
 			"settings":
 			{
-				"buffer_size": 4129,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/findPatient/patientsList.ejs",
-			"settings":
-			{
-				"buffer_size": 4459,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/findPatient/patientDetails.ejs",
-			"settings":
-			{
-				"buffer_size": 10381,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/javascripts/util.js",
-			"settings":
-			{
-				"buffer_size": 11613,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/javascripts/assessment.js",
-			"settings":
-			{
-				"buffer_size": 17833,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 3649 files for \"dateToText\"\n\n/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessmentAccordion.js:\n   59  let accordionWrite = (assessment) => {\n   60    let newItem =\n   61:       '<h3 class=\"font-weight-bold\">' + dateToText(assessment.getAssessmentDate()) + '</h3>'\n   62        + '<div>'\n   63        + accordionLine('Mama no peito?', assessment.breastfeedingToText())\n   ..\n   72    $('#accordionBreastfeeding').append(newItem);\n   73    newItem =\n   74:       '<h3 class=\"font-weight-bold\">' + dateToText(assessment.getAssessmentDate()) + '</h3>'\n   75        + '<div>'\n   76        + accordionLine('1. Postura dos lábios em repouso:', assessment.questionOneToText())\n   ..\n   81    $('#accordionQuestionsOneToThree').append(newItem);\n   82    newItem =\n   83:       '<h3 class=\"font-weight-bold\">' + dateToText(assessment.getAssessmentDate()) + '</h3>'\n   84        + '<div>'\n   85        + accordionLine('4. Frênulo da língua:', assessment.questionFourToText())\n   ..\n   93    $('#accordionQuestionFour').append(newItem);\n   94    newItem =\n   95:       '<h3 class=\"font-weight-bold\">' + dateToText(assessment.getAssessmentDate()) + '</h3>'\n   96        + '<div>'\n   97        + accordionLine('1.1. Movimento da língua:', assessment.partTwoQuestionOneToText())\n   ..\n  106    $('#accordionPartTwo').append(newItem);\n  107    newItem =\n  108:       '<h3 class=\"font-weight-bold\">' + dateToText(assessment.getAssessmentDate()) + '</h3>'\n  109        + '<div>'\n  110        + accordionLine('Observações:', assessment.getObsResume())\n\n/home/alcieres/TCC/testeDaLinguinha/public/javascripts/util.js:\n   55  }\n   56  \n   57: function dateToText (date)\n   58  {\n   59    date = new Date(date);\n   ..\n  159    $(\"#resGenre\").text(patient.genreToText());\n  160    $(\"#resMotherName\").text(patient.getMotherName());\n  161:   $(\"#resBirthDate\").text(patient.birthDateToText());\n  162    $(\"#resFatherName\").text(patient.getFatherName());\n  163:   $(\"#resAssessmentDate\").text(patient.assessments[0].assessmentDateToText());\n  164    $(\"#resFamilyHistory\").text(patient.familyHistoryToText());\n  165    if (patient.getFamilyHistory() === '1'){\n\n/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Assessment.js:\n  293    };\n  294  \n  295:   this.assessmentDateToText = () => {\n  296:     return dateToText(assessmentDate);\n  297    };\n  298    this.breastfeedingToText = () => {\n\n/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Patient.js:\n  180        }\n  181    };\n  182:   this.birthDateToText = () => {\n  183:       return dateToText(birthDate);\n  184    };\n  185    this.updateClinicalHistoryPoints = (indexAssessment) => {\n\n/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs:\n   49      return tel;\n   50    }\n   51:   var dateToText = function (date) {\n   52      date = new Date (date);\n   53      let d = date.getUTCDate();\n   ..\n   75          </div>\n   76          <div class=\"col-12 col-sm-12 col-md-12 col-lg-3 mr-auto\">\n   77:           <p>Nascimento: <%= dateToText(patient.birthDate);%></p>\n   78          </div>\n   79          <div class=\"col-12 col-sm-12 col-md-12 col-lg-3 ml-auto\">\n   ..\n  161              <% patient.assessments.forEach(function(assessment){ %>\n  162                <tr>\n  163:                 <th scope=\"row\" class=\"text-center\"><%= dateToText(assessment.assessmentDate); %></th>\n  164                  <td class=\"text-center\"><%= assessment.clinicalHistoryPoints; %></td>\n  165                  <td class=\"text-center\"><%= assessment.clinicalAssessmentPoints; %></td>\n\n/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientsList.ejs:\n   24  \n   25    <%\n   26:   var dateToText = function (date) {\n   27      d = date.getUTCDate();\n   28      let d = date.getUTCDate();\n   ..\n   60              <div class=\"col-12 col-sm-12 col-md-12 col-lg-3 mx-auto\">\n   61                <p class=\"mb-0\">Data de Nascimento</p>\n   62:               <p class=\"mb-0\"><%= dateToText(patient.birthDate); %></p>\n   63              </div>\n   64              <div class=\"col-12 col-sm-12 col-md-12 col-lg-3 mx-auto\">\n\n17 matches across 6 files\n",
-			"settings":
-			{
-				"buffer_size": 4129,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "controllers/EditPatientController.js",
-			"settings":
-			{
-				"buffer_size": 12558,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/Assessment.js",
-			"settings":
-			{
-				"buffer_size": 4992,
-				"encoding": "UTF-8",
+				"buffer_size": 333,
 				"line_ending": "Unix"
 			}
 		}
@@ -400,70 +337,67 @@
 	"expanded_folders":
 	[
 		"/home/alcieres/TCC/testeDaLinguinha",
+		"/home/alcieres/TCC/testeDaLinguinha/models",
 		"/home/alcieres/TCC/testeDaLinguinha/public",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts"
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/bootstrap",
+		"/home/alcieres/TCC/testeDaLinguinha/test"
 	],
 	"file_history":
 	[
+		"/home/alcieres/Downloads/mongodb-jdbc-2.0.2.module",
 		"/home/alcieres/TCC/testeDaLinguinha/package.json",
-		"/home/alcieres/TCC/testeDaLinguinha/routes/reports.js",
-		"/home/alcieres/TCC/testeDaLinguinha/test/Dados para testes.txt",
-		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessmentExtract.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/resumeWrite.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Assessment.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/util.js",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessment.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Patient.js",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/ExtractController.js",
-		"/home/alcieres/TCC/testeDaLinguinha/models/Patient.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientDetails.js",
-		"/home/alcieres/TCC/testeDaLinguinha/controllers/Validations.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/assessmentValidate.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/print.css",
-		"/home/alcieres/TCC/testeDaLinguinha/routes/assessmentExtract.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/partials/modal.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/userChangePassword.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/userValidate.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/usersAdm/userNewViewEdit.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/routes/users.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/userNewViewEdit.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/findPatient.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/user/changePassword.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/routes/user.js",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/scriptAll.js",
-		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient/editPatient.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/findPatient.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientsList.ejs",
-		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientList.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/editPatient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessmentAccordion.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/loginForm.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientDetails.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/patientList.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/scriptAll.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/userChangePassword.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/userNewViewEdit.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/users.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/util.js",
 		"/home/alcieres/TCC/testeDaLinguinha/controllers/AssessmentController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessment.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/EditPatientController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/editPatient/editPatient.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/models/Assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/test/test.js",
+		"/home/alcieres/TCC/testeDaLinguinha/models/Patient.js",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/Validations.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/resumeWrite.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Patient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/routes/assessment.js",
 		"/home/alcieres/TCC/testeDaLinguinha/routes/editPatient.js",
 		"/home/alcieres/TCC/testeDaLinguinha/testeDaLinguinha.sublime-project",
+		"/home/alcieres/TCC/testeDaLinguinha/controllers/ExtractController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/routes/assessmentExtract.js",
 		"/home/alcieres/TCC/testeDaLinguinha/app.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientDetails.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/routes/home.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/assessmentExtract.js",
 		"/home/alcieres/TCC/testeDaLinguinha/controllers/FindPatientController.js",
 		"/home/alcieres/Área de Trabalho/terminal",
 		"/home/alcieres/.cache/.fr-bg3nM0/testeDaLinguinha-1.1.1-beta/controllers/FindPatientController.js",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models/Assessment.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/home.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/bin/www",
 		"/home/alcieres/TCC/testeDaLinguinha/config/db.js",
+		"/home/alcieres/TCC/testeDaLinguinha/views/assessment/assessmentExtract.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/findPatient.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/partials/footer.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/teste.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/modelo.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/findPatient/patientsList.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/reports/period.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/reports/points.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/user/changePassword.ejs",
+		"/home/alcieres/TCC/testeDaLinguinha/views/usersAdm/userNewViewEdit.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/views/usersAdm/users.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/assessmentExtract.css",
+		"/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers/assessmentValidate.js",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/text.css",
 		"/home/alcieres/TCC/testeDaLinguinha/views/partials/nav.ejs",
 		"/home/alcieres/TCC/testeDaLinguinha/public/stylesheets/style.css",
@@ -532,22 +466,23 @@
 		"/home/alcieres/webII/aula10/blog/app.js",
 		"/home/alcieres/webII/aula13/instalação My SQL.txt",
 		"/home/alcieres/webII/prova2/Dicas/Dicas Prova",
-		"/home/alcieres/webII/prova2/Dicas/TIPOS DE DADOS MYSQL.txt"
+		"/home/alcieres/webII/prova2/Dicas/TIPOS DE DADOS MYSQL.txt",
+		"/home/alcieres/webII/treino/trabalho/app.js",
+		"/home/alcieres/webII/aula12/resolucao-prova-mysql/tabelas.sql",
+		"/etc/mysql/mysql.conf.d/mysqld.cnf",
+		"/etc/mysql/mysql.cnf",
+		"/home/alcieres/webII/aula12/resolucao-prova-mysql/public/blog.css",
+		"/home/alcieres/webII/aula10/blog/public/app.css"
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
 		"height": 101.0,
 		"where_history":
 		[
-			"",
-			"/home/alcieres/TCC/testeDaLinguinha/bin,/home/alcieres/TCC/testeDaLinguinha/cidades,/home/alcieres/TCC/testeDaLinguinha/config,/home/alcieres/TCC/testeDaLinguinha/controllers,/home/alcieres/TCC/testeDaLinguinha/models,/home/alcieres/TCC/testeDaLinguinha/routes,/home/alcieres/TCC/testeDaLinguinha/test,/home/alcieres/TCC/testeDaLinguinha/views,/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers,/home/alcieres/TCC/testeDaLinguinha/public/javascripts/jquery,/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models",
-			"",
-			"/home/alcieres/TCC/testeDaLinguinha/bin,/home/alcieres/TCC/testeDaLinguinha/cidades,/home/alcieres/TCC/testeDaLinguinha/config,/home/alcieres/TCC/testeDaLinguinha/controllers,/home/alcieres/TCC/testeDaLinguinha/models,/home/alcieres/TCC/testeDaLinguinha/public,/home/alcieres/TCC/testeDaLinguinha/routes,/home/alcieres/TCC/testeDaLinguinha/test,/home/alcieres/TCC/testeDaLinguinha/views",
-			"",
 			"<open files>",
 			"/home/alcieres/TCC/testeDaLinguinha/bin,/home/alcieres/TCC/testeDaLinguinha/cidades,/home/alcieres/TCC/testeDaLinguinha/config,/home/alcieres/TCC/testeDaLinguinha/controllers,/home/alcieres/TCC/testeDaLinguinha/models,/home/alcieres/TCC/testeDaLinguinha/routes,/home/alcieres/TCC/testeDaLinguinha/test,/home/alcieres/TCC/testeDaLinguinha/views,/home/alcieres/TCC/testeDaLinguinha/public/javascripts/controllers,/home/alcieres/TCC/testeDaLinguinha/public/javascripts/models,",
 			"/home/alcieres/TCC/testeDaLinguinha/bin,/home/alcieres/TCC/testeDaLinguinha/cidades,/home/alcieres/TCC/testeDaLinguinha/config,/home/alcieres/TCC/testeDaLinguinha/controllers,/home/alcieres/TCC/testeDaLinguinha/models,/home/alcieres/TCC/testeDaLinguinha/public,/home/alcieres/TCC/testeDaLinguinha/routes,/home/alcieres/TCC/testeDaLinguinha/test,/home/alcieres/TCC/testeDaLinguinha/views",
@@ -559,39 +494,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"dateToText",
-			"datep",
-			"mode",
-			"date",
-			"d = date.getDate()",
-			"d = date.geCDate()",
-			"d = date.getUTCDate();",
-			"date",
-			"utc",
-			"getUTCDate",
-			"dateToText",
-			"date.getDate",
-			"date.get",
-			"date.getDate",
-			"getDate",
-			"resultado: ",
-			"resposta",
-			"writePatient",
-			"mode: 3",
-			"obser",
-			"confirm(",
-			"confirm (",
-			"confirm",
-			"alert(",
-			"console.log",
-			"checkUpdateUser()",
-			"return",
-			"cpfBR",
-			"dialog-message",
-			"success",
-			"alert",
-			"passwordMessage",
-			"dialog",
 			"alert",
 			"'Erro ao salvar teste'",
 			"erro de validação do teste",
@@ -654,385 +556,95 @@
 		"regex": false,
 		"replace_history":
 		[
-			"",
 			"<%- include ('../partials/footer') %>",
 			"questionFourCmd",
 			"breastfeedingCmd"
 		],
 		"reverse": false,
+		"scrollbar_highlights": true,
 		"show_context": true,
 		"use_buffer2": true,
+		"use_gitignore": true,
 		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "controllers/FindPatientController.js",
-					"semi_transient": true,
+					"file": "Erros pendentes",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2692,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1879,
-								1879
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 1,
-					"file": "test/test.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4129,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2942,
-								2942
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 858.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 1,
+					"stack_multiselect": false,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "views/findPatient/patientsList.ejs",
+					"buffer": 1,
+					"file": ".git/config",
+					"selected": true,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4459,
+						"buffer_size": 333,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1020,
-								1025
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/EJS/EJS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Git Formats/Git Config.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "views/findPatient/patientDetails.ejs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10381,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1317,
-								1317
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/EJS/EJS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 223.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "public/javascripts/util.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11613,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								828,
-								828
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 234.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "public/javascripts/assessment.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17833,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4521,
-								4521
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1478.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4129,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										234,
-										244
-									],
-									[
-										518,
-										528
-									],
-									[
-										825,
-										835
-									],
-									[
-										1114,
-										1124
-									],
-									[
-										1408,
-										1418
-									],
-									[
-										1654,
-										1664
-									],
-									[
-										1878,
-										1888
-									],
-									[
-										2024,
-										2034
-									],
-									[
-										2280,
-										2290
-									],
-									[
-										2319,
-										2329
-									],
-									[
-										2524,
-										2534
-									],
-									[
-										2565,
-										2575
-									],
-									[
-										2789,
-										2799
-									],
-									[
-										3030,
-										3040
-									],
-									[
-										3332,
-										3342
-									],
-									[
-										3674,
-										3684
-									],
-									[
-										3961,
-										3971
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								3588,
-								3588
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 702.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "controllers/EditPatientController.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12558,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12557,
-								12557
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2106.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "models/Assessment.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4992,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1065,
-								1065
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 117.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
+					"stack_multiselect": false,
 					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 22.0
 	},
 	"input":
 	{
@@ -1058,7 +670,7 @@
 		"cols":
 		[
 			0.0,
-			0.425364965296,
+			0.482910729463,
 			1.0
 		],
 		"rows":
@@ -1078,13 +690,13 @@
 	},
 	"output.nodejs":
 	{
-		"height": 118.0
+		"height": 116.0
 	},
 	"pinned_build_system": "",
 	"project": "testeDaLinguinha.sublime-project",
 	"replace":
 	{
-		"height": 68.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1114,7 +726,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -1122,7 +734,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 269.0,
+	"side_bar_width": 264.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -10,6 +10,7 @@ module.exports = function (passport) {
     //informa ao passport para usar a função authenticate de User (originaria de AssessmentController.js) para a estrategia de autenticacao local
     passport.use(new LocalStrategy({
             usernameField: 'cpf',
+            proxy: true,
         },
         User.authenticate()));
     //passport.use(new LocalStrategy(User.authenticate()));
